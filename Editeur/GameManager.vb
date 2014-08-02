@@ -268,7 +268,7 @@ Class GameManager
             If editorOptions.tilesPreview And testMode = False And frmMapEditor.btCopy.Checked = False And frmMapEditor.btErase.Checked = False Then
                 If frmMapEditor.lstTiles.SelectedIndex < frmMapEditor.lstTiles.Items.Count - 1 Then
                     previewSprt = New Sprite(tileset(frmMapEditor.lstTiles.SelectedIndex))
-                    'previewSprt.TextureRect = New IntRect(frmMapEditor.recSelect.Left, frmMapEditor.recSelect.Top, frmMapEditor.recSelect.Width, frmMapEditor.recSelect.Height)
+                    previewSprt.TextureRect = New IntRect(frmMapEditor.recSelect.Position.X, frmMapEditor.recSelect.Position.Y, frmMapEditor.recSelect.Size.X, frmMapEditor.recSelect.Size.Y)
                     previewSprt.Color = New Color(255, 255, 255, 155)
                     previewSprt.Position = New Vector2f(curX * 32, curY * 32)
                     gameSurface.Draw(previewSprt)
