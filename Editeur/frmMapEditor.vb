@@ -19,7 +19,6 @@ Public Class frmMapEditor
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         frmLoading.Show()
         Application.DoEvents()
-        curAttribute = New Attribute
         ' Dessin du rectangle de selection de tiles
         canvas.Parent = picTiles
         recSelect.Parent = canvas
@@ -89,13 +88,13 @@ Public Class frmMapEditor
         btGrid.Checked = editorOptions.grid
     End Sub
 
-    Private Sub PrévisualisationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrévisualisationToolStripMenuItem.Click
+    Private Sub PrevisualisationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrevisualisationToolStripMenuItem.Click
         If editorOptions.tilesPreview = False Then
             editorOptions.tilesPreview = True
         Else
             editorOptions.tilesPreview = False
         End If
-        PrévisualisationToolStripMenuItem.Checked = editorOptions.tilesPreview
+        PrevisualisationToolStripMenuItem.Checked = editorOptions.tilesPreview
     End Sub
 
     Private Sub NuitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuitToolStripMenuItem.Click

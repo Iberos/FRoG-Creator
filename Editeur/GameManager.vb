@@ -25,7 +25,7 @@ Class GameManager
         End If
         frmMapEditor.GrilleToolStripMenuItem.Checked = editorOptions.grid
         frmMapEditor.btGrid.Checked = editorOptions.grid
-        frmMapEditor.PrévisualisationToolStripMenuItem.Checked = editorOptions.tilesPreview
+        frmMapEditor.PrevisualisationToolStripMenuItem.Checked = editorOptions.tilesPreview
         frmMapEditor.NuitToolStripMenuItem.Checked = editorOptions.nightMode
         frmMapEditor.btNight.Checked = editorOptions.nightMode
 

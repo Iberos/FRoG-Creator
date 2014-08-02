@@ -23,7 +23,7 @@ Public Class frmMapOpen
     End Sub
 
     Private Sub lstMaps_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles lstMaps.MouseDoubleClick
-        curMap = lstMaps.SelectedIndex
+        curMap = Int(lstMaps.Text.Substring(8).Split(".")(0))
         map.Load(curMap)
         game.DrawMap()
         frmMapEditor.pnlStart.Visible = False

@@ -25,16 +25,16 @@ Partial Class frmDataEditor
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.lstClasses = New System.Windows.Forms.ListBox()
+        Me.lstBClasses = New System.Windows.Forms.ListBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
-        Me.lstItems = New System.Windows.Forms.ListBox()
+        Me.lstBItems = New System.Windows.Forms.ListBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.SplitContainer3 = New System.Windows.Forms.SplitContainer()
-        Me.lstSpells = New System.Windows.Forms.ListBox()
+        Me.lstBSpells = New System.Windows.Forms.ListBox()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.SplitContainer4 = New System.Windows.Forms.SplitContainer()
-        Me.lstNPCs = New System.Windows.Forms.ListBox()
+        Me.lstBNPCs = New System.Windows.Forms.ListBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,19 +86,19 @@ Partial Class frmDataEditor
         '
         'SplitContainer1.Panel1
         '
-        Me.SplitContainer1.Panel1.Controls.Add(Me.lstClasses)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.lstBClasses)
         Me.SplitContainer1.Size = New System.Drawing.Size(795, 460)
         Me.SplitContainer1.SplitterDistance = 187
         Me.SplitContainer1.TabIndex = 0
         '
-        'lstClasses
+        'lstBClasses
         '
-        Me.lstClasses.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lstClasses.FormattingEnabled = True
-        Me.lstClasses.Location = New System.Drawing.Point(0, 0)
-        Me.lstClasses.Name = "lstClasses"
-        Me.lstClasses.Size = New System.Drawing.Size(187, 460)
-        Me.lstClasses.TabIndex = 0
+        Me.lstBClasses.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lstBClasses.FormattingEnabled = True
+        Me.lstBClasses.Location = New System.Drawing.Point(0, 0)
+        Me.lstBClasses.Name = "lstBClasses"
+        Me.lstBClasses.Size = New System.Drawing.Size(187, 460)
+        Me.lstBClasses.TabIndex = 0
         '
         'TabPage2
         '
@@ -119,19 +119,19 @@ Partial Class frmDataEditor
         '
         'SplitContainer2.Panel1
         '
-        Me.SplitContainer2.Panel1.Controls.Add(Me.lstItems)
+        Me.SplitContainer2.Panel1.Controls.Add(Me.lstBItems)
         Me.SplitContainer2.Size = New System.Drawing.Size(795, 460)
         Me.SplitContainer2.SplitterDistance = 187
         Me.SplitContainer2.TabIndex = 0
         '
-        'lstItems
+        'lstBItems
         '
-        Me.lstItems.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lstItems.FormattingEnabled = True
-        Me.lstItems.Location = New System.Drawing.Point(0, 0)
-        Me.lstItems.Name = "lstItems"
-        Me.lstItems.Size = New System.Drawing.Size(187, 460)
-        Me.lstItems.TabIndex = 0
+        Me.lstBItems.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lstBItems.FormattingEnabled = True
+        Me.lstBItems.Location = New System.Drawing.Point(0, 0)
+        Me.lstBItems.Name = "lstBItems"
+        Me.lstBItems.Size = New System.Drawing.Size(187, 460)
+        Me.lstBItems.TabIndex = 0
         '
         'TabPage3
         '
@@ -151,19 +151,19 @@ Partial Class frmDataEditor
         '
         'SplitContainer3.Panel1
         '
-        Me.SplitContainer3.Panel1.Controls.Add(Me.lstSpells)
+        Me.SplitContainer3.Panel1.Controls.Add(Me.lstBSpells)
         Me.SplitContainer3.Size = New System.Drawing.Size(801, 466)
         Me.SplitContainer3.SplitterDistance = 189
         Me.SplitContainer3.TabIndex = 0
         '
-        'lstSpells
+        'lstBSpells
         '
-        Me.lstSpells.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lstSpells.FormattingEnabled = True
-        Me.lstSpells.Location = New System.Drawing.Point(0, 0)
-        Me.lstSpells.Name = "lstSpells"
-        Me.lstSpells.Size = New System.Drawing.Size(189, 466)
-        Me.lstSpells.TabIndex = 0
+        Me.lstBSpells.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lstBSpells.FormattingEnabled = True
+        Me.lstBSpells.Location = New System.Drawing.Point(0, 0)
+        Me.lstBSpells.Name = "lstBSpells"
+        Me.lstBSpells.Size = New System.Drawing.Size(189, 466)
+        Me.lstBSpells.TabIndex = 0
         '
         'TabPage4
         '
@@ -183,19 +183,19 @@ Partial Class frmDataEditor
         '
         'SplitContainer4.Panel1
         '
-        Me.SplitContainer4.Panel1.Controls.Add(Me.lstNPCs)
+        Me.SplitContainer4.Panel1.Controls.Add(Me.lstBNPCs)
         Me.SplitContainer4.Size = New System.Drawing.Size(801, 466)
         Me.SplitContainer4.SplitterDistance = 190
         Me.SplitContainer4.TabIndex = 0
         '
-        'lstNPCs
+        'lstBNPCs
         '
-        Me.lstNPCs.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lstNPCs.FormattingEnabled = True
-        Me.lstNPCs.Location = New System.Drawing.Point(0, 0)
-        Me.lstNPCs.Name = "lstNPCs"
-        Me.lstNPCs.Size = New System.Drawing.Size(190, 466)
-        Me.lstNPCs.TabIndex = 0
+        Me.lstBNPCs.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lstBNPCs.FormattingEnabled = True
+        Me.lstBNPCs.Location = New System.Drawing.Point(0, 0)
+        Me.lstBNPCs.Name = "lstBNPCs"
+        Me.lstBNPCs.Size = New System.Drawing.Size(190, 466)
+        Me.lstBNPCs.TabIndex = 0
         '
         'frmDataEditor
         '
@@ -231,11 +231,11 @@ Partial Class frmDataEditor
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage4 As System.Windows.Forms.TabPage
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
-    Friend WithEvents lstClasses As System.Windows.Forms.ListBox
+    Friend WithEvents lstBClasses As System.Windows.Forms.ListBox
     Friend WithEvents SplitContainer2 As System.Windows.Forms.SplitContainer
-    Friend WithEvents lstItems As System.Windows.Forms.ListBox
+    Friend WithEvents lstBItems As System.Windows.Forms.ListBox
     Friend WithEvents SplitContainer3 As System.Windows.Forms.SplitContainer
-    Friend WithEvents lstSpells As System.Windows.Forms.ListBox
+    Friend WithEvents lstBSpells As System.Windows.Forms.ListBox
     Friend WithEvents SplitContainer4 As System.Windows.Forms.SplitContainer
-    Friend WithEvents lstNPCs As System.Windows.Forms.ListBox
+    Friend WithEvents lstBNPCs As System.Windows.Forms.ListBox
 End Class

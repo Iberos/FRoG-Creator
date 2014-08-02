@@ -40,7 +40,7 @@ Partial Class frmMapEditor
         Me.OuvrirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AffichageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GrilleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PrévisualisationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PrevisualisationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NuitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SignalerUnBugToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -208,7 +208,7 @@ Partial Class frmMapEditor
         '
         'AffichageToolStripMenuItem
         '
-        Me.AffichageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GrilleToolStripMenuItem, Me.PrévisualisationToolStripMenuItem, Me.NuitToolStripMenuItem})
+        Me.AffichageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GrilleToolStripMenuItem, Me.PrevisualisationToolStripMenuItem, Me.NuitToolStripMenuItem})
         Me.AffichageToolStripMenuItem.Name = "AffichageToolStripMenuItem"
         Me.AffichageToolStripMenuItem.Size = New System.Drawing.Size(70, 20)
         Me.AffichageToolStripMenuItem.Text = "Affichage"
@@ -219,11 +219,11 @@ Partial Class frmMapEditor
         Me.GrilleToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.GrilleToolStripMenuItem.Text = "Grille"
         '
-        'PrévisualisationToolStripMenuItem
+        'PrevisualisationToolStripMenuItem
         '
-        Me.PrévisualisationToolStripMenuItem.Name = "PrévisualisationToolStripMenuItem"
-        Me.PrévisualisationToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.PrévisualisationToolStripMenuItem.Text = "Prévisualisation"
+        Me.PrevisualisationToolStripMenuItem.Name = "PrevisualisationToolStripMenuItem"
+        Me.PrevisualisationToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.PrevisualisationToolStripMenuItem.Text = "Prévisualisation"
         '
         'NuitToolStripMenuItem
         '
@@ -790,7 +790,7 @@ Partial Class frmMapEditor
     Friend WithEvents QuitterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AffichageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GrilleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents PrévisualisationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PrevisualisationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents NuitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SignalerUnBugToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem

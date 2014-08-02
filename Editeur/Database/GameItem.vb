@@ -3,6 +3,8 @@ Imports System.IO
 
 Public Class GameItem
 
+    Public Name As String
+
     Public Sub Save()
         Dim serializer As New BinaryFormatter
         Dim writer As Stream
