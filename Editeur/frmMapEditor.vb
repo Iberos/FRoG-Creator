@@ -1,10 +1,10 @@
-﻿Imports Microsoft.VisualBasic.PowerPacks
+﻿Imports SFML.Graphics
+Imports SFML.Window
 Imports System.Runtime.Serialization.Formatters.Binary
 
 Public Class frmMapEditor
 
-    Private canvas As New ShapeContainer
-    Public recSelect As New PowerPacks.RectangleShape
+    Public recSelect As New RectangleShape
     Private selectingTiles As Boolean = False
     Private mapping As Boolean = False
 
@@ -19,13 +19,12 @@ Public Class frmMapEditor
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         frmLoading.Show()
         Application.DoEvents()
+
         ' Dessin du rectangle de selection de tiles
-        canvas.Parent = picTiles
-        recSelect.Parent = canvas
-        recSelect.Width = 32
-        recSelect.Height = 32
-        recSelect.BorderColor = Drawing.Color.DarkGreen
-        recSelect.Location = New Point(0, 0)
+        recSelect.Size = New SFML.Window.Vector2f(32, 32)
+        recSelect.OutlineColor = SFML.Graphics.Color.Green
+        recSelect.OutlineThickness = 1
+        recSelect.Position = New SFML.Window.Vector2f(0, 0)
 
         picGame.Cursor = Cursors.Cross
         game.InitMapEditor()
@@ -108,19 +107,17 @@ Public Class frmMapEditor
     End Sub
 
     Private Sub picTiles_MouseDown(sender As Object, e As MouseEventArgs) Handles picTiles.MouseDown
-        recSelect.Location = New Point(Int(e.X / 32) * 32, Int(e.Y / 32) * 32)
-        recSelect.Height = 32
-        recSelect.Width = 32
+        recSelect.Position = New Vector2f(Int(e.X / 32) * 32, Int(e.Y / 32) * 32)
+        recSelect.Size = New Vector2f(32, 32)
         selectingTiles = True
     End Sub
 
     Private Sub picTiles_MouseMove(sender As Object, e As MouseEventArgs) Handles picTiles.MouseMove
         If selectingTiles Then
-            Dim tmpHeight As Short = CShort((e.Y - recSelect.Top) / 32) + 1
-            Dim tmpWidth As Short = CShort((e.X - recSelect.Left) / 32) + 1
+            Dim tmpHeight As Short = CShort((e.Y - recSelect.Position.Y) / 32) + 1
+            Dim tmpWidth As Short = CShort((e.X - recSelect.Position.X) / 32) + 1
 
-            recSelect.Height = tmpHeight * 32
-            recSelect.Width = tmpWidth * 32
+            recSelect.Size = New Vector2f(tmpWidth * 32, tmpHeight * 32)
         End If
     End Sub
 
@@ -148,11 +145,10 @@ Public Class frmMapEditor
             End If
         Else
             ' Pipette
-            recSelect.Height = 32
-            recSelect.Width = 32
+            recSelect.Size = New Vector2f(32, 32)
             lstTiles.SelectedIndex = map.layer(curLayer).tilset(curX, curY)
-            recSelect.Top = map.DecodeY(map.layer(curLayer).tileCode(curX, curY)) * 32
-            recSelect.Left = map.DecodeX(map.layer(curLayer).tileCode(curX, curY)) * 32
+            recSelect.Position = New Vector2f(map.DecodeX(map.layer(curLayer).tileCode(curX, curY)) * 32,
+                                              map.DecodeY(map.layer(curLayer).tileCode(curX, curY)) * 32)
             btCopy.Checked = False
             picGame.Cursor = Cursors.Cross
         End If
@@ -207,11 +203,11 @@ Public Class frmMapEditor
     ' - Place la selection de tiles sur la map puis re dessine la couche
     Private Sub PlaceTile(ByVal X As Byte, ByVal Y As Byte)
         If Not testMode Then
-            For x2 = 0 To CByte(recSelect.Width / 32) - 1
-                For y2 = 0 To CByte(recSelect.Height / 32) - 1
+            For x2 = 0 To CByte(recSelect.Size.X / 32) - 1
+                For y2 = 0 To CByte(recSelect.Size.Y / 32) - 1
                     If Not X + x2 < 0 And Not X + x2 > 20 And Not Y + y2 < 0 And Not Y + y2 > 14 Then
                         map.layer(curLayer).tilset(X + x2, Y + y2) = lstTiles.SelectedIndex
-                        map.layer(curLayer).tileCode(X + x2, Y + y2) = map.EncodeXY(Int(recSelect.Left / 32) + x2, Int(recSelect.Top / 32) + y2)
+                        map.layer(curLayer).tileCode(X + x2, Y + y2) = map.EncodeXY(Int(recSelect.Position.X / 32) + x2, Int(recSelect.Position.Y / 32) + y2)
                     End If
                 Next
             Next
@@ -261,8 +257,8 @@ Public Class frmMapEditor
 
     ' - Outil : Remplissage
     Private Sub btFill_Click(sender As Object, e As EventArgs) Handles btFill.Click
-        For x = 0 To 20 Step Int(recSelect.Width / 32)
-            For y = 0 To 16 Step Int(recSelect.Height / 32)
+        For x = 0 To 20 Step Int(recSelect.Size.X / 32)
+            For y = 0 To 16 Step Int(recSelect.Size.Y / 32)
                 Call PlaceTile(x, y)
             Next
         Next
