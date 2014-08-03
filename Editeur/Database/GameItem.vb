@@ -3,7 +3,13 @@ Imports System.IO
 
 Public Class GameItem
 
-    Public Name As String
+    Public ItemName As String
+    Public ItemDescription As String
+    Public ItemPurchasePrice As Integer
+    Public ItemSellingPrice As Integer
+    Public ItemHPEffect As Integer
+    Public ItemMPEffect As Integer
+
 
     Public Sub Save()
         Dim serializer As New BinaryFormatter

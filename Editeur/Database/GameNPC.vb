@@ -3,7 +3,11 @@ Imports System.IO
 
 Public Class GameNPC
 
-    Public Name As String
+    Public NPCName As String
+    Public NPCX As Integer
+    Public NPCY As Integer
+    Public NPCDialog As String
+
 
     Public Sub Save()
         Dim serializer As New BinaryFormatter

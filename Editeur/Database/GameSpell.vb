@@ -3,7 +3,12 @@ Imports System.IO
 
 Public Class GameSpell
 
-    Public Name As String
+    Public SpellName As String
+    Public SpellDescription As String
+    Public SpellPurchasePrice As Integer
+    Public SpellSellingPrice As Integer
+    Public SpellPower As Integer
+
 
     Public Sub Save()
         Dim serializer As New BinaryFormatter
