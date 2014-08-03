@@ -1,6 +1,9 @@
 ﻿Imports SFML.Graphics
 Imports SFML.Window
 Imports System.Runtime.Serialization.Formatters.Binary
+Imports System
+Imports System.IO
+Imports System.Collections
 
 Public Class frmMapEditor
 
@@ -17,6 +20,14 @@ Public Class frmMapEditor
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        'Test l'existance des dossiers de base de l'éditeur
+        If Not Directory.Exists("Classes") Then Directory.CreateDirectory("Classes")
+        If Not Directory.Exists("Maps") Then Directory.CreateDirectory("Maps")
+        If Not Directory.Exists("Objets") Then Directory.CreateDirectory("Objets")
+        If Not Directory.Exists("PNJs") Then Directory.CreateDirectory("PNJS")
+        If Not Directory.Exists("Sorts") Then Directory.CreateDirectory("Sorts")
+
         frmLoading.Show()
         Application.DoEvents()
 
