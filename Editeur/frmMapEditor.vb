@@ -26,6 +26,10 @@ Public Class frmMapEditor
         If Not Directory.Exists("Objets") Then Directory.CreateDirectory("Objets")
         If Not Directory.Exists("PNJs") Then Directory.CreateDirectory("PNJS")
         If Not Directory.Exists("Sorts") Then Directory.CreateDirectory("Sorts")
+        If Not Directory.Exists("Tiles") Then Directory.CreateDirectory("Tiles")
+        If Not File.Exists("Sprite.png") Then
+            MessageBox.Show("ATTENTION: Aucun sprite n'a été détecté, veuillez replacer Sprite.png à la racine du programme\n\nLe programme va maintenant se fermer")
+        End If
 
         frmLoading.Show()
         Application.DoEvents()
