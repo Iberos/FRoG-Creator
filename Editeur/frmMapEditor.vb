@@ -7,7 +7,6 @@ Imports System.Collections
 
 Public Class frmMapEditor
 
-    Public recSelect As New RectangleShape
     Private selectingTiles As Boolean = False
     Private mapping As Boolean = False
 
@@ -30,12 +29,6 @@ Public Class frmMapEditor
 
         frmLoading.Show()
         Application.DoEvents()
-
-        ' Dessin du rectangle de selection de tiles
-        recSelect.Size = New SFML.Window.Vector2f(32, 32)
-        recSelect.OutlineColor = SFML.Graphics.Color.Green
-        recSelect.OutlineThickness = 1
-        recSelect.Position = New SFML.Window.Vector2f(0, 0)
 
         picGame.Cursor = Cursors.Cross
         game.InitMapEditor()
@@ -62,6 +55,7 @@ Public Class frmMapEditor
     Private Sub lstTiles_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstTiles.SelectedIndexChanged
         If lstTiles.SelectedIndex < lstTiles.Items.Count - 1 Then
             picTiles.ImageLocation = ("Tiles/Tiles" & lstTiles.SelectedIndex & ".png")
+            game.currentTileset = New Sprite(game.tileset(lstTiles.SelectedIndex)) 'Changement du tileset
             pnlAttribute.Visible = False
             curAttribute.Type = 0
             btCopy.Enabled = True
@@ -118,17 +112,17 @@ Public Class frmMapEditor
     End Sub
 
     Private Sub picTiles_MouseDown(sender As Object, e As MouseEventArgs) Handles picTiles.MouseDown
-        recSelect.Position = New Vector2f(Int(e.X / 32) * 32, Int(e.Y / 32) * 32)
-        recSelect.Size = New Vector2f(32, 32)
+        game.recSelect.Position = New Vector2f(Int(Mouse.GetPosition(game.tileSurface).X / 32), Int(Mouse.GetPosition(game.tileSurface).Y / 32)) * 32
+        game.recSelect.Size = New Vector2f(32, 32)
         selectingTiles = True
     End Sub
 
     Private Sub picTiles_MouseMove(sender As Object, e As MouseEventArgs) Handles picTiles.MouseMove
         If selectingTiles Then
-            Dim tmpHeight As Short = CShort((e.Y - recSelect.Position.Y) / 32) + 1
-            Dim tmpWidth As Short = CShort((e.X - recSelect.Position.X) / 32) + 1
+            Dim tmpHeight As Short = CShort((Mouse.GetPosition(game.tileSurface).Y - game.recSelect.Position.Y) / 32) + 1
+            Dim tmpWidth As Short = CShort((Mouse.GetPosition(game.tileSurface).X - game.recSelect.Position.X) / 32) + 1
 
-            recSelect.Size = New Vector2f(tmpWidth * 32, tmpHeight * 32)
+            game.recSelect.Size = New Vector2f(tmpWidth * 32, tmpHeight * 32)
         End If
     End Sub
 
@@ -156,10 +150,10 @@ Public Class frmMapEditor
             End If
         Else
             ' Pipette
-            recSelect.Size = New Vector2f(32, 32)
+            game.recSelect.Size = New Vector2f(32, 32)
             lstTiles.SelectedIndex = map.layer(curLayer).tilset(curX, curY)
-            recSelect.Position = New Vector2f(map.DecodeX(map.layer(curLayer).tileCode(curX, curY)) * 32,
-                                              map.DecodeY(map.layer(curLayer).tileCode(curX, curY)) * 32)
+            game.recSelect.Position = New Vector2f(map.DecodeX(map.layer(curLayer).tileCode(curX, curY)) * 32,
+                                                   map.DecodeY(map.layer(curLayer).tileCode(curX, curY)) * 32)
             btCopy.Checked = False
             picGame.Cursor = Cursors.Cross
         End If
@@ -214,11 +208,11 @@ Public Class frmMapEditor
     ' - Place la selection de tiles sur la map puis re dessine la couche
     Private Sub PlaceTile(ByVal X As Byte, ByVal Y As Byte)
         If Not testMode Then
-            For x2 = 0 To CByte(recSelect.Size.X / 32) - 1
-                For y2 = 0 To CByte(recSelect.Size.Y / 32) - 1
+            For x2 = 0 To CByte(game.recSelect.Size.X / 32) - 1
+                For y2 = 0 To CByte(game.recSelect.Size.Y / 32) - 1
                     If Not X + x2 < 0 And Not X + x2 > 20 And Not Y + y2 < 0 And Not Y + y2 > 14 Then
                         map.layer(curLayer).tilset(X + x2, Y + y2) = lstTiles.SelectedIndex
-                        map.layer(curLayer).tileCode(X + x2, Y + y2) = map.EncodeXY(Int(recSelect.Position.X / 32) + x2, Int(recSelect.Position.Y / 32) + y2)
+                        map.layer(curLayer).tileCode(X + x2, Y + y2) = map.EncodeXY(Int(game.recSelect.Position.X / 32) + x2, Int(game.recSelect.Position.Y / 32) + y2)
                     End If
                 Next
             Next
@@ -268,8 +262,8 @@ Public Class frmMapEditor
 
     ' - Outil : Remplissage
     Private Sub btFill_Click(sender As Object, e As EventArgs) Handles btFill.Click
-        For x = 0 To 20 Step Int(recSelect.Size.X / 32)
-            For y = 0 To 16 Step Int(recSelect.Size.Y / 32)
+        For x = 0 To 20 Step Int(game.recSelect.Size.X / 32)
+            For y = 0 To 16 Step Int(game.recSelect.Size.Y / 32)
                 Call PlaceTile(x, y)
             Next
         Next

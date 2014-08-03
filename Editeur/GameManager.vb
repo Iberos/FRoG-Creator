@@ -5,6 +5,7 @@ Imports System.IO
 Class GameManager
 
     Public gameSurface As New RenderWindow(frmMapEditor.picGame.Handle)
+    Public tileSurface As New RenderWindow(frmMapEditor.picTiles.Handle)
     Private gridSurface As New RenderTexture(672, 480)
     Private nightSurface As New RectangleShape(New Vector2f(672, 480))
     Private mapSurface(6) As RenderTexture
@@ -12,9 +13,11 @@ Class GameManager
     Public tileset() As Texture
     Public texPlayer As Texture
     Public sprtPlayer As Sprite
-
+    Public recSelect As New RectangleShape
+    Public currentTileset As Sprite
     ' - Initialisation des fonctions essencielles à l'éditeur
     Public Sub InitMapEditor()
+
         Dim i As Short = 0
 
         ' Chargement des options
@@ -29,6 +32,13 @@ Class GameManager
         frmMapEditor.NuitToolStripMenuItem.Checked = editorOptions.nightMode
         frmMapEditor.btNight.Checked = editorOptions.nightMode
 
+        ' Initialisation du selecteur de tile
+        recSelect.Size = New SFML.Window.Vector2f(32, 32)
+        recSelect.OutlineColor = SFML.Graphics.Color.Green
+        recSelect.OutlineThickness = 1
+        recSelect.Position = New SFML.Window.Vector2f(0, 0)
+        recSelect.FillColor = Color.Transparent
+
         ' Chargement des tiles
         While (File.Exists("Tiles/Tiles" & i.ToString() & ".png"))
             ReDim Preserve tileset(i)
@@ -38,6 +48,7 @@ Class GameManager
         End While
         frmMapEditor.lstTiles.Items.Add("Attributs")
         frmMapEditor.lstTiles.SelectedIndex = 0
+        currentTileset = New Sprite(tileset(0))
 
         ' Chargement des maps 
         For i = 0 To 6
@@ -244,11 +255,19 @@ Class GameManager
             Next
         Next
     End Sub
+
     ' - Boucle de rafraichissement de la surface principale
     Public Sub StartGameLoop()
         Dim Time As Long = My.Computer.Clock.TickCount
         While frmMapEditor.Visible
             gameSurface.Clear(Color.White)
+            tileSurface.Clear(Color.White)
+
+            ' Dessin du tileset
+            tileSurface.Draw(currentTileset)
+
+            ' Dessin du selecteur de tile
+            tileSurface.Draw(recSelect)
 
             'Affichage de la map
             'couches inférieures
@@ -268,7 +287,7 @@ Class GameManager
             If editorOptions.tilesPreview And testMode = False And frmMapEditor.btCopy.Checked = False And frmMapEditor.btErase.Checked = False Then
                 If frmMapEditor.lstTiles.SelectedIndex < frmMapEditor.lstTiles.Items.Count - 1 Then
                     previewSprt = New Sprite(tileset(frmMapEditor.lstTiles.SelectedIndex))
-                    previewSprt.TextureRect = New IntRect(frmMapEditor.recSelect.Position.X, frmMapEditor.recSelect.Position.Y, frmMapEditor.recSelect.Size.X, frmMapEditor.recSelect.Size.Y)
+                    previewSprt.TextureRect = New IntRect(recSelect.Position.X, recSelect.Position.Y, recSelect.Size.X, recSelect.Size.Y)
                     previewSprt.Color = New Color(255, 255, 255, 155)
                     previewSprt.Position = New Vector2f(curX * 32, curY * 32)
                     gameSurface.Draw(previewSprt)
@@ -287,6 +306,7 @@ Class GameManager
             ' Ecoute des évènements clavier
             Call KeyBoardListener()
 
+            tileSurface.Display()
             gameSurface.Display()
             FPS += 1
             If My.Computer.Clock.TickCount - Time >= 1000 Then

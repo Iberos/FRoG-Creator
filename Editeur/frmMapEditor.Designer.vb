@@ -565,7 +565,7 @@ Partial Class frmMapEditor
         Me.picTiles.BackColor = System.Drawing.Color.White
         Me.picTiles.Location = New System.Drawing.Point(0, 0)
         Me.picTiles.Name = "picTiles"
-        Me.picTiles.Size = New System.Drawing.Size(100, 100)
+        Me.picTiles.Size = New System.Drawing.Size(248, 451)
         Me.picTiles.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.picTiles.TabIndex = 5
         Me.picTiles.TabStop = False
@@ -754,7 +754,6 @@ Partial Class frmMapEditor
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(984, 597)
-        Me.Controls.Add(Me.pnlAttribute)
         Me.Controls.Add(Me.pnlStart)
         Me.Controls.Add(Me.pnlTiles)
         Me.Controls.Add(Me.lstTiles)
@@ -762,6 +761,7 @@ Partial Class frmMapEditor
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.pnlAttribute)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmMapEditor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
