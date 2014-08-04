@@ -8,6 +8,7 @@ Imports System.Collections
 Public Class frmMapEditor
 
     Private selectingTiles As Boolean = False
+    Private firstSelectPosition As New Vector2f()
     Private mapping As Boolean = False
 
     Private Sub frmMapEditor_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -122,7 +123,10 @@ Public Class frmMapEditor
     End Sub
 
     Private Sub picTiles_MouseMove(sender As Object, e As MouseEventArgs) Handles picTiles.MouseMove
-        If selectingTiles Then
+        If selectingTiles And
+           Mouse.GetPosition(game.tileSurface).X > game.recSelect.Position.X And
+           Mouse.GetPosition(game.tileSurface).Y > game.recSelect.Position.Y Then ' Eviter la séléction "négative"
+
             Dim tmpHeight As Short = CShort((Mouse.GetPosition(game.tileSurface).Y - game.recSelect.Position.Y) / 32) + 1
             Dim tmpWidth As Short = CShort((Mouse.GetPosition(game.tileSurface).X - game.recSelect.Position.X) / 32) + 1
 
