@@ -60,6 +60,7 @@
         End If
     End Sub
 
+#Region "Classes"
     Private Sub lstBClasses_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBClasses.SelectedIndexChanged
         If Not lstBClasses.SelectedIndex = lstBClasses.Items.Count - 1 Then
             With lstClasses(lstBClasses.SelectedIndex)
@@ -89,7 +90,7 @@
     Private Sub btClassSave_Click(sender As Object, e As EventArgs) Handles btClassSave.Click
         Dim tmpIndex As Short = lstBClasses.SelectedIndex
 
-        If lstBClasses.SelectedIndex = lstBClasses.Items.Count Then
+        If Not lstBClasses.SelectedIndex = lstBClasses.Items.Count - 1 Then
             With lstClasses(lstBClasses.SelectedIndex)
                 .name = txtClassName.Text
                 .description = txtClassDesc.Text
@@ -124,4 +125,6 @@
         lstBClasses.Items.Add("Nouveau...")
         lstBClasses.SelectedIndex = tmpIndex
     End Sub
+#End Region
+
 End Class
