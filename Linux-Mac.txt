@@ -1,8 +1,12 @@
-Bonjour,
+LINUX
+-----
+Prérequis:
+Ubuntu 14.04 (ou une variante) 
+Mono 3.2
 
-Le problème est résolu mais je préfère donner la solution pour éviter que d'autre personne se fassent avoir
-
-Il faut éditer /etc/mono/config et y rajouter
+Lancer un Terminal en tant que Root et faite
+apt-get install libsfml-dev libcsfml-dev
+puis ouvrir le fichier /etc/mono/config et ajouter
 
 	//DLL pour Linux et MAC OSX
 	<dllmap dll="csfml-graphics-2" target="libcsfml-graphics.so.2" os="!windows"/>
@@ -10,6 +14,26 @@ Il faut éditer /etc/mono/config et y rajouter
 	<dllmap dll="csfml-graphics-2" target="libcsfml-graphics.dylib os="osx"/>
 	<dllmap dll="csfml-window-2" target="libcsfml-window.dylib os="osx"/>
 
-Avec bien entendu l'installation de libcsfml et libsfml sur Linux et MacOSX
+	Pour lancer le programme il suffit d'ouvrir un terminal et de faire:
+	mono programme.exe
 
-Cordialement,
+MAC
+-----
+Prérequis
+Max OS X
+
+Télécharger et installer SFML et CSFML
+SFML: http://www.sfml-dev.org/download/sfml/2.1/index-fr.php
+CSFML: http://www.sfml-dev.org/download/csfml/index-fr.php
+
+Lancer un terminal en tant que root
+puis ouvrir le fichier /etc/mono/config et ajouter 
+
+	//DLL pour Linux et MAC OSX
+	<dllmap dll="csfml-graphics-2" target="libcsfml-graphics.so.2" os="!windows"/>
+	<dllmap dll="csfml-window-2" target="libcsfml-window.so.2" os="!windows"/>
+	<dllmap dll="csfml-graphics-2" target="libcsfml-graphics.dylib os="osx"/>
+	<dllmap dll="csfml-window-2" target="libcsfml-window.dylib os="osx"/>
+
+	Pour lancer le programme il suffit d'ouvrir un terminal et de faire:
+	mono programme.exe
