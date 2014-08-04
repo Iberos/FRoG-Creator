@@ -8,7 +8,6 @@ Imports System.Collections
 Public Class frmMapEditor
 
     Private selectingTiles As Boolean = False
-    Private firstSelectPosition As New Vector2f()
     Private mapping As Boolean = False
 
     Private Sub frmMapEditor_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -59,7 +58,9 @@ Public Class frmMapEditor
 
     Private Sub lstTiles_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstTiles.SelectedIndexChanged
         If lstTiles.SelectedIndex < lstTiles.Items.Count - 1 Then
-            picTiles.ImageLocation = ("Tiles/Tiles" & lstTiles.SelectedIndex & ".png")
+            game.tileSurface.Dispose()
+            picTiles.Size = New Size(game.tileset(lstTiles.SelectedIndex).Size.X, game.tileset(lstTiles.SelectedIndex).Size.Y)
+            game.tileSurface = New RenderWindow(picTiles.Handle)
             game.currentTileset = New Sprite(game.tileset(lstTiles.SelectedIndex)) 'Changement du tileset
             pnlAttribute.Visible = False
             curAttribute.Type = 0
@@ -85,6 +86,7 @@ Public Class frmMapEditor
             ToolStripButton12.Enabled = False
             ToolStripButton13.Enabled = False
         End If
+        'game.tileSurface = New RenderWindow(picTiles.Handle)
     End Sub
 
     Private Sub GrilleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GrilleToolStripMenuItem.Click
@@ -524,4 +526,5 @@ Public Class frmMapEditor
         curAttribute.num(0) = lstDir.SelectedIndex
         pnlBlockDir.Visible = False
     End Sub
+
 End Class

@@ -48,7 +48,6 @@ Class GameManager
         End While
         frmMapEditor.lstTiles.Items.Add("Attributs")
         frmMapEditor.lstTiles.SelectedIndex = 0
-        currentTileset = New Sprite(tileset(0))
 
         ' Chargement des maps 
         For i = 0 To 6
@@ -306,6 +305,7 @@ Class GameManager
             ' Ecoute des évènements clavier
             Call KeyBoardListener()
 
+            'tileSurface.
             tileSurface.Display()
             gameSurface.Display()
             FPS += 1
