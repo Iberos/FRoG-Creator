@@ -102,12 +102,6 @@
     <Compile Include="Database\GameItem.vb" />
     <Compile Include="Database\GameNPC.vb" />
     <Compile Include="Database\GameSpell.vb" />
-    <Compile Include="frmClassEditor.Designer.vb">
-      <DependentUpon>frmClassEditor.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmClassEditor.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Maps\Attribute.vb" />
     <Compile Include="frmDataEditor.Designer.vb">
       <DependentUpon>frmDataEditor.vb</DependentUpon>
@@ -169,9 +163,6 @@
     <Compile Include="GamePlayer.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmClassEditor.resx">
-      <DependentUpon>frmClassEditor.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmDataEditor.resx">
       <DependentUpon>frmDataEditor.vb</DependentUpon>
     </EmbeddedResource>

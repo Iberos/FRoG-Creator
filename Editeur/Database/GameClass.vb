@@ -1,17 +1,18 @@
 ﻿Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.IO
 
+<Serializable>
 Public Class GameClass
 
-    Public ClassName As String
-    Public ClassDescription As String
-    Public ClassHP As Integer
-    Public ClassMP As Integer
-    Public ClassStrength As Integer
-    Public ClassMagic As Integer
-    Public ClassDefense As Integer
-    Public ClassAgility As Integer
-    Public ClassSpeed As Integer
+    Public name As String
+    Public description As String
+    Public HP As Integer
+    Public MP As Integer
+    Public strength As Integer
+    Public magic As Integer
+    Public defense As Integer
+    Public agility As Integer
+    Public speed As Integer
 
     Public Sub Save()
         Dim serializer As New BinaryFormatter
