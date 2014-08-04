@@ -86,7 +86,6 @@ Public Class frmMapEditor
             ToolStripButton12.Enabled = False
             ToolStripButton13.Enabled = False
         End If
-        'game.tileSurface = New RenderWindow(picTiles.Handle)
     End Sub
 
     Private Sub GrilleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GrilleToolStripMenuItem.Click
@@ -129,8 +128,8 @@ Public Class frmMapEditor
            Mouse.GetPosition(game.tileSurface).X > game.recSelect.Position.X And
            Mouse.GetPosition(game.tileSurface).Y > game.recSelect.Position.Y Then ' Eviter la séléction "négative"
 
-            Dim tmpHeight As Short = CShort((Mouse.GetPosition(game.tileSurface).Y - game.recSelect.Position.Y) / 32) + 1
-            Dim tmpWidth As Short = CShort((Mouse.GetPosition(game.tileSurface).X - game.recSelect.Position.X) / 32) + 1
+            Dim tmpHeight As Integer = Int((Mouse.GetPosition(game.tileSurface).Y - game.recSelect.Position.Y) / 32) + 1
+            Dim tmpWidth As Integer = Int((Mouse.GetPosition(game.tileSurface).X - game.recSelect.Position.X) / 32) + 1
 
             game.recSelect.Size = New Vector2f(tmpWidth * 32, tmpHeight * 32)
         End If

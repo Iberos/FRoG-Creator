@@ -33,10 +33,10 @@ Class GameManager
         frmMapEditor.btNight.Checked = editorOptions.nightMode
 
         ' Initialisation du selecteur de tile
-        recSelect.Size = New SFML.Window.Vector2f(32, 32)
-        recSelect.OutlineColor = SFML.Graphics.Color.Green
+        recSelect.Size = New Vector2f(32, 32)
+        recSelect.OutlineColor = New Color(0, 100, 0)
         recSelect.OutlineThickness = 1
-        recSelect.Position = New SFML.Window.Vector2f(0, 0)
+        recSelect.Position = New Vector2f(0, 0)
         recSelect.FillColor = Color.Transparent
 
         ' Chargement des tiles
