@@ -1,0 +1,15 @@
+Bonjour,
+
+Le problème est résolu mais je préfère donner la solution pour éviter que d'autre personne se fassent avoir
+
+Il faut éditer /etc/mono/config et y rajouter
+
+	//DLL pour Linux et MAC OSX
+	<dllmap dll="csfml-graphics-2" target="libcsfml-graphics.so.2" os="!windows"/>
+	<dllmap dll="csfml-window-2" target="libcsfml-window.so.2" os="!windows"/>
+	<dllmap dll="csfml-graphics-2" target="libcsfml-graphics.dylib os="osx"/>
+	<dllmap dll="csfml-window-2" target="libcsfml-window.dylib os="osx"/>
+
+Avec bien entendu l'installation de libcsfml et libsfml sur Linux et MacOSX
+
+Cordialement,
