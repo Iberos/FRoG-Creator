@@ -55,6 +55,33 @@ Partial Class frmDataEditor
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.SplitContainer4 = New System.Windows.Forms.SplitContainer()
         Me.lstBNPCs = New System.Windows.Forms.ListBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TextBox_Item_Description = New System.Windows.Forms.TextBox()
+        Me.TextBox_Item_MP = New System.Windows.Forms.TextBox()
+        Me.TextBox_Item_HP = New System.Windows.Forms.TextBox()
+        Me.TextBox_Item_Type = New System.Windows.Forms.TextBox()
+        Me.TextBox_Item_Name = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.TextBox_Spell_Name = New System.Windows.Forms.TextBox()
+        Me.TextBox_Spell_Damage = New System.Windows.Forms.TextBox()
+        Me.TextBox_Spell_Description = New System.Windows.Forms.TextBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.TextBox_NPC_Description = New System.Windows.Forms.TextBox()
+        Me.TextBox_NPC_Name = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,15 +92,21 @@ Partial Class frmDataEditor
         Me.TabPage2.SuspendLayout()
         CType(Me.SplitContainer2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer2.Panel1.SuspendLayout()
+        Me.SplitContainer2.Panel2.SuspendLayout()
         Me.SplitContainer2.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.SplitContainer3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer3.Panel1.SuspendLayout()
+        Me.SplitContainer3.Panel2.SuspendLayout()
         Me.SplitContainer3.SuspendLayout()
         Me.TabPage4.SuspendLayout()
         CType(Me.SplitContainer4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer4.Panel1.SuspendLayout()
+        Me.SplitContainer4.Panel2.SuspendLayout()
         Me.SplitContainer4.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -327,6 +360,10 @@ Partial Class frmDataEditor
         'SplitContainer2.Panel1
         '
         Me.SplitContainer2.Panel1.Controls.Add(Me.lstBItems)
+        '
+        'SplitContainer2.Panel2
+        '
+        Me.SplitContainer2.Panel2.Controls.Add(Me.Panel1)
         Me.SplitContainer2.Size = New System.Drawing.Size(795, 460)
         Me.SplitContainer2.SplitterDistance = 187
         Me.SplitContainer2.TabIndex = 0
@@ -359,6 +396,10 @@ Partial Class frmDataEditor
         'SplitContainer3.Panel1
         '
         Me.SplitContainer3.Panel1.Controls.Add(Me.lstBSpells)
+        '
+        'SplitContainer3.Panel2
+        '
+        Me.SplitContainer3.Panel2.Controls.Add(Me.Panel2)
         Me.SplitContainer3.Size = New System.Drawing.Size(801, 466)
         Me.SplitContainer3.SplitterDistance = 189
         Me.SplitContainer3.TabIndex = 0
@@ -391,6 +432,10 @@ Partial Class frmDataEditor
         'SplitContainer4.Panel1
         '
         Me.SplitContainer4.Panel1.Controls.Add(Me.lstBNPCs)
+        '
+        'SplitContainer4.Panel2
+        '
+        Me.SplitContainer4.Panel2.Controls.Add(Me.Panel3)
         Me.SplitContainer4.Size = New System.Drawing.Size(801, 466)
         Me.SplitContainer4.SplitterDistance = 190
         Me.SplitContainer4.TabIndex = 0
@@ -403,6 +448,252 @@ Partial Class frmDataEditor
         Me.lstBNPCs.Name = "lstBNPCs"
         Me.lstBNPCs.Size = New System.Drawing.Size(190, 466)
         Me.lstBNPCs.TabIndex = 0
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.TextBox_Item_Description)
+        Me.Panel1.Controls.Add(Me.TextBox_Item_MP)
+        Me.Panel1.Controls.Add(Me.TextBox_Item_HP)
+        Me.Panel1.Controls.Add(Me.TextBox_Item_Type)
+        Me.Panel1.Controls.Add(Me.TextBox_Item_Name)
+        Me.Panel1.Controls.Add(Me.Label4)
+        Me.Panel1.Controls.Add(Me.Label5)
+        Me.Panel1.Controls.Add(Me.Label6)
+        Me.Panel1.Controls.Add(Me.Label7)
+        Me.Panel1.Controls.Add(Me.Label9)
+        Me.Panel1.Controls.Add(Me.Label10)
+        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Location = New System.Drawing.Point(125, 33)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(357, 307)
+        Me.Panel1.TabIndex = 1
+        '
+        'TextBox_Item_Description
+        '
+        Me.TextBox_Item_Description.Location = New System.Drawing.Point(111, 83)
+        Me.TextBox_Item_Description.Multiline = True
+        Me.TextBox_Item_Description.Name = "TextBox_Item_Description"
+        Me.TextBox_Item_Description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TextBox_Item_Description.Size = New System.Drawing.Size(199, 37)
+        Me.TextBox_Item_Description.TabIndex = 57
+        '
+        'TextBox_Item_MP
+        '
+        Me.TextBox_Item_MP.Location = New System.Drawing.Point(111, 178)
+        Me.TextBox_Item_MP.Name = "TextBox_Item_MP"
+        Me.TextBox_Item_MP.Size = New System.Drawing.Size(70, 20)
+        Me.TextBox_Item_MP.TabIndex = 56
+        '
+        'TextBox_Item_HP
+        '
+        Me.TextBox_Item_HP.Location = New System.Drawing.Point(111, 152)
+        Me.TextBox_Item_HP.Name = "TextBox_Item_HP"
+        Me.TextBox_Item_HP.Size = New System.Drawing.Size(70, 20)
+        Me.TextBox_Item_HP.TabIndex = 51
+        '
+        'TextBox_Item_Type
+        '
+        Me.TextBox_Item_Type.Location = New System.Drawing.Point(111, 126)
+        Me.TextBox_Item_Type.Name = "TextBox_Item_Type"
+        Me.TextBox_Item_Type.Size = New System.Drawing.Size(70, 20)
+        Me.TextBox_Item_Type.TabIndex = 50
+        '
+        'TextBox_Item_Name
+        '
+        Me.TextBox_Item_Name.Location = New System.Drawing.Point(111, 57)
+        Me.TextBox_Item_Name.Name = "TextBox_Item_Name"
+        Me.TextBox_Item_Name.Size = New System.Drawing.Size(199, 20)
+        Me.TextBox_Item_Name.TabIndex = 49
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(50, 210)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(0, 13)
+        Me.Label4.TabIndex = 45
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(50, 181)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(59, 13)
+        Me.Label5.TabIndex = 44
+        Me.Label5.Text = "MP Soigné"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(50, 155)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(56, 13)
+        Me.Label6.TabIndex = 43
+        Me.Label6.Text = "HP soigné"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(50, 129)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(31, 13)
+        Me.Label7.TabIndex = 42
+        Me.Label7.Text = "Type"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(45, 86)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(60, 13)
+        Me.Label9.TabIndex = 41
+        Me.Label9.Text = "Description"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(50, 60)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(29, 13)
+        Me.Label10.TabIndex = 40
+        Me.Label10.Text = "Nom"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(150, 257)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(80, 23)
+        Me.Button1.TabIndex = 39
+        Me.Button1.Text = "Sauvegarder"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(111, 188)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(80, 23)
+        Me.Button2.TabIndex = 39
+        Me.Button2.Text = "Sauvegarder"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(50, 60)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(29, 13)
+        Me.Label16.TabIndex = 40
+        Me.Label16.Text = "Nom"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(45, 86)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(60, 13)
+        Me.Label15.TabIndex = 41
+        Me.Label15.Text = "Description"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(50, 129)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(41, 13)
+        Me.Label14.TabIndex = 42
+        Me.Label14.Text = "Dégats"
+        '
+        'TextBox_Spell_Name
+        '
+        Me.TextBox_Spell_Name.Location = New System.Drawing.Point(111, 57)
+        Me.TextBox_Spell_Name.Name = "TextBox_Spell_Name"
+        Me.TextBox_Spell_Name.Size = New System.Drawing.Size(199, 20)
+        Me.TextBox_Spell_Name.TabIndex = 49
+        '
+        'TextBox_Spell_Damage
+        '
+        Me.TextBox_Spell_Damage.Location = New System.Drawing.Point(111, 126)
+        Me.TextBox_Spell_Damage.Name = "TextBox_Spell_Damage"
+        Me.TextBox_Spell_Damage.Size = New System.Drawing.Size(70, 20)
+        Me.TextBox_Spell_Damage.TabIndex = 50
+        '
+        'TextBox_Spell_Description
+        '
+        Me.TextBox_Spell_Description.Location = New System.Drawing.Point(111, 83)
+        Me.TextBox_Spell_Description.Multiline = True
+        Me.TextBox_Spell_Description.Name = "TextBox_Spell_Description"
+        Me.TextBox_Spell_Description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TextBox_Spell_Description.Size = New System.Drawing.Size(199, 37)
+        Me.TextBox_Spell_Description.TabIndex = 57
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.TextBox_Spell_Description)
+        Me.Panel2.Controls.Add(Me.TextBox_Spell_Damage)
+        Me.Panel2.Controls.Add(Me.TextBox_Spell_Name)
+        Me.Panel2.Controls.Add(Me.Label14)
+        Me.Panel2.Controls.Add(Me.Label15)
+        Me.Panel2.Controls.Add(Me.Label16)
+        Me.Panel2.Controls.Add(Me.Button2)
+        Me.Panel2.Location = New System.Drawing.Point(127, 36)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(328, 239)
+        Me.Panel2.TabIndex = 1
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.TextBox_NPC_Description)
+        Me.Panel3.Controls.Add(Me.TextBox_NPC_Name)
+        Me.Panel3.Controls.Add(Me.Label18)
+        Me.Panel3.Controls.Add(Me.Label19)
+        Me.Panel3.Controls.Add(Me.Button3)
+        Me.Panel3.Location = New System.Drawing.Point(126, 36)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(344, 245)
+        Me.Panel3.TabIndex = 1
+        '
+        'TextBox_NPC_Description
+        '
+        Me.TextBox_NPC_Description.Location = New System.Drawing.Point(111, 83)
+        Me.TextBox_NPC_Description.Multiline = True
+        Me.TextBox_NPC_Description.Name = "TextBox_NPC_Description"
+        Me.TextBox_NPC_Description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.TextBox_NPC_Description.Size = New System.Drawing.Size(199, 37)
+        Me.TextBox_NPC_Description.TabIndex = 57
+        '
+        'TextBox_NPC_Name
+        '
+        Me.TextBox_NPC_Name.Location = New System.Drawing.Point(111, 57)
+        Me.TextBox_NPC_Name.Name = "TextBox_NPC_Name"
+        Me.TextBox_NPC_Name.Size = New System.Drawing.Size(199, 20)
+        Me.TextBox_NPC_Name.TabIndex = 49
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(45, 86)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(49, 13)
+        Me.Label18.TabIndex = 41
+        Me.Label18.Text = "Dialogue"
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(50, 60)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(29, 13)
+        Me.Label19.TabIndex = 40
+        Me.Label19.Text = "Nom"
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(230, 201)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(80, 23)
+        Me.Button3.TabIndex = 39
+        Me.Button3.Text = "Sauvegarder"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'frmDataEditor
         '
@@ -422,16 +713,25 @@ Partial Class frmDataEditor
         Me.pnlClass.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.SplitContainer2.Panel1.ResumeLayout(False)
+        Me.SplitContainer2.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer2.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         Me.SplitContainer3.Panel1.ResumeLayout(False)
+        Me.SplitContainer3.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer3.ResumeLayout(False)
         Me.TabPage4.ResumeLayout(False)
         Me.SplitContainer4.Panel1.ResumeLayout(False)
+        Me.SplitContainer4.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer4.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -468,4 +768,31 @@ Partial Class frmDataEditor
     Friend WithEvents Label_Class_Description As System.Windows.Forms.Label
     Friend WithEvents Label_Class_Name As System.Windows.Forms.Label
     Friend WithEvents btClassSave As System.Windows.Forms.Button
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents TextBox_Item_Description As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox_Item_MP As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox_Item_HP As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox_Item_Type As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox_Item_Name As System.Windows.Forms.TextBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents TextBox_Spell_Description As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox_Spell_Damage As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox_Spell_Name As System.Windows.Forms.TextBox
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents TextBox_NPC_Description As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox_NPC_Name As System.Windows.Forms.TextBox
+    Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class
