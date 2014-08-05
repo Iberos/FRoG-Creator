@@ -1,0 +1,269 @@
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+Partial Class frmConfigNPC
+    Inherits System.Windows.Forms.Form
+
+    'Form remplace la méthode Dispose pour nettoyer la liste des composants.
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        Try
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
+        End Try
+    End Sub
+
+    'Requise par le Concepteur Windows Form
+    Private components As System.ComponentModel.IContainer
+
+    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
+    'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
+    'Ne la modifiez pas à l'aide de l'éditeur de code.
+    <System.Diagnostics.DebuggerStepThrough()> _
+    Private Sub InitializeComponent()
+        Me.lst_NPCs = New System.Windows.Forms.ListBox()
+        Me.grp_NPCList = New System.Windows.Forms.GroupBox()
+        Me.grp_NPCConfig = New System.Windows.Forms.GroupBox()
+        Me.btn_NPCSelect = New System.Windows.Forms.Button()
+        Me.tc_NPCConfig = New System.Windows.Forms.TabControl()
+        Me.tp_NPCMovement = New System.Windows.Forms.TabPage()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.list_customNPCMovement = New System.Windows.Forms.ListBox()
+        Me.rdbtn_perimeter = New System.Windows.Forms.RadioButton()
+        Me.rdbtn_custom = New System.Windows.Forms.RadioButton()
+        Me.rdbtn_rand = New System.Windows.Forms.RadioButton()
+        Me.rdbtn_static = New System.Windows.Forms.RadioButton()
+        Me.grp_customMovement = New System.Windows.Forms.GroupBox()
+        Me.cb_loopNPCMovement = New System.Windows.Forms.CheckBox()
+        Me.btn_addNPCMovement = New System.Windows.Forms.Button()
+        Me.cmb_EnableNPCMovements = New System.Windows.Forms.ComboBox()
+        Me.grp_NPCList.SuspendLayout()
+        Me.grp_NPCConfig.SuspendLayout()
+        Me.tc_NPCConfig.SuspendLayout()
+        Me.tp_NPCMovement.SuspendLayout()
+        Me.grp_customMovement.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'lst_NPCs
+        '
+        Me.lst_NPCs.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lst_NPCs.FormattingEnabled = True
+        Me.lst_NPCs.Location = New System.Drawing.Point(3, 16)
+        Me.lst_NPCs.Name = "lst_NPCs"
+        Me.lst_NPCs.Size = New System.Drawing.Size(229, 453)
+        Me.lst_NPCs.TabIndex = 1
+        '
+        'grp_NPCList
+        '
+        Me.grp_NPCList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.grp_NPCList.Controls.Add(Me.lst_NPCs)
+        Me.grp_NPCList.Location = New System.Drawing.Point(12, 12)
+        Me.grp_NPCList.Name = "grp_NPCList"
+        Me.grp_NPCList.Size = New System.Drawing.Size(235, 472)
+        Me.grp_NPCList.TabIndex = 2
+        Me.grp_NPCList.TabStop = False
+        Me.grp_NPCList.Text = "Liste de PNJs"
+        '
+        'grp_NPCConfig
+        '
+        Me.grp_NPCConfig.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grp_NPCConfig.Controls.Add(Me.tc_NPCConfig)
+        Me.grp_NPCConfig.Location = New System.Drawing.Point(253, 12)
+        Me.grp_NPCConfig.Name = "grp_NPCConfig"
+        Me.grp_NPCConfig.Size = New System.Drawing.Size(418, 436)
+        Me.grp_NPCConfig.TabIndex = 3
+        Me.grp_NPCConfig.TabStop = False
+        Me.grp_NPCConfig.Text = "Configurations"
+        '
+        'btn_NPCSelect
+        '
+        Me.btn_NPCSelect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_NPCSelect.Location = New System.Drawing.Point(512, 454)
+        Me.btn_NPCSelect.Name = "btn_NPCSelect"
+        Me.btn_NPCSelect.Size = New System.Drawing.Size(159, 27)
+        Me.btn_NPCSelect.TabIndex = 0
+        Me.btn_NPCSelect.Text = "Selectionner"
+        Me.btn_NPCSelect.UseVisualStyleBackColor = True
+        '
+        'tc_NPCConfig
+        '
+        Me.tc_NPCConfig.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tc_NPCConfig.Controls.Add(Me.tp_NPCMovement)
+        Me.tc_NPCConfig.Controls.Add(Me.TabPage2)
+        Me.tc_NPCConfig.Location = New System.Drawing.Point(7, 16)
+        Me.tc_NPCConfig.Name = "tc_NPCConfig"
+        Me.tc_NPCConfig.SelectedIndex = 0
+        Me.tc_NPCConfig.Size = New System.Drawing.Size(410, 399)
+        Me.tc_NPCConfig.TabIndex = 0
+        '
+        'tp_NPCMovement
+        '
+        Me.tp_NPCMovement.Controls.Add(Me.grp_customMovement)
+        Me.tp_NPCMovement.Controls.Add(Me.rdbtn_perimeter)
+        Me.tp_NPCMovement.Controls.Add(Me.rdbtn_custom)
+        Me.tp_NPCMovement.Controls.Add(Me.rdbtn_rand)
+        Me.tp_NPCMovement.Controls.Add(Me.rdbtn_static)
+        Me.tp_NPCMovement.Location = New System.Drawing.Point(4, 22)
+        Me.tp_NPCMovement.Name = "tp_NPCMovement"
+        Me.tp_NPCMovement.Padding = New System.Windows.Forms.Padding(3)
+        Me.tp_NPCMovement.Size = New System.Drawing.Size(402, 373)
+        Me.tp_NPCMovement.TabIndex = 0
+        Me.tp_NPCMovement.Text = "Déplacements"
+        Me.tp_NPCMovement.UseVisualStyleBackColor = True
+        '
+        'TabPage2
+        '
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(477, 364)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "TabPage2"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'list_customNPCMovement
+        '
+        Me.list_customNPCMovement.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.list_customNPCMovement.FormattingEnabled = True
+        Me.list_customNPCMovement.Location = New System.Drawing.Point(6, 19)
+        Me.list_customNPCMovement.Name = "list_customNPCMovement"
+        Me.list_customNPCMovement.Size = New System.Drawing.Size(214, 251)
+        Me.list_customNPCMovement.TabIndex = 6
+        '
+        'rdbtn_perimeter
+        '
+        Me.rdbtn_perimeter.AutoSize = True
+        Me.rdbtn_perimeter.Location = New System.Drawing.Point(21, 75)
+        Me.rdbtn_perimeter.Name = "rdbtn_perimeter"
+        Me.rdbtn_perimeter.Size = New System.Drawing.Size(69, 17)
+        Me.rdbtn_perimeter.TabIndex = 8
+        Me.rdbtn_perimeter.Text = "Périmètre"
+        Me.rdbtn_perimeter.UseVisualStyleBackColor = True
+        '
+        'rdbtn_custom
+        '
+        Me.rdbtn_custom.AutoSize = True
+        Me.rdbtn_custom.Location = New System.Drawing.Point(21, 98)
+        Me.rdbtn_custom.Name = "rdbtn_custom"
+        Me.rdbtn_custom.Size = New System.Drawing.Size(85, 17)
+        Me.rdbtn_custom.TabIndex = 7
+        Me.rdbtn_custom.Text = "Personnalisé"
+        Me.rdbtn_custom.UseVisualStyleBackColor = True
+        '
+        'rdbtn_rand
+        '
+        Me.rdbtn_rand.AutoSize = True
+        Me.rdbtn_rand.Location = New System.Drawing.Point(21, 52)
+        Me.rdbtn_rand.Name = "rdbtn_rand"
+        Me.rdbtn_rand.Size = New System.Drawing.Size(66, 17)
+        Me.rdbtn_rand.TabIndex = 5
+        Me.rdbtn_rand.Text = "Aléatoire"
+        Me.rdbtn_rand.UseVisualStyleBackColor = True
+        '
+        'rdbtn_static
+        '
+        Me.rdbtn_static.AutoSize = True
+        Me.rdbtn_static.Checked = True
+        Me.rdbtn_static.Location = New System.Drawing.Point(21, 29)
+        Me.rdbtn_static.Name = "rdbtn_static"
+        Me.rdbtn_static.Size = New System.Drawing.Size(66, 17)
+        Me.rdbtn_static.TabIndex = 4
+        Me.rdbtn_static.TabStop = True
+        Me.rdbtn_static.Text = "Immobile"
+        Me.rdbtn_static.UseVisualStyleBackColor = True
+        '
+        'grp_customMovement
+        '
+        Me.grp_customMovement.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grp_customMovement.Controls.Add(Me.cmb_EnableNPCMovements)
+        Me.grp_customMovement.Controls.Add(Me.btn_addNPCMovement)
+        Me.grp_customMovement.Controls.Add(Me.cb_loopNPCMovement)
+        Me.grp_customMovement.Controls.Add(Me.list_customNPCMovement)
+        Me.grp_customMovement.Enabled = False
+        Me.grp_customMovement.Location = New System.Drawing.Point(173, 15)
+        Me.grp_customMovement.Name = "grp_customMovement"
+        Me.grp_customMovement.Size = New System.Drawing.Size(226, 343)
+        Me.grp_customMovement.TabIndex = 9
+        Me.grp_customMovement.TabStop = False
+        Me.grp_customMovement.Text = "Déplacements personnalisés"
+        '
+        'cb_loopNPCMovement
+        '
+        Me.cb_loopNPCMovement.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cb_loopNPCMovement.AutoSize = True
+        Me.cb_loopNPCMovement.Location = New System.Drawing.Point(45, 316)
+        Me.cb_loopNPCMovement.Name = "cb_loopNPCMovement"
+        Me.cb_loopNPCMovement.Size = New System.Drawing.Size(139, 17)
+        Me.cb_loopNPCMovement.TabIndex = 7
+        Me.cb_loopNPCMovement.Text = "Répéter le déplacement"
+        Me.cb_loopNPCMovement.UseVisualStyleBackColor = True
+        '
+        'btn_addNPCMovement
+        '
+        Me.btn_addNPCMovement.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_addNPCMovement.Location = New System.Drawing.Point(145, 277)
+        Me.btn_addNPCMovement.Name = "btn_addNPCMovement"
+        Me.btn_addNPCMovement.Size = New System.Drawing.Size(75, 21)
+        Me.btn_addNPCMovement.TabIndex = 8
+        Me.btn_addNPCMovement.Text = "Ajouter"
+        Me.btn_addNPCMovement.UseVisualStyleBackColor = True
+        '
+        'cmb_EnableNPCMovements
+        '
+        Me.cmb_EnableNPCMovements.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.cmb_EnableNPCMovements.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmb_EnableNPCMovements.FormattingEnabled = True
+        Me.cmb_EnableNPCMovements.Items.AddRange(New Object() {"Haut", "Bas", "Droite", "Gauche"})
+        Me.cmb_EnableNPCMovements.Location = New System.Drawing.Point(6, 277)
+        Me.cmb_EnableNPCMovements.Name = "cmb_EnableNPCMovements"
+        Me.cmb_EnableNPCMovements.Size = New System.Drawing.Size(133, 21)
+        Me.cmb_EnableNPCMovements.TabIndex = 9
+        '
+        'frmConfigNPC
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(683, 496)
+        Me.Controls.Add(Me.btn_NPCSelect)
+        Me.Controls.Add(Me.grp_NPCConfig)
+        Me.Controls.Add(Me.grp_NPCList)
+        Me.MinimumSize = New System.Drawing.Size(600, 450)
+        Me.Name = "frmConfigNPC"
+        Me.Text = "Configurateur de PNJs"
+        Me.grp_NPCList.ResumeLayout(False)
+        Me.grp_NPCConfig.ResumeLayout(False)
+        Me.tc_NPCConfig.ResumeLayout(False)
+        Me.tp_NPCMovement.ResumeLayout(False)
+        Me.tp_NPCMovement.PerformLayout()
+        Me.grp_customMovement.ResumeLayout(False)
+        Me.grp_customMovement.PerformLayout()
+        Me.ResumeLayout(False)
+
+    End Sub
+    Friend WithEvents lst_NPCs As System.Windows.Forms.ListBox
+    Friend WithEvents grp_NPCList As System.Windows.Forms.GroupBox
+    Friend WithEvents grp_NPCConfig As System.Windows.Forms.GroupBox
+    Friend WithEvents btn_NPCSelect As System.Windows.Forms.Button
+    Friend WithEvents tc_NPCConfig As System.Windows.Forms.TabControl
+    Friend WithEvents tp_NPCMovement As System.Windows.Forms.TabPage
+    Friend WithEvents grp_customMovement As System.Windows.Forms.GroupBox
+    Friend WithEvents cmb_EnableNPCMovements As System.Windows.Forms.ComboBox
+    Friend WithEvents btn_addNPCMovement As System.Windows.Forms.Button
+    Friend WithEvents cb_loopNPCMovement As System.Windows.Forms.CheckBox
+    Friend WithEvents list_customNPCMovement As System.Windows.Forms.ListBox
+    Friend WithEvents rdbtn_perimeter As System.Windows.Forms.RadioButton
+    Friend WithEvents rdbtn_custom As System.Windows.Forms.RadioButton
+    Friend WithEvents rdbtn_rand As System.Windows.Forms.RadioButton
+    Friend WithEvents rdbtn_static As System.Windows.Forms.RadioButton
+    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
+End Class

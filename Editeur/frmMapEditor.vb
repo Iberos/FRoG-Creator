@@ -29,6 +29,7 @@ Public Class frmMapEditor
         If Not Directory.Exists("Tiles") Then Directory.CreateDirectory("Tiles")
         If Not File.Exists("Sprite.png") Then
             MessageBox.Show("ATTENTION: Aucun sprite n'a été détecté, veuillez replacer Sprite.png à la racine du programme\n\nLe programme va maintenant se fermer")
+            Me.Dispose() 'Fermeture du programme
         End If
 
         frmLoading.Show()
@@ -526,4 +527,7 @@ Public Class frmMapEditor
         pnlBlockDir.Visible = False
     End Sub
 
+    Private Sub btn_attrNPC_Click(sender As Object, e As EventArgs) Handles btn_attrNPC.Click
+        frmConfigNPC.ShowDialog()
+    End Sub
 End Class
