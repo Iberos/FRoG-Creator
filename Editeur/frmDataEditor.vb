@@ -143,7 +143,7 @@
                 .MP = txtItemMP.Text
             End With
         Else
-            Dim tmp As New GameClass
+            Dim tmp As New GameItems
             With tmp
                 .name = txtItemName.Text
                 .description = txtItemDesc.Text
@@ -158,7 +158,7 @@
         For i = 0 To lstItems.Count - 1
             lstBClasses.Items.Add(lstItems(i).name)
         Next
-        lstItems.Items.Add("Nouveau...")
+        lstBItems.Items.Add("Nouveau...")
         lstBItems.SelectedIndex = tmpIndex
     End Sub
 
@@ -172,7 +172,7 @@
                 .Damage = txtSpellDamage.Text
             End With
         Else
-            Dim tmp As New GameClass
+            Dim tmp As New GameSpell
             With tmp
                 .name = txtSpellName.Text
                 .description = txtSpellDesc.Text
@@ -185,7 +185,7 @@
         For i = 0 To lstSpell.Count - 1
             lstBSpell.Items.Add(lstBSpell(i).name)
         Next
-        lstSpell.Items.Add("Nouveau...")
+        lstBSpell.Items.Add("Nouveau...")
         lstBSpell.SelectedIndex = tmpIndex
     End Sub
 
@@ -198,7 +198,7 @@
                 .dialogue = txtNPCDial.Text
             End With
         Else
-            Dim tmp As New GameClass
+            Dim tmp As New GameNPC
             With tmp
                 .name = txtNPCName.Text
                 .dialogue = txtNPCDial.Text
@@ -210,7 +210,7 @@
         For i = 0 To lstClasses.Count - 1
             lstBClasses.Items.Add(lstClasses(i).name)
         Next
-        lstNPC.Items.Add("Nouveau...")
+        lstBNPC.Items.Add("Nouveau...")
         lstBNPC.SelectedIndex = tmpIndex
     End Sub
 End Class
