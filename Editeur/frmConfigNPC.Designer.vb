@@ -201,7 +201,7 @@ Partial Class frmConfigNPC
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.list_customNPCMovement.FormattingEnabled = True
-        Me.list_customNPCMovement.Location = New System.Drawing.Point(6, 19)
+        Me.list_customNPCMovement.Location = New System.Drawing.Point(6, 22)
         Me.list_customNPCMovement.Name = "list_customNPCMovement"
         Me.list_customNPCMovement.Size = New System.Drawing.Size(214, 251)
         Me.list_customNPCMovement.TabIndex = 6
@@ -357,7 +357,7 @@ Partial Class frmConfigNPC
         'pic_NPCCasesArea
         '
         Me.pic_NPCCasesArea.Image = CType(resources.GetObject("pic_NPCCasesArea.Image"), System.Drawing.Image)
-        Me.pic_NPCCasesArea.Location = New System.Drawing.Point(12, 53)
+        Me.pic_NPCCasesArea.Location = New System.Drawing.Point(12, 55)
         Me.pic_NPCCasesArea.Name = "pic_NPCCasesArea"
         Me.pic_NPCCasesArea.Size = New System.Drawing.Size(123, 66)
         Me.pic_NPCCasesArea.TabIndex = 2
