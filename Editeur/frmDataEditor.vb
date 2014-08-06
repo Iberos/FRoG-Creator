@@ -39,21 +39,21 @@
         ElseIf TabControl1.SelectedIndex = 1 Then ' Objets
             lstBItems.Items.Clear()
             For i = 0 To lstItems.Count - 1
-                lstBItems.Items.Add(lstItems(i).ItemName)
+                lstBItems.Items.Add(lstItems(i).Name)
             Next
             lstBItems.Items.Add("Nouveau...")
             lstBItems.SelectedIndex = 0
         ElseIf TabControl1.SelectedIndex = 2 Then ' Sorts
             lstBSpells.Items.Clear()
             For i = 0 To lstSpells.Count - 1
-                lstBSpells.Items.Add(lstSpells(i).SpellName)
+                lstBSpells.Items.Add(lstSpells(i).Name)
             Next
             lstBSpells.Items.Add("Nouveau...")
             lstBSpells.SelectedIndex = 0
         ElseIf TabControl1.SelectedIndex = 3 Then ' PNJs
             lstBNPCs.Items.Clear()
             For i = 0 To lstNPCs.Count - 1
-                lstBNPCs.Items.Add(lstNPCs(i).NPCName)
+                lstBNPCs.Items.Add(lstNPCs(i).Name)
             Next
             lstBNPCs.Items.Add("Nouveau...")
             lstBNPCs.SelectedIndex = 0
@@ -135,9 +135,9 @@
         Dim tmpIndex As Short = lstBItems.SelectedIndex()
 
         If Not lstBItems.SelectedIndex = lstBItems.Items.Count - 1 Then
-            With lstBItems(lstBItems.SelectedIndex)
-                .name = txtItemName.Text
-                .description = txtItemDesc.Text
+            With lstItems(lstBItems.SelectedIndex)
+                .Name = txtItemName.Text
+                .Description = txtItemDesc.Text
                 .Type = txtItemType.Text
                 .HP = txtItemHP.Text
                 .MP = txtItemMP.Text
@@ -151,7 +151,7 @@
                 .HP = txtItemHP.Text
                 .MP = txtItemMP.Text
             End With
-            lstClasses.Add(tmp)
+            lstItems.Add(tmp)
         End If
         lstItems(tmpIndex).Save()
         lstBItems.Items.Clear()
@@ -165,45 +165,45 @@
     Private Sub btSpellSave_Click(sender As Object, e As EventArgs) Handles btSpellSave.Click
         Dim tmpIndex As Short = lstBSpells.SelectedIndex
 
-        If Not lstBSpells.SelectedIndex = lstSpell.Items.Count - 1 Then
-            With lstBSpells(lstSpells.SelectedIndex)
-                .name = txtSpellName.Text
-                .description = txtSpellDesc.Text
+        If Not lstBSpells.SelectedIndex = lstBSpells.Items.Count - 1 Then
+            With lstSpells(lstBSpells.SelectedIndex)
+                .Name = txtSpellName.Text
+                .Description = txtSpellDesc.Text
                 .Damage = txtSpellDamage.Text
             End With
         Else
             Dim tmp As New GameSpell
             With tmp
-                .name = txtSpellName.Text
-                .description = txtSpellDesc.Text
+                .Name = txtSpellName.Text
+                .Description = txtSpellDesc.Text
                 .Damage = txtSpellDamage.Text
             End With
             lstSpells.Add(tmp)
         End If
         lstSpells(tmpIndex).Save()
         lstBSpells.Items.Clear()
-        For i = 0 To lstSpell.Count - 1
-            lstBSpells.Items.Add(lstBSpells(i).name)
+        For i = 0 To lstSpells.Count - 1
+            lstBSpells.Items.Add(lstSpells(i).Name)
         Next
         lstBSpells.Items.Add("Nouveau...")
         lstBSpells.SelectedIndex = tmpIndex
     End Sub
 
     Private Sub btNPCName_Click(sender As Object, e As EventArgs) Handles btNPCName.Click
-        Dim tmpIndex As Short = lstBBNPCs.SelectedIndex
+        Dim tmpIndex As Short = lstBNPCs.SelectedIndex
 
         If Not lstBNPCs.SelectedIndex = lstBNPCs.Items.Count - 1 Then
-            With lstBNPCs(lstBNPCs.SelectedIndex)
-                .name = txtNPCName.Text
-                .dialogue = txtNPCDial.Text
+            With lstNPCs(lstBNPCs.SelectedIndex)
+                .Name = txtNPCName.Text
+                .Dialog = txtNPCDial.Text
             End With
         Else
             Dim tmp As New GameNPC
             With tmp
                 .name = txtNPCName.Text
-                .dialogue = txtNPCDial.Text
+                .Dialog = txtNPCDial.Text
             End With
-            lstClasses.Add(tmp)
+            lstNPCs.Add(tmp)
         End If
         lstNPCs(tmpIndex).Save()
         lstBNPCs.Items.Clear()

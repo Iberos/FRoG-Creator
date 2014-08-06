@@ -3,11 +3,9 @@ Imports System.IO
 
 Public Class GameSpell
 
-    Public SpellName As String
-    Public SpellDescription As String
-    Public SpellPurchasePrice As Integer
-    Public SpellSellingPrice As Integer
-    Public SpellPower As Integer
+    Public Name As String
+    Public Description As String
+    Public Damage As Integer
 
 
     Public Sub Save()
