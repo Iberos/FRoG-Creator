@@ -127,4 +127,90 @@
     End Sub
 #End Region
 
+    Private Sub pnlClass_Paint(sender As Object, e As PaintEventArgs) Handles pnlClass.Paint
+
+    End Sub
+
+    Private Sub btItemSave_Click(sender As Object, e As EventArgs) Handles btItemSave.Click
+        Dim tmpIndex As Short = lstBItems.SelectedIndex()
+
+        If Not lstBItems.SelectedIndex = lstBItems.Items.Count - 1 Then
+            With lstBItems(lstBItems.SelectedIndex)
+                .name = txtItemName.Text
+                .description = txtItemDesc.Text
+                .Type = txtItemType.Text
+                .HP = txtItemHP.Text
+                .MP = txtItemMP.Text
+            End With
+        Else
+            Dim tmp As New GameItem
+            With tmp
+                .name = txtItemName.Text
+                .description = txtItemDesc.Text
+                .Type = txtItemType.Text
+                .HP = txtItemHP.Text
+                .MP = txtItemMP.Text
+            End With
+            lstClasses.Add(tmp)
+        End If
+        lstItems(tmpIndex).Save()
+        lstBItems.Items.Clear()
+        For i = 0 To lstItems.Count - 1
+            lstBClasses.Items.Add(lstItems(i).name)
+        Next
+        lstBItems.Items.Add("Nouveau...")
+        lstBItems.SelectedIndex = tmpIndex
+    End Sub
+
+    Private Sub btSpellSave_Click(sender As Object, e As EventArgs) Handles btSpellSave.Click
+        Dim tmpIndex As Short = lstBSpells.SelectedIndex
+
+        If Not lstBSpells.SelectedIndex = lstSpell.Items.Count - 1 Then
+            With lstBSpells(lstSpells.SelectedIndex)
+                .name = txtSpellName.Text
+                .description = txtSpellDesc.Text
+                .Damage = txtSpellDamage.Text
+            End With
+        Else
+            Dim tmp As New GameSpell
+            With tmp
+                .name = txtSpellName.Text
+                .description = txtSpellDesc.Text
+                .Damage = txtSpellDamage.Text
+            End With
+            lstSpells.Add(tmp)
+        End If
+        lstSpells(tmpIndex).Save()
+        lstBSpells.Items.Clear()
+        For i = 0 To lstSpell.Count - 1
+            lstBSpells.Items.Add(lstBSpells(i).name)
+        Next
+        lstBSpells.Items.Add("Nouveau...")
+        lstBSpells.SelectedIndex = tmpIndex
+    End Sub
+
+    Private Sub btNPCName_Click(sender As Object, e As EventArgs) Handles btNPCName.Click
+        Dim tmpIndex As Short = lstBBNPCs.SelectedIndex
+
+        If Not lstBNPCs.SelectedIndex = lstBNPCs.Items.Count - 1 Then
+            With lstBNPCs(lstBNPCs.SelectedIndex)
+                .name = txtNPCName.Text
+                .dialogue = txtNPCDial.Text
+            End With
+        Else
+            Dim tmp As New GameNPC
+            With tmp
+                .name = txtNPCName.Text
+                .dialogue = txtNPCDial.Text
+            End With
+            lstClasses.Add(tmp)
+        End If
+        lstNPCs(tmpIndex).Save()
+        lstBNPCs.Items.Clear()
+        For i = 0 To lstClasses.Count - 1
+            lstBClasses.Items.Add(lstClasses(i).name)
+        Next
+        lstBNPCs.Items.Add("Nouveau...")
+        lstBNPCs.SelectedIndex = tmpIndex
+    End Sub
 End Class
