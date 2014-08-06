@@ -49,39 +49,39 @@ Partial Class frmDataEditor
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
         Me.lstBItems = New System.Windows.Forms.ListBox()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.SplitContainer3 = New System.Windows.Forms.SplitContainer()
-        Me.lstBSpells = New System.Windows.Forms.ListBox()
-        Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.SplitContainer4 = New System.Windows.Forms.SplitContainer()
-        Me.lstBNPCs = New System.Windows.Forms.ListBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.TextBox_Item_Description = New System.Windows.Forms.TextBox()
-        Me.TextBox_Item_MP = New System.Windows.Forms.TextBox()
-        Me.TextBox_Item_HP = New System.Windows.Forms.TextBox()
-        Me.TextBox_Item_Type = New System.Windows.Forms.TextBox()
-        Me.TextBox_Item_Name = New System.Windows.Forms.TextBox()
+        Me.txtItemDesc = New System.Windows.Forms.TextBox()
+        Me.txtItemMP = New System.Windows.Forms.TextBox()
+        Me.txtItemHP = New System.Windows.Forms.TextBox()
+        Me.txtItemType = New System.Windows.Forms.TextBox()
+        Me.txtItemName = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.TextBox_Spell_Name = New System.Windows.Forms.TextBox()
-        Me.TextBox_Spell_Damage = New System.Windows.Forms.TextBox()
-        Me.TextBox_Spell_Description = New System.Windows.Forms.TextBox()
+        Me.btItemSave = New System.Windows.Forms.Button()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.SplitContainer3 = New System.Windows.Forms.SplitContainer()
+        Me.lstBSpells = New System.Windows.Forms.ListBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.txtSpellDesc = New System.Windows.Forms.TextBox()
+        Me.txtSpellDamage = New System.Windows.Forms.TextBox()
+        Me.txtSpellName = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.btSpellSave = New System.Windows.Forms.Button()
+        Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.SplitContainer4 = New System.Windows.Forms.SplitContainer()
+        Me.lstBNPCs = New System.Windows.Forms.ListBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.TextBox_NPC_Description = New System.Windows.Forms.TextBox()
-        Me.TextBox_NPC_Name = New System.Windows.Forms.TextBox()
+        Me.txtNPCDial = New System.Windows.Forms.TextBox()
+        Me.txtNPCName = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.btNPCName = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -94,18 +94,18 @@ Partial Class frmDataEditor
         Me.SplitContainer2.Panel1.SuspendLayout()
         Me.SplitContainer2.Panel2.SuspendLayout()
         Me.SplitContainer2.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.SplitContainer3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer3.Panel1.SuspendLayout()
         Me.SplitContainer3.Panel2.SuspendLayout()
         Me.SplitContainer3.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.TabPage4.SuspendLayout()
         CType(Me.SplitContainer4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer4.Panel1.SuspendLayout()
         Me.SplitContainer4.Panel2.SuspendLayout()
         Me.SplitContainer4.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -377,133 +377,61 @@ Partial Class frmDataEditor
         Me.lstBItems.Size = New System.Drawing.Size(187, 460)
         Me.lstBItems.TabIndex = 0
         '
-        'TabPage3
-        '
-        Me.TabPage3.Controls.Add(Me.SplitContainer3)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(801, 466)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Sorts"
-        Me.TabPage3.UseVisualStyleBackColor = True
-        '
-        'SplitContainer3
-        '
-        Me.SplitContainer3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer3.Location = New System.Drawing.Point(0, 0)
-        Me.SplitContainer3.Name = "SplitContainer3"
-        '
-        'SplitContainer3.Panel1
-        '
-        Me.SplitContainer3.Panel1.Controls.Add(Me.lstBSpells)
-        '
-        'SplitContainer3.Panel2
-        '
-        Me.SplitContainer3.Panel2.Controls.Add(Me.Panel2)
-        Me.SplitContainer3.Size = New System.Drawing.Size(801, 466)
-        Me.SplitContainer3.SplitterDistance = 189
-        Me.SplitContainer3.TabIndex = 0
-        '
-        'lstBSpells
-        '
-        Me.lstBSpells.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lstBSpells.FormattingEnabled = True
-        Me.lstBSpells.Location = New System.Drawing.Point(0, 0)
-        Me.lstBSpells.Name = "lstBSpells"
-        Me.lstBSpells.Size = New System.Drawing.Size(189, 466)
-        Me.lstBSpells.TabIndex = 0
-        '
-        'TabPage4
-        '
-        Me.TabPage4.Controls.Add(Me.SplitContainer4)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Size = New System.Drawing.Size(801, 466)
-        Me.TabPage4.TabIndex = 3
-        Me.TabPage4.Text = "PNJs"
-        Me.TabPage4.UseVisualStyleBackColor = True
-        '
-        'SplitContainer4
-        '
-        Me.SplitContainer4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer4.Location = New System.Drawing.Point(0, 0)
-        Me.SplitContainer4.Name = "SplitContainer4"
-        '
-        'SplitContainer4.Panel1
-        '
-        Me.SplitContainer4.Panel1.Controls.Add(Me.lstBNPCs)
-        '
-        'SplitContainer4.Panel2
-        '
-        Me.SplitContainer4.Panel2.Controls.Add(Me.Panel3)
-        Me.SplitContainer4.Size = New System.Drawing.Size(801, 466)
-        Me.SplitContainer4.SplitterDistance = 190
-        Me.SplitContainer4.TabIndex = 0
-        '
-        'lstBNPCs
-        '
-        Me.lstBNPCs.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lstBNPCs.FormattingEnabled = True
-        Me.lstBNPCs.Location = New System.Drawing.Point(0, 0)
-        Me.lstBNPCs.Name = "lstBNPCs"
-        Me.lstBNPCs.Size = New System.Drawing.Size(190, 466)
-        Me.lstBNPCs.TabIndex = 0
-        '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.TextBox_Item_Description)
-        Me.Panel1.Controls.Add(Me.TextBox_Item_MP)
-        Me.Panel1.Controls.Add(Me.TextBox_Item_HP)
-        Me.Panel1.Controls.Add(Me.TextBox_Item_Type)
-        Me.Panel1.Controls.Add(Me.TextBox_Item_Name)
+        Me.Panel1.Controls.Add(Me.txtItemDesc)
+        Me.Panel1.Controls.Add(Me.txtItemMP)
+        Me.Panel1.Controls.Add(Me.txtItemHP)
+        Me.Panel1.Controls.Add(Me.txtItemType)
+        Me.Panel1.Controls.Add(Me.txtItemName)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Controls.Add(Me.Label9)
         Me.Panel1.Controls.Add(Me.Label10)
-        Me.Panel1.Controls.Add(Me.Button1)
+        Me.Panel1.Controls.Add(Me.btItemSave)
         Me.Panel1.Location = New System.Drawing.Point(125, 33)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(357, 307)
         Me.Panel1.TabIndex = 1
         '
-        'TextBox_Item_Description
+        'txtItemDesc
         '
-        Me.TextBox_Item_Description.Location = New System.Drawing.Point(111, 83)
-        Me.TextBox_Item_Description.Multiline = True
-        Me.TextBox_Item_Description.Name = "TextBox_Item_Description"
-        Me.TextBox_Item_Description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox_Item_Description.Size = New System.Drawing.Size(199, 37)
-        Me.TextBox_Item_Description.TabIndex = 57
+        Me.txtItemDesc.Location = New System.Drawing.Point(111, 83)
+        Me.txtItemDesc.Multiline = True
+        Me.txtItemDesc.Name = "txtItemDesc"
+        Me.txtItemDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtItemDesc.Size = New System.Drawing.Size(199, 37)
+        Me.txtItemDesc.TabIndex = 57
         '
-        'TextBox_Item_MP
+        'txtItemMP
         '
-        Me.TextBox_Item_MP.Location = New System.Drawing.Point(111, 178)
-        Me.TextBox_Item_MP.Name = "TextBox_Item_MP"
-        Me.TextBox_Item_MP.Size = New System.Drawing.Size(70, 20)
-        Me.TextBox_Item_MP.TabIndex = 56
+        Me.txtItemMP.Location = New System.Drawing.Point(111, 178)
+        Me.txtItemMP.Name = "txtItemMP"
+        Me.txtItemMP.Size = New System.Drawing.Size(70, 20)
+        Me.txtItemMP.TabIndex = 56
         '
-        'TextBox_Item_HP
+        'txtItemHP
         '
-        Me.TextBox_Item_HP.Location = New System.Drawing.Point(111, 152)
-        Me.TextBox_Item_HP.Name = "TextBox_Item_HP"
-        Me.TextBox_Item_HP.Size = New System.Drawing.Size(70, 20)
-        Me.TextBox_Item_HP.TabIndex = 51
+        Me.txtItemHP.Location = New System.Drawing.Point(111, 152)
+        Me.txtItemHP.Name = "txtItemHP"
+        Me.txtItemHP.Size = New System.Drawing.Size(70, 20)
+        Me.txtItemHP.TabIndex = 51
         '
-        'TextBox_Item_Type
+        'txtItemType
         '
-        Me.TextBox_Item_Type.Location = New System.Drawing.Point(111, 126)
-        Me.TextBox_Item_Type.Name = "TextBox_Item_Type"
-        Me.TextBox_Item_Type.Size = New System.Drawing.Size(70, 20)
-        Me.TextBox_Item_Type.TabIndex = 50
+        Me.txtItemType.Location = New System.Drawing.Point(111, 126)
+        Me.txtItemType.Name = "txtItemType"
+        Me.txtItemType.Size = New System.Drawing.Size(70, 20)
+        Me.txtItemType.TabIndex = 50
         '
-        'TextBox_Item_Name
+        'txtItemName
         '
-        Me.TextBox_Item_Name.Location = New System.Drawing.Point(111, 57)
-        Me.TextBox_Item_Name.Name = "TextBox_Item_Name"
-        Me.TextBox_Item_Name.Size = New System.Drawing.Size(199, 20)
-        Me.TextBox_Item_Name.TabIndex = 49
+        Me.txtItemName.Location = New System.Drawing.Point(111, 57)
+        Me.txtItemName.Name = "txtItemName"
+        Me.txtItemName.Size = New System.Drawing.Size(199, 20)
+        Me.txtItemName.TabIndex = 49
         '
         'Label4
         '
@@ -558,41 +486,87 @@ Partial Class frmDataEditor
         Me.Label10.TabIndex = 40
         Me.Label10.Text = "Nom"
         '
-        'Button1
+        'btItemSave
         '
-        Me.Button1.Location = New System.Drawing.Point(150, 257)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(80, 23)
-        Me.Button1.TabIndex = 39
-        Me.Button1.Text = "Sauvegarder"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btItemSave.Location = New System.Drawing.Point(150, 257)
+        Me.btItemSave.Name = "btItemSave"
+        Me.btItemSave.Size = New System.Drawing.Size(80, 23)
+        Me.btItemSave.TabIndex = 39
+        Me.btItemSave.Text = "Sauvegarder"
+        Me.btItemSave.UseVisualStyleBackColor = True
         '
-        'Button2
+        'TabPage3
         '
-        Me.Button2.Location = New System.Drawing.Point(111, 188)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(80, 23)
-        Me.Button2.TabIndex = 39
-        Me.Button2.Text = "Sauvegarder"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.TabPage3.Controls.Add(Me.SplitContainer3)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(801, 466)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "Sorts"
+        Me.TabPage3.UseVisualStyleBackColor = True
         '
-        'Label16
+        'SplitContainer3
         '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(50, 60)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(29, 13)
-        Me.Label16.TabIndex = 40
-        Me.Label16.Text = "Nom"
+        Me.SplitContainer3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainer3.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer3.Name = "SplitContainer3"
         '
-        'Label15
+        'SplitContainer3.Panel1
         '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(45, 86)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(60, 13)
-        Me.Label15.TabIndex = 41
-        Me.Label15.Text = "Description"
+        Me.SplitContainer3.Panel1.Controls.Add(Me.lstBSpells)
+        '
+        'SplitContainer3.Panel2
+        '
+        Me.SplitContainer3.Panel2.Controls.Add(Me.Panel2)
+        Me.SplitContainer3.Size = New System.Drawing.Size(801, 466)
+        Me.SplitContainer3.SplitterDistance = 189
+        Me.SplitContainer3.TabIndex = 0
+        '
+        'lstBSpells
+        '
+        Me.lstBSpells.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lstBSpells.FormattingEnabled = True
+        Me.lstBSpells.Location = New System.Drawing.Point(0, 0)
+        Me.lstBSpells.Name = "lstBSpells"
+        Me.lstBSpells.Size = New System.Drawing.Size(189, 466)
+        Me.lstBSpells.TabIndex = 0
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.txtSpellDesc)
+        Me.Panel2.Controls.Add(Me.txtSpellDamage)
+        Me.Panel2.Controls.Add(Me.txtSpellName)
+        Me.Panel2.Controls.Add(Me.Label14)
+        Me.Panel2.Controls.Add(Me.Label15)
+        Me.Panel2.Controls.Add(Me.Label16)
+        Me.Panel2.Controls.Add(Me.btSpellSave)
+        Me.Panel2.Location = New System.Drawing.Point(127, 36)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(328, 239)
+        Me.Panel2.TabIndex = 1
+        '
+        'txtSpellDesc
+        '
+        Me.txtSpellDesc.Location = New System.Drawing.Point(111, 83)
+        Me.txtSpellDesc.Multiline = True
+        Me.txtSpellDesc.Name = "txtSpellDesc"
+        Me.txtSpellDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtSpellDesc.Size = New System.Drawing.Size(199, 37)
+        Me.txtSpellDesc.TabIndex = 57
+        '
+        'txtSpellDamage
+        '
+        Me.txtSpellDamage.Location = New System.Drawing.Point(111, 126)
+        Me.txtSpellDamage.Name = "txtSpellDamage"
+        Me.txtSpellDamage.Size = New System.Drawing.Size(70, 20)
+        Me.txtSpellDamage.TabIndex = 50
+        '
+        'txtSpellName
+        '
+        Me.txtSpellName.Location = New System.Drawing.Point(111, 57)
+        Me.txtSpellName.Name = "txtSpellName"
+        Me.txtSpellName.Size = New System.Drawing.Size(199, 20)
+        Me.txtSpellName.TabIndex = 49
         '
         'Label14
         '
@@ -603,70 +577,96 @@ Partial Class frmDataEditor
         Me.Label14.TabIndex = 42
         Me.Label14.Text = "Dégats"
         '
-        'TextBox_Spell_Name
+        'Label15
         '
-        Me.TextBox_Spell_Name.Location = New System.Drawing.Point(111, 57)
-        Me.TextBox_Spell_Name.Name = "TextBox_Spell_Name"
-        Me.TextBox_Spell_Name.Size = New System.Drawing.Size(199, 20)
-        Me.TextBox_Spell_Name.TabIndex = 49
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(45, 86)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(60, 13)
+        Me.Label15.TabIndex = 41
+        Me.Label15.Text = "Description"
         '
-        'TextBox_Spell_Damage
+        'Label16
         '
-        Me.TextBox_Spell_Damage.Location = New System.Drawing.Point(111, 126)
-        Me.TextBox_Spell_Damage.Name = "TextBox_Spell_Damage"
-        Me.TextBox_Spell_Damage.Size = New System.Drawing.Size(70, 20)
-        Me.TextBox_Spell_Damage.TabIndex = 50
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(50, 60)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(29, 13)
+        Me.Label16.TabIndex = 40
+        Me.Label16.Text = "Nom"
         '
-        'TextBox_Spell_Description
+        'btSpellSave
         '
-        Me.TextBox_Spell_Description.Location = New System.Drawing.Point(111, 83)
-        Me.TextBox_Spell_Description.Multiline = True
-        Me.TextBox_Spell_Description.Name = "TextBox_Spell_Description"
-        Me.TextBox_Spell_Description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox_Spell_Description.Size = New System.Drawing.Size(199, 37)
-        Me.TextBox_Spell_Description.TabIndex = 57
+        Me.btSpellSave.Location = New System.Drawing.Point(111, 188)
+        Me.btSpellSave.Name = "btSpellSave"
+        Me.btSpellSave.Size = New System.Drawing.Size(80, 23)
+        Me.btSpellSave.TabIndex = 39
+        Me.btSpellSave.Text = "Sauvegarder"
+        Me.btSpellSave.UseVisualStyleBackColor = True
         '
-        'Panel2
+        'TabPage4
         '
-        Me.Panel2.Controls.Add(Me.TextBox_Spell_Description)
-        Me.Panel2.Controls.Add(Me.TextBox_Spell_Damage)
-        Me.Panel2.Controls.Add(Me.TextBox_Spell_Name)
-        Me.Panel2.Controls.Add(Me.Label14)
-        Me.Panel2.Controls.Add(Me.Label15)
-        Me.Panel2.Controls.Add(Me.Label16)
-        Me.Panel2.Controls.Add(Me.Button2)
-        Me.Panel2.Location = New System.Drawing.Point(127, 36)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(328, 239)
-        Me.Panel2.TabIndex = 1
+        Me.TabPage4.Controls.Add(Me.SplitContainer4)
+        Me.TabPage4.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage4.Name = "TabPage4"
+        Me.TabPage4.Size = New System.Drawing.Size(801, 466)
+        Me.TabPage4.TabIndex = 3
+        Me.TabPage4.Text = "PNJs"
+        Me.TabPage4.UseVisualStyleBackColor = True
+        '
+        'SplitContainer4
+        '
+        Me.SplitContainer4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainer4.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer4.Name = "SplitContainer4"
+        '
+        'SplitContainer4.Panel1
+        '
+        Me.SplitContainer4.Panel1.Controls.Add(Me.lstBNPCs)
+        '
+        'SplitContainer4.Panel2
+        '
+        Me.SplitContainer4.Panel2.Controls.Add(Me.Panel3)
+        Me.SplitContainer4.Size = New System.Drawing.Size(801, 466)
+        Me.SplitContainer4.SplitterDistance = 190
+        Me.SplitContainer4.TabIndex = 0
+        '
+        'lstBNPCs
+        '
+        Me.lstBNPCs.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lstBNPCs.FormattingEnabled = True
+        Me.lstBNPCs.Location = New System.Drawing.Point(0, 0)
+        Me.lstBNPCs.Name = "lstBNPCs"
+        Me.lstBNPCs.Size = New System.Drawing.Size(190, 466)
+        Me.lstBNPCs.TabIndex = 0
         '
         'Panel3
         '
-        Me.Panel3.Controls.Add(Me.TextBox_NPC_Description)
-        Me.Panel3.Controls.Add(Me.TextBox_NPC_Name)
+        Me.Panel3.Controls.Add(Me.txtNPCDial)
+        Me.Panel3.Controls.Add(Me.txtNPCName)
         Me.Panel3.Controls.Add(Me.Label18)
         Me.Panel3.Controls.Add(Me.Label19)
-        Me.Panel3.Controls.Add(Me.Button3)
+        Me.Panel3.Controls.Add(Me.btNPCName)
         Me.Panel3.Location = New System.Drawing.Point(126, 36)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(344, 245)
         Me.Panel3.TabIndex = 1
         '
-        'TextBox_NPC_Description
+        'txtNPCDial
         '
-        Me.TextBox_NPC_Description.Location = New System.Drawing.Point(111, 83)
-        Me.TextBox_NPC_Description.Multiline = True
-        Me.TextBox_NPC_Description.Name = "TextBox_NPC_Description"
-        Me.TextBox_NPC_Description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox_NPC_Description.Size = New System.Drawing.Size(199, 37)
-        Me.TextBox_NPC_Description.TabIndex = 57
+        Me.txtNPCDial.Location = New System.Drawing.Point(111, 83)
+        Me.txtNPCDial.Multiline = True
+        Me.txtNPCDial.Name = "txtNPCDial"
+        Me.txtNPCDial.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtNPCDial.Size = New System.Drawing.Size(199, 37)
+        Me.txtNPCDial.TabIndex = 57
         '
-        'TextBox_NPC_Name
+        'txtNPCName
         '
-        Me.TextBox_NPC_Name.Location = New System.Drawing.Point(111, 57)
-        Me.TextBox_NPC_Name.Name = "TextBox_NPC_Name"
-        Me.TextBox_NPC_Name.Size = New System.Drawing.Size(199, 20)
-        Me.TextBox_NPC_Name.TabIndex = 49
+        Me.txtNPCName.Location = New System.Drawing.Point(111, 57)
+        Me.txtNPCName.Name = "txtNPCName"
+        Me.txtNPCName.Size = New System.Drawing.Size(199, 20)
+        Me.txtNPCName.TabIndex = 49
         '
         'Label18
         '
@@ -686,14 +686,14 @@ Partial Class frmDataEditor
         Me.Label19.TabIndex = 40
         Me.Label19.Text = "Nom"
         '
-        'Button3
+        'btNPCName
         '
-        Me.Button3.Location = New System.Drawing.Point(230, 201)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(80, 23)
-        Me.Button3.TabIndex = 39
-        Me.Button3.Text = "Sauvegarder"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btNPCName.Location = New System.Drawing.Point(230, 201)
+        Me.btNPCName.Name = "btNPCName"
+        Me.btNPCName.Size = New System.Drawing.Size(80, 23)
+        Me.btNPCName.TabIndex = 39
+        Me.btNPCName.Text = "Sauvegarder"
+        Me.btNPCName.UseVisualStyleBackColor = True
         '
         'frmDataEditor
         '
@@ -716,20 +716,20 @@ Partial Class frmDataEditor
         Me.SplitContainer2.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer2.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         Me.SplitContainer3.Panel1.ResumeLayout(False)
         Me.SplitContainer3.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer3.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.TabPage4.ResumeLayout(False)
         Me.SplitContainer4.Panel1.ResumeLayout(False)
         Me.SplitContainer4.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer4.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
@@ -769,30 +769,30 @@ Partial Class frmDataEditor
     Friend WithEvents Label_Class_Name As System.Windows.Forms.Label
     Friend WithEvents btClassSave As System.Windows.Forms.Button
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents TextBox_Item_Description As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox_Item_MP As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox_Item_HP As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox_Item_Type As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox_Item_Name As System.Windows.Forms.TextBox
+    Friend WithEvents txtItemDesc As System.Windows.Forms.TextBox
+    Friend WithEvents txtItemMP As System.Windows.Forms.TextBox
+    Friend WithEvents txtItemHP As System.Windows.Forms.TextBox
+    Friend WithEvents txtItemType As System.Windows.Forms.TextBox
+    Friend WithEvents txtItemName As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btItemSave As System.Windows.Forms.Button
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents TextBox_Spell_Description As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox_Spell_Damage As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox_Spell_Name As System.Windows.Forms.TextBox
+    Friend WithEvents txtSpellDesc As System.Windows.Forms.TextBox
+    Friend WithEvents txtSpellDamage As System.Windows.Forms.TextBox
+    Friend WithEvents txtSpellName As System.Windows.Forms.TextBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btSpellSave As System.Windows.Forms.Button
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
-    Friend WithEvents TextBox_NPC_Description As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox_NPC_Name As System.Windows.Forms.TextBox
+    Friend WithEvents txtNPCDial As System.Windows.Forms.TextBox
+    Friend WithEvents txtNPCName As System.Windows.Forms.TextBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents Label19 As System.Windows.Forms.Label
-    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents btNPCName As System.Windows.Forms.Button
 End Class
