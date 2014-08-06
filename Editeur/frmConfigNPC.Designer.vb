@@ -22,27 +22,43 @@ Partial Class frmConfigNPC
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConfigNPC))
         Me.lst_NPCs = New System.Windows.Forms.ListBox()
         Me.grp_NPCList = New System.Windows.Forms.GroupBox()
         Me.grp_NPCConfig = New System.Windows.Forms.GroupBox()
-        Me.btn_NPCSelect = New System.Windows.Forms.Button()
         Me.tc_NPCConfig = New System.Windows.Forms.TabControl()
         Me.tp_NPCMovement = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.cmb_NPCVelocity = New System.Windows.Forms.ComboBox()
+        Me.lbl_NPCVelocity = New System.Windows.Forms.Label()
+        Me.grp_customMovement = New System.Windows.Forms.GroupBox()
+        Me.cmb_EnableNPCMovements = New System.Windows.Forms.ComboBox()
+        Me.btn_addNPCMovement = New System.Windows.Forms.Button()
+        Me.cb_loopNPCMovement = New System.Windows.Forms.CheckBox()
         Me.list_customNPCMovement = New System.Windows.Forms.ListBox()
         Me.rdbtn_perimeter = New System.Windows.Forms.RadioButton()
         Me.rdbtn_custom = New System.Windows.Forms.RadioButton()
         Me.rdbtn_rand = New System.Windows.Forms.RadioButton()
         Me.rdbtn_static = New System.Windows.Forms.RadioButton()
-        Me.grp_customMovement = New System.Windows.Forms.GroupBox()
-        Me.cb_loopNPCMovement = New System.Windows.Forms.CheckBox()
-        Me.btn_addNPCMovement = New System.Windows.Forms.Button()
-        Me.cmb_EnableNPCMovements = New System.Windows.Forms.ComboBox()
+        Me.tp_NPCStatus = New System.Windows.Forms.TabPage()
+        Me.btn_NPCSelect = New System.Windows.Forms.Button()
+        Me.rb_NPCFriendly = New System.Windows.Forms.RadioButton()
+        Me.rb_NPCAggressive = New System.Windows.Forms.RadioButton()
+        Me.rb_NPCPassive = New System.Windows.Forms.RadioButton()
+        Me.cb_NPCInvicible = New System.Windows.Forms.CheckBox()
+        Me.grp_NPCStatus = New System.Windows.Forms.GroupBox()
+        Me.grp_NPCAggresiveArea = New System.Windows.Forms.GroupBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.pic_NPCCasesArea = New System.Windows.Forms.PictureBox()
         Me.grp_NPCList.SuspendLayout()
         Me.grp_NPCConfig.SuspendLayout()
         Me.tc_NPCConfig.SuspendLayout()
         Me.tp_NPCMovement.SuspendLayout()
         Me.grp_customMovement.SuspendLayout()
+        Me.tp_NPCStatus.SuspendLayout()
+        Me.grp_NPCStatus.SuspendLayout()
+        Me.grp_NPCAggresiveArea.SuspendLayout()
+        CType(Me.pic_NPCCasesArea, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lst_NPCs
@@ -79,31 +95,23 @@ Partial Class frmConfigNPC
         Me.grp_NPCConfig.TabStop = False
         Me.grp_NPCConfig.Text = "Configurations"
         '
-        'btn_NPCSelect
-        '
-        Me.btn_NPCSelect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_NPCSelect.Location = New System.Drawing.Point(512, 454)
-        Me.btn_NPCSelect.Name = "btn_NPCSelect"
-        Me.btn_NPCSelect.Size = New System.Drawing.Size(159, 27)
-        Me.btn_NPCSelect.TabIndex = 0
-        Me.btn_NPCSelect.Text = "Selectionner"
-        Me.btn_NPCSelect.UseVisualStyleBackColor = True
-        '
         'tc_NPCConfig
         '
         Me.tc_NPCConfig.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.tc_NPCConfig.Controls.Add(Me.tp_NPCMovement)
-        Me.tc_NPCConfig.Controls.Add(Me.TabPage2)
-        Me.tc_NPCConfig.Location = New System.Drawing.Point(7, 16)
+        Me.tc_NPCConfig.Controls.Add(Me.tp_NPCStatus)
+        Me.tc_NPCConfig.Location = New System.Drawing.Point(6, 19)
         Me.tc_NPCConfig.Name = "tc_NPCConfig"
         Me.tc_NPCConfig.SelectedIndex = 0
-        Me.tc_NPCConfig.Size = New System.Drawing.Size(410, 399)
+        Me.tc_NPCConfig.Size = New System.Drawing.Size(410, 411)
         Me.tc_NPCConfig.TabIndex = 0
         '
         'tp_NPCMovement
         '
+        Me.tp_NPCMovement.Controls.Add(Me.cmb_NPCVelocity)
+        Me.tp_NPCMovement.Controls.Add(Me.lbl_NPCVelocity)
         Me.tp_NPCMovement.Controls.Add(Me.grp_customMovement)
         Me.tp_NPCMovement.Controls.Add(Me.rdbtn_perimeter)
         Me.tp_NPCMovement.Controls.Add(Me.rdbtn_custom)
@@ -112,20 +120,80 @@ Partial Class frmConfigNPC
         Me.tp_NPCMovement.Location = New System.Drawing.Point(4, 22)
         Me.tp_NPCMovement.Name = "tp_NPCMovement"
         Me.tp_NPCMovement.Padding = New System.Windows.Forms.Padding(3)
-        Me.tp_NPCMovement.Size = New System.Drawing.Size(402, 373)
+        Me.tp_NPCMovement.Size = New System.Drawing.Size(402, 385)
         Me.tp_NPCMovement.TabIndex = 0
         Me.tp_NPCMovement.Text = "Déplacements"
         Me.tp_NPCMovement.UseVisualStyleBackColor = True
         '
-        'TabPage2
+        'cmb_NPCVelocity
         '
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(477, 364)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
-        Me.TabPage2.UseVisualStyleBackColor = True
+        Me.cmb_NPCVelocity.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.cmb_NPCVelocity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmb_NPCVelocity.Enabled = False
+        Me.cmb_NPCVelocity.FormattingEnabled = True
+        Me.cmb_NPCVelocity.Items.AddRange(New Object() {"Lente", "Moyenne", "Rapide", "Trés rapide"})
+        Me.cmb_NPCVelocity.Location = New System.Drawing.Point(21, 167)
+        Me.cmb_NPCVelocity.Name = "cmb_NPCVelocity"
+        Me.cmb_NPCVelocity.Size = New System.Drawing.Size(133, 21)
+        Me.cmb_NPCVelocity.TabIndex = 10
+        '
+        'lbl_NPCVelocity
+        '
+        Me.lbl_NPCVelocity.AutoSize = True
+        Me.lbl_NPCVelocity.Location = New System.Drawing.Point(18, 151)
+        Me.lbl_NPCVelocity.Name = "lbl_NPCVelocity"
+        Me.lbl_NPCVelocity.Size = New System.Drawing.Size(126, 13)
+        Me.lbl_NPCVelocity.TabIndex = 11
+        Me.lbl_NPCVelocity.Text = "Vitesse de déplacement :"
+        '
+        'grp_customMovement
+        '
+        Me.grp_customMovement.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grp_customMovement.Controls.Add(Me.cmb_EnableNPCMovements)
+        Me.grp_customMovement.Controls.Add(Me.btn_addNPCMovement)
+        Me.grp_customMovement.Controls.Add(Me.cb_loopNPCMovement)
+        Me.grp_customMovement.Controls.Add(Me.list_customNPCMovement)
+        Me.grp_customMovement.Enabled = False
+        Me.grp_customMovement.Location = New System.Drawing.Point(173, 15)
+        Me.grp_customMovement.Name = "grp_customMovement"
+        Me.grp_customMovement.Size = New System.Drawing.Size(226, 355)
+        Me.grp_customMovement.TabIndex = 9
+        Me.grp_customMovement.TabStop = False
+        Me.grp_customMovement.Text = "Déplacements personnalisés"
+        '
+        'cmb_EnableNPCMovements
+        '
+        Me.cmb_EnableNPCMovements.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.cmb_EnableNPCMovements.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmb_EnableNPCMovements.FormattingEnabled = True
+        Me.cmb_EnableNPCMovements.Items.AddRange(New Object() {"Haut", "Bas", "Droite", "Gauche"})
+        Me.cmb_EnableNPCMovements.Location = New System.Drawing.Point(6, 289)
+        Me.cmb_EnableNPCMovements.Name = "cmb_EnableNPCMovements"
+        Me.cmb_EnableNPCMovements.Size = New System.Drawing.Size(133, 21)
+        Me.cmb_EnableNPCMovements.TabIndex = 9
+        '
+        'btn_addNPCMovement
+        '
+        Me.btn_addNPCMovement.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_addNPCMovement.Location = New System.Drawing.Point(145, 289)
+        Me.btn_addNPCMovement.Name = "btn_addNPCMovement"
+        Me.btn_addNPCMovement.Size = New System.Drawing.Size(75, 21)
+        Me.btn_addNPCMovement.TabIndex = 8
+        Me.btn_addNPCMovement.Text = "Ajouter"
+        Me.btn_addNPCMovement.UseVisualStyleBackColor = True
+        '
+        'cb_loopNPCMovement
+        '
+        Me.cb_loopNPCMovement.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cb_loopNPCMovement.AutoSize = True
+        Me.cb_loopNPCMovement.Location = New System.Drawing.Point(45, 328)
+        Me.cb_loopNPCMovement.Name = "cb_loopNPCMovement"
+        Me.cb_loopNPCMovement.Size = New System.Drawing.Size(139, 17)
+        Me.cb_loopNPCMovement.TabIndex = 7
+        Me.cb_loopNPCMovement.Text = "Répéter le déplacement"
+        Me.cb_loopNPCMovement.UseVisualStyleBackColor = True
         '
         'list_customNPCMovement
         '
@@ -180,54 +248,120 @@ Partial Class frmConfigNPC
         Me.rdbtn_static.Text = "Immobile"
         Me.rdbtn_static.UseVisualStyleBackColor = True
         '
-        'grp_customMovement
+        'tp_NPCStatus
         '
-        Me.grp_customMovement.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grp_customMovement.Controls.Add(Me.cmb_EnableNPCMovements)
-        Me.grp_customMovement.Controls.Add(Me.btn_addNPCMovement)
-        Me.grp_customMovement.Controls.Add(Me.cb_loopNPCMovement)
-        Me.grp_customMovement.Controls.Add(Me.list_customNPCMovement)
-        Me.grp_customMovement.Enabled = False
-        Me.grp_customMovement.Location = New System.Drawing.Point(173, 15)
-        Me.grp_customMovement.Name = "grp_customMovement"
-        Me.grp_customMovement.Size = New System.Drawing.Size(226, 343)
-        Me.grp_customMovement.TabIndex = 9
-        Me.grp_customMovement.TabStop = False
-        Me.grp_customMovement.Text = "Déplacements personnalisés"
+        Me.tp_NPCStatus.Controls.Add(Me.grp_NPCAggresiveArea)
+        Me.tp_NPCStatus.Controls.Add(Me.grp_NPCStatus)
+        Me.tp_NPCStatus.Location = New System.Drawing.Point(4, 22)
+        Me.tp_NPCStatus.Name = "tp_NPCStatus"
+        Me.tp_NPCStatus.Padding = New System.Windows.Forms.Padding(3)
+        Me.tp_NPCStatus.Size = New System.Drawing.Size(402, 385)
+        Me.tp_NPCStatus.TabIndex = 1
+        Me.tp_NPCStatus.Text = "Statut"
+        Me.tp_NPCStatus.UseVisualStyleBackColor = True
         '
-        'cb_loopNPCMovement
+        'btn_NPCSelect
         '
-        Me.cb_loopNPCMovement.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cb_loopNPCMovement.AutoSize = True
-        Me.cb_loopNPCMovement.Location = New System.Drawing.Point(45, 316)
-        Me.cb_loopNPCMovement.Name = "cb_loopNPCMovement"
-        Me.cb_loopNPCMovement.Size = New System.Drawing.Size(139, 17)
-        Me.cb_loopNPCMovement.TabIndex = 7
-        Me.cb_loopNPCMovement.Text = "Répéter le déplacement"
-        Me.cb_loopNPCMovement.UseVisualStyleBackColor = True
+        Me.btn_NPCSelect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_NPCSelect.Location = New System.Drawing.Point(512, 454)
+        Me.btn_NPCSelect.Name = "btn_NPCSelect"
+        Me.btn_NPCSelect.Size = New System.Drawing.Size(159, 27)
+        Me.btn_NPCSelect.TabIndex = 0
+        Me.btn_NPCSelect.Text = "Selectionner"
+        Me.btn_NPCSelect.UseVisualStyleBackColor = True
         '
-        'btn_addNPCMovement
+        'rb_NPCFriendly
         '
-        Me.btn_addNPCMovement.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btn_addNPCMovement.Location = New System.Drawing.Point(145, 277)
-        Me.btn_addNPCMovement.Name = "btn_addNPCMovement"
-        Me.btn_addNPCMovement.Size = New System.Drawing.Size(75, 21)
-        Me.btn_addNPCMovement.TabIndex = 8
-        Me.btn_addNPCMovement.Text = "Ajouter"
-        Me.btn_addNPCMovement.UseVisualStyleBackColor = True
+        Me.rb_NPCFriendly.AutoSize = True
+        Me.rb_NPCFriendly.Location = New System.Drawing.Point(28, 65)
+        Me.rb_NPCFriendly.Name = "rb_NPCFriendly"
+        Me.rb_NPCFriendly.Size = New System.Drawing.Size(56, 17)
+        Me.rb_NPCFriendly.TabIndex = 12
+        Me.rb_NPCFriendly.Text = "Amical"
+        Me.rb_NPCFriendly.UseVisualStyleBackColor = True
         '
-        'cmb_EnableNPCMovements
+        'rb_NPCAggressive
         '
-        Me.cmb_EnableNPCMovements.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.cmb_EnableNPCMovements.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmb_EnableNPCMovements.FormattingEnabled = True
-        Me.cmb_EnableNPCMovements.Items.AddRange(New Object() {"Haut", "Bas", "Droite", "Gauche"})
-        Me.cmb_EnableNPCMovements.Location = New System.Drawing.Point(6, 277)
-        Me.cmb_EnableNPCMovements.Name = "cmb_EnableNPCMovements"
-        Me.cmb_EnableNPCMovements.Size = New System.Drawing.Size(133, 21)
-        Me.cmb_EnableNPCMovements.TabIndex = 9
+        Me.rb_NPCAggressive.AutoSize = True
+        Me.rb_NPCAggressive.Location = New System.Drawing.Point(28, 42)
+        Me.rb_NPCAggressive.Name = "rb_NPCAggressive"
+        Me.rb_NPCAggressive.Size = New System.Drawing.Size(62, 17)
+        Me.rb_NPCAggressive.TabIndex = 10
+        Me.rb_NPCAggressive.Text = "Agressif"
+        Me.rb_NPCAggressive.UseVisualStyleBackColor = True
+        '
+        'rb_NPCPassive
+        '
+        Me.rb_NPCPassive.AutoSize = True
+        Me.rb_NPCPassive.Checked = True
+        Me.rb_NPCPassive.Location = New System.Drawing.Point(28, 19)
+        Me.rb_NPCPassive.Name = "rb_NPCPassive"
+        Me.rb_NPCPassive.Size = New System.Drawing.Size(53, 17)
+        Me.rb_NPCPassive.TabIndex = 9
+        Me.rb_NPCPassive.TabStop = True
+        Me.rb_NPCPassive.Text = "Passif"
+        Me.rb_NPCPassive.UseVisualStyleBackColor = True
+        '
+        'cb_NPCInvicible
+        '
+        Me.cb_NPCInvicible.AutoSize = True
+        Me.cb_NPCInvicible.Location = New System.Drawing.Point(28, 102)
+        Me.cb_NPCInvicible.Name = "cb_NPCInvicible"
+        Me.cb_NPCInvicible.Size = New System.Drawing.Size(71, 17)
+        Me.cb_NPCInvicible.TabIndex = 13
+        Me.cb_NPCInvicible.Text = "Invincible"
+        Me.cb_NPCInvicible.UseVisualStyleBackColor = True
+        '
+        'grp_NPCStatus
+        '
+        Me.grp_NPCStatus.Controls.Add(Me.cb_NPCInvicible)
+        Me.grp_NPCStatus.Controls.Add(Me.rb_NPCPassive)
+        Me.grp_NPCStatus.Controls.Add(Me.rb_NPCFriendly)
+        Me.grp_NPCStatus.Controls.Add(Me.rb_NPCAggressive)
+        Me.grp_NPCStatus.Location = New System.Drawing.Point(18, 15)
+        Me.grp_NPCStatus.Name = "grp_NPCStatus"
+        Me.grp_NPCStatus.Size = New System.Drawing.Size(120, 134)
+        Me.grp_NPCStatus.TabIndex = 14
+        Me.grp_NPCStatus.TabStop = False
+        '
+        'grp_NPCAggresiveArea
+        '
+        Me.grp_NPCAggresiveArea.Controls.Add(Me.pic_NPCCasesArea)
+        Me.grp_NPCAggresiveArea.Controls.Add(Me.TextBox1)
+        Me.grp_NPCAggresiveArea.Controls.Add(Me.Label1)
+        Me.grp_NPCAggresiveArea.Enabled = False
+        Me.grp_NPCAggresiveArea.Location = New System.Drawing.Point(159, 15)
+        Me.grp_NPCAggresiveArea.Name = "grp_NPCAggresiveArea"
+        Me.grp_NPCAggresiveArea.Size = New System.Drawing.Size(223, 134)
+        Me.grp_NPCAggresiveArea.TabIndex = 15
+        Me.grp_NPCAggresiveArea.TabStop = False
+        Me.grp_NPCAggresiveArea.Text = "Zone d'agression"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(9, 33)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(101, 13)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Distance en cases :"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(116, 30)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(54, 20)
+        Me.TextBox1.TabIndex = 1
+        Me.TextBox1.Text = "5"
+        '
+        'pic_NPCCasesArea
+        '
+        Me.pic_NPCCasesArea.Image = CType(resources.GetObject("pic_NPCCasesArea.Image"), System.Drawing.Image)
+        Me.pic_NPCCasesArea.Location = New System.Drawing.Point(12, 53)
+        Me.pic_NPCCasesArea.Name = "pic_NPCCasesArea"
+        Me.pic_NPCCasesArea.Size = New System.Drawing.Size(123, 66)
+        Me.pic_NPCCasesArea.TabIndex = 2
+        Me.pic_NPCCasesArea.TabStop = False
         '
         'frmConfigNPC
         '
@@ -247,6 +381,12 @@ Partial Class frmConfigNPC
         Me.tp_NPCMovement.PerformLayout()
         Me.grp_customMovement.ResumeLayout(False)
         Me.grp_customMovement.PerformLayout()
+        Me.tp_NPCStatus.ResumeLayout(False)
+        Me.grp_NPCStatus.ResumeLayout(False)
+        Me.grp_NPCStatus.PerformLayout()
+        Me.grp_NPCAggresiveArea.ResumeLayout(False)
+        Me.grp_NPCAggresiveArea.PerformLayout()
+        CType(Me.pic_NPCCasesArea, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -265,5 +405,16 @@ Partial Class frmConfigNPC
     Friend WithEvents rdbtn_custom As System.Windows.Forms.RadioButton
     Friend WithEvents rdbtn_rand As System.Windows.Forms.RadioButton
     Friend WithEvents rdbtn_static As System.Windows.Forms.RadioButton
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
+    Friend WithEvents tp_NPCStatus As System.Windows.Forms.TabPage
+    Friend WithEvents cmb_NPCVelocity As System.Windows.Forms.ComboBox
+    Friend WithEvents lbl_NPCVelocity As System.Windows.Forms.Label
+    Friend WithEvents grp_NPCAggresiveArea As System.Windows.Forms.GroupBox
+    Friend WithEvents grp_NPCStatus As System.Windows.Forms.GroupBox
+    Friend WithEvents cb_NPCInvicible As System.Windows.Forms.CheckBox
+    Friend WithEvents rb_NPCPassive As System.Windows.Forms.RadioButton
+    Friend WithEvents rb_NPCFriendly As System.Windows.Forms.RadioButton
+    Friend WithEvents rb_NPCAggressive As System.Windows.Forms.RadioButton
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents pic_NPCCasesArea As System.Windows.Forms.PictureBox
 End Class
