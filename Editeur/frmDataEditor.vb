@@ -153,12 +153,12 @@
             End With
             lstClasses.Add(tmp)
         End If
-        lstBItems(tmpIndex).Save()
+        lstItems(tmpIndex).Save()
         lstBItems.Items.Clear()
         For i = 0 To lstItems.Count - 1
-            lstBClasses.Items.Add(lstBItems(i).name)
+            lstBClasses.Items.Add(lstItems(i).name)
         Next
-        lstBItems.Items.Add("Nouveau...")
+        lstItems.Items.Add("Nouveau...")
         lstBItems.SelectedIndex = tmpIndex
     End Sub
 
@@ -180,20 +180,20 @@
             End With
             lstSpell.Add(tmp)
         End If
-        lstBSpell(tmpIndex).Save()
+        lstSpell(tmpIndex).Save()
         lstBSpell.Items.Clear()
         For i = 0 To lstSpell.Count - 1
             lstBSpell.Items.Add(lstBSpell(i).name)
         Next
-        lstBSpell.Items.Add("Nouveau...")
+        lstSpell.Items.Add("Nouveau...")
         lstBSpell.SelectedIndex = tmpIndex
     End Sub
 
     Private Sub btNPCName_Click(sender As Object, e As EventArgs) Handles btNPCName.Click
-        Dim tmpIndex As Short = lstBNPC.SelectedIndex
+        Dim tmpIndex As Short = lstBBNPC.SelectedIndex
 
         If Not lstBNPC.SelectedIndex = lstBNPC.Items.Count - 1 Then
-            With lstNPC(lstBNPC.SelectedIndex)
+            With lstBNPC(lstBNPC.SelectedIndex)
                 .name = txtNPCName.Text
                 .dialogue = txtNPCDial.Text
             End With
@@ -205,12 +205,12 @@
             End With
             lstClasses.Add(tmp)
         End If
-        lstBNPC(tmpIndex).Save()
+        lstNPC(tmpIndex).Save()
         lstBNPC.Items.Clear()
         For i = 0 To lstClasses.Count - 1
             lstBClasses.Items.Add(lstClasses(i).name)
         Next
-        lstBNPC.Items.Add("Nouveau...")
+        lstNPC.Items.Add("Nouveau...")
         lstBNPC.SelectedIndex = tmpIndex
     End Sub
 End Class
