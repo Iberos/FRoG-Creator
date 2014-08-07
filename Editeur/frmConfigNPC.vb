@@ -1,14 +1,14 @@
 ﻿Public Class frmConfigNPC
 
-    Private Sub rdbtn_custom_CheckedChanged(sender As Object, e As EventArgs) Handles rdbtn_custom.CheckedChanged
-        grp_customMovement.Enabled = rdbtn_custom.Checked
+    Private Sub rbNPCAggressive_CheckedChanged(sender As Object, e As EventArgs) Handles rbNPCAggressive.CheckedChanged
+        grpNPCAggresiveArea.Enabled = rbNPCAggressive.Checked
     End Sub
 
-    Private Sub rdbtn_static_CheckedChanged(sender As Object, e As EventArgs) Handles rdbtn_static.CheckedChanged
-        cmb_NPCVelocity.Enabled = Not rdbtn_static.Checked
+    Private Sub rdbtnStatic_CheckedChanged(sender As Object, e As EventArgs) Handles rdbtnStatic.CheckedChanged
+        cmbNPCVelocity.Enabled = Not rdbtnStatic.Checked
     End Sub
 
-    Private Sub rb_NPCAggressive_CheckedChanged(sender As Object, e As EventArgs) Handles rb_NPCAggressive.CheckedChanged
-        grp_NPCAggresiveArea.Enabled = rb_NPCAggressive.Checked
+    Private Sub rdbtnCustom_CheckedChanged(sender As Object, e As EventArgs) Handles rdbtnCustom.CheckedChanged
+        grpCustomMovement.Enabled = rdbtnCustom.Checked
     End Sub
 End Class

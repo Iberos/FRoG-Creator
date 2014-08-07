@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pic_NPCCasesArea.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="picNPCCasesArea.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAH4AAABACAYAAADcU8NVAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
-        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAAA5KSURBVHhe7Z0JVFVHmseZjNMZ
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw4AAAsOAUC+4UEAAA5KSURBVHhe7Z0JVFVHmseZjNMZ
         MyZqxA2QfVNRQEAUBEEeAg+UfRFQdgFBdnjgArK5IUtwQeOGGKO4RYW4xSWbtnaSSUzM6c6cmE6Pkzbd
         mc6Zjp3OxDb9m7ocXkI77lwIwn3n/M99996qenXrV99XVd8tDjqAjqKB1wYK9AHa8RXwCviB5+4G8hCn
         WLxi8YrFDyQP0GsW3+j7NDsi9NgVqc+uKH2a1INpq4gUba10uJ+jDXoU/Hq/Z3gxdCR7o8dySWPJ5yut
