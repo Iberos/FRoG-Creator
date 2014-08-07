@@ -20,5 +20,10 @@
         Dim npc As New ctrlGameNPC(currentNpc)
         pnlNPCList.Controls.Add(npc)
 
+        For i As Integer = 0 To 10
+            npc = New ctrlGameNPC(currentNpc)
+            npc.Location = New Point(0, (npc.Height + 2) * i)
+            pnlNPCList.Controls.Add(npc)
+        Next
     End Sub
 End Class

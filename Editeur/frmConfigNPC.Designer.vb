@@ -68,7 +68,7 @@ Partial Class frmConfigNPC
         Me.grpNPCList.Controls.Add(Me.pnlNPCList)
         Me.grpNPCList.Location = New System.Drawing.Point(12, 12)
         Me.grpNPCList.Name = "grpNPCList"
-        Me.grpNPCList.Size = New System.Drawing.Size(235, 472)
+        Me.grpNPCList.Size = New System.Drawing.Size(235, 473)
         Me.grpNPCList.TabIndex = 2
         Me.grpNPCList.TabStop = False
         Me.grpNPCList.Text = "Liste de PNJs"
@@ -81,7 +81,7 @@ Partial Class frmConfigNPC
         Me.grpNPCConfig.Controls.Add(Me.tcNPCConfig)
         Me.grpNPCConfig.Location = New System.Drawing.Point(253, 12)
         Me.grpNPCConfig.Name = "grpNPCConfig"
-        Me.grpNPCConfig.Size = New System.Drawing.Size(418, 436)
+        Me.grpNPCConfig.Size = New System.Drawing.Size(419, 437)
         Me.grpNPCConfig.TabIndex = 3
         Me.grpNPCConfig.TabStop = False
         Me.grpNPCConfig.Text = "Configurations"
@@ -96,7 +96,7 @@ Partial Class frmConfigNPC
         Me.tcNPCConfig.Location = New System.Drawing.Point(6, 19)
         Me.tcNPCConfig.Name = "tcNPCConfig"
         Me.tcNPCConfig.SelectedIndex = 0
-        Me.tcNPCConfig.Size = New System.Drawing.Size(410, 411)
+        Me.tcNPCConfig.Size = New System.Drawing.Size(411, 412)
         Me.tcNPCConfig.TabIndex = 0
         '
         'tpNPCMovement
@@ -111,14 +111,13 @@ Partial Class frmConfigNPC
         Me.tpNPCMovement.Location = New System.Drawing.Point(4, 22)
         Me.tpNPCMovement.Name = "tpNPCMovement"
         Me.tpNPCMovement.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpNPCMovement.Size = New System.Drawing.Size(402, 385)
+        Me.tpNPCMovement.Size = New System.Drawing.Size(403, 386)
         Me.tpNPCMovement.TabIndex = 0
         Me.tpNPCMovement.Text = "Déplacements"
         Me.tpNPCMovement.UseVisualStyleBackColor = True
         '
         'cmbNPCVelocity
         '
-        Me.cmbNPCVelocity.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.cmbNPCVelocity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbNPCVelocity.Enabled = False
         Me.cmbNPCVelocity.FormattingEnabled = True
@@ -146,9 +145,9 @@ Partial Class frmConfigNPC
         Me.grpCustomMovement.Controls.Add(Me.cbLoopNPCMovement)
         Me.grpCustomMovement.Controls.Add(Me.listCustomNPCMovement)
         Me.grpCustomMovement.Enabled = False
-        Me.grpCustomMovement.Location = New System.Drawing.Point(173, 15)
+        Me.grpCustomMovement.Location = New System.Drawing.Point(174, 15)
         Me.grpCustomMovement.Name = "grpCustomMovement"
-        Me.grpCustomMovement.Size = New System.Drawing.Size(226, 355)
+        Me.grpCustomMovement.Size = New System.Drawing.Size(226, 356)
         Me.grpCustomMovement.TabIndex = 9
         Me.grpCustomMovement.TabStop = False
         Me.grpCustomMovement.Text = "Déplacements personnalisés"
@@ -159,7 +158,7 @@ Partial Class frmConfigNPC
         Me.cmbEnableNPCMovements.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbEnableNPCMovements.FormattingEnabled = True
         Me.cmbEnableNPCMovements.Items.AddRange(New Object() {"Haut", "Bas", "Droite", "Gauche"})
-        Me.cmbEnableNPCMovements.Location = New System.Drawing.Point(6, 289)
+        Me.cmbEnableNPCMovements.Location = New System.Drawing.Point(6, 290)
         Me.cmbEnableNPCMovements.Name = "cmbEnableNPCMovements"
         Me.cmbEnableNPCMovements.Size = New System.Drawing.Size(133, 21)
         Me.cmbEnableNPCMovements.TabIndex = 9
@@ -167,7 +166,7 @@ Partial Class frmConfigNPC
         'btnAddNPCMovement
         '
         Me.btnAddNPCMovement.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAddNPCMovement.Location = New System.Drawing.Point(145, 289)
+        Me.btnAddNPCMovement.Location = New System.Drawing.Point(145, 290)
         Me.btnAddNPCMovement.Name = "btnAddNPCMovement"
         Me.btnAddNPCMovement.Size = New System.Drawing.Size(75, 21)
         Me.btnAddNPCMovement.TabIndex = 8
@@ -179,7 +178,7 @@ Partial Class frmConfigNPC
         Me.cbLoopNPCMovement.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbLoopNPCMovement.AutoSize = True
-        Me.cbLoopNPCMovement.Location = New System.Drawing.Point(49, 328)
+        Me.cbLoopNPCMovement.Location = New System.Drawing.Point(49, 329)
         Me.cbLoopNPCMovement.Name = "cbLoopNPCMovement"
         Me.cbLoopNPCMovement.Size = New System.Drawing.Size(139, 17)
         Me.cbLoopNPCMovement.TabIndex = 7
@@ -347,7 +346,7 @@ Partial Class frmConfigNPC
         'btnNPCSelect
         '
         Me.btnNPCSelect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnNPCSelect.Location = New System.Drawing.Point(512, 454)
+        Me.btnNPCSelect.Location = New System.Drawing.Point(513, 455)
         Me.btnNPCSelect.Name = "btnNPCSelect"
         Me.btnNPCSelect.Size = New System.Drawing.Size(159, 27)
         Me.btnNPCSelect.TabIndex = 0
@@ -356,21 +355,22 @@ Partial Class frmConfigNPC
         '
         'pnlNPCList
         '
+        Me.pnlNPCList.AutoScroll = True
         Me.pnlNPCList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlNPCList.Location = New System.Drawing.Point(3, 16)
         Me.pnlNPCList.Name = "pnlNPCList"
-        Me.pnlNPCList.Size = New System.Drawing.Size(229, 453)
+        Me.pnlNPCList.Size = New System.Drawing.Size(229, 454)
         Me.pnlNPCList.TabIndex = 0
         '
         'frmConfigNPC
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(683, 496)
+        Me.ClientSize = New System.Drawing.Size(684, 497)
         Me.Controls.Add(Me.btnNPCSelect)
         Me.Controls.Add(Me.grpNPCConfig)
         Me.Controls.Add(Me.grpNPCList)
-        Me.MinimumSize = New System.Drawing.Size(600, 450)
+        Me.MinimumSize = New System.Drawing.Size(700, 535)
         Me.Name = "frmConfigNPC"
         Me.Text = "Configurateur de PNJs"
         Me.grpNPCList.ResumeLayout(False)

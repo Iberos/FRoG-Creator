@@ -39,7 +39,7 @@ Partial Class ctrlGameNPC
         '
         Me.npcName.AutoSize = True
         Me.npcName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.npcName.Location = New System.Drawing.Point(86, 20)
+        Me.npcName.Location = New System.Drawing.Point(57, 19)
         Me.npcName.Name = "npcName"
         Me.npcName.Size = New System.Drawing.Size(40, 16)
         Me.npcName.TabIndex = 1
@@ -54,7 +54,7 @@ Partial Class ctrlGameNPC
         Me.Controls.Add(Me.npcName)
         Me.Controls.Add(Me.npcPicture)
         Me.Name = "ctrlGameNPC"
-        Me.Size = New System.Drawing.Size(229, 56)
+        Me.Size = New System.Drawing.Size(200, 56)
         CType(Me.npcPicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
