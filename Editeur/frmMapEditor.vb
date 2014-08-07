@@ -122,6 +122,7 @@ Public Class frmMapEditor
     Private Sub picTiles_MouseDown(sender As Object, e As MouseEventArgs) Handles picTiles.MouseDown
         game.recSelect.Position = New Vector2f(Int(Mouse.GetPosition(game.tileSurface).X / 32), Int(Mouse.GetPosition(game.tileSurface).Y / 32)) * 32
         game.recSelect.Size = New Vector2f(32, 32)
+        game.DrawTileset()
         selectingTiles = True
     End Sub
 
@@ -134,6 +135,7 @@ Public Class frmMapEditor
             Dim tmpWidth As Integer = Int((Mouse.GetPosition(game.tileSurface).X - game.recSelect.Position.X) / 32) + 1
 
             game.recSelect.Size = New Vector2f(tmpWidth * 32, tmpHeight * 32)
+            game.DrawTileset()
         End If
     End Sub
 

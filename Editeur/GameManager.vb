@@ -255,18 +255,23 @@ Class GameManager
         Next
     End Sub
 
+    ' - Dessin de la planche de tiles
+    Public Sub DrawTileset()
+        tileSurface.Clear(Color.White)
+
+        ' Dessin du tileset
+        tileSurface.Draw(currentTileset)
+
+        ' Dessin du selecteur de tile
+        tileSurface.Draw(recSelect)
+
+        tileSurface.Display()
+    End Sub
     ' - Boucle de rafraichissement de la surface principale
     Public Sub StartGameLoop()
         Dim Time As Long = My.Computer.Clock.TickCount
         While frmMapEditor.Visible
             gameSurface.Clear(Color.White)
-            tileSurface.Clear(Color.White)
-
-            ' Dessin du tileset
-            tileSurface.Draw(currentTileset)
-
-            ' Dessin du selecteur de tile
-            tileSurface.Draw(recSelect)
 
             'Affichage de la map
             'couches inférieures
@@ -305,8 +310,6 @@ Class GameManager
             ' Ecoute des évènements clavier
             Call KeyBoardListener()
 
-            'tileSurface.
-            tileSurface.Display()
             gameSurface.Display()
             FPS += 1
             If My.Computer.Clock.TickCount - Time >= 1000 Then
