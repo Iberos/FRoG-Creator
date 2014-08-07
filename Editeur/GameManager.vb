@@ -199,7 +199,7 @@ Class GameManager
     Public Sub DrawPlayer()
         With player
             sprtPlayer = New Sprite(texPlayer)
-            sprtPlayer.TextureRect = New IntRect(Int(.Mov / 32 * 4) * 32, .Dir * 64, texPlayer.Size.X / 4, texPlayer.Size.Y / 4)
+            sprtPlayer.TextureRect = New IntRect(Int(.Mov / 32 * 4) * texPlayer.Size.X / 4, .Dir * texPlayer.Size.Y / 4, texPlayer.Size.X / 4, texPlayer.Size.Y / 4)
             If .Dir = 0 Then
                 sprtPlayer.Position = New Vector2f(.X * 32, (.Y - 1) * 32 - .Mov)
             ElseIf .Dir = 1 Then
