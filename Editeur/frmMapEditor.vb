@@ -29,7 +29,7 @@ Public Class frmMapEditor
         If Not Directory.Exists("Tiles") Then Directory.CreateDirectory("Tiles")
         If Not File.Exists("Sprite.png") Then
             MessageBox.Show("ATTENTION: Aucun sprite n'a été détecté, veuillez replacer Sprite.png à la racine du programme\n\nLe programme va maintenant se fermer")
-            Me.Dispose() 'Fermeture du programme
+            End
         End If
 
         frmLoading.Show()
@@ -63,6 +63,7 @@ Public Class frmMapEditor
             picTiles.Size = New Size(game.tileset(lstTiles.SelectedIndex).Size.X, game.tileset(lstTiles.SelectedIndex).Size.Y)
             game.tileSurface = New RenderWindow(picTiles.Handle)
             game.currentTileset = New Sprite(game.tileset(lstTiles.SelectedIndex)) 'Changement du tileset
+            picTiles.ImageLocation = ("Tiles/Tiles" & lstTiles.SelectedIndex & ".png")
             pnlAttribute.Visible = False
             curAttribute.Type = 0
             btCopy.Enabled = True

@@ -22,7 +22,7 @@ Partial Class frmDataEditor
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.Tab = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.lstBClasses = New System.Windows.Forms.ListBox()
@@ -49,11 +49,11 @@ Partial Class frmDataEditor
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
         Me.lstBItems = New System.Windows.Forms.ListBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.pnlItem = New System.Windows.Forms.Panel()
+        Me.lstItemType = New System.Windows.Forms.ComboBox()
         Me.txtItemDesc = New System.Windows.Forms.TextBox()
         Me.txtItemMP = New System.Windows.Forms.TextBox()
         Me.txtItemHP = New System.Windows.Forms.TextBox()
-        Me.txtItemType = New System.Windows.Forms.TextBox()
         Me.txtItemName = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -65,7 +65,7 @@ Partial Class frmDataEditor
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.SplitContainer3 = New System.Windows.Forms.SplitContainer()
         Me.lstBSpells = New System.Windows.Forms.ListBox()
-        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.pnlSpell = New System.Windows.Forms.Panel()
         Me.txtSpellDesc = New System.Windows.Forms.TextBox()
         Me.txtSpellDamage = New System.Windows.Forms.TextBox()
         Me.txtSpellName = New System.Windows.Forms.TextBox()
@@ -76,13 +76,13 @@ Partial Class frmDataEditor
         Me.TabPage4 = New System.Windows.Forms.TabPage()
         Me.SplitContainer4 = New System.Windows.Forms.SplitContainer()
         Me.lstBNPCs = New System.Windows.Forms.ListBox()
-        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.pnlNPC = New System.Windows.Forms.Panel()
         Me.txtNPCDial = New System.Windows.Forms.TextBox()
         Me.txtNPCName = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.btNPCName = New System.Windows.Forms.Button()
-        Me.TabControl1.SuspendLayout()
+        Me.Tab.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -94,33 +94,33 @@ Partial Class frmDataEditor
         Me.SplitContainer2.Panel1.SuspendLayout()
         Me.SplitContainer2.Panel2.SuspendLayout()
         Me.SplitContainer2.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.pnlItem.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.SplitContainer3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer3.Panel1.SuspendLayout()
         Me.SplitContainer3.Panel2.SuspendLayout()
         Me.SplitContainer3.SuspendLayout()
-        Me.Panel2.SuspendLayout()
+        Me.pnlSpell.SuspendLayout()
         Me.TabPage4.SuspendLayout()
         CType(Me.SplitContainer4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer4.Panel1.SuspendLayout()
         Me.SplitContainer4.Panel2.SuspendLayout()
         Me.SplitContainer4.SuspendLayout()
-        Me.Panel3.SuspendLayout()
+        Me.pnlNPC.SuspendLayout()
         Me.SuspendLayout()
         '
-        'TabControl1
+        'Tab
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Controls.Add(Me.TabPage4)
-        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControl1.Location = New System.Drawing.Point(0, 0)
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(809, 492)
-        Me.TabControl1.TabIndex = 0
+        Me.Tab.Controls.Add(Me.TabPage1)
+        Me.Tab.Controls.Add(Me.TabPage2)
+        Me.Tab.Controls.Add(Me.TabPage3)
+        Me.Tab.Controls.Add(Me.TabPage4)
+        Me.Tab.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Tab.Location = New System.Drawing.Point(0, 0)
+        Me.Tab.Name = "Tab"
+        Me.Tab.SelectedIndex = 0
+        Me.Tab.Size = New System.Drawing.Size(809, 492)
+        Me.Tab.TabIndex = 0
         '
         'TabPage1
         '
@@ -363,7 +363,7 @@ Partial Class frmDataEditor
         '
         'SplitContainer2.Panel2
         '
-        Me.SplitContainer2.Panel2.Controls.Add(Me.Panel1)
+        Me.SplitContainer2.Panel2.Controls.Add(Me.pnlItem)
         Me.SplitContainer2.Size = New System.Drawing.Size(795, 460)
         Me.SplitContainer2.SplitterDistance = 187
         Me.SplitContainer2.TabIndex = 0
@@ -377,24 +377,34 @@ Partial Class frmDataEditor
         Me.lstBItems.Size = New System.Drawing.Size(187, 460)
         Me.lstBItems.TabIndex = 0
         '
-        'Panel1
+        'pnlItem
         '
-        Me.Panel1.Controls.Add(Me.txtItemDesc)
-        Me.Panel1.Controls.Add(Me.txtItemMP)
-        Me.Panel1.Controls.Add(Me.txtItemHP)
-        Me.Panel1.Controls.Add(Me.txtItemType)
-        Me.Panel1.Controls.Add(Me.txtItemName)
-        Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Controls.Add(Me.Label7)
-        Me.Panel1.Controls.Add(Me.Label9)
-        Me.Panel1.Controls.Add(Me.Label10)
-        Me.Panel1.Controls.Add(Me.btItemSave)
-        Me.Panel1.Location = New System.Drawing.Point(125, 33)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(357, 307)
-        Me.Panel1.TabIndex = 1
+        Me.pnlItem.Controls.Add(Me.lstItemType)
+        Me.pnlItem.Controls.Add(Me.txtItemDesc)
+        Me.pnlItem.Controls.Add(Me.txtItemMP)
+        Me.pnlItem.Controls.Add(Me.txtItemHP)
+        Me.pnlItem.Controls.Add(Me.txtItemName)
+        Me.pnlItem.Controls.Add(Me.Label4)
+        Me.pnlItem.Controls.Add(Me.Label5)
+        Me.pnlItem.Controls.Add(Me.Label6)
+        Me.pnlItem.Controls.Add(Me.Label7)
+        Me.pnlItem.Controls.Add(Me.Label9)
+        Me.pnlItem.Controls.Add(Me.Label10)
+        Me.pnlItem.Controls.Add(Me.btItemSave)
+        Me.pnlItem.Location = New System.Drawing.Point(125, 33)
+        Me.pnlItem.Name = "pnlItem"
+        Me.pnlItem.Size = New System.Drawing.Size(357, 307)
+        Me.pnlItem.TabIndex = 1
+        '
+        'lstItemType
+        '
+        Me.lstItemType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.lstItemType.FormattingEnabled = True
+        Me.lstItemType.Items.AddRange(New Object() {"Arme", "Bouclier", "Casque", "Accessoire", "Potion", "Monnaie"})
+        Me.lstItemType.Location = New System.Drawing.Point(111, 126)
+        Me.lstItemType.Name = "lstItemType"
+        Me.lstItemType.Size = New System.Drawing.Size(199, 21)
+        Me.lstItemType.TabIndex = 58
         '
         'txtItemDesc
         '
@@ -418,13 +428,6 @@ Partial Class frmDataEditor
         Me.txtItemHP.Name = "txtItemHP"
         Me.txtItemHP.Size = New System.Drawing.Size(70, 20)
         Me.txtItemHP.TabIndex = 51
-        '
-        'txtItemType
-        '
-        Me.txtItemType.Location = New System.Drawing.Point(111, 126)
-        Me.txtItemType.Name = "txtItemType"
-        Me.txtItemType.Size = New System.Drawing.Size(70, 20)
-        Me.txtItemType.TabIndex = 50
         '
         'txtItemName
         '
@@ -517,7 +520,7 @@ Partial Class frmDataEditor
         '
         'SplitContainer3.Panel2
         '
-        Me.SplitContainer3.Panel2.Controls.Add(Me.Panel2)
+        Me.SplitContainer3.Panel2.Controls.Add(Me.pnlSpell)
         Me.SplitContainer3.Size = New System.Drawing.Size(801, 466)
         Me.SplitContainer3.SplitterDistance = 189
         Me.SplitContainer3.TabIndex = 0
@@ -531,19 +534,19 @@ Partial Class frmDataEditor
         Me.lstBSpells.Size = New System.Drawing.Size(189, 466)
         Me.lstBSpells.TabIndex = 0
         '
-        'Panel2
+        'pnlSpell
         '
-        Me.Panel2.Controls.Add(Me.txtSpellDesc)
-        Me.Panel2.Controls.Add(Me.txtSpellDamage)
-        Me.Panel2.Controls.Add(Me.txtSpellName)
-        Me.Panel2.Controls.Add(Me.Label14)
-        Me.Panel2.Controls.Add(Me.Label15)
-        Me.Panel2.Controls.Add(Me.Label16)
-        Me.Panel2.Controls.Add(Me.btSpellSave)
-        Me.Panel2.Location = New System.Drawing.Point(127, 36)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(328, 239)
-        Me.Panel2.TabIndex = 1
+        Me.pnlSpell.Controls.Add(Me.txtSpellDesc)
+        Me.pnlSpell.Controls.Add(Me.txtSpellDamage)
+        Me.pnlSpell.Controls.Add(Me.txtSpellName)
+        Me.pnlSpell.Controls.Add(Me.Label14)
+        Me.pnlSpell.Controls.Add(Me.Label15)
+        Me.pnlSpell.Controls.Add(Me.Label16)
+        Me.pnlSpell.Controls.Add(Me.btSpellSave)
+        Me.pnlSpell.Location = New System.Drawing.Point(127, 36)
+        Me.pnlSpell.Name = "pnlSpell"
+        Me.pnlSpell.Size = New System.Drawing.Size(328, 239)
+        Me.pnlSpell.TabIndex = 1
         '
         'txtSpellDesc
         '
@@ -626,7 +629,7 @@ Partial Class frmDataEditor
         '
         'SplitContainer4.Panel2
         '
-        Me.SplitContainer4.Panel2.Controls.Add(Me.Panel3)
+        Me.SplitContainer4.Panel2.Controls.Add(Me.pnlNPC)
         Me.SplitContainer4.Size = New System.Drawing.Size(801, 466)
         Me.SplitContainer4.SplitterDistance = 190
         Me.SplitContainer4.TabIndex = 0
@@ -640,17 +643,17 @@ Partial Class frmDataEditor
         Me.lstBNPCs.Size = New System.Drawing.Size(190, 466)
         Me.lstBNPCs.TabIndex = 0
         '
-        'Panel3
+        'pnlNPC
         '
-        Me.Panel3.Controls.Add(Me.txtNPCDial)
-        Me.Panel3.Controls.Add(Me.txtNPCName)
-        Me.Panel3.Controls.Add(Me.Label18)
-        Me.Panel3.Controls.Add(Me.Label19)
-        Me.Panel3.Controls.Add(Me.btNPCName)
-        Me.Panel3.Location = New System.Drawing.Point(126, 36)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(344, 245)
-        Me.Panel3.TabIndex = 1
+        Me.pnlNPC.Controls.Add(Me.txtNPCDial)
+        Me.pnlNPC.Controls.Add(Me.txtNPCName)
+        Me.pnlNPC.Controls.Add(Me.Label18)
+        Me.pnlNPC.Controls.Add(Me.Label19)
+        Me.pnlNPC.Controls.Add(Me.btNPCName)
+        Me.pnlNPC.Location = New System.Drawing.Point(131, 73)
+        Me.pnlNPC.Name = "pnlNPC"
+        Me.pnlNPC.Size = New System.Drawing.Size(344, 245)
+        Me.pnlNPC.TabIndex = 1
         '
         'txtNPCDial
         '
@@ -700,10 +703,10 @@ Partial Class frmDataEditor
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(809, 492)
-        Me.Controls.Add(Me.TabControl1)
+        Me.Controls.Add(Me.Tab)
         Me.Name = "frmDataEditor"
         Me.Text = "Editeur de ressources"
-        Me.TabControl1.ResumeLayout(False)
+        Me.Tab.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
@@ -716,26 +719,26 @@ Partial Class frmDataEditor
         Me.SplitContainer2.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer2.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
+        Me.pnlItem.ResumeLayout(False)
+        Me.pnlItem.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         Me.SplitContainer3.Panel1.ResumeLayout(False)
         Me.SplitContainer3.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer3.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
+        Me.pnlSpell.ResumeLayout(False)
+        Me.pnlSpell.PerformLayout()
         Me.TabPage4.ResumeLayout(False)
         Me.SplitContainer4.Panel1.ResumeLayout(False)
         Me.SplitContainer4.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer4.ResumeLayout(False)
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
+        Me.pnlNPC.ResumeLayout(False)
+        Me.pnlNPC.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
+    Friend WithEvents Tab As System.Windows.Forms.TabControl
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
@@ -768,11 +771,10 @@ Partial Class frmDataEditor
     Friend WithEvents Label_Class_Description As System.Windows.Forms.Label
     Friend WithEvents Label_Class_Name As System.Windows.Forms.Label
     Friend WithEvents btClassSave As System.Windows.Forms.Button
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents pnlItem As System.Windows.Forms.Panel
     Friend WithEvents txtItemDesc As System.Windows.Forms.TextBox
     Friend WithEvents txtItemMP As System.Windows.Forms.TextBox
     Friend WithEvents txtItemHP As System.Windows.Forms.TextBox
-    Friend WithEvents txtItemType As System.Windows.Forms.TextBox
     Friend WithEvents txtItemName As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -781,7 +783,7 @@ Partial Class frmDataEditor
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents btItemSave As System.Windows.Forms.Button
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents pnlSpell As System.Windows.Forms.Panel
     Friend WithEvents txtSpellDesc As System.Windows.Forms.TextBox
     Friend WithEvents txtSpellDamage As System.Windows.Forms.TextBox
     Friend WithEvents txtSpellName As System.Windows.Forms.TextBox
@@ -789,10 +791,11 @@ Partial Class frmDataEditor
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents btSpellSave As System.Windows.Forms.Button
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents pnlNPC As System.Windows.Forms.Panel
     Friend WithEvents txtNPCDial As System.Windows.Forms.TextBox
     Friend WithEvents txtNPCName As System.Windows.Forms.TextBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents Label19 As System.Windows.Forms.Label
     Friend WithEvents btNPCName As System.Windows.Forms.Button
+    Friend WithEvents lstItemType As System.Windows.Forms.ComboBox
 End Class

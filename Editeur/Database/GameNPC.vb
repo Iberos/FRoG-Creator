@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.IO
 
+<Serializable>
 Public Class GameNPC
 
     Public Name As String

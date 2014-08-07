@@ -1,16 +1,6 @@
 ﻿Public Class frmDataEditor
 
-    'Protected Overrides ReadOnly Property CreateParams As CreateParams
-    '    Get
-    '        Dim cp As CreateParams = MyBase.CreateParams
-    '        cp.ExStyle = &H20
-    '        Return cp
-    '    End Get
-    'End Property
-
     Private Sub frmDataEditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'DoubleBuffered = True
-        'SetStyle(ControlStyles.OptimizedDoubleBuffer, True)
         DB.Load()
         For i = 0 To lstClasses.Count - 1
             lstBClasses.Items.Add(lstClasses(i).name)
@@ -20,37 +10,48 @@
     End Sub
 
     Private Sub frmDataEditor_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        Call ResizeForm()
+    End Sub
+
+    Private Sub ResizeForm()
         pnlClass.Top = (SplitContainer1.Panel2.Height - pnlClass.Height) / 2
         pnlClass.Left = (SplitContainer1.Panel2.Width - pnlClass.Width) / 2
+        pnlItem.Top = (SplitContainer2.Panel2.Height - pnlItem.Height) / 2
+        pnlItem.Left = (SplitContainer2.Panel2.Width - pnlItem.Width) / 2
+        pnlSpell.Top = (SplitContainer3.Panel2.Height - pnlSpell.Height) / 2
+        pnlSpell.Left = (SplitContainer3.Panel2.Width - pnlSpell.Width) / 2
+        Tab.Top = (SplitContainer4.Panel2.Height - pnlNPC.Height) / 2
+        Tab.Left = (SplitContainer4.Panel2.Width - pnlNPC.Width) / 2
     End Sub
 
     Private Sub frmDataEditor_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         frmMapEditor.loadBar.Value = 0
     End Sub
 
-    Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
-        If TabControl1.SelectedIndex = 0 Then 'Classes
+    Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Tab.SelectedIndexChanged
+        Call ResizeForm()
+        If Tab.SelectedIndex = 0 Then 'Classes
             lstBClasses.Items.Clear()
             For i = 0 To lstClasses.Count - 1
                 lstBClasses.Items.Add(lstClasses(i).name)
             Next
             lstBClasses.Items.Add("Nouveau...")
             lstBClasses.SelectedIndex = 0
-        ElseIf TabControl1.SelectedIndex = 1 Then ' Objets
+        ElseIf Tab.SelectedIndex = 1 Then ' Objets
             lstBItems.Items.Clear()
             For i = 0 To lstItems.Count - 1
                 lstBItems.Items.Add(lstItems(i).Name)
             Next
             lstBItems.Items.Add("Nouveau...")
             lstBItems.SelectedIndex = 0
-        ElseIf TabControl1.SelectedIndex = 2 Then ' Sorts
+        ElseIf Tab.SelectedIndex = 2 Then ' Sorts
             lstBSpells.Items.Clear()
             For i = 0 To lstSpells.Count - 1
                 lstBSpells.Items.Add(lstSpells(i).Name)
             Next
             lstBSpells.Items.Add("Nouveau...")
             lstBSpells.SelectedIndex = 0
-        ElseIf TabControl1.SelectedIndex = 3 Then ' PNJs
+        ElseIf Tab.SelectedIndex = 3 Then ' PNJs
             lstBNPCs.Items.Clear()
             For i = 0 To lstNPCs.Count - 1
                 lstBNPCs.Items.Add(lstNPCs(i).Name)
@@ -61,6 +62,11 @@
     End Sub
 
 #Region "Classes"
+
+    Private Sub Class_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtClassHP.KeyPress, txtClassMP.KeyPress, txtClassStrength.KeyPress, txtClassSpeed.KeyPress, txtClassMagic.KeyPress, txtClassDef.KeyPress, txtClassAgility.KeyPress
+        If Not IsNumeric(e.KeyChar) Then e.Handled = True
+    End Sub
+
     Private Sub lstBClasses_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBClasses.SelectedIndexChanged
         If Not lstBClasses.SelectedIndex = lstBClasses.Items.Count - 1 Then
             With lstClasses(lstBClasses.SelectedIndex)
@@ -117,30 +123,39 @@
             End With
             lstClasses.Add(tmp)
         End If
+
         lstClasses(tmpIndex).Save()
         lstBClasses.Items.Clear()
+
         For i = 0 To lstClasses.Count - 1
             lstBClasses.Items.Add(lstClasses(i).name)
         Next
+
         lstBClasses.Items.Add("Nouveau...")
         lstBClasses.SelectedIndex = tmpIndex
     End Sub
+
 #End Region
 
 #Region "Items"
+
+    Private Sub Item_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtItemMP.KeyPress, txtItemHP.KeyPress
+        If Not IsNumeric(e.KeyChar) Then e.Handled = True
+    End Sub
+
     Private Sub lstBItems_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBItems.SelectedIndexChanged
         If Not lstBItems.SelectedIndex = lstBItems.Items.Count - 1 Then
             With lstItems(lstBItems.SelectedIndex)
                 txtItemName.Text = .Name
                 txtItemDesc.Text = .Description
-                txtItemType.Text = .Type
+                lstItemType.SelectedIndex = .Type
                 txtItemHP.Text = .HP
                 txtItemMP.Text = .HP
             End With
         Else
             txtItemName.Text = ""
             txtItemDesc.Text = ""
-            txtItemType.Text = ""
+            lstItemType.SelectedIndex = 0
             txtItemHP.Text = ""
             txtItemMP.Text = ""
         End If
@@ -153,7 +168,7 @@
             With lstItems(lstBItems.SelectedIndex)
                 .Name = txtItemName.Text
                 .Description = txtItemDesc.Text
-                .Type = txtItemType.Text
+                .Type = lstItemType.SelectedIndex
                 .HP = txtItemHP.Text
                 .MP = txtItemMP.Text
             End With
@@ -162,23 +177,32 @@
             With tmp
                 .Name = txtItemName.Text
                 .Description = txtItemDesc.Text
-                .Type = txtItemType.Text
+                .Type = lstItemType.SelectedIndex
                 .HP = txtItemHP.Text
                 .MP = txtItemMP.Text
             End With
             lstItems.Add(tmp)
         End If
+
         lstItems(tmpIndex).Save()
         lstBItems.Items.Clear()
+
         For i = 0 To lstItems.Count - 1
-            lstBClasses.Items.Add(lstItems(i).Name)
+            lstBItems.Items.Add(lstItems(i).Name)
         Next
+
         lstBItems.Items.Add("Nouveau...")
         lstBItems.SelectedIndex = tmpIndex
     End Sub
+
 #End Region
 
 #Region "Spell"
+
+    Private Sub Spell_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSpellDamage.KeyPress
+        If Not IsNumeric(e.KeyChar) Then e.Handled = True
+    End Sub
+
     Private Sub lstBSpells_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBSpells.SelectedIndexChanged
         If Not lstBSpells.SelectedIndex = lstBSpells.Items.Count - 1 Then
             With lstSpells(lstBSpells.SelectedIndex)
@@ -212,11 +236,14 @@
             End With
             lstSpells.Add(tmp)
         End If
+
         lstSpells(tmpIndex).Save()
         lstBSpells.Items.Clear()
+
         For i = 0 To lstSpells.Count - 1
             lstBSpells.Items.Add(lstSpells(i).Name)
         Next
+
         lstBSpells.Items.Add("Nouveau...")
         lstBSpells.SelectedIndex = tmpIndex
     End Sub
@@ -225,7 +252,6 @@
 
 #Region "NPC"
 
-#End Region
     Private Sub lstBNPC_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBNPCs.SelectedIndexChanged
         If Not lstBNPCs.SelectedIndex = lstBNPCs.Items.Count - 1 Then
             With lstNPCs(lstBItems.SelectedIndex)
@@ -258,10 +284,13 @@
         lstNPCs(tmpIndex).Save()
         lstBNPCs.Items.Clear()
         For i = 0 To lstClasses.Count - 1
-            lstBClasses.Items.Add(lstClasses(i).name)
+            lstBNPCs.Items.Add(lstClasses(i).name)
         Next
         lstBNPCs.Items.Add("Nouveau...")
         lstBNPCs.SelectedIndex = tmpIndex
     End Sub
+
+#End Region
+
 End Class
 

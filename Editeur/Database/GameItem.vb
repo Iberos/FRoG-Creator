@@ -1,11 +1,12 @@
 ﻿Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.IO
 
+<Serializable>
 Public Class GameItem
 
     Public Name As String
     Public Description As String
-    Public Type As String
+    Public Type As Byte
     Public HP As Integer
     Public MP As Integer
 
