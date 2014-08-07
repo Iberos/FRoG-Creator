@@ -120,6 +120,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ctrlGameNPC.Designer.vb">
+      <DependentUpon>ctrlGameNPC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ctrlGameNPC.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Database\BinaryDataBase.vb" />
     <Compile Include="Database\GameClass.vb" />
     <Compile Include="Database\GameItem.vb" />
@@ -192,6 +198,9 @@
     <Compile Include="GamePlayer.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\ctrlGameNPC.resx">
+      <DependentUpon>ctrlGameNPC.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConfigNPC.resx">
       <DependentUpon>frmConfigNPC.vb</DependentUpon>
     </EmbeddedResource>

@@ -179,7 +179,7 @@ Partial Class frmConfigNPC
         Me.cbLoopNPCMovement.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbLoopNPCMovement.AutoSize = True
-        Me.cbLoopNPCMovement.Location = New System.Drawing.Point(45, 328)
+        Me.cbLoopNPCMovement.Location = New System.Drawing.Point(49, 328)
         Me.cbLoopNPCMovement.Name = "cbLoopNPCMovement"
         Me.cbLoopNPCMovement.Size = New System.Drawing.Size(139, 17)
         Me.cbLoopNPCMovement.TabIndex = 7
