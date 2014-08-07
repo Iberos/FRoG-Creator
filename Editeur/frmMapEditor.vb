@@ -491,7 +491,7 @@ Public Class frmMapEditor
         End If
     End Sub
 
-    Private Sub FaireUneCaptureDécranToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FaireUneCaptureDécranToolStripMenuItem.Click
+    Private Sub screenshootToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles screenshootToolStripMenuItem.Click
         game.gameSurface.Capture.SaveToFile("Map" & curMap & ".png")
     End Sub
 

@@ -29,15 +29,15 @@ Partial Class frmMapEditor
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
         Me.QuitterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MapToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NouvelleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OuvrirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.TesterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SauvegarderSurLeDisqueToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SauvegarderSurLeServeurToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.FaireUneCaptureDécranToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.screenshootToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProprietésToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.NouvelleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OuvrirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AffichageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GrilleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrevisualisationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -150,10 +150,27 @@ Partial Class frmMapEditor
         '
         'MapToolStripMenuItem
         '
-        Me.MapToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NouvelleToolStripMenuItem, Me.OuvrirToolStripMenuItem, Me.ToolStripSeparator3, Me.TesterToolStripMenuItem, Me.SauvegarderSurLeDisqueToolStripMenuItem, Me.SauvegarderSurLeServeurToolStripMenuItem, Me.ToolStripSeparator1, Me.FaireUneCaptureDécranToolStripMenuItem, Me.ProprietésToolStripMenuItem})
+        Me.MapToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NouvelleToolStripMenuItem, Me.OuvrirToolStripMenuItem, Me.ToolStripSeparator3, Me.TesterToolStripMenuItem, Me.SauvegarderSurLeDisqueToolStripMenuItem, Me.SauvegarderSurLeServeurToolStripMenuItem, Me.ToolStripSeparator1, Me.screenshootToolStripMenuItem, Me.ProprietésToolStripMenuItem})
         Me.MapToolStripMenuItem.Name = "MapToolStripMenuItem"
         Me.MapToolStripMenuItem.Size = New System.Drawing.Size(43, 20)
         Me.MapToolStripMenuItem.Text = "Map"
+        '
+        'NouvelleToolStripMenuItem
+        '
+        Me.NouvelleToolStripMenuItem.Name = "NouvelleToolStripMenuItem"
+        Me.NouvelleToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+        Me.NouvelleToolStripMenuItem.Text = "Nouvelle"
+        '
+        'OuvrirToolStripMenuItem
+        '
+        Me.OuvrirToolStripMenuItem.Name = "OuvrirToolStripMenuItem"
+        Me.OuvrirToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+        Me.OuvrirToolStripMenuItem.Text = "Ouvrir"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(208, 6)
         '
         'TesterToolStripMenuItem
         '
@@ -178,34 +195,17 @@ Partial Class frmMapEditor
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(208, 6)
         '
-        'FaireUneCaptureDécranToolStripMenuItem
+        'screenshootToolStripMenuItem
         '
-        Me.FaireUneCaptureDécranToolStripMenuItem.Name = "FaireUneCaptureDécranToolStripMenuItem"
-        Me.FaireUneCaptureDécranToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.FaireUneCaptureDécranToolStripMenuItem.Text = "Faire une capture d'écran"
+        Me.screenshootToolStripMenuItem.Name = "screenshootToolStripMenuItem"
+        Me.screenshootToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+        Me.screenshootToolStripMenuItem.Text = "Faire une capture d'écran"
         '
         'ProprietésToolStripMenuItem
         '
         Me.ProprietésToolStripMenuItem.Name = "ProprietésToolStripMenuItem"
         Me.ProprietésToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.ProprietésToolStripMenuItem.Text = "Proprietés"
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(208, 6)
-        '
-        'NouvelleToolStripMenuItem
-        '
-        Me.NouvelleToolStripMenuItem.Name = "NouvelleToolStripMenuItem"
-        Me.NouvelleToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.NouvelleToolStripMenuItem.Text = "Nouvelle"
-        '
-        'OuvrirToolStripMenuItem
-        '
-        Me.OuvrirToolStripMenuItem.Name = "OuvrirToolStripMenuItem"
-        Me.OuvrirToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.OuvrirToolStripMenuItem.Text = "Ouvrir"
         '
         'AffichageToolStripMenuItem
         '
@@ -822,7 +822,7 @@ Partial Class frmMapEditor
     Friend WithEvents SauvegarderSurLeDisqueToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SauvegarderSurLeServeurToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents FaireUneCaptureDécranToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents screenshootToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ProprietésToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents NouvelleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
