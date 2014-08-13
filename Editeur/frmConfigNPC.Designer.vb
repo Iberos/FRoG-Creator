@@ -24,16 +24,17 @@ Partial Class frmConfigNPC
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConfigNPC))
         Me.grpNPCList = New System.Windows.Forms.GroupBox()
+        Me.pnlNPCList = New System.Windows.Forms.Panel()
         Me.grpNPCConfig = New System.Windows.Forms.GroupBox()
         Me.tcNPCConfig = New System.Windows.Forms.TabControl()
         Me.tpNPCMovement = New System.Windows.Forms.TabPage()
         Me.cmbNPCVelocity = New System.Windows.Forms.ComboBox()
         Me.lblNPCVelocity = New System.Windows.Forms.Label()
         Me.grpCustomMovement = New System.Windows.Forms.GroupBox()
+        Me.pnlListNPCMovement = New System.Windows.Forms.Panel()
         Me.cmbEnableNPCMovements = New System.Windows.Forms.ComboBox()
         Me.btnAddNPCMovement = New System.Windows.Forms.Button()
         Me.cbLoopNPCMovement = New System.Windows.Forms.CheckBox()
-        Me.listCustomNPCMovement = New System.Windows.Forms.ListBox()
         Me.rdbtnPerimeter = New System.Windows.Forms.RadioButton()
         Me.rdbtnCustom = New System.Windows.Forms.RadioButton()
         Me.rdbtnRand = New System.Windows.Forms.RadioButton()
@@ -49,7 +50,6 @@ Partial Class frmConfigNPC
         Me.rbNPCFriendly = New System.Windows.Forms.RadioButton()
         Me.rbNPCAggressive = New System.Windows.Forms.RadioButton()
         Me.btnNPCSelect = New System.Windows.Forms.Button()
-        Me.pnlNPCList = New System.Windows.Forms.Panel()
         Me.grpNPCList.SuspendLayout()
         Me.grpNPCConfig.SuspendLayout()
         Me.tcNPCConfig.SuspendLayout()
@@ -72,6 +72,15 @@ Partial Class frmConfigNPC
         Me.grpNPCList.TabIndex = 2
         Me.grpNPCList.TabStop = False
         Me.grpNPCList.Text = "Liste de PNJs"
+        '
+        'pnlNPCList
+        '
+        Me.pnlNPCList.AutoScroll = True
+        Me.pnlNPCList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pnlNPCList.Location = New System.Drawing.Point(3, 16)
+        Me.pnlNPCList.Name = "pnlNPCList"
+        Me.pnlNPCList.Size = New System.Drawing.Size(229, 454)
+        Me.pnlNPCList.TabIndex = 0
         '
         'grpNPCConfig
         '
@@ -140,10 +149,10 @@ Partial Class frmConfigNPC
         '
         Me.grpCustomMovement.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpCustomMovement.Controls.Add(Me.pnlListNPCMovement)
         Me.grpCustomMovement.Controls.Add(Me.cmbEnableNPCMovements)
         Me.grpCustomMovement.Controls.Add(Me.btnAddNPCMovement)
         Me.grpCustomMovement.Controls.Add(Me.cbLoopNPCMovement)
-        Me.grpCustomMovement.Controls.Add(Me.listCustomNPCMovement)
         Me.grpCustomMovement.Enabled = False
         Me.grpCustomMovement.Location = New System.Drawing.Point(174, 15)
         Me.grpCustomMovement.Name = "grpCustomMovement"
@@ -151,6 +160,16 @@ Partial Class frmConfigNPC
         Me.grpCustomMovement.TabIndex = 9
         Me.grpCustomMovement.TabStop = False
         Me.grpCustomMovement.Text = "Déplacements personnalisés"
+        '
+        'pnlListNPCMovement
+        '
+        Me.pnlListNPCMovement.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pnlListNPCMovement.AutoScroll = True
+        Me.pnlListNPCMovement.Location = New System.Drawing.Point(6, 19)
+        Me.pnlListNPCMovement.Name = "pnlListNPCMovement"
+        Me.pnlListNPCMovement.Size = New System.Drawing.Size(214, 265)
+        Me.pnlListNPCMovement.TabIndex = 10
         '
         'cmbEnableNPCMovements
         '
@@ -184,17 +203,6 @@ Partial Class frmConfigNPC
         Me.cbLoopNPCMovement.TabIndex = 7
         Me.cbLoopNPCMovement.Text = "Répéter le déplacement"
         Me.cbLoopNPCMovement.UseVisualStyleBackColor = True
-        '
-        'listCustomNPCMovement
-        '
-        Me.listCustomNPCMovement.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.listCustomNPCMovement.FormattingEnabled = True
-        Me.listCustomNPCMovement.Location = New System.Drawing.Point(6, 22)
-        Me.listCustomNPCMovement.Name = "listCustomNPCMovement"
-        Me.listCustomNPCMovement.Size = New System.Drawing.Size(214, 251)
-        Me.listCustomNPCMovement.TabIndex = 6
         '
         'rdbtnPerimeter
         '
@@ -245,7 +253,7 @@ Partial Class frmConfigNPC
         Me.tpNPCStatus.Location = New System.Drawing.Point(4, 22)
         Me.tpNPCStatus.Name = "tpNPCStatus"
         Me.tpNPCStatus.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpNPCStatus.Size = New System.Drawing.Size(402, 385)
+        Me.tpNPCStatus.Size = New System.Drawing.Size(403, 386)
         Me.tpNPCStatus.TabIndex = 1
         Me.tpNPCStatus.Text = "Statut"
         Me.tpNPCStatus.UseVisualStyleBackColor = True
@@ -353,15 +361,6 @@ Partial Class frmConfigNPC
         Me.btnNPCSelect.Text = "Selectionner"
         Me.btnNPCSelect.UseVisualStyleBackColor = True
         '
-        'pnlNPCList
-        '
-        Me.pnlNPCList.AutoScroll = True
-        Me.pnlNPCList.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlNPCList.Location = New System.Drawing.Point(3, 16)
-        Me.pnlNPCList.Name = "pnlNPCList"
-        Me.pnlNPCList.Size = New System.Drawing.Size(229, 454)
-        Me.pnlNPCList.TabIndex = 0
-        '
         'frmConfigNPC
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -398,7 +397,6 @@ Partial Class frmConfigNPC
     Friend WithEvents cmbEnableNPCMovements As System.Windows.Forms.ComboBox
     Friend WithEvents btnAddNPCMovement As System.Windows.Forms.Button
     Friend WithEvents cbLoopNPCMovement As System.Windows.Forms.CheckBox
-    Friend WithEvents listCustomNPCMovement As System.Windows.Forms.ListBox
     Friend WithEvents rdbtnPerimeter As System.Windows.Forms.RadioButton
     Friend WithEvents rdbtnCustom As System.Windows.Forms.RadioButton
     Friend WithEvents rdbtnRand As System.Windows.Forms.RadioButton
@@ -416,4 +414,5 @@ Partial Class frmConfigNPC
     Friend WithEvents lblNPCLnAggArea As System.Windows.Forms.Label
     Friend WithEvents picNPCCasesArea As System.Windows.Forms.PictureBox
     Friend WithEvents pnlNPCList As System.Windows.Forms.Panel
+    Friend WithEvents pnlListNPCMovement As System.Windows.Forms.Panel
 End Class

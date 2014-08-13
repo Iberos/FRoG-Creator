@@ -133,6 +133,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ctrlGameMovement.Designer.vb">
+      <DependentUpon>ctrlGameMovement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ctrlGameMovement.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\ctrlGameNPC.Designer.vb">
       <DependentUpon>ctrlGameNPC.vb</DependentUpon>
     </Compile>
@@ -211,6 +217,9 @@
     <Compile Include="GamePlayer.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\ctrlGameMovement.resx">
+      <DependentUpon>ctrlGameMovement.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ctrlGameNPC.resx">
       <DependentUpon>ctrlGameNPC.vb</DependentUpon>
     </EmbeddedResource>
@@ -277,6 +286,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Arrow up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

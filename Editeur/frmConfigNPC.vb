@@ -1,4 +1,6 @@
-﻿Public Class frmConfigNPC
+﻿Imports System.Windows.Forms
+
+Public Class frmConfigNPC
 
     Private Sub rbNPCAggressive_CheckedChanged(sender As Object, e As EventArgs) Handles rbNPCAggressive.CheckedChanged
         grpNPCAggresiveArea.Enabled = rbNPCAggressive.Checked
@@ -21,5 +23,15 @@
             pnlNPCList.Controls.Add(ctrlNpc)
             i += 1
         Next
+
+        ' Initialisation des items de déplacements
+        'TODO CHarger déplacements du pnj courant
+    End Sub
+
+    Private Sub btnAddNPCMovement_Click(sender As Object, e As EventArgs) Handles btnAddNPCMovement.Click
+        Dim ctrlMovement As New ctrlGameMovement(cmbEnableNPCMovements.Text)
+        ctrlMovement.Location = New Point(0, (ctrlMovement.Height + 2) * pnlListNPCMovement.Controls.Count)
+        pnlListNPCMovement.Controls.Add(ctrlMovement)
+        'TODO Ajouter à la liste des déplacements
     End Sub
 End Class
