@@ -1,15 +1,14 @@
 ﻿Public Class ctrlGameNPC
 
     Dim Selected As Boolean = False
-    Dim NPC As String 'TODO GameNPC 
 
-    Public Sub New(ByVal npc As String)
+    Public Sub New(ByVal npc As GameNPC)
         InitializeComponent()
 
-        Dim npcBitmap = New Bitmap(npc) 'npc.image (équivalent)
+        Dim npcBitmap = New Bitmap("Sprite.png") ' SpriteArray(npc.sprite)
         npcPicture.Size = New Point(npcBitmap.PhysicalDimension.Width / 4, npcBitmap.PhysicalDimension.Height / 4)
         npcPicture.Image = npcBitmap
-        npcName.Text = "Exemple PNJ"
+        npcName.Text = npc.name
     End Sub
 
     Private Sub ctrlGameNPC_Click(sender As Object, e As EventArgs) Handles MyBase.Click

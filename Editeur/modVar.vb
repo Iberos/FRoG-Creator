@@ -3,6 +3,7 @@
     Public game As New GameManager
     Public player As New GamePlayer
     Public editorOptions As New GameOptions
+    Public npcConfigurator As frmConfigNPC
 
     ' - Maps
     Public map As New GameMap

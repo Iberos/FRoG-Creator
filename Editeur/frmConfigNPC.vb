@@ -12,18 +12,14 @@
         grpCustomMovement.Enabled = rdbtnCustom.Checked
     End Sub
 
-    Private Sub frmConfigNPC_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        ' Prototype de création
-        Dim currentNpc As String = "Sprite.png" ' Type "GameNPC" et non un String
-        'TODO Création de la classe GameNPC
-        Dim npc As New ctrlGameNPC(currentNpc)
-        pnlNPCList.Controls.Add(npc)
-
-        For i As Integer = 0 To 10
-            npc = New ctrlGameNPC(currentNpc)
-            npc.Location = New Point(0, (npc.Height + 2) * i)
-            pnlNPCList.Controls.Add(npc)
+    Public Sub Initialize()
+        ' Chargement et ajout des PNJs
+        Dim i = 0
+        For Each currentNpc As GameNPC In lstNPCs
+            Dim ctrlNpc As New ctrlGameNPC(currentNpc)
+            ctrlNpc.Location = New Point(0, (ctrlNpc.Height + 2) * i)
+            pnlNPCList.Controls.Add(ctrlNpc)
+            i += 1
         Next
     End Sub
 End Class

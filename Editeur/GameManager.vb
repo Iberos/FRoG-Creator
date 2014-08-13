@@ -59,6 +59,10 @@ Class GameManager
         ' Chargement du joueur de test
         texPlayer = New Texture("Sprite.png")
 
+        ' Chargement du configurateur de PNJs
+        npcConfigurator = New frmConfigNPC()
+        npcConfigurator.Initialize()
+
         ' Initialisation SFML
         gameSurface.SetFramerateLimit(60)
         InitGrid()

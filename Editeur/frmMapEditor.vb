@@ -531,6 +531,6 @@ Public Class frmMapEditor
     End Sub
 
     Private Sub btn_attrNPC_Click(sender As Object, e As EventArgs) Handles btn_attrNPC.Click
-        frmConfigNPC.ShowDialog()
+        npcConfigurator.ShowDialog()
     End Sub
 End Class
