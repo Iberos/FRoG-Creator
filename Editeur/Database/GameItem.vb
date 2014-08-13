@@ -4,9 +4,11 @@ Imports System.IO
 <Serializable>
 Public Class GameItem
 
-    Public Name As String
-    Public Description As String
-    Public Type As Byte
+    Public name As String
+    Public description As String
+    Public icon As Short
+    Public paperdoll As Short
+    Public type As Byte
     Public HP As Integer
     Public MP As Integer
 

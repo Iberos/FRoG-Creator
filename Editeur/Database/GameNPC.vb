@@ -4,8 +4,17 @@ Imports System.IO
 <Serializable>
 Public Class GameNPC
 
-    Public Name As String
-    Public Dialog As String
+    Public name As String
+    Public type As Byte
+    Public sprite As Short
+    Public HP As Integer
+    Public MP As Integer
+    Public strength As Integer
+    Public magic As Integer
+    Public defense As Integer
+    Public agility As Integer
+    Public speed As Integer
+    Public dialog As String
 
 
     Public Sub Save()

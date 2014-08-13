@@ -6,6 +6,7 @@ Public Class GameClass
 
     Public name As String
     Public description As String
+    Public sprite As Short
     Public HP As Integer
     Public MP As Integer
     Public strength As Integer

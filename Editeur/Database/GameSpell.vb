@@ -4,9 +4,12 @@ Imports System.IO
 <Serializable>
 Public Class GameSpell
 
-    Public Name As String
-    Public Description As String
-    Public Damage As Integer
+    Public name As String
+    Public description As String
+    Public type As Byte
+    Public icon As Short
+    Public animation As Short
+    Public damage As Integer
 
 
     Public Sub Save()

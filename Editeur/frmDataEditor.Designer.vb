@@ -161,6 +161,9 @@ Partial Class frmDataEditor
         '
         'pnlClass
         '
+        Me.pnlClass.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pnlClass.Controls.Add(Me.txtClassDesc)
         Me.pnlClass.Controls.Add(Me.txtClassStrength)
         Me.pnlClass.Controls.Add(Me.txtClassMagic)
