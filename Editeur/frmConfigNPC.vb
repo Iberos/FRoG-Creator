@@ -2,6 +2,8 @@
 
 Public Class frmConfigNPC
 
+    Public curNPC As MapNPC ' NPC en édition
+
     Private Sub rbNPCAggressive_CheckedChanged(sender As Object, e As EventArgs) Handles rbNPCAggressive.CheckedChanged
         grpNPCAggresiveArea.Enabled = rbNPCAggressive.Checked
     End Sub

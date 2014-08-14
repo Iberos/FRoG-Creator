@@ -11,6 +11,7 @@ Public Class GameMap
     Public layer(6) As Layer ' couche entière
     Public attribute(20, 14) As Attribute ' attribut sur une case
     Public borderMap(7) As Integer ' maps au voisinage
+    Public mapNPCs As New List(Of MapNPC) ' Liste des pnjs sur la map
 
     ' - Constructeur
     Sub New()

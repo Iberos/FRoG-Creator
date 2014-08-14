@@ -17,7 +17,6 @@ Class GameManager
     Public currentTileset As Sprite
     ' - Initialisation des fonctions essencielles à l'éditeur
     Public Sub InitMapEditor()
-
         Dim i As Short = 0
 
         ' Chargement des options
@@ -254,6 +253,8 @@ Class GameManager
                         bckAttribute.FillColor = New Color(0, 0, 200, 100)
                         bckAttribute.Position = New Vector2f(x * 32, y * 32)
                         gameSurface.Draw(bckAttribute)
+                    Case 4
+                        'TODO Draw Attribut PNJ (Recherche du bon pnj en liste [Data: x, y] et affichage de son portrait)
                 End Select
             Next
         Next

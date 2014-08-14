@@ -36,6 +36,7 @@ Public Class frmMapEditor
         Application.DoEvents()
 
         picGame.Cursor = Cursors.Cross
+
         game.InitMapEditor()
         frmLoading.Hide()
     End Sub
@@ -141,6 +142,22 @@ Public Class frmMapEditor
 
     Private Sub picTiles_MouseUp(sender As Object, e As MouseEventArgs) Handles picTiles.MouseUp
         selectingTiles = False
+    End Sub
+
+    Private Sub picGame_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles picGame.MouseDoubleClick
+        If Not ButtonCopy.Checked Then
+            If Not ButtonErase.Checked Then
+                If curAttribute.Type <> 0 Then
+                    ' Recherche du pnj double cliqué si existant
+                    For Each npc As MapNPC In map.mapNPCs
+                        If npc.X = curX And npc.Y = curY Then
+                            npcConfigurator.curNPC = npc ' On selectionne le npc correspondant
+                            npcConfigurator.ShowDialog() ' On ouvre le configurateur
+                        End If
+                    Next
+                End If
+            End If
+        End If
     End Sub
 
     Private Sub picGame_MouseClick(sender As Object, e As MouseEventArgs) Handles picGame.MouseClick
