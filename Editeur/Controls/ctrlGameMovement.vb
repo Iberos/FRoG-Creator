@@ -28,7 +28,7 @@
     Private Sub RefreshPanel()
         Dim i = 0
         For Each ctrlMovement As ctrlGameMovement In npcConfigurator.pnlListNPCMovement.Controls
-            ctrlMovement.Location = New Point(0, (ctrlMovement.Height + 2) * i)
+            ctrlMovement.Location = New Point(0, (ctrlMovement.Height + 2) * i - npcConfigurator.pnlListNPCMovement.VerticalScroll.Value)
             i += 1
         Next
     End Sub
