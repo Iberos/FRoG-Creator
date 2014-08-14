@@ -25,28 +25,28 @@ Partial Class frmMapEditor
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMapEditor))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FichierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EditeurDeDonnéesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuDataEditor = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator11 = New System.Windows.Forms.ToolStripSeparator()
-        Me.QuitterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MapToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NouvelleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OuvrirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuExit = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuMap = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuNewMap = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuOpenMap = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.TesterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SauvegarderSurLeDisqueToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SauvegarderSurLeServeurToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuTestMap = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuSaveMapLocal = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuSaveMapServer = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.screenshootToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProprietésToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AffichageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GrilleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PrevisualisationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NuitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SignalerUnBugToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FaireUnDonToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuScreenshot = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuProperty = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuScreen = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuGrill = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuPreview = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuNight = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuInterrogation = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuSendBug = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuMakeDonation = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.AProposToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuAbout = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.lblCursor = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -117,7 +117,7 @@ Partial Class frmMapEditor
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FichierToolStripMenuItem, Me.MapToolStripMenuItem, Me.AffichageToolStripMenuItem, Me.ToolStripMenuItem1})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FichierToolStripMenuItem, Me.MenuMap, Me.MenuScreen, Me.MenuInterrogation})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(984, 24)
@@ -126,141 +126,141 @@ Partial Class frmMapEditor
         '
         'FichierToolStripMenuItem
         '
-        Me.FichierToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditeurDeDonnéesToolStripMenuItem, Me.ToolStripSeparator11, Me.QuitterToolStripMenuItem})
+        Me.FichierToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuDataEditor, Me.ToolStripSeparator11, Me.MenuExit})
         Me.FichierToolStripMenuItem.Name = "FichierToolStripMenuItem"
         Me.FichierToolStripMenuItem.Size = New System.Drawing.Size(56, 20)
         Me.FichierToolStripMenuItem.Text = "Editeur"
         '
-        'EditeurDeDonnéesToolStripMenuItem
+        'MenuDataEditor
         '
-        Me.EditeurDeDonnéesToolStripMenuItem.Name = "EditeurDeDonnéesToolStripMenuItem"
-        Me.EditeurDeDonnéesToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
-        Me.EditeurDeDonnéesToolStripMenuItem.Text = "Editeur de ressources"
+        Me.MenuDataEditor.Name = "MenuDataEditor"
+        Me.MenuDataEditor.Size = New System.Drawing.Size(185, 22)
+        Me.MenuDataEditor.Text = "Editeur de ressources"
         '
         'ToolStripSeparator11
         '
         Me.ToolStripSeparator11.Name = "ToolStripSeparator11"
         Me.ToolStripSeparator11.Size = New System.Drawing.Size(182, 6)
         '
-        'QuitterToolStripMenuItem
+        'MenuExit
         '
-        Me.QuitterToolStripMenuItem.Name = "QuitterToolStripMenuItem"
-        Me.QuitterToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
-        Me.QuitterToolStripMenuItem.Text = "Quitter"
+        Me.MenuExit.Name = "MenuExit"
+        Me.MenuExit.Size = New System.Drawing.Size(185, 22)
+        Me.MenuExit.Text = "Quitter"
         '
-        'MapToolStripMenuItem
+        'MenuMap
         '
-        Me.MapToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NouvelleToolStripMenuItem, Me.OuvrirToolStripMenuItem, Me.ToolStripSeparator3, Me.TesterToolStripMenuItem, Me.SauvegarderSurLeDisqueToolStripMenuItem, Me.SauvegarderSurLeServeurToolStripMenuItem, Me.ToolStripSeparator1, Me.screenshootToolStripMenuItem, Me.ProprietésToolStripMenuItem})
-        Me.MapToolStripMenuItem.Name = "MapToolStripMenuItem"
-        Me.MapToolStripMenuItem.Size = New System.Drawing.Size(43, 20)
-        Me.MapToolStripMenuItem.Text = "Map"
+        Me.MenuMap.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuNewMap, Me.MenuOpenMap, Me.ToolStripSeparator3, Me.MenuTestMap, Me.MenuSaveMapLocal, Me.MenuSaveMapServer, Me.ToolStripSeparator1, Me.MenuScreenshot, Me.MenuProperty})
+        Me.MenuMap.Name = "MenuMap"
+        Me.MenuMap.Size = New System.Drawing.Size(43, 20)
+        Me.MenuMap.Text = "Map"
         '
-        'NouvelleToolStripMenuItem
+        'MenuNewMap
         '
-        Me.NouvelleToolStripMenuItem.Name = "NouvelleToolStripMenuItem"
-        Me.NouvelleToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.NouvelleToolStripMenuItem.Text = "Nouvelle"
+        Me.MenuNewMap.Name = "MenuNewMap"
+        Me.MenuNewMap.Size = New System.Drawing.Size(211, 22)
+        Me.MenuNewMap.Text = "Nouvelle"
         '
-        'OuvrirToolStripMenuItem
+        'MenuOpenMap
         '
-        Me.OuvrirToolStripMenuItem.Name = "OuvrirToolStripMenuItem"
-        Me.OuvrirToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.OuvrirToolStripMenuItem.Text = "Ouvrir"
+        Me.MenuOpenMap.Name = "MenuOpenMap"
+        Me.MenuOpenMap.Size = New System.Drawing.Size(211, 22)
+        Me.MenuOpenMap.Text = "Ouvrir"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(208, 6)
         '
-        'TesterToolStripMenuItem
+        'MenuTestMap
         '
-        Me.TesterToolStripMenuItem.Name = "TesterToolStripMenuItem"
-        Me.TesterToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.TesterToolStripMenuItem.Text = "Tester"
+        Me.MenuTestMap.Name = "MenuTestMap"
+        Me.MenuTestMap.Size = New System.Drawing.Size(211, 22)
+        Me.MenuTestMap.Text = "Tester"
         '
-        'SauvegarderSurLeDisqueToolStripMenuItem
+        'MenuSaveMapLocal
         '
-        Me.SauvegarderSurLeDisqueToolStripMenuItem.Name = "SauvegarderSurLeDisqueToolStripMenuItem"
-        Me.SauvegarderSurLeDisqueToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.SauvegarderSurLeDisqueToolStripMenuItem.Text = "Sauvegarder sur le disque"
+        Me.MenuSaveMapLocal.Name = "MenuSaveMapLocal"
+        Me.MenuSaveMapLocal.Size = New System.Drawing.Size(211, 22)
+        Me.MenuSaveMapLocal.Text = "Sauvegarder sur le disque"
         '
-        'SauvegarderSurLeServeurToolStripMenuItem
+        'MenuSaveMapServer
         '
-        Me.SauvegarderSurLeServeurToolStripMenuItem.Name = "SauvegarderSurLeServeurToolStripMenuItem"
-        Me.SauvegarderSurLeServeurToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.SauvegarderSurLeServeurToolStripMenuItem.Text = "Sauvegarder sur le serveur"
+        Me.MenuSaveMapServer.Name = "MenuSaveMapServer"
+        Me.MenuSaveMapServer.Size = New System.Drawing.Size(211, 22)
+        Me.MenuSaveMapServer.Text = "Sauvegarder sur le serveur"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(208, 6)
         '
-        'screenshootToolStripMenuItem
+        'MenuScreenshot
         '
-        Me.screenshootToolStripMenuItem.Name = "screenshootToolStripMenuItem"
-        Me.screenshootToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.screenshootToolStripMenuItem.Text = "Faire une capture d'écran"
+        Me.MenuScreenshot.Name = "MenuScreenshot"
+        Me.MenuScreenshot.Size = New System.Drawing.Size(211, 22)
+        Me.MenuScreenshot.Text = "Faire une capture d'écran"
         '
-        'ProprietésToolStripMenuItem
+        'MenuProperty
         '
-        Me.ProprietésToolStripMenuItem.Name = "ProprietésToolStripMenuItem"
-        Me.ProprietésToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
-        Me.ProprietésToolStripMenuItem.Text = "Proprietés"
+        Me.MenuProperty.Name = "MenuProperty"
+        Me.MenuProperty.Size = New System.Drawing.Size(211, 22)
+        Me.MenuProperty.Text = "Proprietés"
         '
-        'AffichageToolStripMenuItem
+        'MenuScreen
         '
-        Me.AffichageToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GrilleToolStripMenuItem, Me.PrevisualisationToolStripMenuItem, Me.NuitToolStripMenuItem})
-        Me.AffichageToolStripMenuItem.Name = "AffichageToolStripMenuItem"
-        Me.AffichageToolStripMenuItem.Size = New System.Drawing.Size(70, 20)
-        Me.AffichageToolStripMenuItem.Text = "Affichage"
+        Me.MenuScreen.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuGrill, Me.MenuPreview, Me.MenuNight})
+        Me.MenuScreen.Name = "MenuScreen"
+        Me.MenuScreen.Size = New System.Drawing.Size(70, 20)
+        Me.MenuScreen.Text = "Affichage"
         '
-        'GrilleToolStripMenuItem
+        'MenuGrill
         '
-        Me.GrilleToolStripMenuItem.Name = "GrilleToolStripMenuItem"
-        Me.GrilleToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.GrilleToolStripMenuItem.Text = "Grille"
+        Me.MenuGrill.Name = "MenuGrill"
+        Me.MenuGrill.Size = New System.Drawing.Size(156, 22)
+        Me.MenuGrill.Text = "Grille"
         '
-        'PrevisualisationToolStripMenuItem
+        'MenuPreview
         '
-        Me.PrevisualisationToolStripMenuItem.Name = "PrevisualisationToolStripMenuItem"
-        Me.PrevisualisationToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.PrevisualisationToolStripMenuItem.Text = "Prévisualisation"
+        Me.MenuPreview.Name = "MenuPreview"
+        Me.MenuPreview.Size = New System.Drawing.Size(156, 22)
+        Me.MenuPreview.Text = "Prévisualisation"
         '
-        'NuitToolStripMenuItem
+        'MenuNight
         '
-        Me.NuitToolStripMenuItem.Name = "NuitToolStripMenuItem"
-        Me.NuitToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.NuitToolStripMenuItem.Text = "Nuit"
+        Me.MenuNight.Name = "MenuNight"
+        Me.MenuNight.Size = New System.Drawing.Size(156, 22)
+        Me.MenuNight.Text = "Nuit"
         '
-        'ToolStripMenuItem1
+        'MenuInterrogation
         '
-        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SignalerUnBugToolStripMenuItem, Me.FaireUnDonToolStripMenuItem, Me.ToolStripSeparator2, Me.AProposToolStripMenuItem})
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(24, 20)
-        Me.ToolStripMenuItem1.Text = "?"
+        Me.MenuInterrogation.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuSendBug, Me.MenuMakeDonation, Me.ToolStripSeparator2, Me.MenuAbout})
+        Me.MenuInterrogation.Name = "MenuInterrogation"
+        Me.MenuInterrogation.Size = New System.Drawing.Size(24, 20)
+        Me.MenuInterrogation.Text = "?"
         '
-        'SignalerUnBugToolStripMenuItem
+        'MenuSendBug
         '
-        Me.SignalerUnBugToolStripMenuItem.Name = "SignalerUnBugToolStripMenuItem"
-        Me.SignalerUnBugToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-        Me.SignalerUnBugToolStripMenuItem.Text = "Signaler un bug"
+        Me.MenuSendBug.Name = "MenuSendBug"
+        Me.MenuSendBug.Size = New System.Drawing.Size(157, 22)
+        Me.MenuSendBug.Text = "Signaler un bug"
         '
-        'FaireUnDonToolStripMenuItem
+        'MenuMakeDonation
         '
-        Me.FaireUnDonToolStripMenuItem.Name = "FaireUnDonToolStripMenuItem"
-        Me.FaireUnDonToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-        Me.FaireUnDonToolStripMenuItem.Text = "Faire un don"
+        Me.MenuMakeDonation.Name = "MenuMakeDonation"
+        Me.MenuMakeDonation.Size = New System.Drawing.Size(157, 22)
+        Me.MenuMakeDonation.Text = "Faire un don"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(154, 6)
         '
-        'AProposToolStripMenuItem
+        'MenuAbout
         '
-        Me.AProposToolStripMenuItem.Name = "AProposToolStripMenuItem"
-        Me.AProposToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-        Me.AProposToolStripMenuItem.Text = "A propos"
+        Me.MenuAbout.Name = "MenuAbout"
+        Me.MenuAbout.Size = New System.Drawing.Size(157, 22)
+        Me.MenuAbout.Text = "A propos"
         '
         'StatusStrip1
         '
@@ -799,16 +799,16 @@ Partial Class frmMapEditor
     End Sub
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents FichierToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents QuitterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AffichageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents GrilleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents PrevisualisationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents NuitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents SignalerUnBugToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents FaireUnDonToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuExit As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuScreen As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuGrill As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuPreview As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuNight As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuInterrogation As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuSendBug As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuMakeDonation As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents AProposToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuAbout As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents btPlay As System.Windows.Forms.ToolStripButton
@@ -818,15 +818,15 @@ Partial Class frmMapEditor
     Friend WithEvents lstTiles As System.Windows.Forms.ComboBox
     Friend WithEvents pnlTiles As System.Windows.Forms.Panel
     Friend WithEvents picTiles As System.Windows.Forms.PictureBox
-    Friend WithEvents MapToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents SauvegarderSurLeDisqueToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents SauvegarderSurLeServeurToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuMap As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuSaveMapLocal As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuSaveMapServer As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents screenshootToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ProprietésToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuScreenshot As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuProperty As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents NouvelleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents OuvrirToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuNewMap As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuOpenMap As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents lblFPS As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents lblCursor As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
@@ -853,7 +853,7 @@ Partial Class frmMapEditor
     Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator10 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents EditeurDeDonnéesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuDataEditor As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator11 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents pnlStart As System.Windows.Forms.Panel
     Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
@@ -865,7 +865,7 @@ Partial Class frmMapEditor
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblMapName As System.Windows.Forms.ToolStripLabel
     Friend WithEvents ToolStripSeparator12 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents TesterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuTestMap As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents NouveauToolStripButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents OuvrirToolStripButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents pnlAttribute As System.Windows.Forms.Panel

@@ -26,10 +26,10 @@ Class GameManager
         Else
             editorOptions.Save()
         End If
-        frmMapEditor.GrilleToolStripMenuItem.Checked = editorOptions.grid
+        frmMapEditor.MenuGrill.Checked = editorOptions.grid
         frmMapEditor.btGrid.Checked = editorOptions.grid
-        frmMapEditor.PrevisualisationToolStripMenuItem.Checked = editorOptions.tilesPreview
-        frmMapEditor.NuitToolStripMenuItem.Checked = editorOptions.nightMode
+        frmMapEditor.MenuPreview.Checked = editorOptions.tilesPreview
+        frmMapEditor.MenuNight.Checked = editorOptions.nightMode
         frmMapEditor.btNight.Checked = editorOptions.nightMode
 
         ' Initialisation du selecteur de tile

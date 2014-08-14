@@ -90,32 +90,32 @@ Public Class frmMapEditor
         End If
     End Sub
 
-    Private Sub GrilleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GrilleToolStripMenuItem.Click
+    Private Sub GrilleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MenuGrill.Click
         If editorOptions.grid = False Then
             editorOptions.grid = True
         Else
             editorOptions.grid = False
         End If
-        GrilleToolStripMenuItem.Checked = editorOptions.grid
+        MenuGrill.Checked = editorOptions.grid
         btGrid.Checked = editorOptions.grid
     End Sub
 
-    Private Sub PrevisualisationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrevisualisationToolStripMenuItem.Click
+    Private Sub PrevisualisationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MenuPreview.Click
         If editorOptions.tilesPreview = False Then
             editorOptions.tilesPreview = True
         Else
             editorOptions.tilesPreview = False
         End If
-        PrevisualisationToolStripMenuItem.Checked = editorOptions.tilesPreview
+        MenuPreview.Checked = editorOptions.tilesPreview
     End Sub
 
-    Private Sub NuitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NuitToolStripMenuItem.Click
+    Private Sub NuitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MenuNight.Click
         If editorOptions.nightMode = False Then
             editorOptions.nightMode = True
         Else
             editorOptions.nightMode = False
         End If
-        NuitToolStripMenuItem.Checked = editorOptions.nightMode
+        MenuNight.Checked = editorOptions.nightMode
         btNight.Checked = editorOptions.nightMode
     End Sub
 
@@ -248,7 +248,7 @@ Public Class frmMapEditor
         Else
             editorOptions.grid = False
         End If
-        GrilleToolStripMenuItem.Checked = editorOptions.grid
+        MenuGrill.Checked = editorOptions.grid
         btGrid.Checked = editorOptions.grid
     End Sub
 
@@ -258,7 +258,7 @@ Public Class frmMapEditor
         Else
             editorOptions.nightMode = False
         End If
-        NuitToolStripMenuItem.Checked = editorOptions.nightMode
+        MenuNight.Checked = editorOptions.nightMode
         btNight.Checked = editorOptions.nightMode
     End Sub
 
@@ -432,7 +432,7 @@ Public Class frmMapEditor
         End If
     End Sub
 
-    Private Sub OuvrirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OuvrirToolStripMenuItem.Click
+    Private Sub OuvrirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MenuOpenMap.Click
         frmMapOpen.Show()
     End Sub
 
@@ -440,7 +440,7 @@ Public Class frmMapEditor
         map.Save()
     End Sub
 
-    Private Sub NouvelleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NouvelleToolStripMenuItem.Click
+    Private Sub NouvelleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MenuNewMap.Click
         frmMapNew.Show()
     End Sub
 
@@ -459,15 +459,15 @@ Public Class frmMapEditor
         End If
     End Sub
 
-    Private Sub ProprietésToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProprietésToolStripMenuItem.Click
+    Private Sub ProprietésToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MenuProperty.Click
         frmMapProperties.Show()
     End Sub
 
-    Private Sub EditeurDeDonnéesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditeurDeDonnéesToolStripMenuItem.Click
+    Private Sub EditeurDeDonnéesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MenuDataEditor.Click
         frmDataEditor.Show()
     End Sub
 
-    Private Sub SauvegarderSurLeDisqueToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SauvegarderSurLeDisqueToolStripMenuItem.Click
+    Private Sub SauvegarderSurLeDisqueToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MenuSaveMapLocal.Click
         map.Save()
     End Sub
 
@@ -491,7 +491,7 @@ Public Class frmMapEditor
         End If
     End Sub
 
-    Private Sub screenshootToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles screenshootToolStripMenuItem.Click
+    Private Sub screenshootToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MenuScreenshot.Click
         game.gameSurface.Capture.SaveToFile("Map" & curMap & ".png")
     End Sub
 
