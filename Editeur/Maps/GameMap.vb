@@ -76,10 +76,10 @@ Public Class GameMap
         curBck = 0
         BackUp()
         ' Verouillage des boutons "annuler" et "rétablir"
-        frmMapEditor.ToolStripButton1.Enabled = False
-        frmMapEditor.ToolStripButton2.Enabled = False
+        frmMapEditor.ButtonBefore.Enabled = False
+        frmMapEditor.ButtonAfter.Enabled = False
         ' Affiche le nom de la map
-        If Not map.name = "" Then frmMapEditor.lblMapName.Text = map.name Else frmMapEditor.lblMapName.Text = "Sans Titre"
+        If Not map.name = "" Then frmMapEditor.LabelMapName.Text = map.name Else frmMapEditor.LabelMapName.Text = "Sans Titre"
     End Sub
 
     ' - Sauvegarde la map en cours
@@ -101,6 +101,6 @@ Public Class GameMap
         stream.Dispose()
         curBck += 1
         ' Déverouillage du bouton "annuler"
-        frmMapEditor.ToolStripButton1.Enabled = True
+        frmMapEditor.ButtonBefore.Enabled = True
     End Sub
 End Class

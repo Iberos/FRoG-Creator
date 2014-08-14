@@ -27,10 +27,10 @@ Class GameManager
             editorOptions.Save()
         End If
         frmMapEditor.MenuGrill.Checked = editorOptions.grid
-        frmMapEditor.btGrid.Checked = editorOptions.grid
+        frmMapEditor.ButtonGrid.Checked = editorOptions.grid
         frmMapEditor.MenuPreview.Checked = editorOptions.tilesPreview
         frmMapEditor.MenuNight.Checked = editorOptions.nightMode
-        frmMapEditor.btNight.Checked = editorOptions.nightMode
+        frmMapEditor.ButtonNight.Checked = editorOptions.nightMode
 
         ' Initialisation du selecteur de tile
         recSelect.Size = New Vector2f(32, 32)
@@ -292,7 +292,7 @@ Class GameManager
             Next
 
             'Affichage de la prévisualisation des tiles
-            If editorOptions.tilesPreview And testMode = False And frmMapEditor.btCopy.Checked = False And frmMapEditor.btErase.Checked = False Then
+            If editorOptions.tilesPreview And testMode = False And frmMapEditor.ButtonCopy.Checked = False And frmMapEditor.ButtonErase.Checked = False Then
                 If frmMapEditor.lstTiles.SelectedIndex < frmMapEditor.lstTiles.Items.Count - 1 Then
                     previewSprt = New Sprite(tileset(frmMapEditor.lstTiles.SelectedIndex))
                     previewSprt.TextureRect = New IntRect(recSelect.Position.X, recSelect.Position.Y, recSelect.Size.X, recSelect.Size.Y)
@@ -317,7 +317,7 @@ Class GameManager
             gameSurface.Display()
             FPS += 1
             If My.Computer.Clock.TickCount - Time >= 1000 Then
-                frmMapEditor.lblFPS.Text = "FPS : " & FPS.ToString
+                frmMapEditor.LabelFPS.Text = "FPS : " & FPS.ToString
                 FPS = 0
                 Time = My.Computer.Clock.TickCount
             End If

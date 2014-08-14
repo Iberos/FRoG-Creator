@@ -127,7 +127,7 @@
     <value>249, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="NouveauToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtleNewMap.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAERSURBVDhPrZDbSgJRGIXnpewd6jXsjSQvIrwoI0RQMChU
@@ -138,7 +138,7 @@
         2Mz2wxeg6/UAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="OuvrirToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonOpenMap.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJHSURBVDhPxZBdSNNhFMb/F110ZZEVhVBgeeHNICiiuggp
@@ -154,7 +154,7 @@
         g6eHO+A/lyD8ARfG3mk9fv1YAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btLocalSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonSaveMap.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFcSURBVDhPY/DO6P3vmdb13z257b9rQvN/57j6/47RNf8d
@@ -166,7 +166,7 @@
         +cjZ+cyZMzgxanaO/A8A5rv4xURvl7gAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btFill.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonFill.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALBSURBVDhPhZNfSFNxFMevbSat4ZBcMRrFsiGWiqxtSohO
@@ -184,7 +184,7 @@
         OSOjZpTHa1ZjGPcXremnzbM1auwAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btClear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonClear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJASURBVDhPfZNLSxtRFMdn5Suah0oChhiJmlGj8RGfiKIi
@@ -200,7 +200,7 @@
         ovwBHtVvxMSvxBEAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHcSURBVDhPlZDfS5pRGMf9G/wPuikIIuiiXxSsFkpakzIG
@@ -214,7 +214,7 @@
         /TpZSdnt9txlgtVqZYUCWenoBYhEfwDjHj83pK57AgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btErase.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonErase.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMVSURBVEhL5ZRbSFNxHMd3znHVVsxqUitjuTkffRDOo1RE
@@ -233,7 +233,7 @@
         VMgBRIccRY4I0OeHkBCEHmI/okH2IWpkD7ILWZczyL+aQvEDOx7H0F4NTIgAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btNight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonNight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAP7SURBVEhL7ZV/TFtVFMeLxkT3h3GJ0fjPtj9mRKQ/368y
@@ -256,7 +256,7 @@
         68YUKn1dKsc9vpFlH6YoCn8f7pz1f4dO9zvCZ0SHbZhITwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btGrid.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonGrid.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACQSURBVDhPrYsxCoNAFER3T2AbUuSuNpaWOYVIQFAEC4uA
@@ -265,7 +265,7 @@
         AAAASUVORK5CYII=
 </value>
   </data>
-  <data name="ToolStripButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonBefore.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAInSURBVDhP3Y1baJJxGMY/gkrqIgpitdhgEMGKilHUzYpg
@@ -280,7 +280,7 @@
         k7t4fCzPjtNXUHeKD0I1zal4S9hwTf+47ngbKutfs6ry/jMI4geLvU3GM1pWggAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ToolStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonAfter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIpSURBVDhP3ZDdS5NhGMZf6GAEfREOO4nwrIOlLiMMOkqD
@@ -295,7 +295,7 @@
         G0P0+vG6FrC4LTjBe4RcQRvybmuQf7cd7AYD8gSarXRsHx3+RyGIn/OCSYUwnExqAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="ToolStripButton15.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonGround.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAYAAADUryzEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGbSURBVDhPtZBLSwJRGIZn0yKiwhathFpIFwgiCCKwcFUE
@@ -308,7 +308,7 @@
         mCYKyWpAYVIGA1J6/S8gRX0BxIwn/FPwuJwAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="ToolStripButton8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonLower1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFzSURBVDhPpZHLSwJRGMVd1Lpdi4gIadOyIFoIFUEQBEEQ
@@ -320,7 +320,7 @@
         kN0keHwvwUpxqWfdFoLhXC2o1rkcpGzhqBFQrVAkB2Z51JDB8AuInEI+OoMj2wAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ToolStripButton9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonLower2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFzSURBVDhPpZHLSwJRGMVd1Lpdi4gIadOyIFoIFUEQBEEQ
@@ -332,7 +332,7 @@
         kN0keHwvwUpxqWfdFoLhXC2o1rkcpGzhqBFQrVAkB2Z51JDB8AuInEI+OoMj2wAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ToolStripButton10.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonLower3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFzSURBVDhPpZHLSwJRGMVd1Lpdi4gIadOyIFoIFUEQBEEQ
@@ -344,7 +344,7 @@
         kN0keHwvwUpxqWfdFoLhXC2o1rkcpGzhqBFQrVAkB2Z51JDB8AuInEI+OoMj2wAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ToolStripButton7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonTop1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG3SURBVDhPpZDNS1RRGMZnoet2LkIipUUuNURITBEERRCk
@@ -358,7 +358,7 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="ToolStripButton12.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonTop2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG3SURBVDhPpZDNS1RRGMZnoet2LkIipUUuNURITBEERRCk
@@ -372,7 +372,7 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="ToolStripButton13.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="ButtonTop3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG3SURBVDhPpZDNS1RRGMZnoet2LkIipUUuNURITBEERRCk
@@ -386,12 +386,12 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="Label6.Text" xml:space="preserve">
+  <data name="LabelPresentation6.Text" xml:space="preserve">
     <value>Vous trouverez toute l'aide nécessaire à débuter sur FRoG Creator ou bien à vous améliorer sur notre forum officiel. 
 Vous verrez, on ne mord pas, et nous partageons plein d'astuces, de ressources graphiques, etc...
 En plus, participer à notre communauté est un moyen sympa de remercier les développeurs BENEVOLES de ce logiciel !</value>
   </data>
-  <data name="Label4.Text" xml:space="preserve">
+  <data name="LabelPresentation4.Text" xml:space="preserve">
     <value>Vous pouvez créer ou ouvrir une map depuis le menu "Map" situé en haut de la fenêtre.
 Vous pouvez aussi créer ou éditer les ressources (objets, PNJs, etc...) de votre jeu depuis le menu "Editeur" également situé en 
 haut de la fenêtre.</value>

@@ -66,27 +66,27 @@ Public Class frmMapEditor
             picTiles.ImageLocation = ("Tiles/Tiles" & lstTiles.SelectedIndex & ".png")
             pnlAttribute.Visible = False
             curAttribute.Type = 0
-            btCopy.Enabled = True
-            btFill.Enabled = True
-            ToolStripButton15.Enabled = True
-            ToolStripButton8.Enabled = True
-            ToolStripButton9.Enabled = True
-            ToolStripButton10.Enabled = True
-            ToolStripButton7.Enabled = True
-            ToolStripButton12.Enabled = True
-            ToolStripButton13.Enabled = True
+            ButtonCopy.Enabled = True
+            ButtonFill.Enabled = True
+            ButtonGround.Enabled = True
+            ButtonLower1.Enabled = True
+            ButtonLower2.Enabled = True
+            ButtonLower3.Enabled = True
+            ButtonTop1.Enabled = True
+            ButtonTop2.Enabled = True
+            ButtonTop3.Enabled = True
         Else
             curAttribute.Type = 1
             pnlAttribute.Visible = True
-            btCopy.Enabled = False
-            btFill.Enabled = False
-            ToolStripButton15.Enabled = False
-            ToolStripButton8.Enabled = False
-            ToolStripButton9.Enabled = False
-            ToolStripButton10.Enabled = False
-            ToolStripButton7.Enabled = False
-            ToolStripButton12.Enabled = False
-            ToolStripButton13.Enabled = False
+            ButtonCopy.Enabled = False
+            ButtonFill.Enabled = False
+            ButtonGround.Enabled = False
+            ButtonLower1.Enabled = False
+            ButtonLower2.Enabled = False
+            ButtonLower3.Enabled = False
+            ButtonTop1.Enabled = False
+            ButtonTop2.Enabled = False
+            ButtonTop3.Enabled = False
         End If
     End Sub
 
@@ -97,7 +97,7 @@ Public Class frmMapEditor
             editorOptions.grid = False
         End If
         MenuGrill.Checked = editorOptions.grid
-        btGrid.Checked = editorOptions.grid
+        ButtonGrid.Checked = editorOptions.grid
     End Sub
 
     Private Sub PrevisualisationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MenuPreview.Click
@@ -116,7 +116,7 @@ Public Class frmMapEditor
             editorOptions.nightMode = False
         End If
         MenuNight.Checked = editorOptions.nightMode
-        btNight.Checked = editorOptions.nightMode
+        ButtonNight.Checked = editorOptions.nightMode
     End Sub
 
     Private Sub picTiles_MouseDown(sender As Object, e As MouseEventArgs) Handles picTiles.MouseDown
@@ -144,8 +144,8 @@ Public Class frmMapEditor
     End Sub
 
     Private Sub picGame_MouseClick(sender As Object, e As MouseEventArgs) Handles picGame.MouseClick
-        If Not btCopy.Checked Then
-            If Not btErase.Checked Then
+        If Not ButtonCopy.Checked Then
+            If Not ButtonErase.Checked Then
                 If curAttribute.Type = 0 Then
                     ' Mapping
                     Call PlaceTile(curX, curY)
@@ -167,7 +167,7 @@ Public Class frmMapEditor
             lstTiles.SelectedIndex = map.layer(curLayer).tilset(curX, curY)
             game.recSelect.Position = New Vector2f(map.DecodeX(map.layer(curLayer).tileCode(curX, curY)) * 32,
                                                    map.DecodeY(map.layer(curLayer).tileCode(curX, curY)) * 32)
-            btCopy.Checked = False
+            ButtonCopy.Checked = False
             picGame.Cursor = Cursors.Cross
         End If
     End Sub
@@ -178,10 +178,10 @@ Public Class frmMapEditor
         If curX > 20 Then curX = 20
         If Not e.Y < 0 Then curY = Int(e.Y / 32) Else curY = 0
         If curY > 14 Then curY = 14
-        lblCursor.Text = ("X: " & curX & " Y: " & curY)
+        LabelCursor.Text = ("X: " & curX & " Y: " & curY)
 
         If mapping Then
-            If Not btErase.Checked Then
+            If Not ButtonErase.Checked Then
                 If curAttribute.Type = 0 Then
                     ' Mapping
                     Call PlaceTile(curX, curY)
@@ -242,24 +242,24 @@ Public Class frmMapEditor
         End If
     End Sub
 
-    Private Sub btGrid_Click(sender As Object, e As EventArgs) Handles btGrid.Click
+    Private Sub btGrid_Click(sender As Object, e As EventArgs) Handles ButtonGrid.Click
         If editorOptions.grid = False Then
             editorOptions.grid = True
         Else
             editorOptions.grid = False
         End If
         MenuGrill.Checked = editorOptions.grid
-        btGrid.Checked = editorOptions.grid
+        ButtonGrid.Checked = editorOptions.grid
     End Sub
 
-    Private Sub btNight_Click(sender As Object, e As EventArgs) Handles btNight.Click
+    Private Sub btNight_Click(sender As Object, e As EventArgs) Handles ButtonNight.Click
         If editorOptions.nightMode = False Then
             editorOptions.nightMode = True
         Else
             editorOptions.nightMode = False
         End If
         MenuNight.Checked = editorOptions.nightMode
-        btNight.Checked = editorOptions.nightMode
+        ButtonNight.Checked = editorOptions.nightMode
     End Sub
 
     Private Sub picGame_MouseDown(sender As Object, e As MouseEventArgs) Handles picGame.MouseDown
@@ -269,12 +269,12 @@ Public Class frmMapEditor
     Private Sub picGame_MouseUp(sender As Object, e As MouseEventArgs) Handles picGame.MouseUp
         map.BackUp()
         lstBackup.RemoveRange(curBck, lstBackup.Count - curBck)
-        ToolStripButton2.Enabled = False
+        ButtonAfter.Enabled = False
         mapping = False
     End Sub
 
     ' - Outil : Remplissage
-    Private Sub btFill_Click(sender As Object, e As EventArgs) Handles btFill.Click
+    Private Sub btFill_Click(sender As Object, e As EventArgs) Handles ButtonFill.Click
         For x = 0 To 20 Step Int(game.recSelect.Size.X / 32)
             For y = 0 To 16 Step Int(game.recSelect.Size.Y / 32)
                 Call PlaceTile(x, y)
@@ -284,7 +284,7 @@ Public Class frmMapEditor
     End Sub
 
     ' - Outil : Vider
-    Private Sub btClear_Click(sender As Object, e As EventArgs) Handles btClear.Click
+    Private Sub btClear_Click(sender As Object, e As EventArgs) Handles ButtonClear.Click
         If Not lstTiles.Text = "Attributs" Then
             For x = 0 To 20
                 For y = 0 To 14
@@ -302,122 +302,122 @@ Public Class frmMapEditor
     End Sub
 
     ' - Couche : Sol
-    Private Sub ToolStripButton15_Click(sender As Object, e As EventArgs) Handles ToolStripButton15.Click
+    Private Sub ToolStripButton15_Click(sender As Object, e As EventArgs) Handles ButtonGround.Click
         curLayer = 0
 
         ' Affichage de la couche selectionnée
-        ToolStripButton15.Checked = True
-        ToolStripButton8.Checked = False
-        ToolStripButton9.Checked = False
-        ToolStripButton10.Checked = False
-        ToolStripButton7.Checked = False
-        ToolStripButton12.Checked = False
-        ToolStripButton13.Checked = False
+        ButtonGround.Checked = True
+        ButtonLower1.Checked = False
+        ButtonLower2.Checked = False
+        ButtonLower3.Checked = False
+        ButtonTop1.Checked = False
+        ButtonTop2.Checked = False
+        ButtonTop3.Checked = False
     End Sub
 
     ' - Couche : Inférieur 1
-    Private Sub ToolStripButton8_Click(sender As Object, e As EventArgs) Handles ToolStripButton8.Click
+    Private Sub ToolStripButton8_Click(sender As Object, e As EventArgs) Handles ButtonLower1.Click
         curLayer = 1
 
         ' Affichage de la couche selectionnée
-        ToolStripButton15.Checked = False
-        ToolStripButton8.Checked = True
-        ToolStripButton9.Checked = False
-        ToolStripButton10.Checked = False
-        ToolStripButton7.Checked = False
-        ToolStripButton12.Checked = False
-        ToolStripButton13.Checked = False
+        ButtonGround.Checked = False
+        ButtonLower1.Checked = True
+        ButtonLower2.Checked = False
+        ButtonLower3.Checked = False
+        ButtonTop1.Checked = False
+        ButtonTop2.Checked = False
+        ButtonTop3.Checked = False
     End Sub
 
     ' - Couche : Inférieur 2
-    Private Sub ToolStripButton9_Click(sender As Object, e As EventArgs) Handles ToolStripButton9.Click
+    Private Sub ToolStripButton9_Click(sender As Object, e As EventArgs) Handles ButtonLower2.Click
         curLayer = 2
 
         ' Affichage de la couche selectionnée
-        ToolStripButton15.Checked = False
-        ToolStripButton8.Checked = False
-        ToolStripButton9.Checked = True
-        ToolStripButton10.Checked = False
-        ToolStripButton7.Checked = False
-        ToolStripButton12.Checked = False
-        ToolStripButton13.Checked = False
+        ButtonGround.Checked = False
+        ButtonLower1.Checked = False
+        ButtonLower2.Checked = True
+        ButtonLower3.Checked = False
+        ButtonTop1.Checked = False
+        ButtonTop2.Checked = False
+        ButtonTop3.Checked = False
     End Sub
 
     ' - Couche : Inférieur 3
-    Private Sub ToolStripButton10_Click(sender As Object, e As EventArgs) Handles ToolStripButton10.Click
+    Private Sub ToolStripButton10_Click(sender As Object, e As EventArgs) Handles ButtonLower3.Click
         curLayer = 3
 
         ' Affichage de la couche selectionnée
-        ToolStripButton15.Checked = False
-        ToolStripButton8.Checked = False
-        ToolStripButton9.Checked = False
-        ToolStripButton10.Checked = True
-        ToolStripButton7.Checked = False
-        ToolStripButton12.Checked = False
-        ToolStripButton13.Checked = False
+        ButtonGround.Checked = False
+        ButtonLower1.Checked = False
+        ButtonLower2.Checked = False
+        ButtonLower3.Checked = True
+        ButtonTop1.Checked = False
+        ButtonTop2.Checked = False
+        ButtonTop3.Checked = False
     End Sub
 
     ' - Couche : Supérieur 1
-    Private Sub ToolStripButton7_Click(sender As Object, e As EventArgs) Handles ToolStripButton7.Click
+    Private Sub ToolStripButton7_Click(sender As Object, e As EventArgs) Handles ButtonTop1.Click
         curLayer = 4
 
         ' Affichage de la couche selectionnée
-        ToolStripButton15.Checked = False
-        ToolStripButton8.Checked = False
-        ToolStripButton9.Checked = False
-        ToolStripButton10.Checked = False
-        ToolStripButton7.Checked = True
-        ToolStripButton12.Checked = False
-        ToolStripButton13.Checked = False
+        ButtonGround.Checked = False
+        ButtonLower1.Checked = False
+        ButtonLower2.Checked = False
+        ButtonLower3.Checked = False
+        ButtonTop1.Checked = True
+        ButtonTop2.Checked = False
+        ButtonTop3.Checked = False
     End Sub
 
     ' - Couche : Supérieur 2
-    Private Sub ToolStripButton12_Click(sender As Object, e As EventArgs) Handles ToolStripButton12.Click
+    Private Sub ToolStripButton12_Click(sender As Object, e As EventArgs) Handles ButtonTop2.Click
         curLayer = 5
 
         ' Affichage de la couche selectionnée
-        ToolStripButton15.Checked = False
-        ToolStripButton8.Checked = False
-        ToolStripButton9.Checked = False
-        ToolStripButton10.Checked = False
-        ToolStripButton7.Checked = False
-        ToolStripButton12.Checked = True
-        ToolStripButton13.Checked = False
+        ButtonGround.Checked = False
+        ButtonLower1.Checked = False
+        ButtonLower2.Checked = False
+        ButtonLower3.Checked = False
+        ButtonTop1.Checked = False
+        ButtonTop2.Checked = True
+        ButtonTop3.Checked = False
     End Sub
 
     ' Couche : Supérieur 3
-    Private Sub ToolStripButton13_Click(sender As Object, e As EventArgs) Handles ToolStripButton13.Click
+    Private Sub ToolStripButton13_Click(sender As Object, e As EventArgs) Handles ButtonTop3.Click
         curLayer = 6
         ' Affichage de la couche selectionnée
-        ToolStripButton15.Checked = False
-        ToolStripButton8.Checked = False
-        ToolStripButton9.Checked = False
-        ToolStripButton10.Checked = False
-        ToolStripButton7.Checked = False
-        ToolStripButton12.Checked = False
-        ToolStripButton13.Checked = True
+        ButtonGround.Checked = False
+        ButtonLower1.Checked = False
+        ButtonLower2.Checked = False
+        ButtonLower3.Checked = False
+        ButtonTop1.Checked = False
+        ButtonTop2.Checked = False
+        ButtonTop3.Checked = True
     End Sub
 
     ' - Outil : Pipette
-    Private Sub btCopy_Click(sender As Object, e As EventArgs) Handles btCopy.Click
-        If btCopy.Checked Then
-            btCopy.Checked = False
+    Private Sub btCopy_Click(sender As Object, e As EventArgs) Handles ButtonCopy.Click
+        If ButtonCopy.Checked Then
+            ButtonCopy.Checked = False
             picGame.Cursor = Cursors.Cross
         Else
-            btCopy.Checked = True
+            ButtonCopy.Checked = True
             picGame.Cursor = Cursors.Hand
         End If
     End Sub
 
-    Private Sub btErase_Click(sender As Object, e As EventArgs) Handles btErase.Click
-        If btErase.Checked Then
-            btErase.Checked = False
+    Private Sub btErase_Click(sender As Object, e As EventArgs) Handles ButtonErase.Click
+        If ButtonErase.Checked Then
+            ButtonErase.Checked = False
         Else
-            btErase.Checked = True
+            ButtonErase.Checked = True
         End If
     End Sub
 
-    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ButtonBefore.Click
         If Not curBck = 1 Then
             curBck -= 1
             Dim stream As New IO.MemoryStream(lstBackup(curBck - 1))
@@ -427,8 +427,8 @@ Public Class frmMapEditor
             stream.Dispose()
             game.DrawMap()
             ' Déverouillage du bouton "rétablir" et possible verouillage du bouton "Annuler"
-            ToolStripButton2.Enabled = True
-            If curBck = 1 Then ToolStripButton1.Enabled = False
+            ButtonAfter.Enabled = True
+            If curBck = 1 Then ButtonBefore.Enabled = False
         End If
     End Sub
 
@@ -436,7 +436,7 @@ Public Class frmMapEditor
         frmMapOpen.Show()
     End Sub
 
-    Private Sub btLocalSave_Click(sender As Object, e As EventArgs) Handles btLocalSave.Click
+    Private Sub btLocalSave_Click(sender As Object, e As EventArgs) Handles ButtonSaveMap.Click
         map.Save()
     End Sub
 
@@ -444,7 +444,7 @@ Public Class frmMapEditor
         frmMapNew.Show()
     End Sub
 
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ButtonAfter.Click
         If Not curBck = lstBackup.Count Then
             curBck += 1
             Dim stream As New IO.MemoryStream(lstBackup(curBck - 1))
@@ -454,8 +454,8 @@ Public Class frmMapEditor
             stream.Dispose()
             game.DrawMap()
             ' Déverouillage du boutton "annuler" et possible verouillage du bouton "rétablir"
-            ToolStripButton1.Enabled = True
-            If curBck = lstBackup.Count Then ToolStripButton2.Enabled = False
+            ButtonBefore.Enabled = True
+            If curBck = lstBackup.Count Then ButtonAfter.Enabled = False
         End If
     End Sub
 
@@ -471,20 +471,20 @@ Public Class frmMapEditor
         map.Save()
     End Sub
 
-    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabelWebSite.LinkClicked
         Process.Start("http://frogcreator.fr/")
     End Sub
 
-    Private Sub btPlay_Click(sender As Object, e As EventArgs) Handles btPlay.Click
+    Private Sub btPlay_Click(sender As Object, e As EventArgs) Handles ButtonPlay.Click
         If testMode Then
             testMode = False
-            btPlay.Image = My.Resources.Play
+            ButtonPlay.Image = My.Resources.Play
             pnlTiles.Enabled = True
             picTiles.Enabled = True
             lstTiles.Enabled = True
         Else
             testMode = True
-            btPlay.Image = My.Resources._Stop
+            ButtonPlay.Image = My.Resources._Stop
             pnlTiles.Enabled = False
             picTiles.Enabled = False
             lstTiles.Enabled = False
@@ -495,42 +495,42 @@ Public Class frmMapEditor
         game.gameSurface.Capture.SaveToFile("Map" & curMap & ".png")
     End Sub
 
-    Private Sub NouveauToolStripButton_Click(sender As Object, e As EventArgs) Handles NouveauToolStripButton.Click
+    Private Sub NouveauToolStripButton_Click(sender As Object, e As EventArgs) Handles ButtleNewMap.Click
         frmMapNew.Show()
     End Sub
 
-    Private Sub OuvrirToolStripButton_Click(sender As Object, e As EventArgs) Handles OuvrirToolStripButton.Click
+    Private Sub OuvrirToolStripButton_Click(sender As Object, e As EventArgs) Handles ButtonOpenMap.Click
         frmMapOpen.Show()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ButtonBlock.Click
         curAttribute = New Attribute
         curAttribute.Type = 1
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        lstDir.SelectedIndex = 0
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles ButtonBlockDirection.Click
+        ListDirection.SelectedIndex = 0
         pnlBlockDir.Visible = True
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles ButtonTeleport.Click
         curAttribute = New Attribute
         curAttribute.Type = 3
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles ButtonCancel.Click
         pnlBlockDir.Visible = False
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles ButtonOk.Click
         curAttribute = New Attribute
         curAttribute.Type = 2
         ReDim curAttribute.num(0)
-        curAttribute.num(0) = lstDir.SelectedIndex
+        curAttribute.num(0) = ListDirection.SelectedIndex
         pnlBlockDir.Visible = False
     End Sub
 
-    Private Sub btn_attrNPC_Click(sender As Object, e As EventArgs) Handles btn_attrNPC.Click
+    Private Sub btn_attrNPC_Click(sender As Object, e As EventArgs) Handles ButtonAddNPC.Click
         npcConfigurator.ShowDialog()
     End Sub
 End Class
