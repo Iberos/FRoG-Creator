@@ -144,28 +144,15 @@ Public Class frmMapEditor
         selectingTiles = False
     End Sub
 
-    Private Sub picGame_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles picGame.MouseDoubleClick
-        If Not ButtonCopy.Checked Then
-            If Not ButtonErase.Checked Then
-                If curAttribute.Type <> 0 Then
-                    ' Recherche du pnj double cliqué si existant
-                    For Each npc As MapNPC In map.mapNPCs
-                        If npc.X = curX And npc.Y = curY Then
-                            npcConfigurator.curNPC = npc ' On selectionne le npc correspondant
-                            npcConfigurator.ShowDialog() ' On ouvre le configurateur
-                        End If
-                    Next
-                End If
-            End If
-        End If
-    End Sub
-
     Private Sub picGame_MouseClick(sender As Object, e As MouseEventArgs) Handles picGame.MouseClick
         If Not ButtonCopy.Checked Then
             If Not ButtonErase.Checked Then
                 If curAttribute.Type = 0 Then
                     ' Mapping
                     Call PlaceTile(curX, curY)
+                ElseIf curAttribute.Type = 4 Then
+                    ' Attributs PNJ
+                    npcConfigurator.Open(map.attribute(curX, curY), curX, curY)
                 Else
                     ' Attributs
                     Call PlaceAttribute(curX, curY, Nothing, Nothing)
@@ -547,7 +534,9 @@ Public Class frmMapEditor
         pnlBlockDir.Visible = False
     End Sub
 
-    Private Sub btn_attrNPC_Click(sender As Object, e As EventArgs) Handles ButtonAddNPC.Click
-        npcConfigurator.ShowDialog()
+    Private Sub buttonNPC_Click(sender As Object, e As EventArgs) Handles ButtonNPC.Click
+        curAttribute = New Attribute
+        curAttribute.Type = 4
+        ReDim curAttribute.num(0)
     End Sub
 End Class

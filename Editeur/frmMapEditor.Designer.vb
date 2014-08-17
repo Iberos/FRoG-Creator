@@ -94,7 +94,7 @@ Partial Class frmMapEditor
         Me.LabelPresentation2 = New System.Windows.Forms.Label()
         Me.LabelPresentation1 = New System.Windows.Forms.Label()
         Me.pnlAttribute = New System.Windows.Forms.Panel()
-        Me.ButtonAddNPC = New System.Windows.Forms.Button()
+        Me.ButtonNPC = New System.Windows.Forms.Button()
         Me.pnlBlockDir = New System.Windows.Forms.Panel()
         Me.ListDirection = New System.Windows.Forms.ComboBox()
         Me.LabelBlockDirection = New System.Windows.Forms.Label()
@@ -650,7 +650,7 @@ Partial Class frmMapEditor
         'pnlAttribute
         '
         Me.pnlAttribute.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnlAttribute.Controls.Add(Me.ButtonAddNPC)
+        Me.pnlAttribute.Controls.Add(Me.ButtonNPC)
         Me.pnlAttribute.Controls.Add(Me.pnlBlockDir)
         Me.pnlAttribute.Controls.Add(Me.ButtonTeleport)
         Me.pnlAttribute.Controls.Add(Me.ButtonBlockDirection)
@@ -661,15 +661,15 @@ Partial Class frmMapEditor
         Me.pnlAttribute.TabIndex = 9
         Me.pnlAttribute.Visible = False
         '
-        'ButtonAddNPC
+        'ButtonNPC
         '
-        Me.ButtonAddNPC.BackColor = System.Drawing.Color.LightGreen
-        Me.ButtonAddNPC.Location = New System.Drawing.Point(3, 128)
-        Me.ButtonAddNPC.Name = "ButtonAddNPC"
-        Me.ButtonAddNPC.Size = New System.Drawing.Size(241, 26)
-        Me.ButtonAddNPC.TabIndex = 11
-        Me.ButtonAddNPC.Text = "Ajouter un PNJ"
-        Me.ButtonAddNPC.UseVisualStyleBackColor = False
+        Me.ButtonNPC.BackColor = System.Drawing.Color.LightGreen
+        Me.ButtonNPC.Location = New System.Drawing.Point(3, 128)
+        Me.ButtonNPC.Name = "ButtonNPC"
+        Me.ButtonNPC.Size = New System.Drawing.Size(241, 26)
+        Me.ButtonNPC.TabIndex = 11
+        Me.ButtonNPC.Text = "PNJs"
+        Me.ButtonNPC.UseVisualStyleBackColor = False
         '
         'pnlBlockDir
         '
@@ -877,6 +877,6 @@ Partial Class frmMapEditor
     Friend WithEvents LabelBlockDirection As System.Windows.Forms.Label
     Friend WithEvents ButtonCancel As System.Windows.Forms.Button
     Friend WithEvents ButtonOk As System.Windows.Forms.Button
-    Friend WithEvents ButtonAddNPC As System.Windows.Forms.Button
+    Friend WithEvents ButtonNPC As System.Windows.Forms.Button
 
 End Class

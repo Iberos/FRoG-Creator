@@ -5,6 +5,7 @@ Public Class MapNPC
     Public index As Short
     Public standing As Boolean
     Public random As Boolean
+    Public perimeter As Boolean
     Public custom As Boolean
     Public velocity As Byte
 

@@ -2,7 +2,9 @@
 
 Public Class frmConfigNPC
 
-    Public curNPC As MapNPC ' NPC en édition
+    Public curAttrNum As Integer
+    Private attrLoaded As Boolean = False
+    Private X, Y As Integer
 
     Private Sub rbNPCAggressive_CheckedChanged(sender As Object, e As EventArgs) Handles rbNPCAggressive.CheckedChanged
         grpNPCAggresiveArea.Enabled = rbNPCAggressive.Checked
@@ -36,4 +38,72 @@ Public Class frmConfigNPC
         pnlListNPCMovement.Controls.Add(ctrlMovement)
         'TODO Ajouter à la liste des déplacements
     End Sub
+
+    Private Sub btnNPCValid_Click(sender As Object, e As EventArgs) Handles btnNPCValid.Click
+        SaveNPC()
+        Me.Close()
+    End Sub
+
+    Public Sub Open(attr As Attribute, X As Integer, Y As Integer)
+        ResetForm()
+        Me.X = X
+        Me.Y = Y
+        If attr.Type = 4 Then
+            If attr.num Is Nothing Then
+                Me.curAttrNum = Nothing
+            Else
+                Me.curAttrNum = attr.num(0)
+                LoadNPC(Me.curAttrNum)
+            End If
+        End If
+
+        Me.ShowDialog()
+    End Sub
+
+    Public Sub ResetForm()
+        Me.attrLoaded = False
+        Me.curAttrNum = Nothing
+        Me.rdbtnStatic.Checked = True
+        Me.rdbtnRand.Checked = False
+        Me.rdbtnPerimeter.Checked = False
+        Me.rdbtnCustom.Checked = False
+        Me.pnlListNPCMovement.Controls.Clear()
+    End Sub
+
+    Private Sub LoadNPC(index As Integer)
+        If index < map.mapNPCs.Count Then
+            With map.mapNPCs(index)
+                Me.rdbtnStatic.Checked = .standing
+                Me.rdbtnRand.Checked = .random
+                Me.rdbtnPerimeter.Checked = .perimeter
+                Me.rdbtnCustom.Checked = .custom
+            End With
+            '...
+            attrLoaded = True
+        End If
+    End Sub
+
+    Private Sub SaveNPC()
+        Dim npc = New MapNPC(Nothing, X, Y)
+        With npc
+            .standing = Me.rdbtnStatic.Checked
+            .random = Me.rdbtnRand.Checked
+            .perimeter = Me.rdbtnPerimeter.Checked
+            .custom = Me.rdbtnCustom.Checked
+        End With
+
+        If attrLoaded Then
+            'TODO ERR
+            map.mapNPCs(Me.curAttrNum) = npc
+        Else
+            map.mapNPCs.Add(npc)
+            Me.curAttrNum = map.mapNPCs.Count - 1
+            With map.attribute(X, Y)
+                .Type = 4
+                ReDim .num(0)
+                .num(0) = Me.curAttrNum
+            End With
+        End If
+    End Sub
+
 End Class

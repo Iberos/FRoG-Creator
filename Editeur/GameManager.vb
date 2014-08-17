@@ -255,6 +255,10 @@ Class GameManager
                         gameSurface.Draw(bckAttribute)
                     Case 4
                         'TODO Draw Attribut PNJ (Recherche du bon pnj en liste [Data: x, y] et affichage de son portrait)
+                        bckAttribute.Size = New Vector2f(32, 32)
+                        bckAttribute.FillColor = New Color(0, 200, 200, 100)
+                        bckAttribute.Position = New Vector2f(x * 32, y * 32)
+                        gameSurface.Draw(bckAttribute)
                 End Select
             Next
         Next

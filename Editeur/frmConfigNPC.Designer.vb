@@ -49,7 +49,7 @@ Partial Class frmConfigNPC
         Me.rbNPCPassive = New System.Windows.Forms.RadioButton()
         Me.rbNPCFriendly = New System.Windows.Forms.RadioButton()
         Me.rbNPCAggressive = New System.Windows.Forms.RadioButton()
-        Me.btnNPCSelect = New System.Windows.Forms.Button()
+        Me.btnNPCValid = New System.Windows.Forms.Button()
         Me.grpNPCList.SuspendLayout()
         Me.grpNPCConfig.SuspendLayout()
         Me.tcNPCConfig.SuspendLayout()
@@ -351,22 +351,22 @@ Partial Class frmConfigNPC
         Me.rbNPCAggressive.Text = "Agressif"
         Me.rbNPCAggressive.UseVisualStyleBackColor = True
         '
-        'btnNPCSelect
+        'btnNPCValid
         '
-        Me.btnNPCSelect.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnNPCSelect.Location = New System.Drawing.Point(513, 455)
-        Me.btnNPCSelect.Name = "btnNPCSelect"
-        Me.btnNPCSelect.Size = New System.Drawing.Size(159, 27)
-        Me.btnNPCSelect.TabIndex = 0
-        Me.btnNPCSelect.Text = "Selectionner"
-        Me.btnNPCSelect.UseVisualStyleBackColor = True
+        Me.btnNPCValid.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnNPCValid.Location = New System.Drawing.Point(513, 455)
+        Me.btnNPCValid.Name = "btnNPCValid"
+        Me.btnNPCValid.Size = New System.Drawing.Size(159, 27)
+        Me.btnNPCValid.TabIndex = 0
+        Me.btnNPCValid.Text = "Valider"
+        Me.btnNPCValid.UseVisualStyleBackColor = True
         '
         'frmConfigNPC
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(684, 497)
-        Me.Controls.Add(Me.btnNPCSelect)
+        Me.Controls.Add(Me.btnNPCValid)
         Me.Controls.Add(Me.grpNPCConfig)
         Me.Controls.Add(Me.grpNPCList)
         Me.MinimumSize = New System.Drawing.Size(700, 535)
@@ -390,7 +390,7 @@ Partial Class frmConfigNPC
     End Sub
     Friend WithEvents grpNPCList As System.Windows.Forms.GroupBox
     Friend WithEvents grpNPCConfig As System.Windows.Forms.GroupBox
-    Friend WithEvents btnNPCSelect As System.Windows.Forms.Button
+    Friend WithEvents btnNPCValid As System.Windows.Forms.Button
     Friend WithEvents tcNPCConfig As System.Windows.Forms.TabControl
     Friend WithEvents tpNPCMovement As System.Windows.Forms.TabPage
     Friend WithEvents grpCustomMovement As System.Windows.Forms.GroupBox
