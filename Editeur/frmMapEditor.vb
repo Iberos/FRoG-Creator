@@ -512,6 +512,7 @@ Public Class frmMapEditor
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ButtonBlock.Click
         curAttribute = New Attribute
         curAttribute.Type = 1
+        DrawFocusItem()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles ButtonBlockDirection.Click
@@ -522,6 +523,7 @@ Public Class frmMapEditor
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles ButtonTeleport.Click
         curAttribute = New Attribute
         curAttribute.Type = 3
+        DrawFocusItem()
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles ButtonCancel.Click
@@ -534,11 +536,36 @@ Public Class frmMapEditor
         ReDim curAttribute.sender(0)
         curAttribute.sender(0) = ListDirection.SelectedIndex
         pnlBlockDir.Visible = False
+        DrawFocusItem()
     End Sub
 
     Private Sub buttonNPC_Click(sender As Object, e As EventArgs) Handles ButtonNPC.Click
         curAttribute = New Attribute
         curAttribute.Type = 4
         ReDim curAttribute.sender(0)
+        DrawFocusItem()
     End Sub
+
+    Private Sub DrawFocusItem()
+        Dim boldFont = New Drawing.Font(ButtonBlock.Font.Name, ButtonBlock.Font.Size, FontStyle.Bold)
+        Dim reguFont = New Drawing.Font(ButtonBlock.Font.Name, ButtonBlock.Font.Size, FontStyle.Regular)
+
+        ButtonBlock.Font = reguFont
+        ButtonBlockDirection.Font = reguFont
+        ButtonTeleport.Font = reguFont
+        ButtonNPC.Font = reguFont
+
+        Select Case curAttribute.Type
+            Case 1
+                ButtonBlock.Font = boldFont
+            Case 2
+                ButtonBlockDirection.Font = boldFont
+            Case 3
+                ButtonTeleport.Font = boldFont
+            Case 4
+                ButtonNPC.Font = boldFont
+        End Select
+
+    End Sub
+
 End Class

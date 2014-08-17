@@ -744,6 +744,7 @@ Partial Class frmMapEditor
         'ButtonBlock
         '
         Me.ButtonBlock.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.ButtonBlock.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonBlock.Location = New System.Drawing.Point(3, 31)
         Me.ButtonBlock.Name = "ButtonBlock"
         Me.ButtonBlock.Size = New System.Drawing.Size(241, 27)
