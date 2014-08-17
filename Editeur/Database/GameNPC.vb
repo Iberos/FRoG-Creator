@@ -16,6 +16,17 @@ Public Class GameNPC
     Public speed As UShort
     Public dialog As String
 
+    Public Function getView() As Bitmap
+        Dim texture As New Bitmap("Sprite.png") 'TODO Modifier
+        Return texture.Clone(New Rectangle(0, 0, texture.Width / 4, texture.Height / 4), Imaging.PixelFormat.DontCare)
+    End Function
+
+    Public Function getShortView() As Bitmap
+        Dim texture = getView()
+        Return texture.Clone(New Rectangle(CType((texture.Width - 32) / 2, Integer),
+                                           CType(0.05 * texture.Height, Integer),
+                                           32, 32), Imaging.PixelFormat.DontCare)
+    End Function
 
     Public Sub Save()
         Dim serializer As New BinaryFormatter
