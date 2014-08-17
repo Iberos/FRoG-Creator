@@ -136,7 +136,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="Controls\ctrlGameMovement.Designer.vb">
       <DependentUpon>ctrlGameMovement.vb</DependentUpon>
     </Compile>
