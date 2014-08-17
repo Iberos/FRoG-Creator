@@ -20,7 +20,7 @@ Public Class GameNPC
     Public Sub Save()
         Dim serializer As New BinaryFormatter
         Dim writer As Stream
-        writer = File.Create("PNJs/PNJ" & curResource & ".frog")
+        writer = File.Create("PNJs/PNJ" & lstNPCs.IndexOf(Me) & ".frog")
         serializer.Serialize(writer, Me)
         writer.Close()
     End Sub

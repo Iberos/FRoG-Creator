@@ -9,27 +9,11 @@
         lstBClasses.SelectedIndex = 0
     End Sub
 
-    Private Sub frmDataEditor_Resize(sender As Object, e As EventArgs) Handles Me.Resize
-        Call ResizeForm()
-    End Sub
-
-    Private Sub ResizeForm()
-        pnlClass.Top = (SplitContainer1.Panel2.Height - pnlClass.Height) / 2
-        pnlClass.Left = (SplitContainer1.Panel2.Width - pnlClass.Width) / 2
-        pnlItem.Top = (SplitContainer2.Panel2.Height - pnlItem.Height) / 2
-        pnlItem.Left = (SplitContainer2.Panel2.Width - pnlItem.Width) / 2
-        pnlSpell.Top = (SplitContainer3.Panel2.Height - pnlSpell.Height) / 2
-        pnlSpell.Left = (SplitContainer3.Panel2.Width - pnlSpell.Width) / 2
-        Tab.Top = (SplitContainer4.Panel2.Height - pnlNPC.Height) / 2
-        Tab.Left = (SplitContainer4.Panel2.Width - pnlNPC.Width) / 2
-    End Sub
-
     Private Sub frmDataEditor_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         frmMapEditor.loadBar.Value = 0
     End Sub
 
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Tab.SelectedIndexChanged
-        Call ResizeForm()
         If Tab.SelectedIndex = 0 Then 'Classes
             lstBClasses.Items.Clear()
             For i = 0 To lstClasses.Count - 1
@@ -63,7 +47,7 @@
 
 #Region "Classes"
 
-    Private Sub Class_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtClassHP.KeyPress, txtClassMP.KeyPress, txtClassStrength.KeyPress, txtClassSpeed.KeyPress, txtClassMagic.KeyPress, txtClassDef.KeyPress, txtClassAgility.KeyPress
+    Private Sub Class_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Not IsNumeric(e.KeyChar) Then e.Handled = True
     End Sub
 
@@ -83,17 +67,17 @@
         Else
             txtClassName.Text = ""
             txtClassDesc.Text = ""
-            txtClassHP.Text = ""
-            txtClassMP.Text = ""
-            txtClassStrength.Text = ""
-            txtClassMagic.Text = ""
-            txtClassDef.Text = ""
-            txtClassAgility.Text = ""
-            txtClassSpeed.Text = ""
+            txtClassHP.Text = "0"
+            txtClassMP.Text = "0"
+            txtClassStrength.Text = "0"
+            txtClassMagic.Text = "0"
+            txtClassDef.Text = "0"
+            txtClassAgility.Text = "0"
+            txtClassSpeed.Text = "0"
         End If
     End Sub
 
-    Private Sub btClassSave_Click(sender As Object, e As EventArgs) Handles btClassSave.Click
+    Private Sub btClassSave_Click(sender As Object, e As EventArgs)
         Dim tmpIndex As Short = lstBClasses.SelectedIndex
 
         If Not lstBClasses.SelectedIndex = lstBClasses.Items.Count - 1 Then
@@ -139,16 +123,16 @@
 
 #Region "Items"
 
-    Private Sub Item_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtItemMP.KeyPress, txtItemHP.KeyPress
+    Private Sub Item_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Not IsNumeric(e.KeyChar) Then e.Handled = True
     End Sub
 
     Private Sub lstBItems_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBItems.SelectedIndexChanged
         If Not lstBItems.SelectedIndex = lstBItems.Items.Count - 1 Then
             With lstItems(lstBItems.SelectedIndex)
-                txtItemName.Text = .Name
-                txtItemDesc.Text = .Description
-                lstItemType.SelectedIndex = .Type
+                txtItemName.Text = .name
+                txtItemDesc.Text = .description
+                lstItemType.SelectedIndex = .type
                 txtItemHP.Text = .HP
                 txtItemMP.Text = .HP
             End With
@@ -156,28 +140,28 @@
             txtItemName.Text = ""
             txtItemDesc.Text = ""
             lstItemType.SelectedIndex = 0
-            txtItemHP.Text = ""
-            txtItemMP.Text = ""
+            txtItemHP.Text = "0"
+            txtItemMP.Text = "0"
         End If
     End Sub
 
-    Private Sub btItemSave_Click(sender As Object, e As EventArgs) Handles btItemSave.Click
+    Private Sub btItemSave_Click(sender As Object, e As EventArgs)
         Dim tmpIndex As Short = lstBItems.SelectedIndex()
 
         If Not lstBItems.SelectedIndex = lstBItems.Items.Count - 1 Then
             With lstItems(lstBItems.SelectedIndex)
-                .Name = txtItemName.Text
-                .Description = txtItemDesc.Text
-                .Type = lstItemType.SelectedIndex
+                .name = txtItemName.Text
+                .description = txtItemDesc.Text
+                .type = lstItemType.SelectedIndex
                 .HP = txtItemHP.Text
                 .MP = txtItemMP.Text
             End With
         Else
             Dim tmp As New GameItem
             With tmp
-                .Name = txtItemName.Text
-                .Description = txtItemDesc.Text
-                .Type = lstItemType.SelectedIndex
+                .name = txtItemName.Text
+                .description = txtItemDesc.Text
+                .type = lstItemType.SelectedIndex
                 .HP = txtItemHP.Text
                 .MP = txtItemMP.Text
             End With
@@ -188,7 +172,7 @@
         lstBItems.Items.Clear()
 
         For i = 0 To lstItems.Count - 1
-            lstBItems.Items.Add(lstItems(i).Name)
+            lstBItems.Items.Add(lstItems(i).name)
         Next
 
         lstBItems.Items.Add("Nouveau...")
@@ -199,7 +183,7 @@
 
 #Region "Spells"
 
-    Private Sub Spell_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSpellDamage.KeyPress
+    Private Sub Spell_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Not IsNumeric(e.KeyChar) Then e.Handled = True
     End Sub
 
@@ -207,23 +191,26 @@
         If Not lstBSpells.SelectedIndex = lstBSpells.Items.Count - 1 Then
             With lstSpells(lstBSpells.SelectedIndex)
                 txtSpellName.Text = .name
+                lstSpellType.SelectedIndex = .type
                 txtSpellDesc.Text = .description
                 txtSpellDamage.Text = .damage
             End With
         Else
             txtSpellName.Text = ""
+            lstSpellType.SelectedIndex = 0
             txtSpellDesc.Text = ""
-            txtSpellDamage.Text = ""
+            txtSpellDamage.Text = "0"
         End If
     End Sub
 
 
-    Private Sub btSpellSave_Click(sender As Object, e As EventArgs) Handles btSpellSave.Click
+    Private Sub btSpellSave_Click(sender As Object, e As EventArgs)
         Dim tmpIndex As Short = lstBSpells.SelectedIndex
 
         If Not lstBSpells.SelectedIndex = lstBSpells.Items.Count - 1 Then
             With lstSpells(lstBSpells.SelectedIndex)
                 .name = txtSpellName.Text
+                .type = lstSpellType.SelectedIndex
                 .description = txtSpellDesc.Text
                 .damage = txtSpellDamage.Text
             End With
@@ -231,6 +218,7 @@
             Dim tmp As New GameSpell
             With tmp
                 .name = txtSpellName.Text
+                .type = lstSpellType.SelectedIndex
                 .description = txtSpellDesc.Text
                 .damage = txtSpellDamage.Text
             End With
@@ -248,36 +236,82 @@
         lstBSpells.SelectedIndex = tmpIndex
     End Sub
 
+    Private Sub lstSpellType_SelectedIndexChanged(sender As Object, e As EventArgs)
+        If lstSpellType.SelectedIndex = 0 Then
+            lblSpellDamages.Text = "Dégats"
+        ElseIf lstSpellType.SelectedIndex = 1 Then
+            lblSpellDamages.Text = "Soin"
+        ElseIf lstSpellType.SelectedIndex = 2 Then
+            lblSpellDamages.Text = "Durée"
+        End If
+    End Sub
+
 #End Region
 
 #Region "NPCs"
+
+    Private Sub txtNPCStrength_KeyPress(sender As Object, e As KeyPressEventArgs)
+        If Not IsNumeric(e.KeyChar) Then e.Handled = True
+    End Sub
 
     Private Sub lstBNPC_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBNPCs.SelectedIndexChanged
         If Not lstBNPCs.SelectedIndex = lstBNPCs.Items.Count - 1 Then
             With lstNPCs(lstBNPCs.SelectedIndex)
                 txtNPCName.Text = .name
+                lstNPCType.SelectedIndex = .type
                 txtNPCDial.Text = .dialog
+                txtNPCHP.Text = .HP
+                txtNPCMP.Text = .MP
+                txtNPCStrength.Text = .strength
+                txtNPCMagic.Text = .magic
+                txtNPCDefense.Text = .defense
+                txtNPCAgility.Text = .agility
+                txtNPCSpeed.Text = .speed
             End With
         Else
             txtNPCName.Text = ""
+            lstNPCType.SelectedIndex = 0
             txtNPCDial.Text = ""
+            txtNPCHP.Text = "0"
+            txtNPCMP.Text = "0"
+            txtNPCStrength.Text = "0"
+            txtNPCMagic.Text = "0"
+            txtNPCDefense.Text = "0"
+            txtNPCAgility.Text = "0"
+            txtNPCSpeed.Text = "0"
         End If
+        txtNPCName.Focus()
     End Sub
 
-
-    Private Sub btNPCName_Click(sender As Object, e As EventArgs) Handles btNPCName.Click
+    Private Sub btNPCName_Click(sender As Object, e As EventArgs)
         Dim tmpIndex As Short = lstBNPCs.SelectedIndex
 
         If Not lstBNPCs.SelectedIndex = lstBNPCs.Items.Count - 1 Then
             With lstNPCs(lstBNPCs.SelectedIndex)
                 .name = txtNPCName.Text
+                .type = lstNPCType.SelectedIndex
                 .dialog = txtNPCDial.Text
+                .HP = txtNPCHP.Text
+                .MP = txtNPCMP.Text
+                .strength = txtNPCStrength.Text
+                .magic = txtNPCMagic.Text
+                .defense = txtNPCDefense.Text
+                .agility = txtNPCAgility.Text
+                .speed = txtNPCSpeed.Text
             End With
         Else
             Dim tmp As New GameNPC
             With tmp
                 .name = txtNPCName.Text
+                .type = lstNPCType.SelectedIndex
                 .dialog = txtNPCDial.Text
+                .HP = txtNPCHP.Text
+                .MP = txtNPCMP.Text
+                .strength = txtNPCStrength.Text
+                .magic = txtNPCMagic.Text
+                .defense = txtNPCDefense.Text
+                .agility = txtNPCAgility.Text
+                .speed = txtNPCSpeed.Text
             End With
             lstNPCs.Add(tmp)
         End If

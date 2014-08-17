@@ -21,7 +21,6 @@
     Public lstItems As New List(Of GameItem)
     Public lstSpells As New List(Of GameSpell)
     Public lstNPCs As New List(Of GameNPC)
-    Public curResource As Integer
 
     ' - Divers
     Public testMode As Byte

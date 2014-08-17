@@ -16,7 +16,7 @@ Public Class GameItem
     Public Sub Save()
         Dim serializer As New BinaryFormatter
         Dim writer As Stream
-        writer = File.Create("Objets/Objet" & curResource & ".frog")
+        writer = File.Create("Objets/Objet" & lstItems.IndexOf(Me) & ".frog")
         serializer.Serialize(writer, Me)
         writer.Close()
     End Sub

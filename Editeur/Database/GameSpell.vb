@@ -15,7 +15,7 @@ Public Class GameSpell
     Public Sub Save()
         Dim serializer As New BinaryFormatter
         Dim writer As Stream
-        writer = File.Create("Sorts/Sort" & curResource & ".frog")
+        writer = File.Create("Sorts/Sort" & lstSpells.IndexOf(Me) & ".frog")
         serializer.Serialize(writer, Me)
         writer.Close()
     End Sub

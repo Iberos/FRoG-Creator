@@ -97,7 +97,6 @@ Public Class BinaryDataBase
     ' - Sauvegarde de toutes les classes
     Public Sub SaveClasses()
         For i = 0 To lstClasses.Count - 1
-            curResource = i
             lstClasses(i).Save()
         Next
     End Sub
@@ -105,7 +104,6 @@ Public Class BinaryDataBase
     ' - Sauvegarde de tous les objets
     Public Sub SaveItems()
         For i = 0 To lstItems.Count - 1
-            curResource = i
             lstClasses(i).Save()
         Next
     End Sub
@@ -113,7 +111,6 @@ Public Class BinaryDataBase
     ' - Sauvegarde de tous les sorts
     Public Sub SaveSpells()
         For i = 0 To lstSpells.Count - 1
-            curResource = i
             lstSpells(i).Save()
         Next
     End Sub
@@ -121,7 +118,6 @@ Public Class BinaryDataBase
     ' - Sauvegarde de tous les PNJs
     Public Sub SaveNPCs()
         For i = 0 To lstNPCs.Count - 1
-            curResource = i
             lstNPCs(i).Save()
         Next
     End Sub
