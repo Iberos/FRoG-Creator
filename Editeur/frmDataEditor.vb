@@ -47,7 +47,7 @@
 
 #Region "Classes"
 
-    Private Sub Class_KeyPress(sender As Object, e As KeyPressEventArgs)
+    Private Sub txtClassNum_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtClassStrength.KeyPress, txtClassSpeed.KeyPress, txtClassMP.KeyPress, txtClassMagic.KeyPress, txtClassHP.KeyPress, txtClassDef.KeyPress, txtClassAgility.KeyPress
         If Not IsNumeric(e.KeyChar) Then e.Handled = True
     End Sub
 
@@ -75,9 +75,10 @@
             txtClassAgility.Text = "0"
             txtClassSpeed.Text = "0"
         End If
+        txtClassName.Focus()
     End Sub
 
-    Private Sub btClassSave_Click(sender As Object, e As EventArgs)
+    Private Sub btClassSave_Click(sender As Object, e As EventArgs) Handles btClassSave.Click
         Dim tmpIndex As Short = lstBClasses.SelectedIndex
 
         If Not lstBClasses.SelectedIndex = lstBClasses.Items.Count - 1 Then
@@ -123,7 +124,7 @@
 
 #Region "Items"
 
-    Private Sub Item_KeyPress(sender As Object, e As KeyPressEventArgs)
+    Private Sub txtItemNum_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtItemStrength.KeyPress, txtItemSpeed.KeyPress, txtItemMP.KeyPress, txtItemMagic.KeyPress, txtItemHP.KeyPress, txtItemDefense.KeyPress, txtItemAgility.KeyPress
         If Not IsNumeric(e.KeyChar) Then e.Handled = True
     End Sub
 
@@ -133,8 +134,13 @@
                 txtItemName.Text = .name
                 txtItemDesc.Text = .description
                 lstItemType.SelectedIndex = .type
-                txtItemHP.Text = .HP
-                txtItemMP.Text = .HP
+                txtItemHP.Text = .addHP
+                txtItemMP.Text = .addHP
+                txtItemStrength.Text = .addStrength
+                txtItemMagic.Text = .addMagic
+                txtItemDefense.Text = .addDefense
+                txtItemAgility.Text = .addAgility
+                txtItemSpeed.Text = .addSpeed
             End With
         Else
             txtItemName.Text = ""
@@ -142,10 +148,16 @@
             lstItemType.SelectedIndex = 0
             txtItemHP.Text = "0"
             txtItemMP.Text = "0"
+            txtItemStrength.Text = "0"
+            txtItemMagic.Text = "0"
+            txtItemDefense.Text = "0"
+            txtItemAgility.Text = "0"
+            txtItemSpeed.Text = "0"
         End If
+        txtItemName.Focus()
     End Sub
 
-    Private Sub btItemSave_Click(sender As Object, e As EventArgs)
+    Private Sub btItemSave_Click(sender As Object, e As EventArgs) Handles btItemSave.Click
         Dim tmpIndex As Short = lstBItems.SelectedIndex()
 
         If Not lstBItems.SelectedIndex = lstBItems.Items.Count - 1 Then
@@ -153,8 +165,13 @@
                 .name = txtItemName.Text
                 .description = txtItemDesc.Text
                 .type = lstItemType.SelectedIndex
-                .HP = txtItemHP.Text
-                .MP = txtItemMP.Text
+                .addHP = txtItemHP.Text
+                .addMP = txtItemMP.Text
+                .addStrength = txtItemStrength.Text
+                .addMagic = txtItemMagic.Text
+                .addDefense = txtItemDefense.Text
+                .addAgility = txtItemAgility.Text
+                .addSpeed = txtItemSpeed.Text
             End With
         Else
             Dim tmp As New GameItem
@@ -162,8 +179,13 @@
                 .name = txtItemName.Text
                 .description = txtItemDesc.Text
                 .type = lstItemType.SelectedIndex
-                .HP = txtItemHP.Text
-                .MP = txtItemMP.Text
+                .addHP = txtItemHP.Text
+                .addMP = txtItemMP.Text
+                .addStrength = txtItemStrength.Text
+                .addMagic = txtItemMagic.Text
+                .addDefense = txtItemDefense.Text
+                .addAgility = txtItemAgility.Text
+                .addSpeed = txtItemSpeed.Text
             End With
             lstItems.Add(tmp)
         End If
@@ -183,7 +205,7 @@
 
 #Region "Spells"
 
-    Private Sub Spell_KeyPress(sender As Object, e As KeyPressEventArgs)
+    Private Sub txtSpellNum_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSpellDamage.KeyPress
         If Not IsNumeric(e.KeyChar) Then e.Handled = True
     End Sub
 
@@ -201,10 +223,11 @@
             txtSpellDesc.Text = ""
             txtSpellDamage.Text = "0"
         End If
+        txtSpellName.Focus()
     End Sub
 
 
-    Private Sub btSpellSave_Click(sender As Object, e As EventArgs)
+    Private Sub btSpellSave_Click(sender As Object, e As EventArgs) Handles btSpellSave.Click
         Dim tmpIndex As Short = lstBSpells.SelectedIndex
 
         If Not lstBSpells.SelectedIndex = lstBSpells.Items.Count - 1 Then
@@ -250,7 +273,7 @@
 
 #Region "NPCs"
 
-    Private Sub txtNPCStrength_KeyPress(sender As Object, e As KeyPressEventArgs)
+    Private Sub txtNPCNum_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNPCStrength.KeyPress, txtNPCSpeed.KeyPress, txtNPCMP.KeyPress, txtNPCMagic.KeyPress, txtNPCHP.KeyPress, txtNPCDefense.KeyPress, txtNPCAgility.KeyPress
         If Not IsNumeric(e.KeyChar) Then e.Handled = True
     End Sub
 
@@ -283,7 +306,7 @@
         txtNPCName.Focus()
     End Sub
 
-    Private Sub btNPCName_Click(sender As Object, e As EventArgs)
+    Private Sub btNPCName_Click(sender As Object, e As EventArgs) Handles btNPCSave.Click
         Dim tmpIndex As Short = lstBNPCs.SelectedIndex
 
         If Not lstBNPCs.SelectedIndex = lstBNPCs.Items.Count - 1 Then

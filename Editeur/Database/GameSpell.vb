@@ -7,9 +7,9 @@ Public Class GameSpell
     Public name As String
     Public description As String
     Public type As Byte
-    Public icon As Short
-    Public animation As Short
-    Public damage As Integer
+    Public icon As UShort
+    Public animation As UShort
+    Public damage As UShort
 
 
     Public Sub Save()

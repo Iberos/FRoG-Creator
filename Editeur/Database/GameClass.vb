@@ -6,14 +6,14 @@ Public Class GameClass
 
     Public name As String
     Public description As String
-    Public sprite As Short
+    Public sprite As UShort
     Public HP As Integer
     Public MP As Integer
-    Public strength As Integer
-    Public magic As Integer
-    Public defense As Integer
-    Public agility As Integer
-    Public speed As Integer
+    Public strength As UShort
+    Public magic As UShort
+    Public defense As UShort
+    Public agility As UShort
+    Public speed As UShort
 
     Public Sub Save()
         Dim serializer As New BinaryFormatter
