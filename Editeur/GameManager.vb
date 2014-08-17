@@ -77,7 +77,7 @@ Class GameManager
                     If Not map.attribute(.X, .Y + 1).Type = 2 Then
                         .Y += 1
                         .Mov = 32
-                    ElseIf Not map.attribute(.X, .Y + 1).num(0) = 0 Then
+                    ElseIf Not map.attribute(.X, .Y + 1).sender(0) = 0 Then
                         .Y += 1
                         .Mov = 32
                     End If
@@ -90,7 +90,7 @@ Class GameManager
                     If Not map.attribute(.X, .Y - 1).Type = 2 Then
                         .Y -= 1
                         .Mov = 32
-                    ElseIf Not map.attribute(.X, .Y - 1).num(0) = 3 Then
+                    ElseIf Not map.attribute(.X, .Y - 1).sender(0) = 3 Then
                         .Y -= 1
                         .Mov = 32
                     End If
@@ -103,7 +103,7 @@ Class GameManager
                     If Not map.attribute(.X - 1, .Y).Type = 2 Then
                         .X -= 1
                         .Mov = 32
-                    ElseIf Not map.attribute(.X - 1, .Y).num(0) = 1 Then
+                    ElseIf Not map.attribute(.X - 1, .Y).sender(0) = 1 Then
                         .X -= 1
                         .Mov = 32
                     End If
@@ -116,7 +116,7 @@ Class GameManager
                     If Not map.attribute(.X + 1, .Y).Type = 2 Then
                         .X += 1
                         .Mov = 32
-                    ElseIf Not map.attribute(.X + 1, .Y).num(0) = 2 Then
+                    ElseIf Not map.attribute(.X + 1, .Y).sender(0) = 2 Then
                         .X += 1
                         .Mov = 32
                     End If
@@ -230,19 +230,19 @@ Class GameManager
                         bckAttribute.Position = New Vector2f(x * 32, y * 32)
                         gameSurface.Draw(bckAttribute)
                     Case 2
-                        If map.attribute(x, y).num(0) = 0 Then
+                        If map.attribute(x, y).sender(0) = 0 Then
                             bckAttribute.Size = New Vector2f(32, 10)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
                             bckAttribute.Position = New Vector2f(x * 32, y * 32)
-                        ElseIf map.attribute(x, y).num(0) = 1 Then
+                        ElseIf map.attribute(x, y).sender(0) = 1 Then
                             bckAttribute.Size = New Vector2f(10, 32)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
                             bckAttribute.Position = New Vector2f(x * 32 + 22, y * 32)
-                        ElseIf map.attribute(x, y).num(0) = 2 Then
+                        ElseIf map.attribute(x, y).sender(0) = 2 Then
                             bckAttribute.Size = New Vector2f(10, 32)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
                             bckAttribute.Position = New Vector2f(x * 32, y * 32)
-                        ElseIf map.attribute(x, y).num(0) = 3 Then
+                        ElseIf map.attribute(x, y).sender(0) = 3 Then
                             bckAttribute.Size = New Vector2f(32, 10)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
                             bckAttribute.Position = New Vector2f(x * 32, y * 32 + 22)

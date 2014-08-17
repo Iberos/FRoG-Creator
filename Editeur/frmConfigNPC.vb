@@ -49,10 +49,10 @@ Public Class frmConfigNPC
         Me.X = X
         Me.Y = Y
         If attr.Type = 4 Then
-            If attr.num Is Nothing Then
+            If attr.sender Is Nothing Then
                 Me.curAttrNum = Nothing
             Else
-                Me.curAttrNum = attr.num(0)
+                Me.curAttrNum = attr.sender(0)
                 LoadNPC(Me.curAttrNum)
             End If
         End If
@@ -100,8 +100,8 @@ Public Class frmConfigNPC
             Me.curAttrNum = map.mapNPCs.Count - 1
             With map.attribute(X, Y)
                 .Type = 4
-                ReDim .num(0)
-                .num(0) = Me.curAttrNum
+                ReDim .sender(0)
+                .sender(0) = Me.curAttrNum
             End With
         End If
     End Sub

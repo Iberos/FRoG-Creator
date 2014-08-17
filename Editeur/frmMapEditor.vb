@@ -155,7 +155,7 @@ Public Class frmMapEditor
                     npcConfigurator.Open(map.attribute(curX, curY), curX, curY)
                 Else
                     ' Attributs
-                    Call PlaceAttribute(curX, curY, Nothing, Nothing)
+                    Call PlaceAttribute(curX, curY, Nothing)
                 End If
             Else
                 If Not lstTiles.Text = "Attributs" Then
@@ -191,7 +191,7 @@ Public Class frmMapEditor
                     Call PlaceTile(curX, curY)
                 Else
                     ' Attributs
-                    Call PlaceAttribute(curX, curY, Nothing, Nothing)
+                    Call PlaceAttribute(curX, curY, Nothing)
                 End If
             Else
                 If Not lstTiles.Text = "Attributs" Then
@@ -205,11 +205,10 @@ Public Class frmMapEditor
     End Sub
 
     ' - Placer l'attribut
-    Private Sub PlaceAttribute(ByVal X As Byte, ByVal Y As Byte, ByVal Num() As Integer, ByVal Str() As String)
+    Private Sub PlaceAttribute(ByVal X As Byte, ByVal Y As Byte, ByVal ParamArray sender() As Object)
         If Not testMode Then
             With map.attribute(X, Y)
-                .num = curAttribute.num
-                .str = curAttribute.str
+                .sender = sender
                 .Type = curAttribute.Type
             End With
         End If
@@ -529,14 +528,14 @@ Public Class frmMapEditor
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles ButtonOk.Click
         curAttribute = New Attribute
         curAttribute.Type = 2
-        ReDim curAttribute.num(0)
-        curAttribute.num(0) = ListDirection.SelectedIndex
+        ReDim curAttribute.sender(0)
+        curAttribute.sender(0) = ListDirection.SelectedIndex
         pnlBlockDir.Visible = False
     End Sub
 
     Private Sub buttonNPC_Click(sender As Object, e As EventArgs) Handles ButtonNPC.Click
         curAttribute = New Attribute
         curAttribute.Type = 4
-        ReDim curAttribute.num(0)
+        ReDim curAttribute.sender(0)
     End Sub
 End Class
