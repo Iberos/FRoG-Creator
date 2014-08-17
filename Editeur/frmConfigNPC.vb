@@ -93,7 +93,6 @@ Public Class frmConfigNPC
         End With
 
         If attrLoaded Then
-            'TODO ERR
             map.mapNPCs(Me.curAttrNum) = npc
         Else
             map.mapNPCs.Add(npc)
