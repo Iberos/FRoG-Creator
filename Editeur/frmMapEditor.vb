@@ -155,7 +155,7 @@ Public Class frmMapEditor
                     npcConfigurator.Open(map.attribute(curX, curY), curX, curY)
                 Else
                     ' Attributs
-                    Call PlaceAttribute(curX, curY, Nothing)
+                    Call PlaceAttribute(curX, curY)
                 End If
             Else
                 If Not lstTiles.Text = "Attributs" Then
@@ -191,7 +191,7 @@ Public Class frmMapEditor
                     Call PlaceTile(curX, curY)
                 Else
                     ' Attributs
-                    Call PlaceAttribute(curX, curY, Nothing)
+                    Call PlaceAttribute(curX, curY)
                 End If
             Else
                 If Not lstTiles.Text = "Attributs" Then
@@ -205,11 +205,11 @@ Public Class frmMapEditor
     End Sub
 
     ' - Placer l'attribut
-    Private Sub PlaceAttribute(ByVal X As Byte, ByVal Y As Byte, ByVal ParamArray sender() As Object)
+    Private Sub PlaceAttribute(ByVal X As Byte, ByVal Y As Byte)
         If Not testMode Then
             With map.attribute(X, Y)
-                .sender = sender
                 .Type = curAttribute.Type
+                .sender = curAttribute.sender
             End With
         End If
     End Sub
@@ -217,7 +217,10 @@ Public Class frmMapEditor
     ' - Supprime l'attribut
     Private Sub DeleteAttribute(ByVal X As Byte, ByVal Y As Byte)
         If Not testMode Then
-            map.attribute(X, Y).Type = 0
+            With map.attribute(X, Y)
+                .Type = 0
+                .sender = Nothing
+            End With
         End If
     End Sub
 
