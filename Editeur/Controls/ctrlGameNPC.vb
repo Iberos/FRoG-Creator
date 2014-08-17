@@ -4,10 +4,7 @@
 
     Public Sub New(ByVal npc As GameNPC)
         InitializeComponent()
-
-        Dim npcBitmap = New Bitmap("Sprite.png") ' SpriteArray(npc.sprite)
-        npcPicture.Size = New Point(npcBitmap.PhysicalDimension.Width / 4, npcBitmap.PhysicalDimension.Height / 4)
-        npcPicture.Image = npcBitmap
+        npcPicture.Image = npc.getView(True)
         npcName.Text = npc.name
     End Sub
 

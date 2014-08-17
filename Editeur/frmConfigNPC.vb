@@ -27,9 +27,6 @@ Public Class frmConfigNPC
             pnlNPCList.Controls.Add(ctrlNpc)
             i += 1
         Next
-
-        ' Initialisation des items de déplacements
-        'TODO CHarger déplacements du pnj courant
     End Sub
 
     Private Sub btnAddNPCMovement_Click(sender As Object, e As EventArgs) Handles btnAddNPCMovement.Click
@@ -104,5 +101,4 @@ Public Class frmConfigNPC
             End With
         End If
     End Sub
-
 End Class
