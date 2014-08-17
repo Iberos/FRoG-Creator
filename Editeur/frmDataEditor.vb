@@ -197,7 +197,7 @@
 
 #End Region
 
-#Region "Spell"
+#Region "Spells"
 
     Private Sub Spell_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSpellDamage.KeyPress
         If Not IsNumeric(e.KeyChar) Then e.Handled = True
@@ -206,9 +206,9 @@
     Private Sub lstBSpells_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBSpells.SelectedIndexChanged
         If Not lstBSpells.SelectedIndex = lstBSpells.Items.Count - 1 Then
             With lstSpells(lstBSpells.SelectedIndex)
-                txtSpellName.Text = .Name
-                txtSpellDesc.Text = .Description
-                txtSpellDamage.Text = .Damage
+                txtSpellName.Text = .name
+                txtSpellDesc.Text = .description
+                txtSpellDamage.Text = .damage
             End With
         Else
             txtSpellName.Text = ""
@@ -223,16 +223,16 @@
 
         If Not lstBSpells.SelectedIndex = lstBSpells.Items.Count - 1 Then
             With lstSpells(lstBSpells.SelectedIndex)
-                .Name = txtSpellName.Text
-                .Description = txtSpellDesc.Text
-                .Damage = txtSpellDamage.Text
+                .name = txtSpellName.Text
+                .description = txtSpellDesc.Text
+                .damage = txtSpellDamage.Text
             End With
         Else
             Dim tmp As New GameSpell
             With tmp
-                .Name = txtSpellName.Text
-                .Description = txtSpellDesc.Text
-                .Damage = txtSpellDamage.Text
+                .name = txtSpellName.Text
+                .description = txtSpellDesc.Text
+                .damage = txtSpellDamage.Text
             End With
             lstSpells.Add(tmp)
         End If
@@ -241,7 +241,7 @@
         lstBSpells.Items.Clear()
 
         For i = 0 To lstSpells.Count - 1
-            lstBSpells.Items.Add(lstSpells(i).Name)
+            lstBSpells.Items.Add(lstSpells(i).name)
         Next
 
         lstBSpells.Items.Add("Nouveau...")
@@ -250,13 +250,13 @@
 
 #End Region
 
-#Region "NPC"
+#Region "NPCs"
 
     Private Sub lstBNPC_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstBNPCs.SelectedIndexChanged
         If Not lstBNPCs.SelectedIndex = lstBNPCs.Items.Count - 1 Then
-            With lstNPCs(lstBItems.SelectedIndex)
-                txtNPCName.Text = .Name
-                txtNPCDial.Text = .Dialog
+            With lstNPCs(lstBNPCs.SelectedIndex)
+                txtNPCName.Text = .name
+                txtNPCDial.Text = .dialog
             End With
         Else
             txtNPCName.Text = ""
@@ -270,21 +270,21 @@
 
         If Not lstBNPCs.SelectedIndex = lstBNPCs.Items.Count - 1 Then
             With lstNPCs(lstBNPCs.SelectedIndex)
-                .Name = txtNPCName.Text
-                .Dialog = txtNPCDial.Text
+                .name = txtNPCName.Text
+                .dialog = txtNPCDial.Text
             End With
         Else
             Dim tmp As New GameNPC
             With tmp
-                .Name = txtNPCName.Text
-                .Dialog = txtNPCDial.Text
+                .name = txtNPCName.Text
+                .dialog = txtNPCDial.Text
             End With
             lstNPCs.Add(tmp)
         End If
         lstNPCs(tmpIndex).Save()
         lstBNPCs.Items.Clear()
-        For i = 0 To lstClasses.Count - 1
-            lstBNPCs.Items.Add(lstClasses(i).name)
+        For i = 0 To lstNPCs.Count - 1
+            lstBNPCs.Items.Add(lstNPCs(i).name)
         Next
         lstBNPCs.Items.Add("Nouveau...")
         lstBNPCs.SelectedIndex = tmpIndex
