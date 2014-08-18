@@ -16,22 +16,19 @@ Public Class GameNPC
     Public speed As UShort
     Public dialog As String
 
+    Public texture As New Bitmap("Sprite.png")
+
     Public Function getView(Optional normalized As Boolean = False) As Bitmap
-        Dim texture As New Bitmap("Sprite.png") 'TODO Modifier
-        Dim textureRender = texture.Clone(New Rectangle(0, 0, texture.Width / 4, texture.Height / 4), Imaging.PixelFormat.DontCare)
-        If normalized Then
-            textureRender = textureRender.Clone(New Rectangle(CType((texture.Width - 32) / 2, Integer),
-                                                              CType(0.05 * texture.Height, Integer),
-                                                              32, 48), Imaging.PixelFormat.DontCare)
-        End If
-        Return textureRender
+        Return texture.Clone(New Rectangle(If(normalized, ((texture.Width / 4) - 32) / 2, 0),
+                                            0,
+                                            If(normalized, 32, texture.Width / 4),
+                                            If(normalized, 48, texture.Height / 4)),
+                                            Imaging.PixelFormat.DontCare)
     End Function
 
     Public Function getShortView(Optional normalized As Boolean = False) As Bitmap
-        Dim texture = getView(normalized)
-        Return texture.Clone(New Rectangle(CType((texture.Width - 32) / 2, Integer),
-                                           CType(If(normalized, 0, 0.05) * texture.Height, Integer),
-                                           32, 32), Imaging.PixelFormat.DontCare)
+        Dim tex = getView(normalized)
+        Return tex.Clone(New Rectangle((tex.Width - 32) / 2, If(normalized, 0, 0.1 * tex.Height), 32, 32), Imaging.PixelFormat.DontCare)
     End Function
 
     Public Sub Save()
