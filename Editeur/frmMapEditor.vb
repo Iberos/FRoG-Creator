@@ -27,10 +27,6 @@ Public Class frmMapEditor
         If Not Directory.Exists("PNJs") Then Directory.CreateDirectory("PNJS")
         If Not Directory.Exists("Sorts") Then Directory.CreateDirectory("Sorts")
         If Not Directory.Exists("Tiles") Then Directory.CreateDirectory("Tiles")
-        If Not File.Exists("Sprite.png") Then
-            MessageBox.Show("ATTENTION: Aucun sprite n'a été détecté, veuillez replacer Sprite.png à la racine du programme\n\nLe programme va maintenant se fermer")
-            End
-        End If
 
         frmLoading.Show()
         Application.DoEvents()
@@ -89,6 +85,7 @@ Public Class frmMapEditor
             ButtonTop2.Enabled = False
             ButtonTop3.Enabled = False
         End If
+        DrawFocusItem()
     End Sub
 
     Private Sub GrilleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MenuGrill.Click

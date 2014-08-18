@@ -16,7 +16,7 @@ Public Class GameNPC
     Public speed As UShort
     Public dialog As String
 
-    Public texture As New Bitmap("Sprite.png")
+    Public texture As New Bitmap("Resources/Sprite.png")
 
     Public Function getView(Optional normalized As Boolean = False) As Bitmap
         Return texture.Clone(New Rectangle(If(normalized, ((texture.Width / 4) - 32) / 2, 0),

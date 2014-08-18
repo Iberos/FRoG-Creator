@@ -56,7 +56,7 @@ Class GameManager
         DrawMap()
 
         ' Chargement du joueur de test
-        texPlayer = New Texture("Sprite.png")
+        texPlayer = New Texture("Resources/Sprite.png")
 
         ' Chargement du configurateur de PNJs
         npcConfigurator = New frmConfigNPC()
