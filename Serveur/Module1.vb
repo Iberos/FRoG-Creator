@@ -29,7 +29,7 @@ Module Main
     Sub Login(ByVal Pseudo As String, ByRef Password As String)
         'Lancement de la connection sur le serveur SQL
         Dim myAdapter As New MySqlDataAdapter
-        Dim sqlquery = "SELECT * FROM cnx_user Where login = '" + Pseudo + "' AND password '" + Password
+        Dim sqlquery = "SELECT * FROM Frog_User Where login = '" + Pseudo + "' AND password '" + Password
         Dim myCommand As New MySqlCommand()
         myCommand.Connection = conn
         myCommand.CommandText = sqlquery
