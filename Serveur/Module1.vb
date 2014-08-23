@@ -9,7 +9,7 @@ Module Main
     Dim conn As New MySqlConnection
 
     Sub Main()
-
+        Console.WriteLine("Frog Creator Version VB.NET")
     End Sub
 
     Sub CheckBDD(ByVal server As String, ByRef user As String, ByRef password As String, ByRef database As String)
@@ -28,8 +28,6 @@ Module Main
 
     Sub Login(ByVal Pseudo As String, ByRef Password As String)
         'Lancement de la connection sur le serveur SQL
-        Dim connStr As String = "DRIVER={MySQL ODBC 5.1 Driver};SERVER=server;UID=user;DATABASE=database;Password=password"
-        Dim Connection As New System.Data.Odbc.OdbcConnection(connStr)
     End Sub
 
 End Module
