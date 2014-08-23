@@ -26,7 +26,7 @@ Module Main
         End Try
     End Sub
 
-    Sub Login(ByVal Pseudo As String, ByVal Password As String)
+    Sub Login(ByVal Pseudo As String, ByRef Password As String)
         'Lancement de la connection sur le serveur SQL
         Dim connStr As String = "DRIVER={MySQL ODBC 5.1 Driver};SERVER=server;UID=user;DATABASE=database;Password=password"
         Dim Connection As New System.Data.Odbc.OdbcConnection(connStr)
