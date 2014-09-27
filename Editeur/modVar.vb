@@ -1,4 +1,5 @@
 ﻿Module modVar
+    'TODO Initialiser les variables en chargement et non comme suit
     ' - Général
     Public game As New GameManager
     Public player As New GamePlayer

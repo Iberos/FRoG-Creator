@@ -29,12 +29,12 @@ Public Class frmMapEditor
         If Not Directory.Exists("Tiles") Then Directory.CreateDirectory("Tiles")
 
         frmLoading.Show()
-        Application.DoEvents()
 
         picGame.Cursor = Cursors.Cross
+        game.Initialize()
 
-        game.InitMapEditor()
         frmLoading.Hide()
+        Application.DoEvents()
     End Sub
 
     Public Sub FormResize()
@@ -125,9 +125,10 @@ Public Class frmMapEditor
     End Sub
 
     Private Sub picTiles_MouseMove(sender As Object, e As MouseEventArgs) Handles picTiles.MouseMove
+        'TODO À régler : Erreur lors de l'ouverture du projet (Tester l'existance des DLLs externes SFML)
         If selectingTiles And
-           Mouse.GetPosition(game.tileSurface).X > game.recSelect.Position.X And
-           Mouse.GetPosition(game.tileSurface).Y > game.recSelect.Position.Y Then ' Eviter la séléction "négative"
+            Mouse.GetPosition(game.tileSurface).X > game.recSelect.Position.X And
+            Mouse.GetPosition(game.tileSurface).Y > game.recSelect.Position.Y Then ' Eviter la séléction "négative"
 
             Dim tmpHeight As Integer = Int((Mouse.GetPosition(game.tileSurface).Y - game.recSelect.Position.Y) / 32) + 1
             Dim tmpWidth As Integer = Int((Mouse.GetPosition(game.tileSurface).X - game.recSelect.Position.X) / 32) + 1

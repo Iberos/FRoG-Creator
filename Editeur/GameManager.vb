@@ -4,8 +4,8 @@ Imports System.IO
 
 Class GameManager
 
-    Public gameSurface As New RenderWindow(frmMapEditor.picGame.Handle)
-    Public tileSurface As New RenderWindow(frmMapEditor.picTiles.Handle)
+    Public gameSurface As RenderWindow
+    Public tileSurface As RenderWindow
     Private gridSurface As New RenderTexture(672, 480)
     Private nightSurface As New RectangleShape(New Vector2f(672, 480))
     Private mapSurface(6) As RenderTexture
@@ -15,9 +15,14 @@ Class GameManager
     Public sprtPlayer As Sprite
     Public recSelect As New RectangleShape
     Public currentTileset As Sprite
-    ' - Initialisation des fonctions essencielles à l'éditeur
-    Public Sub InitMapEditor()
+    ' - Initialisation des fonctions essentielles à l'éditeur
+
+    Public Sub Initialize() 'TODO Modifier Initialize GameManager en constructeur
         Dim i As Short = 0
+
+        ' Chargement des éléments éditeur
+        gameSurface = New RenderWindow(frmMapEditor.picGame.Handle)
+        tileSurface = New RenderWindow(frmMapEditor.picTiles.Handle)
 
         ' Chargement des options
         If File.Exists("Options.xml") Then
@@ -39,12 +44,21 @@ Class GameManager
         recSelect.FillColor = Color.Transparent
 
         ' Chargement des tiles
-        While (File.Exists("Tiles/Tiles" & i.ToString() & ".png"))
-            ReDim Preserve tileset(i)
-            tileset(i) = New Texture("Tiles/Tiles" & i.ToString() & ".png")
-            frmMapEditor.lstTiles.Items.Add("Tiles" & i.ToString & ".png")
-            i += 1
-        End While
+        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+        Dim files() As String = IO.Directory.GetFiles("Tiles")
+        If files.Count() > 0 Then
+            For index As Integer = 0 To files.Count() - 1
+                ReDim Preserve tileset(index)
+                tileset(index) = New Texture("Tiles/Tiles" & index.ToString() & ".png")
+                frmMapEditor.lstTiles.Items.Add("Tiles" & index.ToString & ".png")
+            Next
+        Else
+            MsgBox("L'éditeur ne peut se lancer sans tileset" + Environment.NewLine() +
+                   "Erreur : Textures introuvables", MsgBoxStyle.Critical, "Erreur lors du chargement")
+            Environment.Exit(0)
+        End If
+        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
         frmMapEditor.lstTiles.Items.Add("Attributs")
         frmMapEditor.lstTiles.SelectedIndex = 0
 
@@ -56,7 +70,13 @@ Class GameManager
         DrawMap()
 
         ' Chargement du joueur de test
-        texPlayer = New Texture("Resources/Sprite.png")
+        If File.Exists("Resources/Sprite.png") Then
+            texPlayer = New Texture("Resources/Sprite.png")
+        Else
+            MsgBox("L'éditeur ne peut se lancer sans sprite" + Environment.NewLine() +
+                   "Erreur : Textures introuvables", MsgBoxStyle.Critical, "Erreur lors du chargement")
+            Environment.Exit(0)
+        End If
 
         ' Chargement du configurateur de PNJs
         npcConfigurator = New frmConfigNPC()
