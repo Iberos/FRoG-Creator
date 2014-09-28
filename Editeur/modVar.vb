@@ -3,7 +3,7 @@
     ' Constantes
     Public Const MAP_WIDTH As Byte = 20
     Public Const MAP_HEIGHT As Byte = 14
-    Public Const CASE_LENGTH As Byte = 32
+    Public Const CASE_LENGTH As Single = 32
 
     'TODO Initialiser les variables en chargement et non comme suit
     ' - Général

@@ -274,22 +274,22 @@ Class GameManager
                         bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                         gameSurface.Draw(bckAttribute)
                     Case 2
-                        If map.attribute(x, y).sender(0) = 0 Then
+                        If map.attribute(x, y).sender(0) = 0 Then 'Bas
                             bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, 10)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
                             bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
-                        ElseIf map.attribute(x, y).sender(0) = 1 Then
+                        ElseIf map.attribute(x, y).sender(0) = 1 Then 'Gauche
                             bckAttribute.Size = New Vector2f(10, modVar.CASE_LENGTH)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
-                            bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH + 22, y * modVar.CASE_LENGTH)
-                        ElseIf map.attribute(x, y).sender(0) = 2 Then
+                            bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH + modVar.CASE_LENGTH - 10, y * modVar.CASE_LENGTH)
+                        ElseIf map.attribute(x, y).sender(0) = 2 Then 'Droite
                             bckAttribute.Size = New Vector2f(10, modVar.CASE_LENGTH)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
                             bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
-                        ElseIf map.attribute(x, y).sender(0) = 3 Then
+                        ElseIf map.attribute(x, y).sender(0) = 3 Then 'Haut
                             bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, 10)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
-                            bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH + 22)
+                            bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH + modVar.CASE_LENGTH - 10)
                         End If
                         gameSurface.Draw(bckAttribute)
                     Case 3
@@ -347,7 +347,7 @@ Class GameManager
                     previewSprt = New Sprite(tileset(frmMapEditor.lstTiles.SelectedIndex))
                     previewSprt.TextureRect = New IntRect(recSelect.Position.X, recSelect.Position.Y, recSelect.Size.X, recSelect.Size.Y)
                     previewSprt.Color = New Color(255, 255, 255, 155)
-                    previewSprt.Position = New Vector2f(curX * CType(modVar.CASE_LENGTH, Single), curY * CType(modVar.CASE_LENGTH, Single))
+                    previewSprt.Position = New Vector2f(curX * modVar.CASE_LENGTH, curY * modVar.CASE_LENGTH)
                     gameSurface.Draw(previewSprt)
                 End If
             End If

@@ -19,6 +19,8 @@ Public Class frmConfigNPC
     End Sub
 
     Public Sub New()
+        InitializeComponent()
+
         ' Chargement et ajout des PNJs
         Dim i = 0
         For Each currentNpc As GameNPC In lstNPCs
