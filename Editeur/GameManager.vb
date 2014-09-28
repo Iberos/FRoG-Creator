@@ -18,33 +18,63 @@ Class GameManager
     ' - Initialisation des fonctions essentielles à l'éditeur
 
     Public Sub Initialize() 'TODO Modifier Initialize GameManager en constructeur
-        Dim i As Short = 0
 
-        ' Chargement des éléments éditeur
-        gameSurface = New RenderWindow(frmMapEditor.picGame.Handle)
-        tileSurface = New RenderWindow(frmMapEditor.picTiles.Handle)
+        ' Chargement des options
+        LoadParameters()
 
+        ' Initialisation des autres composants
+        InitializeClass()
+
+        ' Chargement des tiles
+        LoadTiles()
+
+        ' Chargement de la map
+        LoadMap()
+
+        ' Chargement du joueur de test
+        LoadTestSprite()
+    End Sub
+
+    Private Sub LoadParameters()
         ' Chargement des options
         If File.Exists("Options.xml") Then
             editorOptions.Load()
         Else
             editorOptions.Save()
         End If
+
         frmMapEditor.MenuGrill.Checked = editorOptions.grid
         frmMapEditor.ButtonGrid.Checked = editorOptions.grid
         frmMapEditor.MenuPreview.Checked = editorOptions.tilesPreview
         frmMapEditor.MenuNight.Checked = editorOptions.nightMode
         frmMapEditor.ButtonNight.Checked = editorOptions.nightMode
+    End Sub
+
+    Private Sub InitializeClass()
+        ' Chargement des éléments éditeur
+        gameSurface = New RenderWindow(frmMapEditor.picGame.Handle)
+        tileSurface = New RenderWindow(frmMapEditor.picTiles.Handle)
+
+        ' Initialisation SFML
+        gameSurface.SetFramerateLimit(60)
 
         ' Initialisation du selecteur de tile
-        recSelect.Size = New Vector2f(32, 32)
+        recSelect.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
         recSelect.OutlineColor = New Color(0, 100, 0)
         recSelect.OutlineThickness = 1
         recSelect.Position = New Vector2f(0, 0)
         recSelect.FillColor = Color.Transparent
 
+        ' Création du configurateur de PNJs
+        npcConfigurator = New frmConfigNPC()
+
+        ' Initialisation des add-ons
+        InitializeGrid()
+        InitializeNight()
+    End Sub
+
+    Private Sub LoadTiles()
         ' Chargement des tiles
-        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''
         Dim files() As String = IO.Directory.GetFiles("Tiles")
         If files.Count() > 0 Then
             For index As Integer = 0 To files.Count() - 1
@@ -52,23 +82,26 @@ Class GameManager
                 tileset(index) = New Texture("Tiles/Tiles" & index.ToString() & ".png")
                 frmMapEditor.lstTiles.Items.Add("Tiles" & index.ToString & ".png")
             Next
+
+            frmMapEditor.lstTiles.Items.Add("Attributs")
+            frmMapEditor.lstTiles.SelectedIndex = 0
         Else
             MsgBox("L'éditeur ne peut se lancer sans tileset" + Environment.NewLine() +
                    "Erreur : Textures introuvables", MsgBoxStyle.Critical, "Erreur lors du chargement")
             Environment.Exit(0)
         End If
-        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    End Sub
 
-        frmMapEditor.lstTiles.Items.Add("Attributs")
-        frmMapEditor.lstTiles.SelectedIndex = 0
-
-        ' Chargement des maps 
-        For i = 0 To 6
-            mapSurface(i) = New RenderTexture(672, 480)
+    Private Sub LoadMap()
+        ' Chargement de la map 
+        For mapLayerIndex As Integer = 0 To 6
+            mapSurface(mapLayerIndex) = New RenderTexture(672, 480)
         Next
         map.Load(curMap)
         DrawMap()
+    End Sub
 
+    Private Sub LoadTestSprite()
         ' Chargement du joueur de test
         If File.Exists("Resources/Sprite.png") Then
             texPlayer = New Texture("Resources/Sprite.png")
@@ -77,15 +110,6 @@ Class GameManager
                    "Erreur : Textures introuvables", MsgBoxStyle.Critical, "Erreur lors du chargement")
             Environment.Exit(0)
         End If
-
-        ' Chargement du configurateur de PNJs
-        npcConfigurator = New frmConfigNPC()
-        npcConfigurator.Initialize()
-
-        ' Initialisation SFML
-        gameSurface.SetFramerateLimit(60)
-        InitGrid()
-        InitNight()
     End Sub
 
     ' - Gestion des touches
@@ -96,10 +120,10 @@ Class GameManager
                 If Not map.attribute(.X, .Y + 1).Type = 1 Then
                     If Not map.attribute(.X, .Y + 1).Type = 2 Then
                         .Y += 1
-                        .Mov = 32
+                        .Mov = modVar.CASE_LENGTH
                     ElseIf Not map.attribute(.X, .Y + 1).sender(0) = 0 Then
                         .Y += 1
-                        .Mov = 32
+                        .Mov = modVar.CASE_LENGTH
                     End If
                 End If
             End If
@@ -109,10 +133,10 @@ Class GameManager
                 If Not map.attribute(.X, .Y - 1).Type = 1 Then
                     If Not map.attribute(.X, .Y - 1).Type = 2 Then
                         .Y -= 1
-                        .Mov = 32
+                        .Mov = modVar.CASE_LENGTH
                     ElseIf Not map.attribute(.X, .Y - 1).sender(0) = 3 Then
                         .Y -= 1
-                        .Mov = 32
+                        .Mov = modVar.CASE_LENGTH
                     End If
                 End If
             End If
@@ -122,10 +146,10 @@ Class GameManager
                 If Not map.attribute(.X - 1, .Y).Type = 1 Then
                     If Not map.attribute(.X - 1, .Y).Type = 2 Then
                         .X -= 1
-                        .Mov = 32
+                        .Mov = modVar.CASE_LENGTH
                     ElseIf Not map.attribute(.X - 1, .Y).sender(0) = 1 Then
                         .X -= 1
-                        .Mov = 32
+                        .Mov = modVar.CASE_LENGTH
                     End If
                 End If
             End If
@@ -135,10 +159,10 @@ Class GameManager
                 If Not map.attribute(.X + 1, .Y).Type = 1 Then
                     If Not map.attribute(.X + 1, .Y).Type = 2 Then
                         .X += 1
-                        .Mov = 32
+                        .Mov = modVar.CASE_LENGTH
                     ElseIf Not map.attribute(.X + 1, .Y).sender(0) = 2 Then
                         .X += 1
-                        .Mov = 32
+                        .Mov = modVar.CASE_LENGTH
                     End If
                 End If
             End If
@@ -156,7 +180,7 @@ Class GameManager
     End Sub
 
     ' - Dessin de la grille sur une renderTexture
-    Private Sub InitGrid()
+    Private Sub InitializeGrid()
         Dim frame As New RectangleShape(New Vector2f(30, 30))
         frame.FillColor = New Color(0, 0, 0, 0)
         frame.OutlineThickness = 1
@@ -166,7 +190,7 @@ Class GameManager
 
         For x = 0 To 20
             For y = 0 To 14
-                frame.Position = New Vector2f(x * 32, y * 32)
+                frame.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                 gridSurface.Draw(frame)
             Next
         Next
@@ -180,7 +204,7 @@ Class GameManager
     End Sub
 
     ' - Dessin de la nuit sur une Shape
-    Private Sub InitNight()
+    Private Sub InitializeNight()
         nightSurface.FillColor = New Color(0, 12, 149, 85)
     End Sub
 
@@ -202,12 +226,12 @@ Class GameManager
         mapSurface(layer).Clear(New Color(0, 0, 0, 0))
 
         With map.layer(layer)
-            For x = 0 To 20
-                For y = 0 To 14
+            For x = 0 To modVar.MAP_WIDTH
+                For y = 0 To modVar.MAP_HEIGHT
                     If Not .tileCode(x, y) = 0 Then
                         sprt = New Sprite(game.tileset(.tilset(x, y)))
-                        sprt.TextureRect = New IntRect(map.DecodeX(.tileCode(x, y)) * 32, map.DecodeY(.tileCode(x, y)) * 32, 32, 32)
-                        sprt.Position = New Vector2f(x * 32, y * 32)
+                        sprt.TextureRect = New IntRect(map.DecodeX(.tileCode(x, y)) * modVar.CASE_LENGTH, map.DecodeY(.tileCode(x, y)) * modVar.CASE_LENGTH, modVar.CASE_LENGTH, modVar.CASE_LENGTH)
+                        sprt.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                         mapSurface(layer).Draw(sprt)
                         sprt.Dispose()
                     End If
@@ -222,62 +246,62 @@ Class GameManager
     Public Sub DrawPlayer()
         With player
             sprtPlayer = New Sprite(texPlayer)
-            sprtPlayer.TextureRect = New IntRect(Int(.Mov / 32 * 4) * texPlayer.Size.X / 4, .Dir * texPlayer.Size.Y / 4, texPlayer.Size.X / 4, texPlayer.Size.Y / 4)
+            sprtPlayer.TextureRect = New IntRect(Int(.Mov / modVar.CASE_LENGTH * 4) * texPlayer.Size.X / 4, .Dir * texPlayer.Size.Y / 4, texPlayer.Size.X / 4, texPlayer.Size.Y / 4)
             If .Dir = 0 Then
-                sprtPlayer.Position = New Vector2f(.X * 32, (.Y - 1) * 32 - .Mov)
+                sprtPlayer.Position = New Vector2f(.X * modVar.CASE_LENGTH, (.Y - 1) * modVar.CASE_LENGTH - .Mov)
             ElseIf .Dir = 1 Then
-                sprtPlayer.Position = New Vector2f(.X * 32 + .Mov, (.Y - 1) * 32)
+                sprtPlayer.Position = New Vector2f(.X * modVar.CASE_LENGTH + .Mov, (.Y - 1) * modVar.CASE_LENGTH)
             ElseIf .Dir = 2 Then
-                sprtPlayer.Position = New Vector2f(.X * 32 - .Mov, (.Y - 1) * 32)
+                sprtPlayer.Position = New Vector2f(.X * modVar.CASE_LENGTH - .Mov, (.Y - 1) * modVar.CASE_LENGTH)
             ElseIf .Dir = 3 Then
-                sprtPlayer.Position = New Vector2f(.X * 32, (.Y - 1) * 32 + .Mov)
+                sprtPlayer.Position = New Vector2f(.X * modVar.CASE_LENGTH, (.Y - 1) * modVar.CASE_LENGTH + .Mov)
             End If
             gameSurface.Draw(sprtPlayer)
         End With
-        'Pense bête : 32*48 (sprites RMXP)
+        'Pense bête : modVar.CASE_LENGTH*48 (sprites RMXP)
     End Sub
 
     ' - Dessin des attributs
     Public Sub DrawAttribute()
         Dim bckAttribute As New RectangleShape()
 
-        For x = 0 To 20
-            For y = 0 To 14
+        For x = 0 To modVar.MAP_WIDTH
+            For y = 0 To modVar.MAP_HEIGHT
                 Select Case map.attribute(x, y).Type
                     Case 1
-                        bckAttribute.Size = New Vector2f(32, 32)
+                        bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
                         bckAttribute.FillColor = New Color(200, 0, 0, 100)
-                        bckAttribute.Position = New Vector2f(x * 32, y * 32)
+                        bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                         gameSurface.Draw(bckAttribute)
                     Case 2
                         If map.attribute(x, y).sender(0) = 0 Then
-                            bckAttribute.Size = New Vector2f(32, 10)
+                            bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, 10)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
-                            bckAttribute.Position = New Vector2f(x * 32, y * 32)
+                            bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                         ElseIf map.attribute(x, y).sender(0) = 1 Then
-                            bckAttribute.Size = New Vector2f(10, 32)
+                            bckAttribute.Size = New Vector2f(10, modVar.CASE_LENGTH)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
-                            bckAttribute.Position = New Vector2f(x * 32 + 22, y * 32)
+                            bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH + 22, y * modVar.CASE_LENGTH)
                         ElseIf map.attribute(x, y).sender(0) = 2 Then
-                            bckAttribute.Size = New Vector2f(10, 32)
+                            bckAttribute.Size = New Vector2f(10, modVar.CASE_LENGTH)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
-                            bckAttribute.Position = New Vector2f(x * 32, y * 32)
+                            bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                         ElseIf map.attribute(x, y).sender(0) = 3 Then
-                            bckAttribute.Size = New Vector2f(32, 10)
+                            bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, 10)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
-                            bckAttribute.Position = New Vector2f(x * 32, y * 32 + 22)
+                            bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH + 22)
                         End If
                         gameSurface.Draw(bckAttribute)
                     Case 3
-                        bckAttribute.Size = New Vector2f(32, 32)
+                        bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
                         bckAttribute.FillColor = New Color(0, 0, 200, 100)
-                        bckAttribute.Position = New Vector2f(x * 32, y * 32)
+                        bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                         gameSurface.Draw(bckAttribute)
                     Case 4
                         'TODO Draw Attribut PNJ (Recherche du bon pnj en liste [Data: x, y] et affichage de son portrait)
-                        bckAttribute.Size = New Vector2f(32, 32)
+                        bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
                         bckAttribute.FillColor = New Color(0, 200, 200, 100)
-                        bckAttribute.Position = New Vector2f(x * 32, y * 32)
+                        bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                         gameSurface.Draw(bckAttribute)
                 End Select
             Next
@@ -296,6 +320,7 @@ Class GameManager
 
         tileSurface.Display()
     End Sub
+
     ' - Boucle de rafraichissement de la surface principale
     Public Sub StartGameLoop()
         Dim Time As Long = My.Computer.Clock.TickCount
@@ -322,7 +347,7 @@ Class GameManager
                     previewSprt = New Sprite(tileset(frmMapEditor.lstTiles.SelectedIndex))
                     previewSprt.TextureRect = New IntRect(recSelect.Position.X, recSelect.Position.Y, recSelect.Size.X, recSelect.Size.Y)
                     previewSprt.Color = New Color(255, 255, 255, 155)
-                    previewSprt.Position = New Vector2f(curX * 32, curY * 32)
+                    previewSprt.Position = New Vector2f(curX * CType(modVar.CASE_LENGTH, Single), curY * CType(modVar.CASE_LENGTH, Single))
                     gameSurface.Draw(previewSprt)
                 End If
             End If
@@ -340,12 +365,14 @@ Class GameManager
             Call KeyBoardListener()
 
             gameSurface.Display()
+
             FPS += 1
             If My.Computer.Clock.TickCount - Time >= 1000 Then
                 frmMapEditor.LabelFPS.Text = "FPS : " & FPS.ToString
                 FPS = 0
                 Time = My.Computer.Clock.TickCount
             End If
+
             Application.DoEvents()
         End While
     End Sub

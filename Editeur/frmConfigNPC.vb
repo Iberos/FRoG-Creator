@@ -18,7 +18,7 @@ Public Class frmConfigNPC
         grpCustomMovement.Enabled = rdbtnCustom.Checked
     End Sub
 
-    Public Sub Initialize()
+    Public Sub New()
         ' Chargement et ajout des PNJs
         Dim i = 0
         For Each currentNpc As GameNPC In lstNPCs
