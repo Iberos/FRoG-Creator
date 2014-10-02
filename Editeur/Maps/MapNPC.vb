@@ -1,5 +1,6 @@
 ﻿<Serializable>
 Public Class MapNPC
+    Inherits GameCharacter
 
     Public npc As GameNPC
     Public index As Short
@@ -8,9 +9,6 @@ Public Class MapNPC
     Public perimeter As Boolean
     Public custom As Boolean
     Public velocity As Byte
-
-    Public X As Byte
-    Public Y As Byte
 
     Public Sub New(npc As GameNPC, x As Byte, y As Byte)
         Me.npc = npc

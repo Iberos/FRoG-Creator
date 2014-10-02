@@ -156,6 +156,8 @@
     <Compile Include="Database\GameItem.vb" />
     <Compile Include="Database\GameNPC.vb" />
     <Compile Include="Database\GameSpell.vb" />
+    <Compile Include="GameCharacter.vb" />
+    <Compile Include="GameDirection.vb" />
     <Compile Include="Maps\MapNPC.vb" />
     <Compile Include="frmConfigNPC.Designer.vb">
       <DependentUpon>frmConfigNPC.vb</DependentUpon>

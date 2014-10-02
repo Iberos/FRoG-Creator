@@ -247,13 +247,13 @@ Class GameManager
         With player
             sprtPlayer = New Sprite(texPlayer)
             sprtPlayer.TextureRect = New IntRect(Int(.Mov / modVar.CASE_LENGTH * 4) * texPlayer.Size.X / 4, .Dir * texPlayer.Size.Y / 4, texPlayer.Size.X / 4, texPlayer.Size.Y / 4)
-            If .Dir = 0 Then
+            If .Dir = GameDirection.Bas Then
                 sprtPlayer.Position = New Vector2f(.X * modVar.CASE_LENGTH, (.Y - 1) * modVar.CASE_LENGTH - .Mov)
-            ElseIf .Dir = 1 Then
+            ElseIf .Dir = GameDirection.Gauche Then
                 sprtPlayer.Position = New Vector2f(.X * modVar.CASE_LENGTH + .Mov, (.Y - 1) * modVar.CASE_LENGTH)
-            ElseIf .Dir = 2 Then
+            ElseIf .Dir = GameDirection.Droite Then
                 sprtPlayer.Position = New Vector2f(.X * modVar.CASE_LENGTH - .Mov, (.Y - 1) * modVar.CASE_LENGTH)
-            ElseIf .Dir = 3 Then
+            ElseIf .Dir = GameDirection.Haut Then
                 sprtPlayer.Position = New Vector2f(.X * modVar.CASE_LENGTH, (.Y - 1) * modVar.CASE_LENGTH + .Mov)
             End If
             gameSurface.Draw(sprtPlayer)

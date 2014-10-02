@@ -3,19 +3,9 @@ Imports System.IO
 
 <Serializable>
 Public Class GameNPC
+    Inherits GameCharacter
 
-    Public name As String
-    Public type As Byte
-    Public sprite As UShort
-    Public HP As Integer
-    Public MP As Integer
-    Public strength As UShort
-    Public magic As UShort
-    Public defense As UShort
-    Public agility As UShort
-    Public speed As UShort
     Public dialog As String
-
     Public texture As New Bitmap("Resources/Sprite.png")
 
     Public Function getView(Optional normalized As Boolean = False) As Bitmap
