@@ -61,6 +61,8 @@ Public Class frmMapEditor
             game.tileSurface = New RenderWindow(picTiles.Handle)
             game.currentTileset = New Sprite(game.tileset(lstTiles.SelectedIndex)) 'Changement du tileset
             picTiles.ImageLocation = ("Tiles/Tiles" & lstTiles.SelectedIndex & ".png")
+            MsgBox(picTiles.Height)
+            MsgBox(game.tileSurface.Size.Y)
             pnlAttribute.Visible = False
             curAttribute.Type = 0
             ButtonCopy.Enabled = True
