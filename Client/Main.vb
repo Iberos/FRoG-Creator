@@ -45,14 +45,15 @@ Module Main
         window.Close()
     End Sub
 
-    '******************** Attributs ***********************
+    '*********** Attributs & Initialisations **************
     Private map As Sprite
 
-    '******************************************************
 
     Private Sub Loader()
         map = New Sprite(New Texture("MapFake.png"))
     End Sub
+
+    '*****************************************************
 
     Private Sub Drawer(batch As RenderWindow)
         batch.Draw(map)
