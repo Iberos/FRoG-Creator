@@ -29,9 +29,9 @@ Module Main
         Try
             While (window.IsOpen())
                 window.DispatchEvents() ' Erreur retournée lors d'un [CTRL + V] (editBox TGUI)
+                DoEvent()
 
                 window.Clear(Color.Black)
-                DoEvent()
                 Drawer(window)
                 gui.Draw()
                 window.Display()
