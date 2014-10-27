@@ -31,6 +31,7 @@ Module Main
                 window.DispatchEvents() ' Erreur retournée lors d'un [CTRL + V] (editBox TGUI)
 
                 window.Clear(Color.Black)
+                DoEvent()
                 Drawer(window)
                 gui.Draw()
                 window.Display()
@@ -47,16 +48,33 @@ Module Main
 
     '*********** Attributs & Initialisations **************
     Private map As Sprite
-
+    Private chatBox As EditBox
+    Private chatContainer As ChatBox
+    Private characterWindow As ChildWindow
 
     Private Sub Loader()
         map = New Sprite(New Texture("MapFake.png"))
+        chatBox = gui.Get(Of EditBox)("chatBox")
+        chatContainer = gui.Get(Of ChatBox)("chatContainer")
+        characterWindow = gui.Get(Of ChildWindow)("characterWindow")
     End Sub
-
     '*****************************************************
 
     Private Sub Drawer(batch As RenderWindow)
         batch.Draw(map)
+    End Sub
+
+    Private Sub DoEvent()
+        If (Keyboard.IsKeyPressed(Keyboard.Key.Return)) Then 'Exemple d'écriture d'un texte dynamique dans le chatContainer
+            If (chatBox.Focused And chatBox.Text.Length > 0) Then
+                chatContainer.AddLine(chatBox.Text, Color.White)
+                chatBox.Text = String.Empty
+            End If
+        ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.C)) Then 'Exemple d'ouverture d'une fenêtre si celle-ci est "fermée"
+            If (Not gui.GetWidgetNames.Contains("characterWindow")) Then
+                gui.Add(characterWindow, "characterWindow")
+            End If
+        End If
     End Sub
 
 End Module
