@@ -36,7 +36,8 @@ Public Class RenderInterface
         chatContainer.TextSize = 12
         chatContainer.BackgroundColor = New Color(100, 100, 100, 150)
         chatContainer.BorderColor = Color.Transparent
-        chatContainer.AddLine("Bienvenue sur le serveur de jeu Frog Creator version 1.0 !", Color.Green)
+        'TODO Prendre en compte les textes qui prennent 2 lignes (ou +)
+        chatContainer.AddLine("Bienvenue sur le serveur de jeu Frog Creator !", Color.Green)
         chatContainer.AddLine("Votre ancienne connexion remonte à 10 jours !", Color.Black)
         '
         ' characterWindow
@@ -47,6 +48,32 @@ Public Class RenderInterface
         characterWindow.Transparency = 120
         characterWindow.BackgroundColor = New Color(100, 100, 100, 150)
         characterWindow.BorderColor = New Color(100, 100, 100)
+        '
+        ' picHead
+        '
+        Dim picHead = characterWindow.Add(New Picture("ItemFake.png"), "picHead")
+        picHead.Size = New Vector2f(26, 25)
+        picHead.Position = New Vector2f((characterWindow.Size.X - 26) / 2, (characterWindow.Size.Y - 25) / 4)
+        '
+        ' picArmor
+        '
+        Dim picArmor = characterWindow.Add(New Picture("ItemArmorFake.png"), "picArmor")
+        picArmor.Position = New Vector2f((characterWindow.Size.X - 26) / 2, (characterWindow.Size.Y - 25) / 2)
+        '
+        ' hpProgress
+        '
+        Dim hpProgress = MyBase.Add(New LoadingBar(configFilePath), "hpProgress")
+        hpProgress.Size = New Vector2f(100, 15)
+        hpProgress.Position = New Vector2f(batch.Size.X - hpProgress.Size.X - 20, 20)
+        hpProgress.Text = "HP"
+        hpProgress.Value = 30
+        '
+        ' mpProgress
+        '
+        Dim mpProgress = MyBase.Add(New LoadingBar(configFilePath), "mpProgress")
+        mpProgress.Size = New Vector2f(100, 15)
+        mpProgress.Position = New Vector2f(batch.Size.X - mpProgress.Size.X - 20, 40)
+        mpProgress.Text = "MP"
     End Sub
 
 End Class

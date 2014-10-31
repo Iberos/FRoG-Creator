@@ -14,13 +14,14 @@ Module Main
     Private Const SCREEN_TITLE As String = "Frog Creator 1.0"
     Private Const CONFIG_PATH As String = "Config/Widgets/Black.conf"
     Private Const FONT_PATH As String = "Config/Widgets/GoBoom.ttf"
+    Private Const ICON_PATH As String = "Config/Icons/FC.png"
 
     Public window As RenderWindow
     Public gui As RenderInterface
 
     Sub Main()
         ShowWindow(GetConsoleWindow(), SW_HIDE)
-        window = New RenderWindow(New VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), SCREEN_TITLE)
+        window = New RenderWindow(New VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), SCREEN_TITLE, Styles.Close)
         gui = New RenderInterface(window, CONFIG_PATH, FONT_PATH)
         Loader()
 
@@ -47,12 +48,15 @@ Module Main
     End Sub
 
     '*********** Attributs & Initialisations **************
+    Private icon As Texture
     Private map As Sprite
     Private chatBox As EditBox
     Private chatContainer As ChatBox
     Private characterWindow As ChildWindow
 
     Private Sub Loader()
+        icon = New Texture(ICON_PATH)
+        window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
         map = New Sprite(New Texture("MapFake.png"))
         chatBox = gui.Get(Of EditBox)("chatBox")
         chatContainer = gui.Get(Of ChatBox)("chatContainer")
