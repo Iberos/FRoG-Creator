@@ -25,7 +25,7 @@ Public Class RenderInterface
         '
         Dim chatBox = MyBase.Add(New EditBox(configFilePath), "chatBox")
         chatBox.Size = New Vector2f(300, 30)
-        chatBox.Position = New Vector2f(20, batch.Size.Y - 50)
+        chatBox.Position = New Vector2f(20, batch.Size.Y - 40)
         chatBox.Transparency = 120
         '
         ' chatContainer
@@ -74,6 +74,7 @@ Public Class RenderInterface
         mpProgress.Size = New Vector2f(100, 15)
         mpProgress.Position = New Vector2f(batch.Size.X - mpProgress.Size.X - 20, 40)
         mpProgress.Text = "MP"
+        mpProgress.Value = 75
     End Sub
 
 End Class

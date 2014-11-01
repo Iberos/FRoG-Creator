@@ -50,6 +50,7 @@ Module Main
     '*********** Attributs & Initialisations **************
     Private icon As Texture
     Private map As Sprite
+    Private sInterface As Sprite
     Private chatBox As EditBox
     Private chatContainer As ChatBox
     Private characterWindow As ChildWindow
@@ -58,6 +59,9 @@ Module Main
         icon = New Texture(ICON_PATH)
         window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
         map = New Sprite(New Texture("MapFake.png"))
+        sInterface = New Sprite(New Texture("InterfaceFake.png"))
+        sInterface.Position = New Vector2f(window.Size.X - sInterface.Texture.Size.X, window.Size.Y - sInterface.Texture.Size.Y)
+
         chatBox = gui.Get(Of EditBox)("chatBox")
         chatContainer = gui.Get(Of ChatBox)("chatContainer")
         characterWindow = gui.Get(Of ChildWindow)("characterWindow")
@@ -66,6 +70,7 @@ Module Main
 
     Private Sub Drawer(batch As RenderWindow)
         batch.Draw(map)
+        batch.Draw(sInterface)
     End Sub
 
     Private Sub DoEvent()
