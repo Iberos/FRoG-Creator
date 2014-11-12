@@ -82,6 +82,16 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes Entity\Drawable.vb" />
+    <Compile Include="Classes Entity\GameArmor.vb" />
+    <Compile Include="Classes Entity\GameCharacter.vb" />
+    <Compile Include="Classes Entity\GameEntity.vb" />
+    <Compile Include="Classes Entity\GameItem.vb" />
+    <Compile Include="Classes Entity\GameObject.vb" />
+    <Compile Include="Classes Entity\GameNPC.vb" />
+    <Compile Include="Classes Entity\GamePlayer.vb" />
+    <Compile Include="Classes Entity\GamePet.vb" />
+    <Compile Include="Classes Entity\GameWeapon.vb" />
     <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
