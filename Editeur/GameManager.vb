@@ -74,6 +74,7 @@ Class GameManager
     End Sub
 
     Private Sub LoadTiles()
+        ' TODO Dynamiser les noms de fichiers texture ? (Laisser la liberté de nommage)
         ' Chargement des tiles
         Dim files() As String = IO.Directory.GetFiles("Tiles")
         If files.Count() > 0 Then
@@ -88,7 +89,7 @@ Class GameManager
         Else
             MsgBox("L'éditeur ne peut se lancer sans tileset" + Environment.NewLine() +
                    "Erreur : Textures introuvables", MsgBoxStyle.Critical, "Erreur lors du chargement")
-            Environment.Exit(0)
+            Environment.Exit(1)
         End If
     End Sub
 

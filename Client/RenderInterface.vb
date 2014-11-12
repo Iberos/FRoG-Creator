@@ -36,7 +36,7 @@ Public Class RenderInterface
         chatContainer.TextSize = 12
         chatContainer.BackgroundColor = New Color(100, 100, 100, 150)
         chatContainer.BorderColor = Color.Transparent
-        'TODO Prendre en compte les textes qui prennent 2 lignes (ou +)
+        'TODO Prendre en compte les textes qui prennent 2 lignes (ou +) !
         chatContainer.AddLine("Bienvenue sur le serveur de jeu Frog Creator !", Color.Green)
         chatContainer.AddLine("Votre ancienne connexion remonte à 10 jours !", Color.Black)
         '

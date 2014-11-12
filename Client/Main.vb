@@ -29,7 +29,7 @@ Module Main
 
         Try
             While (window.IsOpen())
-                window.DispatchEvents() ' Erreur retournée lors d'un [CTRL + V] (editBox TGUI)
+                window.DispatchEvents() ' TODO Erreur retournée lors d'un [CTRL + V] (editBox TGUI)
                 DoEvent()
 
                 window.Clear(Color.Black)
