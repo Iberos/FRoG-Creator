@@ -91,6 +91,7 @@
     <Compile Include="Classes Entity\GameNPC.vb" />
     <Compile Include="Classes Entity\GamePlayer.vb" />
     <Compile Include="Classes Entity\GamePet.vb" />
+    <Compile Include="Classes Entity\GameVector.vb" />
     <Compile Include="Classes Entity\GameWeapon.vb" />
     <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
