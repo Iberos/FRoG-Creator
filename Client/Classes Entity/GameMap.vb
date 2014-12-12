@@ -1,4 +1,7 @@
-﻿Public Class GameMap
+﻿Imports SFML.Graphics
+
+Public Class GameMap
+    Implements SFML.Graphics.Drawable
 
     Public name As String
     Public type As Byte
@@ -10,5 +13,9 @@
         ' TODO isWalkable condition  
         Return True
     End Function
+
+    Public Sub Draw(target As RenderTarget, states As RenderStates) Implements Drawable.Draw
+
+    End Sub
 
 End Class

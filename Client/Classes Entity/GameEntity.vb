@@ -1,5 +1,6 @@
-﻿Public Class GameEntity
+﻿Imports SFML.Graphics
 
-    Public Position As GameVector
+Public Class GameEntity
+    Inherits Sprite
 
 End Class

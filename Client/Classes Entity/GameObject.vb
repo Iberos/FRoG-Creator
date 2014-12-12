@@ -1,7 +1,6 @@
-﻿Public MustInherit Class GameObject
-    Inherits GameEntity
-    Implements Drawable
+﻿Imports SFML.Graphics
 
-    MustOverride Sub Draw() Implements Drawable.Draw
+Public Class GameObject
+    Inherits GameEntity
 
 End Class

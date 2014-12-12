@@ -9,7 +9,7 @@ Public Class GameEnvironment
 
     End Sub
 
-    Public Sub DrawItself(batch As RenderWindow) Implements Drawable.DrawItself
+    Public Sub Draw(target As RenderTarget, states As RenderStates) Implements Drawable.Draw
 
     End Sub
 
