@@ -66,6 +66,7 @@ Public Class RenderInterface
         hpProgress.Size = New Vector2f(100, 15)
         hpProgress.Position = New Vector2f(batch.Size.X - hpProgress.Size.X - 20, 20)
         hpProgress.Text = "HP"
+        hpProgress.TextColor = Color.Black
         hpProgress.Value = 30
         '
         ' mpProgress
@@ -74,6 +75,7 @@ Public Class RenderInterface
         mpProgress.Size = New Vector2f(100, 15)
         mpProgress.Position = New Vector2f(batch.Size.X - mpProgress.Size.X - 20, 40)
         mpProgress.Text = "MP"
+        mpProgress.TextColor = Color.Black
         mpProgress.Value = 75
     End Sub
 
