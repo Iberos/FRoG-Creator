@@ -101,6 +101,11 @@
     <Compile Include="Classes Entity\GameVector.vb" />
     <Compile Include="Classes Entity\GameWeapon.vb" />
     <Compile Include="Classes Entity\Layer.vb" />
+    <Compile Include="Designer\AccountConnecterDesigner.vb" />
+    <Compile Include="Designer\Designer.vb" />
+    <Compile Include="Designer\ServerConnecterDesigner.vb" />
+    <Compile Include="Designer\CharacterSelectionDesigner.vb" />
+    <Compile Include="Designer\GameDesigner.vb" />
     <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -145,6 +150,7 @@
   <ItemGroup>
     <Content Include="FC.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Baseclass.Contrib.Nuget.Output.1.0.7\build\net40\Baseclass.Contrib.Nuget.Output.targets" Condition="Exists('..\packages\Baseclass.Contrib.Nuget.Output.1.0.7\build\net40\Baseclass.Contrib.Nuget.Output.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -20,14 +20,13 @@ Module Main
     Public window As RenderWindow
     Public gui As RenderInterface
     Public gameState As GameStates
+    Public designer As Designer
+    Public view As View
 
     '*********** Attributs & Initialisations **************
+
     Private icon As Texture
-    Private map As Sprite
-    Private sInterface As Sprite
-    Private chatBox As EditBox
-    Private chatContainer As ChatBox
-    Private characterWindow As ChildWindow
+    
 
     Private Sub Loader(args As String())
         If (args.Length > 1) Then
@@ -38,21 +37,24 @@ Module Main
         End If
 
         ShowWindow(GetConsoleWindow(), SW_HIDE)
-        window = New RenderWindow(New VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), SCREEN_TITLE, Styles.Close)
-        gui = New RenderInterface(window, CONFIG_PATH, FONT_PATH)
+        '****************************************************
         gameState = GameStates.AccountConnectionState
-
-        AddHandler window.Closed, AddressOf OnClose
+        '****************************************************
+        window = New RenderWindow(New VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), SCREEN_TITLE, Styles.Close)
 
         icon = New Texture(ICON_PATH)
         window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
-        map = New Sprite(New Texture("MapFake.png"))
-        sInterface = New Sprite(New Texture("InterfaceFake.png"))
-        sInterface.Position = New Vector2f(window.Size.X - sInterface.Texture.Size.X, window.Size.Y - sInterface.Texture.Size.Y)
 
-        chatBox = gui.Get(Of EditBox)("chatBox")
-        chatContainer = gui.Get(Of ChatBox)("chatContainer")
-        characterWindow = gui.Get(Of ChildWindow)("characterWindow")
+        view = window.GetView()
+        view.Size = New Vector2f(window.Size.X, window.Size.Y)
+
+        window.SetView(view)
+
+        gui = New RenderInterface(window, CONFIG_PATH, FONT_PATH)
+
+        AddHandler window.Closed, AddressOf OnClose
+        AddHandler window.Resized, AddressOf OnResized
+        
     End Sub
     '*****************************************************
 
@@ -64,11 +66,11 @@ Module Main
 
             While (window.IsOpen())
                 window.DispatchEvents()
-                DoEvent()
+                designer.DispatchEventsAndUpdate()
 
                 window.Clear(Color.Black)
                 '*****************************
-                DrawActionSelecter(window)
+                designer.Draw(window)
                 '*****************************
                 gui.Draw()
                 window.Display()
@@ -88,47 +90,10 @@ Module Main
         window.Close()
     End Sub
 
-    Private Sub DrawActionSelecter(batch As RenderWindow)
-        Select gameState
-            Case GameStates.AccountConnectionState
-                AccountConnectionLoop(batch)
-            Case GameStates.CharacterSelectionState
-                CharacterSelectLoop(batch)
-            Case GameStates.ServerSelectionState
-                ServerSelectionLoop(batch)
-            Case GameStates.GamePlayState
-                GamePlayLoop(batch)
-        End Select
-        'batch.Draw(map)
-        'batch.Draw(sInterface)
-    End Sub
-
-    Private Sub DoEvent()
-        If (Keyboard.IsKeyPressed(Keyboard.Key.Return)) Then 'Exemple d'écriture d'un texte dynamique dans le chatContainer
-            If (chatBox.Focused And chatBox.Text.Length > 0) Then
-                chatContainer.AddLine(chatBox.Text, Color.White)
-                chatBox.Text = String.Empty
-            End If
-        ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.C)) Then 'Exemple d'ouverture d'une fenêtre si celle-ci est "fermée"
-            If (Not gui.GetWidgetNames.Contains("characterWindow")) Then
-                gui.Add(characterWindow, "characterWindow")
-            End If
-        End If
-    End Sub
-
-    Private Sub AccountConnectionLoop(batch As RenderWindow)
-
-    End Sub
-
-    Private Sub ServerSelectionLoop(batch As RenderWindow)
-
-    End Sub
-
-    Private Sub CharacterSelectLoop(batch As RenderWindow)
-
-    End Sub
-
-    Private Sub GamePlayLoop(batch As RenderWindow)
-
+    Private Sub OnResized(sender As Object, e As SizeEventArgs)
+        Dim window As RenderWindow = DirectCast(sender, RenderWindow)
+        Dim viewRect = New FloatRect(0, 0, window.Size.X, window.Size.Y)
+        window.SetView(New View(viewRect))
+        designer.Load(gui, CONFIG_PATH)
     End Sub
 End Module
