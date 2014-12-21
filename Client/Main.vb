@@ -16,6 +16,7 @@ Module Main
 
     Private SCREEN_WIDTH As UShort = 800
     Private SCREEN_HEIGHT As UShort = 600
+    Private FPS As Byte = 60
 
     Public window As RenderWindow
     Public gui As RenderInterface
@@ -41,6 +42,7 @@ Module Main
         gameState = GameStates.AccountConnectionState
         '****************************************************
         window = New RenderWindow(New VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), SCREEN_TITLE, Styles.Close)
+        window.SetFramerateLimit(FPS)
 
         icon = New Texture(ICON_PATH)
         window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
@@ -73,6 +75,7 @@ Module Main
                 designer.Draw(window)
                 '*****************************
                 gui.Draw()
+
                 window.Display()
             End While
 
