@@ -10,6 +10,7 @@ Module Main
 
     Sub Main()
         Console.WriteLine("Frog Creator Version VB.NET")
+        Console.Read()
     End Sub
 
     Sub CheckBDD(ByVal server As String, ByRef user As String, ByRef password As String, ByRef database As String)

@@ -23,6 +23,7 @@ Class AccountConnecterDesigner
     Public Sub New()
         bground = New Sprite(New Texture("Config\Resources\background.png"))
         bground.Scale = New Vector2f(1.5, 1.5)
+        bground.Texture.Smooth = True
         radiusMovement = New Vector2f(-1, -1)
         windowRect = New IntRect(0, 0, bground.Texture.Size.X - window.Size.X, bground.Texture.Size.Y - window.Size.Y)
     End Sub
