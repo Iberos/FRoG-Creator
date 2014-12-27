@@ -58,9 +58,10 @@ Class AccountConnecterDesigner
         ' lblAccount
         '
         lblAccount = pnlConnect.Add(New Label(configPath), "lblAccount")
-        lblAccount.Size = New Vector2f(accountBox.Size.X, 30)
+        lblAccount.Size = New Vector2f(accountBox.Size.X / 3, 30)
         lblAccount.Text = "Nom de compte :"
         lblAccount.Position = New Vector2f(accountBox.Position.X, accountBox.Position.Y - lblAccount.Size.Y)
+        lblAccount.TextSize = lblAccount.Size.X * 0.2
         '
         ' passwordBox
         '
@@ -73,9 +74,10 @@ Class AccountConnecterDesigner
         ' lblPassword
         '
         lblPassword = pnlConnect.Add(New Label(configPath), "lblPassword")
-        lblPassword.Size = New Vector2f(passwordBox.Size.X, 30)
+        lblPassword.Size = New Vector2f(passwordBox.Size.X / 3, 30)
         lblPassword.Text = "Mot de passe :"
         lblPassword.Position = New Vector2f(passwordBox.Position.X, passwordBox.Position.Y - lblPassword.Size.Y)
+        lblPassword.TextSize = lblPassword.Size.X * 0.2
         '
         ' btnConnect
         '
@@ -101,17 +103,19 @@ Class AccountConnecterDesigner
 
         bground.Position += radiusMovement
 
-
     End Sub
 
     Public Sub Draw(batch As RenderWindow) Implements Designer.Draw
-
         batch.Draw(bground)
-
     End Sub
 
     Private Sub btnConnect_OnClick(sender As Object, e As CallbackArgs)
         MsgBox(String.Format("Connection with login : {0}", accountBox.Text), MsgBoxStyle.Information, "Loading")
-    End Sub
 
+        Dim validAccount = True
+
+        If (validAccount) Then
+            Main.gui.SetGameState(GameStates.GamePlayState)
+        End If
+    End Sub
 End Class

@@ -30,6 +30,7 @@ Module Main
     
 
     Private Sub Loader(args As String())
+        ' Chargement des arguments instance
         If (args.Length > 1) Then
             If (Not args(0).Equals(Nothing) And Not args(1).Equals(Nothing)) Then
                 SCREEN_WIDTH = UInteger.Parse(args(0))
@@ -38,25 +39,19 @@ Module Main
         End If
 
         ShowWindow(GetConsoleWindow(), SW_HIDE)
-        '****************************************************
+
         gameState = GameStates.AccountConnectionState
-        '****************************************************
+
         window = New RenderWindow(New VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), SCREEN_TITLE, Styles.Close)
         window.SetFramerateLimit(FPS)
-
         icon = New Texture(ICON_PATH)
         window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
-
-        view = window.GetView()
-        view.Size = New Vector2f(window.Size.X, window.Size.Y)
-
-        window.SetView(view)
 
         gui = New RenderInterface(window, CONFIG_PATH, FONT_PATH)
 
         AddHandler window.Closed, AddressOf OnClose
         AddHandler window.Resized, AddressOf OnResized
-        
+
     End Sub
     '*****************************************************
 

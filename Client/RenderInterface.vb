@@ -35,4 +35,8 @@ Public Class RenderInterface
         Main.designer.Load(Me, Me.configFilePath)
     End Sub
 
+    Public Sub SetGameState(state As GameStates)
+        Main.gameState = state
+        LoadInterfaceObjects()
+    End Sub
 End Class
