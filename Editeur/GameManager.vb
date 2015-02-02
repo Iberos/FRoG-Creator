@@ -269,12 +269,12 @@ Class GameManager
         For x = 0 To modVar.MAP_WIDTH
             For y = 0 To modVar.MAP_HEIGHT
                 Select Case map.attribute(x, y).Type
-                    Case 1
+                    Case CaseTypes.Block
                         bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
                         bckAttribute.FillColor = New Color(200, 0, 0, 100)
                         bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                         gameSurface.Draw(bckAttribute)
-                    Case 2
+                    Case CaseTypes.DirectionBlock
                         If map.attribute(x, y).sender(0) = 0 Then 'Bas
                             bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, 10)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
@@ -293,12 +293,12 @@ Class GameManager
                             bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH + modVar.CASE_LENGTH - 10)
                         End If
                         gameSurface.Draw(bckAttribute)
-                    Case 3
+                    Case CaseTypes.Teleportation
                         bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
                         bckAttribute.FillColor = New Color(0, 0, 200, 100)
                         bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                         gameSurface.Draw(bckAttribute)
-                    Case 4
+                    Case CaseTypes.Character
                         'TODO Draw Attribut PNJ (Recherche du bon pnj en liste [Data: x, y] et affichage de son portrait)
                         bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
                         bckAttribute.FillColor = New Color(0, 200, 200, 100)
