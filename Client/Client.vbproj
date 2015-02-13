@@ -132,6 +132,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Network\GameClient.vb" />
+    <Compile Include="Network\ModClientPackets.vb" />
+    <Compile Include="Network\ModPacketsActions.vb" />
+    <Compile Include="Network\ModServerPackets.vb" />
+    <Compile Include="Network\NetworkBuffer.vb" />
     <Compile Include="RenderInterface.vb" />
   </ItemGroup>
   <ItemGroup>

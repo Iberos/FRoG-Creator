@@ -7,7 +7,7 @@ Public Class GameClient
 
     Public socket As TcpClient
     Public stream As NetworkStream
-    'Public buffer As NetworkBuffer
+    Public buffer As NetworkBuffer
     Public handler As Dictionary(Of Byte, Action)
     Private handleTask As New Task(AddressOf HandleData)
 
@@ -16,9 +16,9 @@ Public Class GameClient
         Try
             socket = acceptedSock
             stream = socket.GetStream
-            'buffer = New NetworkBuffer
-            'InitHandler()
-            'handleTask.Start()
+            buffer = New NetworkBuffer
+            InitHandler()
+            handleTask.Start()
             Console.WriteLine("Connexion acceptée sur le slot #" & tmpClient.Count)
         Catch ex As Exception
             Console.WriteLine("Impossible d'accepter le client - " & ex.ToString)
