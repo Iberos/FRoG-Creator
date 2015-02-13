@@ -8,8 +8,13 @@ Module Main
     Dim database As String
     Dim conn As New MySqlConnection
 
+    ' TEMP
+    Public tmpServer As New GameServer
+    Public tmpClient As New List(Of GameClient)
+
     Sub Main()
         Console.WriteLine("Frog Creator Version VB.NET")
+        tmpServer.Start()
         Console.Read()
     End Sub
 

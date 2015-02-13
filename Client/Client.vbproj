@@ -53,6 +53,9 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PFLibrary">
+      <HintPath>.\PFLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="sfmlnet-audio-2">
       <HintPath>..\packages\SFML.Net.2.1.5\lib\sfmlnet-audio-2.dll</HintPath>
     </Reference>
@@ -69,8 +72,14 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Tao.OpenGl">
+      <HintPath>.\Tao.OpenGl.dll</HintPath>
+    </Reference>
+    <Reference Include="Tao.OpenGl.ExtensionLoader">
+      <HintPath>.\Tao.OpenGl.ExtensionLoader.dll</HintPath>
+    </Reference>
     <Reference Include="tguinet">
-      <HintPath>..\tguinet.dll</HintPath>
+      <HintPath>.\tguinet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +131,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Network\GameClient.vb" />
     <Compile Include="RenderInterface.vb" />
   </ItemGroup>
   <ItemGroup>

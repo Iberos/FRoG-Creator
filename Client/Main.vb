@@ -28,6 +28,8 @@ Module Main
 
     Private icon As Texture
     
+    ' TEMP
+    Dim client As New GameClient
 
     Private Sub Loader(args As String())
         ' Chargement des arguments instance
@@ -38,7 +40,8 @@ Module Main
             End If
         End If
 
-        ShowWindow(GetConsoleWindow(), SW_HIDE)
+        'ShowWindow(GetConsoleWindow(), SW_HIDE)
+        Console.WriteLine("--- Console de debug ---")
 
         gameState = GameStates.AccountConnectionState
 
@@ -60,6 +63,8 @@ Module Main
         Loader(args)
 
         Try
+            ' Connexion au réseau
+            client.Connect("localhost", 4608)
 
             While (window.IsOpen())
                 window.DispatchEvents()
