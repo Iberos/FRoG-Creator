@@ -7,7 +7,7 @@ Public Class GameClient
     Public stream As NetworkStream
     Public handler As Dictionary(Of Byte, Action)
 
-    ' - Constructeur
+    '' - Constructeur
     Public Sub New()
         InitHandler()
         socket = New TcpClient()

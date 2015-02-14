@@ -94,27 +94,30 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes Entity\Attribute.vb" />
-    <Compile Include="Classes Entity\GameArmor.vb" />
-    <Compile Include="Classes Entity\GameCharacter.vb" />
-    <Compile Include="Classes Entity\GameEntity.vb" />
-    <Compile Include="Classes Entity\GameEnvironment.vb" />
-    <Compile Include="Classes Entity\GameMap.vb" />
-    <Compile Include="Classes Entity\GameItem.vb" />
-    <Compile Include="Classes Entity\GameObject.vb" />
-    <Compile Include="Classes Entity\GameNPC.vb" />
-    <Compile Include="Classes Entity\GamePlayer.vb" />
-    <Compile Include="Classes Entity\GamePet.vb" />
-    <Compile Include="Classes Entity\GameRelativeMap.vb" />
-    <Compile Include="Classes Entity\GameStates.vb" />
-    <Compile Include="Classes Entity\GameVector.vb" />
-    <Compile Include="Classes Entity\GameWeapon.vb" />
-    <Compile Include="Classes Entity\Layer.vb" />
-    <Compile Include="Designer\AccountConnecterDesigner.vb" />
-    <Compile Include="Designer\Designer.vb" />
-    <Compile Include="Designer\ServerConnecterDesigner.vb" />
-    <Compile Include="Designer\CharacterSelectionDesigner.vb" />
-    <Compile Include="Designer\GameDesigner.vb" />
+    <Compile Include="GameEntities\Utilities\GameVelocity.vb" />
+    <Compile Include="GameEntities\Utilities\GameTimer.vb" />
+    <Compile Include="GameEntities\Utilities\Attribute.vb" />
+    <Compile Include="GameEntities\Objects\GameArmor.vb" />
+    <Compile Include="GameEntities\Objects\GameCharacter.vb" />
+    <Compile Include="GameEntities\Utilities\GameDirection.vb" />
+    <Compile Include="GameEntities\Objects\GameEntity.vb" />
+    <Compile Include="GameEntities\Objects\GameEnvironment.vb" />
+    <Compile Include="GameEntities\Objects\GameMap.vb" />
+    <Compile Include="GameEntities\Objects\GameItem.vb" />
+    <Compile Include="GameEntities\Objects\GameObject.vb" />
+    <Compile Include="GameEntities\Objects\GameNPC.vb" />
+    <Compile Include="GameEntities\Objects\GamePlayer.vb" />
+    <Compile Include="GameEntities\Objects\GamePet.vb" />
+    <Compile Include="GameEntities\Utilities\GameRelativeMap.vb" />
+    <Compile Include="GameEntities\Utilities\GameStates.vb" />
+    <Compile Include="GameEntities\Objects\GameWeapon.vb" />
+    <Compile Include="GameEntities\Interfaces\IUpdatable.vb" />
+    <Compile Include="GameEntities\Objects\Layer.vb" />
+    <Compile Include="Designer\Designers\AccountConnecterDesigner.vb" />
+    <Compile Include="Designer\Interfaces\Designer.vb" />
+    <Compile Include="Designer\Designers\ServerConnecterDesigner.vb" />
+    <Compile Include="Designer\Designers\CharacterSelectionDesigner.vb" />
+    <Compile Include="Designer\Designers\GameDesigner.vb" />
     <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -147,8 +150,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

@@ -1,4 +1,4 @@
-﻿Public Class GameNPC
+﻿Public Class GamePet
     Inherits GameCharacter
-    
+
 End Class

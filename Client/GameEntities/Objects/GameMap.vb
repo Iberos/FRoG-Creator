@@ -1,4 +1,5 @@
 ﻿Imports SFML.Graphics
+Imports SFML.Window
 
 Public Class GameMap
     Implements SFML.Graphics.Drawable
@@ -9,7 +10,7 @@ Public Class GameMap
     Public attribute(20, 14) As Attribute ' attribut sur une case
     Public borderMap(8) As Integer ' maps au voisinage
 
-    Public Function isWalkable(location As GameVector)
+    Public Function isWalkable(location As Vector2f)
         ' TODO isWalkable condition  
         Return True
     End Function

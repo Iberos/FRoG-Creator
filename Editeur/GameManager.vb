@@ -230,7 +230,7 @@ Class GameManager
             For x = 0 To modVar.MAP_WIDTH
                 For y = 0 To modVar.MAP_HEIGHT
                     If Not .tileCode(x, y) = 0 Then
-                        sprt = New Sprite(game.tileset(.tilset(x, y)))
+                        sprt = New Sprite(game.tileset(.tileset(x, y)))
                         sprt.TextureRect = New IntRect(map.DecodeX(.tileCode(x, y)) * modVar.CASE_LENGTH, map.DecodeY(.tileCode(x, y)) * modVar.CASE_LENGTH, modVar.CASE_LENGTH, modVar.CASE_LENGTH)
                         sprt.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                         mapSurface(layer).Draw(sprt)

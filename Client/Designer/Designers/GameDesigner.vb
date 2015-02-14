@@ -5,14 +5,15 @@ Imports TGUI
 Class GameDesigner
     Implements Designer
 
+    ' GuiObjects
     Private chatBox As EditBox
     Private chatContainer As ChatBox
     Private characterWindow As ChildWindow
 
-    Public Sub New()
+    ' GameObjects
+    Private testPlayer As GamePlayer
 
-    End Sub
-
+    ' GuiLoad
     Public Sub Load(gui As Gui, configPath As String) Implements Designer.Load
         gui.RemoveAllWidgets()
         '
@@ -77,20 +78,45 @@ Class GameDesigner
         '
     End Sub
 
+    Public Sub New()
+        Me.testPlayer = New GamePlayer(New Texture(Main.SPRITES_PATH + "Sprite1.png"))
+
+        ' Test de déplacement du joueur
+        Me.testPlayer.AddMovement(GameDirection.DOWN)
+        Me.testPlayer.AddMovement(GameDirection.DOWN)
+        Me.testPlayer.AddMovement(GameDirection.DOWN)
+        Me.testPlayer.AddMovement(GameDirection.DOWN)
+        Me.testPlayer.AddMovement(GameDirection.RIGHT)
+        Me.testPlayer.AddMovement(GameDirection.RIGHT)
+        Me.testPlayer.AddMovement(GameDirection.DOWN)
+        Me.testPlayer.AddMovement(GameDirection.RIGHT)
+        Me.testPlayer.AddMovement(GameDirection.DOWN)
+        Me.testPlayer.AddMovement(GameDirection.RIGHT)
+        Me.testPlayer.AddMovement(GameDirection.DOWN)
+        Me.testPlayer.AddMovement(GameDirection.LEFT)
+        Me.testPlayer.AddMovement(GameDirection.RIGHT)
+        Me.testPlayer.AddMovement(GameDirection.RIGHT)
+        Me.testPlayer.AddMovement(GameDirection.RIGHT)
+    End Sub
+
     Public Sub DispatchEventsAndUpdate() Implements Designer.DispatchEventsAndUpdate
+        ' GuiEvents
         If (Keyboard.IsKeyPressed(Keyboard.Key.Return)) Then 'Exemple d'écriture d'un texte dynamique dans le chatContainer
-            If (ChatBox.Focused And ChatBox.Text.Length > 0) Then
-                chatContainer.AddLine(ChatBox.Text, Color.White)
-                ChatBox.Text = String.Empty
+            If (chatBox.Focused And chatBox.Text.Length > 0) Then
+                chatContainer.AddLine(chatBox.Text, Color.White)
+                chatBox.Text = String.Empty
             End If
         ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.C)) Then 'Exemple d'ouverture d'une fenêtre si celle-ci est "fermée"
             If (Not gui.GetWidgetNames.Contains("characterWindow") And Not characterWindow.Equals(Nothing)) Then
                 gui.Add(characterWindow, "characterWindow")
             End If
         End If
+
+        ' GameEvents
+        Me.testPlayer.Update()
     End Sub
 
     Public Sub Draw(batch As RenderWindow) Implements Designer.Draw
-
+        batch.Draw(Me.testPlayer)
     End Sub
 End Class

@@ -1,6 +1,6 @@
 ﻿Imports SFML.Graphics
 
-Public Class GameEntity
+Public MustInherit Class GameEntity
     Inherits Sprite
 
 End Class

@@ -51,7 +51,7 @@ Public Class GameMap
             For x = 0 To 20
                 For y = 0 To 14
                     If Not layer(layerNum).tileCode(x, y) = 0 Then
-                        sprt = New Sprite(game.tileset(.tilset(x, y)))
+                        sprt = New Sprite(game.tileset(.tileset(x, y)))
                         sprt.TextureRect = New IntRect(DecodeX(.tileCode(x, y)) * 32, DecodeY(.tileCode(x, y)) * 32, 32, 32)
                         sprt.Position = New Vector2f(x * 32, y * 32)
                         layerSurface.Draw(sprt)
