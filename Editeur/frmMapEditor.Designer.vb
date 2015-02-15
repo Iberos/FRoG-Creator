@@ -104,6 +104,8 @@ Partial Class frmMapEditor
         Me.ButtonBlockDirection = New System.Windows.Forms.Button()
         Me.ButtonBlock = New System.Windows.Forms.Button()
         Me.picGame = New System.Windows.Forms.PictureBox()
+        Me.vPicScroll = New System.Windows.Forms.VScrollBar()
+        Me.hPicScroll = New System.Windows.Forms.HScrollBar()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -542,22 +544,27 @@ Partial Class frmMapEditor
         '
         'pnlTiles
         '
+        Me.pnlTiles.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.pnlTiles.AutoScroll = True
+        Me.pnlTiles.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.pnlTiles.BackColor = System.Drawing.Color.White
         Me.pnlTiles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pnlTiles.Controls.Add(Me.picTiles)
         Me.pnlTiles.Location = New System.Drawing.Point(12, 99)
         Me.pnlTiles.Name = "pnlTiles"
-        Me.pnlTiles.Size = New System.Drawing.Size(250, 453)
+        Me.pnlTiles.Size = New System.Drawing.Size(224, 436)
         Me.pnlTiles.TabIndex = 6
         '
         'picTiles
         '
         Me.picTiles.BackColor = System.Drawing.Color.White
+        Me.picTiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.picTiles.Cursor = System.Windows.Forms.Cursors.Default
+        Me.picTiles.Dock = System.Windows.Forms.DockStyle.Fill
         Me.picTiles.Location = New System.Drawing.Point(0, 0)
         Me.picTiles.Name = "picTiles"
-        Me.picTiles.Size = New System.Drawing.Size(248, 451)
-        Me.picTiles.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.picTiles.Size = New System.Drawing.Size(222, 434)
         Me.picTiles.TabIndex = 5
         Me.picTiles.TabStop = False
         '
@@ -655,9 +662,9 @@ Partial Class frmMapEditor
         Me.pnlAttribute.Controls.Add(Me.ButtonTeleport)
         Me.pnlAttribute.Controls.Add(Me.ButtonBlockDirection)
         Me.pnlAttribute.Controls.Add(Me.ButtonBlock)
-        Me.pnlAttribute.Location = New System.Drawing.Point(4, 99)
+        Me.pnlAttribute.Location = New System.Drawing.Point(-38, 70)
         Me.pnlAttribute.Name = "pnlAttribute"
-        Me.pnlAttribute.Size = New System.Drawing.Size(249, 452)
+        Me.pnlAttribute.Size = New System.Drawing.Size(249, 453)
         Me.pnlAttribute.TabIndex = 9
         Me.pnlAttribute.Visible = False
         '
@@ -762,12 +769,32 @@ Partial Class frmMapEditor
         Me.picGame.TabIndex = 3
         Me.picGame.TabStop = False
         '
+        'vPicScroll
+        '
+        Me.vPicScroll.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.vPicScroll.LargeChange = 20
+        Me.vPicScroll.Location = New System.Drawing.Point(239, 99)
+        Me.vPicScroll.Name = "vPicScroll"
+        Me.vPicScroll.Size = New System.Drawing.Size(18, 436)
+        Me.vPicScroll.TabIndex = 6
+        '
+        'hPicScroll
+        '
+        Me.hPicScroll.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.hPicScroll.Location = New System.Drawing.Point(12, 538)
+        Me.hPicScroll.Name = "hPicScroll"
+        Me.hPicScroll.Size = New System.Drawing.Size(224, 17)
+        Me.hPicScroll.TabIndex = 10
+        '
         'frmMapEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(984, 597)
+        Me.Controls.Add(Me.hPicScroll)
         Me.Controls.Add(Me.pnlAttribute)
+        Me.Controls.Add(Me.vPicScroll)
         Me.Controls.Add(Me.pnlStart)
         Me.Controls.Add(Me.pnlTiles)
         Me.Controls.Add(Me.lstTiles)
@@ -776,6 +803,7 @@ Partial Class frmMapEditor
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
+        Me.MinimumSize = New System.Drawing.Size(1000, 636)
         Me.Name = "frmMapEditor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FRoG Creator 1.0"
@@ -786,7 +814,6 @@ Partial Class frmMapEditor
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.pnlTiles.ResumeLayout(False)
-        Me.pnlTiles.PerformLayout()
         CType(Me.picTiles, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlStart.ResumeLayout(False)
         Me.pnlStart.PerformLayout()
@@ -879,5 +906,7 @@ Partial Class frmMapEditor
     Friend WithEvents ButtonCancel As System.Windows.Forms.Button
     Friend WithEvents ButtonOk As System.Windows.Forms.Button
     Friend WithEvents ButtonNPC As System.Windows.Forms.Button
+    Friend WithEvents vPicScroll As System.Windows.Forms.VScrollBar
+    Friend WithEvents hPicScroll As System.Windows.Forms.HScrollBar
 
 End Class

@@ -314,7 +314,7 @@ Class GameManager
         tileSurface.Clear(Color.White)
 
         ' Dessin du tileset
-        tileSurface.Draw(currentTileset)
+        'tileSurface.Draw(currentTileset)
 
         ' Dessin du selecteur de tile
         tileSurface.Draw(recSelect)

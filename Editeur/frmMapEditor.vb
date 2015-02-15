@@ -7,7 +7,12 @@ Imports System.Collections
 
 Public Class frmMapEditor
 
-    Private selectingTiles As Boolean = False
+    Private Shared CURSOR_SELECTER_COLOR = Pens.DarkGreen
+    Private Shared PIC_TILES_PADDING = New Point(100, 100)
+
+    Private Shared selectingTiles As Boolean = False
+    Private Shared picTilesOrigin As Point = New Point()
+
     Private mapping As Boolean = False
 
     Private Sub frmMapEditor_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -38,8 +43,12 @@ Public Class frmMapEditor
     End Sub
 
     Public Sub FormResize()
-        pnlTiles.Width = 0.25 * Me.Width
-        pnlTiles.Height = Me.Height - 183
+        'pnlTiles.Width = 0.25 * Me.Width
+        'pnlTiles.Height = Me.Height - 183
+
+        picTiles.Refresh()
+
+        'TODO: Utiliser la proprièté 'Anchor' des objets
         pnlAttribute.Width = 0.25 * Me.Width
         pnlAttribute.Height = Me.Height - 183
         pnlAttribute.Left = pnlTiles.Left
@@ -57,12 +66,18 @@ Public Class frmMapEditor
     Private Sub lstTiles_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstTiles.SelectedIndexChanged
         If lstTiles.SelectedIndex < lstTiles.Items.Count - 1 Then
             game.tileSurface.Dispose()
-            picTiles.Size = New Size(game.tileset(lstTiles.SelectedIndex).Size.X, game.tileset(lstTiles.SelectedIndex).Size.Y)
+            'picTiles.Size = New Size(game.tileset(lstTiles.SelectedIndex).Size.X, game.tileset(lstTiles.SelectedIndex).Size.Y)
             game.tileSurface = New RenderWindow(picTiles.Handle)
             game.currentTileset = New Sprite(game.tileset(lstTiles.SelectedIndex)) 'Changement du tileset
-            picTiles.ImageLocation = ("Tiles/Tiles" & lstTiles.SelectedIndex & ".png")
-            MsgBox(picTiles.Height)
-            MsgBox(game.tileSurface.Size.Y)
+            picTiles.Image = System.Drawing.Image.FromFile("Tiles/Tiles" & lstTiles.SelectedIndex & ".png")
+            'MsgBox(picTiles.Height)
+            'MsgBox(game.tileSurface.Size.Y)
+            '***** Initialize ScrollBar *****
+            vPicScroll.Maximum = picTiles.Image.Height + PIC_TILES_PADDING.Y - picTiles.Height
+            vPicScroll.LargeChange = 0.2 * picTiles.Height
+            hPicScroll.Maximum = picTiles.Image.Width + PIC_TILES_PADDING.X - picTiles.Width
+            hPicScroll.LargeChange = 0.2 * picTiles.Width
+            '********************************
             pnlAttribute.Visible = False
             curAttribute.Type = 0
             ButtonCopy.Enabled = True
@@ -117,31 +132,6 @@ Public Class frmMapEditor
         End If
         MenuNight.Checked = editorOptions.nightMode
         ButtonNight.Checked = editorOptions.nightMode
-    End Sub
-
-    Private Sub picTiles_MouseDown(sender As Object, e As MouseEventArgs) Handles picTiles.MouseDown
-        game.recSelect.Position = New Vector2f(Int(Mouse.GetPosition(game.tileSurface).X / 32), Int(Mouse.GetPosition(game.tileSurface).Y / 32)) * 32
-        game.recSelect.Size = New Vector2f(32, 32)
-        game.DrawTileset()
-        selectingTiles = True
-    End Sub
-
-    Private Sub picTiles_MouseMove(sender As Object, e As MouseEventArgs) Handles picTiles.MouseMove
-        'TODO À régler : Erreur lors de l'ouverture du projet (Tester l'existance des DLLs externes SFML)
-        If selectingTiles And
-            Mouse.GetPosition(game.tileSurface).X > game.recSelect.Position.X And
-            Mouse.GetPosition(game.tileSurface).Y > game.recSelect.Position.Y Then ' Eviter la séléction "négative"
-
-            Dim tmpHeight As Integer = Int((Mouse.GetPosition(game.tileSurface).Y - game.recSelect.Position.Y) / 32) + 1
-            Dim tmpWidth As Integer = Int((Mouse.GetPosition(game.tileSurface).X - game.recSelect.Position.X) / 32) + 1
-
-            game.recSelect.Size = New Vector2f(tmpWidth * 32, tmpHeight * 32)
-            game.DrawTileset()
-        End If
-    End Sub
-
-    Private Sub picTiles_MouseUp(sender As Object, e As MouseEventArgs) Handles picTiles.MouseUp
-        selectingTiles = False
     End Sub
 
     Private Sub picGame_MouseClick(sender As Object, e As MouseEventArgs) Handles picGame.MouseClick
@@ -568,4 +558,67 @@ Public Class frmMapEditor
 
     End Sub
 
+    Private Sub picTiles_Paint(sender As Object, e As PaintEventArgs) Handles picTiles.Paint
+        e.Graphics.Clear(Drawing.Color.White)
+        e.Graphics.DrawImage(picTiles.Image, e.ClipRectangle, Me.picTilesOrigin.X, Me.picTilesOrigin.Y, e.ClipRectangle.Width, e.ClipRectangle.Height, GraphicsUnit.Pixel)
+        e.Graphics.DrawRectangle(CURSOR_SELECTER_COLOR, game.recSelect.Position.X - Me.picTilesOrigin.X, game.recSelect.Position.Y - Me.picTilesOrigin.Y, game.recSelect.Size.X, game.recSelect.Size.Y)
+    End Sub
+
+    Private Sub hScrollBar_Scroll(sender As Object, e As ScrollEventArgs) Handles hPicScroll.Scroll
+        Me.picTilesOrigin.X = hPicScroll.Value
+        picTiles.Refresh()
+    End Sub
+
+    Private Sub vPicScroll_Scroll(sender As Object, e As ScrollEventArgs) Handles vPicScroll.Scroll
+        Me.picTilesOrigin.Y = vPicScroll.Value
+        picTiles.Refresh()
+    End Sub
+
+    Private Sub picTiles_MouseDown(sender As Object, e As MouseEventArgs) Handles picTiles.MouseDown
+        Dim pt As Point = New Point(Int((e.Location.X - picTiles.Location.X + Me.picTilesOrigin.X) / 32) * 32, Int((e.Location.Y - picTiles.Location.Y + Me.picTilesOrigin.Y) / 32) * 32)
+        game.recSelect.Position = New Vector2f(pt.X, pt.Y)
+        game.recSelect.Size = New Vector2f(32, 32)
+        selectingTiles = True
+        picTiles.Refresh()
+    End Sub
+
+    Private Sub picTiles_MouseMove(sender As Object, e As MouseEventArgs) Handles picTiles.MouseMove
+        Dim pt As Point = e.Location - picTiles.Location + Me.picTilesOrigin
+        If (selectingTiles And pt.X > game.recSelect.Position.X And pt.Y > game.recSelect.Position.Y) Then
+            Dim tmpHeight As Integer = Int((pt.Y - game.recSelect.Position.Y) / 32) + 1
+            Dim tmpWidth As Integer = Int((pt.X - game.recSelect.Position.X) / 32) + 1
+
+            game.recSelect.Size = New Vector2f(tmpWidth * 32, tmpHeight * 32)
+            picTiles.Refresh()
+        End If
+    End Sub
+
+    Private Sub picTiles_MouseUp(sender As Object, e As MouseEventArgs) Handles picTiles.MouseUp
+        selectingTiles = False
+    End Sub
+
+    'Private Sub picTiles_MouseDown(sender As Object, e As MouseEventArgs) Handles picTiles.MouseDown
+    '    game.recSelect.Position = New Vector2f(Int(Mouse.GetPosition(game.tileSurface).X / 32), Int(Mouse.GetPosition(game.tileSurface).Y / 32)) * 32
+    '    game.recSelect.Size = New Vector2f(32, 32)
+    '    game.DrawTileset()
+    '    selectingTiles = True
+    'End Sub
+
+    'Private Sub picTiles_MouseMove(sender As Object, e As MouseEventArgs) Handles picTiles.MouseMove
+    '    'TODO À régler : Erreur lors de l'ouverture du projet (Tester l'existance des DLLs externes SFML)
+    '    If selectingTiles And
+    '        Mouse.GetPosition(game.tileSurface).X > game.recSelect.Position.X And
+    '        Mouse.GetPosition(game.tileSurface).Y > game.recSelect.Position.Y Then ' Eviter la séléction "négative"
+
+    '        Dim tmpHeight As Integer = Int((Mouse.GetPosition(game.tileSurface).Y - game.recSelect.Position.Y) / 32) + 1
+    '        Dim tmpWidth As Integer = Int((Mouse.GetPosition(game.tileSurface).X - game.recSelect.Position.X) / 32) + 1
+
+    '        game.recSelect.Size = New Vector2f(tmpWidth * 32, tmpHeight * 32)
+    '        game.DrawTileset()
+    '    End If
+    'End Sub
+
+    'Private Sub picTiles_MouseUp(sender As Object, e As MouseEventArgs) Handles picTiles.MouseUp
+    '    selectingTiles = False
+    'End Sub
 End Class
