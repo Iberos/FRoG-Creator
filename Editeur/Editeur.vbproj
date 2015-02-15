@@ -14,6 +14,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>47a5c1f9</NuGetPackageImportStamp>
     <PublishUrl>C:\Users\Administrator\Documents\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,7 +30,6 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>47a5c1f9</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -310,9 +310,6 @@
     <None Include="Resources\Arrow up.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Icon1.ico" />
-    <None Include="Resources\nettoyage-effacement-gomme-a-effacer-icone-6000.ico" />
-    <None Include="Resources\nettoyage.png" />
     <Content Include="Resources\Sprite.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

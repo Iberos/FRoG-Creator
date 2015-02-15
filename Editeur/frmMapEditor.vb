@@ -259,6 +259,11 @@ Public Class frmMapEditor
         ButtonNight.Checked = editorOptions.nightMode
     End Sub
 
+    Private Sub ButtonLayerShift_Click(sender As Object, e As EventArgs) Handles ButtonLayerShift.Click
+        editorOptions.layerShiftMode = Not editorOptions.layerShiftMode
+        ButtonLayerShift.Checked = editorOptions.layerShiftMode
+    End Sub
+
     Private Sub picGame_MouseDown(sender As Object, e As MouseEventArgs) Handles picGame.MouseDown
         mapping = True
     End Sub
@@ -310,6 +315,8 @@ Public Class frmMapEditor
         ButtonTop1.Checked = False
         ButtonTop2.Checked = False
         ButtonTop3.Checked = False
+
+        game.DrawMap()
     End Sub
 
     ' - Couche : Inférieur 1
@@ -324,6 +331,8 @@ Public Class frmMapEditor
         ButtonTop1.Checked = False
         ButtonTop2.Checked = False
         ButtonTop3.Checked = False
+
+        game.DrawMap()
     End Sub
 
     ' - Couche : Inférieur 2
@@ -338,6 +347,8 @@ Public Class frmMapEditor
         ButtonTop1.Checked = False
         ButtonTop2.Checked = False
         ButtonTop3.Checked = False
+
+        game.DrawMap()
     End Sub
 
     ' - Couche : Inférieur 3
@@ -352,6 +363,8 @@ Public Class frmMapEditor
         ButtonTop1.Checked = False
         ButtonTop2.Checked = False
         ButtonTop3.Checked = False
+
+        game.DrawMap()
     End Sub
 
     ' - Couche : Supérieur 1
@@ -366,6 +379,8 @@ Public Class frmMapEditor
         ButtonTop1.Checked = True
         ButtonTop2.Checked = False
         ButtonTop3.Checked = False
+
+        game.DrawMap()
     End Sub
 
     ' - Couche : Supérieur 2
@@ -380,6 +395,8 @@ Public Class frmMapEditor
         ButtonTop1.Checked = False
         ButtonTop2.Checked = True
         ButtonTop3.Checked = False
+
+        game.DrawMap()
     End Sub
 
     ' Couche : Supérieur 3
@@ -393,6 +410,8 @@ Public Class frmMapEditor
         ButtonTop1.Checked = False
         ButtonTop2.Checked = False
         ButtonTop3.Checked = True
+
+        game.DrawMap()
     End Sub
 
     ' - Outil : Pipette

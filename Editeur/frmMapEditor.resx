@@ -126,6 +126,16 @@
   <metadata name="ToolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>249, 17</value>
   </metadata>
+  <data name="LabelPresentation6.Text" xml:space="preserve">
+    <value>Vous trouverez toute l'aide nécessaire à débuter sur FRoG Creator ou bien à vous améliorer sur notre forum officiel. 
+Vous verrez, on ne mord pas, et nous partageons plein d'astuces, de ressources graphiques, etc...
+En plus, participer à notre communauté est un moyen sympa de remercier les développeurs BENEVOLES de ce logiciel !</value>
+  </data>
+  <data name="LabelPresentation4.Text" xml:space="preserve">
+    <value>Vous pouvez créer ou ouvrir une map depuis le menu "Map" situé en haut de la fenêtre.
+Vous pouvez aussi créer ou éditer les ressources (objets, PNJs, etc...) de votre jeu depuis le menu "Editeur" également situé en 
+haut de la fenêtre.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ButtleNewMap.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -169,19 +179,19 @@
   <data name="ButtonFill.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        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
+        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
 </value>
   </data>
   <data name="ButtonClear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -236,24 +246,24 @@
   <data name="ButtonNight.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAP5SURBVEhL7ZV/TFtVFMeLxkT9w7jEaPxn848ZEfv7/Spj
-        QhaSmQXMjBMXswyCo++1aLbMZUGZ8TnjdJoYM9JlHXF0fX2vL6NgQ4EJQmkJMAkOoTBgWys/hhu46Vz8
-        wY8OON77diWajjkx/ucnOem7r99z7rkn59yn+59/DbVLzqJ5SeQEpYfJl5N0sf86em6mSuQyhlcyieyf
-        Y3AqazhBbsjfE5x1e87drO4YhfqeSc1Kj3ZCTmndPG0XlzhekSj++IPE7e7AmWWVqD+Iam+yY/gqRAeu
-        QMfQNLQPXQUx0L+Quyswk8GLCwwv/0rbZWAFX4LilXTifmdMRZ6H6eIT1wMo4+jgFIT7JiASuwytsSnY
-        XB6aYQW5y2r3WVHW92G90SE9SpdI75kF5UktwN/BCopS6orMRwenob57FBp7xgCfYuv7wVmG97uJbHXQ
-        dmlDXplvrv3c9xA8MwqBjgQ09X4HUvgisCXylG3vqQeIdHVQvHxQFHsXGs/ioBc0a+67AnlVkUVakCuI
-        bPXYnEpEar0I1Z3jUNl0XrMwqv0rh1t+Q3UvIrLVYxGkH1tQxpXNF+BI/bBmp9Fp9oqhJGX3HSCyFaF4
-        71rUVV6yTAVv0Io2qGgYgcO1g5pVd03AJ+gXdw+RrQjN+/azgvcGWaZic6phuS0O7qY4vKvGNDtSfx7a
-        BqZhE+p91ATbiDQFnD1T5PmFc/jbyatU8JUgit8s+KJj8KYvtmynOifgZGscTIJ/lrUrr+t0kEZcNPBg
-        ohYeZwVxCTcKeZ0KmszsF8p9c21oBg4oA/CGp0+zMqkfGs9ehtqucTRsdTOsw38NNcRpRvBXZfJqzORU
-        Z3eLrqXcPQE0K3I2CXd7OIcaEJVQ8vPuyeUNsO072QdV4VFt6Oq6L8GxhmFw1Q2C3JYAPDeiP5TEviTM
-        yuBLjn5N1a6K2q8m4S1Uoj9vtN/bD4dqhuDoF3GQImPQOXINTqCuQ03wE7o+HiFhVqagoOBec2HFlg1O
-        7w1RDSXxHfRZy7fwcXBEK9uHtcNw/MsE1Jy5BBFUykOer29aHPLP5pfeLnw6M3OdYePGNTgGCZdCGhaY
-        OO4Jw6YXs62vHovmvxNKfqRGFtVoAiIDU9p17Ubl2VwZWXxuX03SurOiR/9s3g49TedkMIxZ80UxcKxb
-        If/K8gZYjJ2sz+8ut2z/IMgUuePMDu8cY3fNc8WuCfPLB8PmLfZPjRRbaKbYrXe7gVYiLMDHNdK03mBl
-        bQaGyTVamXy03makue23DD2jd/g/rMHaP0qEev0eEu6OpK3LybkfO6RbrY9rmdH0UyYT84yeotItFtv6
-        DCprrZ7jHlvPsg9RFIW/D7fP+r9Dp/sdZqhEMpdY1PoAAAAASUVORK5CYII=
+        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
 </value>
   </data>
   <data name="ButtonGrid.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -386,15 +396,20 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="LabelPresentation6.Text" xml:space="preserve">
-    <value>Vous trouverez toute l'aide nécessaire à débuter sur FRoG Creator ou bien à vous améliorer sur notre forum officiel. 
-Vous verrez, on ne mord pas, et nous partageons plein d'astuces, de ressources graphiques, etc...
-En plus, participer à notre communauté est un moyen sympa de remercier les développeurs BENEVOLES de ce logiciel !</value>
-  </data>
-  <data name="LabelPresentation4.Text" xml:space="preserve">
-    <value>Vous pouvez créer ou ouvrir une map depuis le menu "Map" situé en haut de la fenêtre.
-Vous pouvez aussi créer ou éditer les ressources (objets, PNJs, etc...) de votre jeu depuis le menu "Editeur" également situé en 
-haut de la fenêtre.</value>
+  <data name="ButtonLayerShift.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>55</value>

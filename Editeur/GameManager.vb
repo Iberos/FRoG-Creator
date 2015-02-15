@@ -224,7 +224,12 @@ Class GameManager
     ' - Dessin de la couche
     Public Sub DrawLayer(ByVal layer As Byte)
         Dim sprt As Sprite
-        mapSurface(layer).Clear(New Color(0, 0, 0, 0))
+
+        If (editorOptions.layerShiftMode And curLayer.Equals(layer)) Then
+            mapSurface(layer).Clear(New Color(0, 0, 0, 100))
+        Else
+            mapSurface(layer).Clear(New Color(0, 0, 0, 0))
+        End If
 
         With map.layer(layer)
             For x = 0 To modVar.MAP_WIDTH

@@ -7,6 +7,7 @@ Public Class GameOptions
     Public tilesPreview As Boolean
     Public grid As Boolean
     Public nightMode As Boolean
+    Public layerShiftMode As Boolean
 
     ' - Sauvegarde les options de l'éditeur
     Public Sub Save()

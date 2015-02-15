@@ -85,6 +85,7 @@ Partial Class frmMapEditor
         Me.ButtonBlock = New System.Windows.Forms.Button()
         Me.vPicScroll = New System.Windows.Forms.VScrollBar()
         Me.hPicScroll = New System.Windows.Forms.HScrollBar()
+        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
         Me.picTiles = New System.Windows.Forms.PictureBox()
         Me.picGame = New System.Windows.Forms.PictureBox()
         Me.ButtonPlay = New System.Windows.Forms.ToolStripButton()
@@ -106,7 +107,7 @@ Partial Class frmMapEditor
         Me.ButtonTop1 = New System.Windows.Forms.ToolStripButton()
         Me.ButtonTop2 = New System.Windows.Forms.ToolStripButton()
         Me.ButtonTop3 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ButtonLayerShift = New System.Windows.Forms.ToolStripButton()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -305,7 +306,7 @@ Partial Class frmMapEditor
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ButtonPlay, Me.ButtleNewMap, Me.ButtonOpenMap, Me.ButtonSaveMap, Me.ToolStripSeparator8, Me.ButtonFill, Me.ButtonClear, Me.ToolStripSeparator9, Me.ButtonCopy, Me.ButtonErase, Me.ToolStripSeparator4, Me.ButtonNight, Me.ButtonGrid, Me.ToolStripSeparator10, Me.ButtonBefore, Me.ButtonAfter, Me.ToolStripSeparator7, Me.ButtonGround, Me.ToolStripSeparator6, Me.ButtonLower1, Me.ButtonLower2, Me.ButtonLower3, Me.ToolStripSeparator5, Me.ButtonTop1, Me.ButtonTop2, Me.ButtonTop3, Me.ToolStripSeparator13, Me.LabelMapName, Me.ToolStripSeparator12})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ButtonPlay, Me.ButtleNewMap, Me.ButtonOpenMap, Me.ButtonSaveMap, Me.ToolStripSeparator8, Me.ButtonFill, Me.ButtonClear, Me.ToolStripSeparator9, Me.ButtonCopy, Me.ButtonErase, Me.ToolStripSeparator4, Me.ButtonNight, Me.ButtonGrid, Me.ButtonLayerShift, Me.ToolStripSeparator10, Me.ButtonBefore, Me.ButtonAfter, Me.ToolStripSeparator7, Me.ButtonGround, Me.ToolStripSeparator6, Me.ButtonLower1, Me.ButtonLower2, Me.ButtonLower3, Me.ToolStripSeparator5, Me.ButtonTop1, Me.ButtonTop2, Me.ButtonTop3, Me.ToolStripSeparator13, Me.LabelMapName, Me.ToolStripSeparator12})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -594,6 +595,11 @@ Partial Class frmMapEditor
         Me.hPicScroll.Size = New System.Drawing.Size(224, 17)
         Me.hPicScroll.TabIndex = 10
         '
+        'ToolStripSeparator13
+        '
+        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
+        Me.ToolStripSeparator13.Size = New System.Drawing.Size(6, 25)
+        '
         'picTiles
         '
         Me.picTiles.BackColor = System.Drawing.Color.White
@@ -791,10 +797,14 @@ Partial Class frmMapEditor
         Me.ButtonTop3.Size = New System.Drawing.Size(23, 22)
         Me.ButtonTop3.Text = "Couche Supérieure 3"
         '
-        'ToolStripSeparator13
+        'ButtonLayerShift
         '
-        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
-        Me.ToolStripSeparator13.Size = New System.Drawing.Size(6, 25)
+        Me.ButtonLayerShift.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonLayerShift.Image = CType(resources.GetObject("ButtonLayerShift.Image"), System.Drawing.Image)
+        Me.ButtonLayerShift.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonLayerShift.Name = "ButtonLayerShift"
+        Me.ButtonLayerShift.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonLayerShift.Text = "Différence entre couche"
         '
         'frmMapEditor
         '
@@ -918,5 +928,6 @@ Partial Class frmMapEditor
     Friend WithEvents vPicScroll As System.Windows.Forms.VScrollBar
     Friend WithEvents hPicScroll As System.Windows.Forms.HScrollBar
     Friend WithEvents ToolStripSeparator13 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ButtonLayerShift As System.Windows.Forms.ToolStripButton
 
 End Class
