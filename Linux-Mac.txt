@@ -10,7 +10,7 @@ Installation de Mono pour Fedora/CentOS/Red Hat
 rpm --import "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
 yum-config-manager --add-repo http://download.mono-project.com/repo/centos/
 yum update
-yum install monodevelop libsfml-dev libcsfml-dev
+yum install monodevelop mono-vbnc libsfml-dev libcsfml-dev
 
 Ouvrir le fichier /etc/mono/config et ajouter les lignes suivantes
 
