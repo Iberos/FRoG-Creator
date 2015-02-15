@@ -5,7 +5,6 @@ Imports System.IO
 Class GameManager
 
     Public gameSurface As RenderWindow
-    Public tileSurface As RenderWindow
     Private gridSurface As New RenderTexture(672, 480)
     Private nightSurface As New RectangleShape(New Vector2f(672, 480))
     Private mapSurface(6) As RenderTexture
@@ -53,7 +52,6 @@ Class GameManager
     Private Sub InitializeClass()
         ' Chargement des éléments éditeur
         gameSurface = New RenderWindow(frmMapEditor.picGame.Handle)
-        tileSurface = New RenderWindow(frmMapEditor.picTiles.Handle)
 
         ' Initialisation SFML
         gameSurface.SetFramerateLimit(60)
@@ -79,9 +77,11 @@ Class GameManager
         Dim files() As String = IO.Directory.GetFiles("Tiles")
         If files.Count() > 0 Then
             For index As Integer = 0 To files.Count() - 1
-                ReDim Preserve tileset(index)
-                tileset(index) = New Texture("Tiles/Tiles" & index.ToString() & ".png")
-                frmMapEditor.lstTiles.Items.Add("Tiles" & index.ToString & ".png")
+                If (File.Exists("Tiles/Tiles" & index.ToString() & ".png")) Then
+                    ReDim Preserve tileset(index)
+                    tileset(index) = New Texture("Tiles/Tiles" & index.ToString() & ".png")
+                    frmMapEditor.lstTiles.Items.Add("Tiles" & index.ToString & ".png")
+                End If
             Next
 
             frmMapEditor.lstTiles.Items.Add("Attributs")
@@ -309,18 +309,6 @@ Class GameManager
         Next
     End Sub
 
-    ' - Dessin de la planche de tiles
-    Public Sub DrawTileset()
-        tileSurface.Clear(Color.White)
-
-        ' Dessin du tileset
-        'tileSurface.Draw(currentTileset)
-
-        ' Dessin du selecteur de tile
-        tileSurface.Draw(recSelect)
-
-        tileSurface.Display()
-    End Sub
 
     ' - Boucle de rafraichissement de la surface principale
     Public Sub StartGameLoop()

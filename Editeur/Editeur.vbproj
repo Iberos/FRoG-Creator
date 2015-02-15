@@ -310,6 +310,9 @@
     <None Include="Resources\Arrow up.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Icon1.ico" />
+    <None Include="Resources\nettoyage-effacement-gomme-a-effacer-icone-6000.ico" />
+    <None Include="Resources\nettoyage.png" />
     <Content Include="Resources\Sprite.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

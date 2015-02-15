@@ -54,37 +54,17 @@ Partial Class frmMapEditor
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.loadBar = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ButtonPlay = New System.Windows.Forms.ToolStripButton()
-        Me.ButtleNewMap = New System.Windows.Forms.ToolStripButton()
-        Me.ButtonOpenMap = New System.Windows.Forms.ToolStripButton()
-        Me.ButtonSaveMap = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ButtonFill = New System.Windows.Forms.ToolStripButton()
-        Me.ButtonClear = New System.Windows.Forms.ToolStripButton()
-        Me.ButtonCopy = New System.Windows.Forms.ToolStripButton()
-        Me.ButtonErase = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ButtonNight = New System.Windows.Forms.ToolStripButton()
-        Me.ButtonGrid = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ButtonBefore = New System.Windows.Forms.ToolStripButton()
-        Me.ButtonAfter = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ButtonGround = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ButtonLower1 = New System.Windows.Forms.ToolStripButton()
-        Me.ButtonLower2 = New System.Windows.Forms.ToolStripButton()
-        Me.ButtonLower3 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ButtonTop1 = New System.Windows.Forms.ToolStripButton()
-        Me.ButtonTop2 = New System.Windows.Forms.ToolStripButton()
-        Me.ButtonTop3 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.LabelMapName = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
         Me.lstTiles = New System.Windows.Forms.ComboBox()
         Me.pnlTiles = New System.Windows.Forms.Panel()
-        Me.picTiles = New System.Windows.Forms.PictureBox()
         Me.pnlStart = New System.Windows.Forms.Panel()
         Me.LinkLabelWebSite = New System.Windows.Forms.LinkLabel()
         Me.LabelPresentation6 = New System.Windows.Forms.Label()
@@ -103,17 +83,38 @@ Partial Class frmMapEditor
         Me.ButtonTeleport = New System.Windows.Forms.Button()
         Me.ButtonBlockDirection = New System.Windows.Forms.Button()
         Me.ButtonBlock = New System.Windows.Forms.Button()
-        Me.picGame = New System.Windows.Forms.PictureBox()
         Me.vPicScroll = New System.Windows.Forms.VScrollBar()
         Me.hPicScroll = New System.Windows.Forms.HScrollBar()
+        Me.picTiles = New System.Windows.Forms.PictureBox()
+        Me.picGame = New System.Windows.Forms.PictureBox()
+        Me.ButtonPlay = New System.Windows.Forms.ToolStripButton()
+        Me.ButtleNewMap = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonOpenMap = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonSaveMap = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonFill = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonClear = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonCopy = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonErase = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonNight = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonGrid = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonBefore = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonAfter = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonGround = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonLower1 = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonLower2 = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonLower3 = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonTop1 = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonTop2 = New System.Windows.Forms.ToolStripButton()
+        Me.ButtonTop3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.pnlTiles.SuspendLayout()
-        CType(Me.picTiles, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlStart.SuspendLayout()
         Me.pnlAttribute.SuspendLayout()
         Me.pnlBlockDir.SuspendLayout()
+        CType(Me.picTiles, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picGame, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -304,7 +305,7 @@ Partial Class frmMapEditor
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ButtonPlay, Me.ButtleNewMap, Me.ButtonOpenMap, Me.ButtonSaveMap, Me.ToolStripSeparator8, Me.ButtonFill, Me.ButtonClear, Me.ButtonCopy, Me.ButtonErase, Me.ToolStripSeparator9, Me.ButtonNight, Me.ButtonGrid, Me.ToolStripSeparator4, Me.ButtonBefore, Me.ButtonAfter, Me.ToolStripSeparator10, Me.ButtonGround, Me.ToolStripSeparator7, Me.ButtonLower1, Me.ButtonLower2, Me.ButtonLower3, Me.ToolStripSeparator6, Me.ButtonTop1, Me.ButtonTop2, Me.ButtonTop3, Me.ToolStripSeparator5, Me.LabelMapName, Me.ToolStripSeparator12})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ButtonPlay, Me.ButtleNewMap, Me.ButtonOpenMap, Me.ButtonSaveMap, Me.ToolStripSeparator8, Me.ButtonFill, Me.ButtonClear, Me.ToolStripSeparator9, Me.ButtonCopy, Me.ButtonErase, Me.ToolStripSeparator4, Me.ButtonNight, Me.ButtonGrid, Me.ToolStripSeparator10, Me.ButtonBefore, Me.ButtonAfter, Me.ToolStripSeparator7, Me.ButtonGround, Me.ToolStripSeparator6, Me.ButtonLower1, Me.ButtonLower2, Me.ButtonLower3, Me.ToolStripSeparator5, Me.ButtonTop1, Me.ButtonTop2, Me.ButtonTop3, Me.ToolStripSeparator13, Me.LabelMapName, Me.ToolStripSeparator12})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -312,210 +313,35 @@ Partial Class frmMapEditor
         Me.ToolStrip1.TabIndex = 2
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'ButtonPlay
-        '
-        Me.ButtonPlay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonPlay.Image = Global.Editeur.My.Resources.Resources.Play
-        Me.ButtonPlay.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonPlay.Name = "ButtonPlay"
-        Me.ButtonPlay.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonPlay.Text = "Tester la map"
-        '
-        'ButtleNewMap
-        '
-        Me.ButtleNewMap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtleNewMap.Image = CType(resources.GetObject("ButtleNewMap.Image"), System.Drawing.Image)
-        Me.ButtleNewMap.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtleNewMap.Name = "ButtleNewMap"
-        Me.ButtleNewMap.Size = New System.Drawing.Size(23, 22)
-        Me.ButtleNewMap.Text = "&Nouveau"
-        '
-        'ButtonOpenMap
-        '
-        Me.ButtonOpenMap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonOpenMap.Image = CType(resources.GetObject("ButtonOpenMap.Image"), System.Drawing.Image)
-        Me.ButtonOpenMap.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonOpenMap.Name = "ButtonOpenMap"
-        Me.ButtonOpenMap.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonOpenMap.Text = "&Ouvrir"
-        '
-        'ButtonSaveMap
-        '
-        Me.ButtonSaveMap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonSaveMap.Image = CType(resources.GetObject("ButtonSaveMap.Image"), System.Drawing.Image)
-        Me.ButtonSaveMap.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonSaveMap.Name = "ButtonSaveMap"
-        Me.ButtonSaveMap.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonSaveMap.Text = "Sauvegarder localement la map"
-        '
         'ToolStripSeparator8
         '
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
         Me.ToolStripSeparator8.Size = New System.Drawing.Size(6, 25)
-        '
-        'ButtonFill
-        '
-        Me.ButtonFill.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonFill.Image = CType(resources.GetObject("ButtonFill.Image"), System.Drawing.Image)
-        Me.ButtonFill.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonFill.Name = "ButtonFill"
-        Me.ButtonFill.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonFill.Text = "Outil : Remplir"
-        '
-        'ButtonClear
-        '
-        Me.ButtonClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonClear.Image = CType(resources.GetObject("ButtonClear.Image"), System.Drawing.Image)
-        Me.ButtonClear.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonClear.Name = "ButtonClear"
-        Me.ButtonClear.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonClear.Text = "Outil : Vider"
-        '
-        'ButtonCopy
-        '
-        Me.ButtonCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonCopy.Image = CType(resources.GetObject("ButtonCopy.Image"), System.Drawing.Image)
-        Me.ButtonCopy.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonCopy.Name = "ButtonCopy"
-        Me.ButtonCopy.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonCopy.Text = "Outil : Pipette"
-        '
-        'ButtonErase
-        '
-        Me.ButtonErase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonErase.Image = CType(resources.GetObject("ButtonErase.Image"), System.Drawing.Image)
-        Me.ButtonErase.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonErase.Name = "ButtonErase"
-        Me.ButtonErase.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonErase.Text = "Outil : Gomme"
         '
         'ToolStripSeparator9
         '
         Me.ToolStripSeparator9.Name = "ToolStripSeparator9"
         Me.ToolStripSeparator9.Size = New System.Drawing.Size(6, 25)
         '
-        'ButtonNight
-        '
-        Me.ButtonNight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonNight.Image = CType(resources.GetObject("ButtonNight.Image"), System.Drawing.Image)
-        Me.ButtonNight.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonNight.Name = "ButtonNight"
-        Me.ButtonNight.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonNight.Text = "Jour/Nuit"
-        Me.ButtonNight.ToolTipText = "Jour/Nuit"
-        '
-        'ButtonGrid
-        '
-        Me.ButtonGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonGrid.Image = CType(resources.GetObject("ButtonGrid.Image"), System.Drawing.Image)
-        Me.ButtonGrid.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonGrid.Name = "ButtonGrid"
-        Me.ButtonGrid.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonGrid.Text = "Grille"
-        '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
         Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
-        '
-        'ButtonBefore
-        '
-        Me.ButtonBefore.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonBefore.Image = CType(resources.GetObject("ButtonBefore.Image"), System.Drawing.Image)
-        Me.ButtonBefore.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonBefore.Name = "ButtonBefore"
-        Me.ButtonBefore.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonBefore.Text = "Annuler"
-        '
-        'ButtonAfter
-        '
-        Me.ButtonAfter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonAfter.Image = CType(resources.GetObject("ButtonAfter.Image"), System.Drawing.Image)
-        Me.ButtonAfter.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonAfter.Name = "ButtonAfter"
-        Me.ButtonAfter.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonAfter.Text = "Rétablir"
         '
         'ToolStripSeparator10
         '
         Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
         Me.ToolStripSeparator10.Size = New System.Drawing.Size(6, 25)
         '
-        'ButtonGround
-        '
-        Me.ButtonGround.Checked = True
-        Me.ButtonGround.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.ButtonGround.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonGround.Image = CType(resources.GetObject("ButtonGround.Image"), System.Drawing.Image)
-        Me.ButtonGround.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonGround.Name = "ButtonGround"
-        Me.ButtonGround.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonGround.Text = "ToolStripButton6"
-        Me.ButtonGround.ToolTipText = "Couche Sol"
-        '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
         Me.ToolStripSeparator7.Size = New System.Drawing.Size(6, 25)
         '
-        'ButtonLower1
-        '
-        Me.ButtonLower1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonLower1.Image = CType(resources.GetObject("ButtonLower1.Image"), System.Drawing.Image)
-        Me.ButtonLower1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonLower1.Name = "ButtonLower1"
-        Me.ButtonLower1.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonLower1.Text = "Couche Inférieure 1"
-        '
-        'ButtonLower2
-        '
-        Me.ButtonLower2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonLower2.Image = CType(resources.GetObject("ButtonLower2.Image"), System.Drawing.Image)
-        Me.ButtonLower2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonLower2.Name = "ButtonLower2"
-        Me.ButtonLower2.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonLower2.Text = "Couche Inférieure 2"
-        '
-        'ButtonLower3
-        '
-        Me.ButtonLower3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonLower3.Image = CType(resources.GetObject("ButtonLower3.Image"), System.Drawing.Image)
-        Me.ButtonLower3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonLower3.Name = "ButtonLower3"
-        Me.ButtonLower3.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonLower3.Text = "Couche Inférieure 3"
-        '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
         Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 25)
-        '
-        'ButtonTop1
-        '
-        Me.ButtonTop1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonTop1.Image = CType(resources.GetObject("ButtonTop1.Image"), System.Drawing.Image)
-        Me.ButtonTop1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonTop1.Name = "ButtonTop1"
-        Me.ButtonTop1.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonTop1.Text = "Couche Supérieure 1"
-        '
-        'ButtonTop2
-        '
-        Me.ButtonTop2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonTop2.Image = CType(resources.GetObject("ButtonTop2.Image"), System.Drawing.Image)
-        Me.ButtonTop2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonTop2.Name = "ButtonTop2"
-        Me.ButtonTop2.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonTop2.Text = "Couche Supérieure 2"
-        '
-        'ButtonTop3
-        '
-        Me.ButtonTop3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ButtonTop3.Image = CType(resources.GetObject("ButtonTop3.Image"), System.Drawing.Image)
-        Me.ButtonTop3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ButtonTop3.Name = "ButtonTop3"
-        Me.ButtonTop3.Size = New System.Drawing.Size(23, 22)
-        Me.ButtonTop3.Text = "Couche Supérieure 3"
         '
         'ToolStripSeparator5
         '
@@ -553,20 +379,8 @@ Partial Class frmMapEditor
         Me.pnlTiles.Controls.Add(Me.picTiles)
         Me.pnlTiles.Location = New System.Drawing.Point(12, 99)
         Me.pnlTiles.Name = "pnlTiles"
-        Me.pnlTiles.Size = New System.Drawing.Size(224, 436)
+        Me.pnlTiles.Size = New System.Drawing.Size(229, 436)
         Me.pnlTiles.TabIndex = 6
-        '
-        'picTiles
-        '
-        Me.picTiles.BackColor = System.Drawing.Color.White
-        Me.picTiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.picTiles.Cursor = System.Windows.Forms.Cursors.Default
-        Me.picTiles.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.picTiles.Location = New System.Drawing.Point(0, 0)
-        Me.picTiles.Name = "picTiles"
-        Me.picTiles.Size = New System.Drawing.Size(222, 434)
-        Me.picTiles.TabIndex = 5
-        Me.picTiles.TabStop = False
         '
         'pnlStart
         '
@@ -656,13 +470,15 @@ Partial Class frmMapEditor
         '
         'pnlAttribute
         '
+        Me.pnlAttribute.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.pnlAttribute.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pnlAttribute.Controls.Add(Me.ButtonNPC)
         Me.pnlAttribute.Controls.Add(Me.pnlBlockDir)
         Me.pnlAttribute.Controls.Add(Me.ButtonTeleport)
         Me.pnlAttribute.Controls.Add(Me.ButtonBlockDirection)
         Me.pnlAttribute.Controls.Add(Me.ButtonBlock)
-        Me.pnlAttribute.Location = New System.Drawing.Point(-38, 70)
+        Me.pnlAttribute.Location = New System.Drawing.Point(12, 99)
         Me.pnlAttribute.Name = "pnlAttribute"
         Me.pnlAttribute.Size = New System.Drawing.Size(249, 453)
         Me.pnlAttribute.TabIndex = 9
@@ -759,6 +575,37 @@ Partial Class frmMapEditor
         Me.ButtonBlock.Text = "Bloquer la case"
         Me.ButtonBlock.UseVisualStyleBackColor = False
         '
+        'vPicScroll
+        '
+        Me.vPicScroll.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.vPicScroll.LargeChange = 0
+        Me.vPicScroll.Location = New System.Drawing.Point(244, 99)
+        Me.vPicScroll.Name = "vPicScroll"
+        Me.vPicScroll.Size = New System.Drawing.Size(18, 436)
+        Me.vPicScroll.SmallChange = 0
+        Me.vPicScroll.TabIndex = 6
+        '
+        'hPicScroll
+        '
+        Me.hPicScroll.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.hPicScroll.Location = New System.Drawing.Point(12, 536)
+        Me.hPicScroll.Name = "hPicScroll"
+        Me.hPicScroll.Size = New System.Drawing.Size(224, 17)
+        Me.hPicScroll.TabIndex = 10
+        '
+        'picTiles
+        '
+        Me.picTiles.BackColor = System.Drawing.Color.White
+        Me.picTiles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.picTiles.Cursor = System.Windows.Forms.Cursors.Default
+        Me.picTiles.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.picTiles.Location = New System.Drawing.Point(0, 0)
+        Me.picTiles.Name = "picTiles"
+        Me.picTiles.Size = New System.Drawing.Size(227, 434)
+        Me.picTiles.TabIndex = 5
+        Me.picTiles.TabStop = False
+        '
         'picGame
         '
         Me.picGame.BackColor = System.Drawing.Color.White
@@ -769,39 +616,201 @@ Partial Class frmMapEditor
         Me.picGame.TabIndex = 3
         Me.picGame.TabStop = False
         '
-        'vPicScroll
+        'ButtonPlay
         '
-        Me.vPicScroll.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.vPicScroll.LargeChange = 20
-        Me.vPicScroll.Location = New System.Drawing.Point(239, 99)
-        Me.vPicScroll.Name = "vPicScroll"
-        Me.vPicScroll.Size = New System.Drawing.Size(18, 436)
-        Me.vPicScroll.TabIndex = 6
+        Me.ButtonPlay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonPlay.Image = Global.Editeur.My.Resources.Resources.Play
+        Me.ButtonPlay.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonPlay.Name = "ButtonPlay"
+        Me.ButtonPlay.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonPlay.Text = "Tester la map"
         '
-        'hPicScroll
+        'ButtleNewMap
         '
-        Me.hPicScroll.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.hPicScroll.Location = New System.Drawing.Point(12, 538)
-        Me.hPicScroll.Name = "hPicScroll"
-        Me.hPicScroll.Size = New System.Drawing.Size(224, 17)
-        Me.hPicScroll.TabIndex = 10
+        Me.ButtleNewMap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtleNewMap.Image = CType(resources.GetObject("ButtleNewMap.Image"), System.Drawing.Image)
+        Me.ButtleNewMap.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtleNewMap.Name = "ButtleNewMap"
+        Me.ButtleNewMap.Size = New System.Drawing.Size(23, 22)
+        Me.ButtleNewMap.Text = "&Nouveau"
+        '
+        'ButtonOpenMap
+        '
+        Me.ButtonOpenMap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonOpenMap.Image = CType(resources.GetObject("ButtonOpenMap.Image"), System.Drawing.Image)
+        Me.ButtonOpenMap.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonOpenMap.Name = "ButtonOpenMap"
+        Me.ButtonOpenMap.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonOpenMap.Text = "&Ouvrir"
+        '
+        'ButtonSaveMap
+        '
+        Me.ButtonSaveMap.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonSaveMap.Image = CType(resources.GetObject("ButtonSaveMap.Image"), System.Drawing.Image)
+        Me.ButtonSaveMap.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonSaveMap.Name = "ButtonSaveMap"
+        Me.ButtonSaveMap.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonSaveMap.Text = "Sauvegarder localement la map"
+        '
+        'ButtonFill
+        '
+        Me.ButtonFill.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonFill.Image = CType(resources.GetObject("ButtonFill.Image"), System.Drawing.Image)
+        Me.ButtonFill.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonFill.Name = "ButtonFill"
+        Me.ButtonFill.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonFill.Text = "Outil : Remplir"
+        '
+        'ButtonClear
+        '
+        Me.ButtonClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonClear.Image = CType(resources.GetObject("ButtonClear.Image"), System.Drawing.Image)
+        Me.ButtonClear.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonClear.Name = "ButtonClear"
+        Me.ButtonClear.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonClear.Text = "Outil : Vider"
+        '
+        'ButtonCopy
+        '
+        Me.ButtonCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonCopy.Image = CType(resources.GetObject("ButtonCopy.Image"), System.Drawing.Image)
+        Me.ButtonCopy.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonCopy.Name = "ButtonCopy"
+        Me.ButtonCopy.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonCopy.Text = "Outil : Pipette"
+        '
+        'ButtonErase
+        '
+        Me.ButtonErase.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonErase.Image = CType(resources.GetObject("ButtonErase.Image"), System.Drawing.Image)
+        Me.ButtonErase.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonErase.Name = "ButtonErase"
+        Me.ButtonErase.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonErase.Text = "Outil : Gomme"
+        '
+        'ButtonNight
+        '
+        Me.ButtonNight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonNight.Image = CType(resources.GetObject("ButtonNight.Image"), System.Drawing.Image)
+        Me.ButtonNight.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonNight.Name = "ButtonNight"
+        Me.ButtonNight.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonNight.Text = "Jour/Nuit"
+        Me.ButtonNight.ToolTipText = "Jour/Nuit"
+        '
+        'ButtonGrid
+        '
+        Me.ButtonGrid.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonGrid.Image = CType(resources.GetObject("ButtonGrid.Image"), System.Drawing.Image)
+        Me.ButtonGrid.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonGrid.Name = "ButtonGrid"
+        Me.ButtonGrid.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonGrid.Text = "Grille"
+        '
+        'ButtonBefore
+        '
+        Me.ButtonBefore.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonBefore.Image = CType(resources.GetObject("ButtonBefore.Image"), System.Drawing.Image)
+        Me.ButtonBefore.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonBefore.Name = "ButtonBefore"
+        Me.ButtonBefore.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonBefore.Text = "Annuler"
+        '
+        'ButtonAfter
+        '
+        Me.ButtonAfter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonAfter.Image = CType(resources.GetObject("ButtonAfter.Image"), System.Drawing.Image)
+        Me.ButtonAfter.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonAfter.Name = "ButtonAfter"
+        Me.ButtonAfter.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonAfter.Text = "Rétablir"
+        '
+        'ButtonGround
+        '
+        Me.ButtonGround.Checked = True
+        Me.ButtonGround.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.ButtonGround.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonGround.Image = CType(resources.GetObject("ButtonGround.Image"), System.Drawing.Image)
+        Me.ButtonGround.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonGround.Name = "ButtonGround"
+        Me.ButtonGround.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonGround.Text = "ToolStripButton6"
+        Me.ButtonGround.ToolTipText = "Couche Sol"
+        '
+        'ButtonLower1
+        '
+        Me.ButtonLower1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonLower1.Image = CType(resources.GetObject("ButtonLower1.Image"), System.Drawing.Image)
+        Me.ButtonLower1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonLower1.Name = "ButtonLower1"
+        Me.ButtonLower1.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonLower1.Text = "Couche Inférieure 1"
+        '
+        'ButtonLower2
+        '
+        Me.ButtonLower2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonLower2.Image = CType(resources.GetObject("ButtonLower2.Image"), System.Drawing.Image)
+        Me.ButtonLower2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonLower2.Name = "ButtonLower2"
+        Me.ButtonLower2.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonLower2.Text = "Couche Inférieure 2"
+        '
+        'ButtonLower3
+        '
+        Me.ButtonLower3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonLower3.Image = CType(resources.GetObject("ButtonLower3.Image"), System.Drawing.Image)
+        Me.ButtonLower3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonLower3.Name = "ButtonLower3"
+        Me.ButtonLower3.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonLower3.Text = "Couche Inférieure 3"
+        '
+        'ButtonTop1
+        '
+        Me.ButtonTop1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonTop1.Image = CType(resources.GetObject("ButtonTop1.Image"), System.Drawing.Image)
+        Me.ButtonTop1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonTop1.Name = "ButtonTop1"
+        Me.ButtonTop1.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonTop1.Text = "Couche Supérieure 1"
+        '
+        'ButtonTop2
+        '
+        Me.ButtonTop2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonTop2.Image = CType(resources.GetObject("ButtonTop2.Image"), System.Drawing.Image)
+        Me.ButtonTop2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonTop2.Name = "ButtonTop2"
+        Me.ButtonTop2.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonTop2.Text = "Couche Supérieure 2"
+        '
+        'ButtonTop3
+        '
+        Me.ButtonTop3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ButtonTop3.Image = CType(resources.GetObject("ButtonTop3.Image"), System.Drawing.Image)
+        Me.ButtonTop3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ButtonTop3.Name = "ButtonTop3"
+        Me.ButtonTop3.Size = New System.Drawing.Size(23, 22)
+        Me.ButtonTop3.Text = "Couche Supérieure 3"
+        '
+        'ToolStripSeparator13
+        '
+        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
+        Me.ToolStripSeparator13.Size = New System.Drawing.Size(6, 25)
         '
         'frmMapEditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(984, 597)
-        Me.Controls.Add(Me.hPicScroll)
         Me.Controls.Add(Me.pnlAttribute)
-        Me.Controls.Add(Me.vPicScroll)
         Me.Controls.Add(Me.pnlStart)
         Me.Controls.Add(Me.pnlTiles)
         Me.Controls.Add(Me.lstTiles)
         Me.Controls.Add(Me.picGame)
+        Me.Controls.Add(Me.vPicScroll)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.hPicScroll)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.MinimumSize = New System.Drawing.Size(1000, 636)
         Me.Name = "frmMapEditor"
@@ -814,12 +823,12 @@ Partial Class frmMapEditor
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.pnlTiles.ResumeLayout(False)
-        CType(Me.picTiles, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlStart.ResumeLayout(False)
         Me.pnlStart.PerformLayout()
         Me.pnlAttribute.ResumeLayout(False)
         Me.pnlBlockDir.ResumeLayout(False)
         Me.pnlBlockDir.PerformLayout()
+        CType(Me.picTiles, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picGame, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -908,5 +917,6 @@ Partial Class frmMapEditor
     Friend WithEvents ButtonNPC As System.Windows.Forms.Button
     Friend WithEvents vPicScroll As System.Windows.Forms.VScrollBar
     Friend WithEvents hPicScroll As System.Windows.Forms.HScrollBar
+    Friend WithEvents ToolStripSeparator13 As System.Windows.Forms.ToolStripSeparator
 
 End Class
