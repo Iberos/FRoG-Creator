@@ -1,12 +1,18 @@
-LINUX
+ï»¿GNU/Linux
 -----
-Prérequis:
-Ubuntu 14.04 (ou une variante) 
-Mono 3.2
+Installation de Mono pour Debian/Ubuntu
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+echo "deb http://download.mono-project.com/repo/debian wheezy main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
+apt update
+apt install monodevelop mono-vbnc libsfml-dev libcsfml-dev
 
-Lancer un Terminal en tant que Root et faite
-apt-get install libsfml-dev libcsfml-dev
-puis ouvrir le fichier /etc/mono/config et ajouter
+Installation de Mono pour Fedora/CentOS/Red Hat
+rpm --import "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF"
+yum-config-manager --add-repo http://download.mono-project.com/repo/centos/
+yum update
+yum install monodevelop libsfml-dev libcsfml-dev
+
+Ouvrir le fichier /etc/mono/config et ajouter les lignes suivantes
 
 	//DLL pour Linux et MAC OSX
 	<dllmap dll="csfml-graphics-2" target="libcsfml-graphics.so.2" os="!windows"/>
@@ -14,15 +20,15 @@ puis ouvrir le fichier /etc/mono/config et ajouter
 	<dllmap dll="csfml-graphics-2" target="libcsfml-graphics.dylib os="osx"/>
 	<dllmap dll="csfml-window-2" target="libcsfml-window.dylib os="osx"/>
 
-	Pour lancer le programme il suffit d'ouvrir un terminal et de faire:
+	Pour lancer le programme il suffit d'ouvrir un terminal, de vous position dans le repertoire du programme et de lancer la commande suivante:
 	mono programme.exe
 
 MAC
 -----
-Prérequis
+PrÃ©requis
 Max OS X
 
-Télécharger et installer SFML et CSFML
+TÃ©lÃ©charger et installer SFML et CSFML
 SFML: http://www.sfml-dev.org/download/sfml/2.1/index-fr.php
 CSFML: http://www.sfml-dev.org/download/csfml/index-fr.php
 
