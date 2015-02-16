@@ -80,23 +80,7 @@ Class GameDesigner
 
     Public Sub New()
         Me.testPlayer = New GamePlayer(New Texture(Main.SPRITES_PATH + "Sprite1.png"))
-
-        ' Test de déplacement du joueur
-        Me.testPlayer.AddMovement(GameDirection.DOWN)
-        Me.testPlayer.AddMovement(GameDirection.DOWN)
-        Me.testPlayer.AddMovement(GameDirection.DOWN)
-        Me.testPlayer.AddMovement(GameDirection.DOWN)
-        Me.testPlayer.AddMovement(GameDirection.RIGHT)
-        Me.testPlayer.AddMovement(GameDirection.RIGHT)
-        Me.testPlayer.AddMovement(GameDirection.DOWN)
-        Me.testPlayer.AddMovement(GameDirection.RIGHT)
-        Me.testPlayer.AddMovement(GameDirection.DOWN)
-        Me.testPlayer.AddMovement(GameDirection.RIGHT)
-        Me.testPlayer.AddMovement(GameDirection.DOWN)
-        Me.testPlayer.AddMovement(GameDirection.LEFT)
-        Me.testPlayer.AddMovement(GameDirection.RIGHT)
-        Me.testPlayer.AddMovement(GameDirection.RIGHT)
-        Me.testPlayer.AddMovement(GameDirection.RIGHT)
+        Me.testPlayer.WarpTo(15, 5)
     End Sub
 
     Public Sub DispatchEventsAndUpdate() Implements Designer.DispatchEventsAndUpdate
@@ -113,6 +97,16 @@ Class GameDesigner
         End If
 
         ' GameEvents
+        If (Keyboard.IsKeyPressed(Keyboard.Key.Up)) Then
+            Me.testPlayer.MoveTo(GameDirection.UP)
+        ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.Down)) Then
+            Me.testPlayer.MoveTo(GameDirection.DOWN)
+        ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.Right)) Then
+            Me.testPlayer.MoveTo(GameDirection.RIGHT)
+        ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.Left)) Then
+            Me.testPlayer.MoveTo(GameDirection.LEFT)
+        End If
+
         Me.testPlayer.Update()
     End Sub
 

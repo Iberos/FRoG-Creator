@@ -12,18 +12,21 @@ Public MustInherit Class GameCharacter
     Protected Shared DEFAULT_ANIMATION_TIMEWAIT As UInteger = 10
     Protected Shared DEFAULT_INACTIVE_TIMEWAIT As UInteger = 10
 
-    Protected canMove As Boolean
-    Protected futurPosition As Vector2f
-    Protected direction As GameDirection
-    Protected velocity As Byte
-    Protected animationMark As Integer
-    Protected movementPath As List(Of GameDirection)
-    Protected animationTimer As GameTimer
-    Protected timeleftTimer As GameTimer
-    Protected characterSize As Vector2f
+    Private Property canMove As Boolean
+    Private Property canControl As Boolean
+
+    Private futurPosition As Vector2f
+    Private direction As GameDirection
+    Private velocity As Byte
+    Private animationMark As Integer
+    Private movementPath As List(Of GameDirection)
+    Private animationTimer As GameTimer
+    Private timeleftTimer As GameTimer
+    Private characterHitboxSize As Vector2f
 
     Public Sub New()
         Me.canMove = True
+        Me.canControl = True
         Me.futurPosition = Me.Position
         Me.direction = DEFAULT_DIRECTION
         Me.velocity = DEFAULT_VELOCITY
@@ -33,16 +36,24 @@ Public MustInherit Class GameCharacter
         Me.timeleftTimer = New GameTimer()
     End Sub
 
-    Public Sub SetTexture(texture As Texture)
-        Me.Texture = texture
-        Me.characterSize = New Vector2f(texture.Size.X / 4, texture.Size.Y / 4)
-        Me.TextureRect = New IntRect(0, 0, Me.characterSize.X, Me.characterSize.Y)
+    Private Sub Move(direction As GameDirection)
+        If (Me.canMove) Then
+            Me.direction = direction
+            Me.futurPosition = Me.Position + Me.direction.GetVector() * 32
+            Me.canMove = False
+        End If
+    End Sub
+
+    Public Sub WarpTo(x As Integer, y As Integer)
+        Me.Position = New Vector2f(x, y) * 32
+        Me.futurPosition = Position
     End Sub
 
     Public Sub MoveTo(direction As GameDirection)
-        Me.direction = direction
-        Me.futurPosition = Me.Position + Me.direction.GetVector() * 32
-        Me.canMove = False
+        If (canControl) Then
+            Me.movementPath.Clear()
+            Move(direction)
+        End If
     End Sub
 
     Public Sub AddMovement(direction As GameDirection)
@@ -53,7 +64,7 @@ Public MustInherit Class GameCharacter
 
         ' Déplacement de l'entité selon son chemin prédéfini
         If (Me.movementPath.Count > 0 And Me.canMove) Then
-            Me.MoveTo(Me.movementPath.ElementAt(0))
+            Me.Move(Me.movementPath.ElementAt(0))
             Me.movementPath.RemoveAt(0)
         End If
 
@@ -78,16 +89,50 @@ Public MustInherit Class GameCharacter
         End If
 
         ' Mise à jour de l'affichage de l'entité
-        Me.TextureRect = New IntRect(Me.characterSize.X * Me.animationMark, Me.characterSize.Y * Me.direction.GetIndex(), Me.characterSize.X, Me.characterSize.Y)
+        Me.TextureRect = New IntRect(Me.characterHitboxSize.X * Me.animationMark, Me.characterHitboxSize.Y * Me.direction.GetIndex(), Me.characterHitboxSize.X, Me.characterHitboxSize.Y)
     End Sub
 
-    Public Property isMoveable() As Boolean
-        Get
-            Return Me.canMove
-        End Get
-        Protected Set(ByVal value As Boolean)
-            Me.canMove = value
-        End Set
-    End Property
+#Region "Getter & Setter"
+    ''' <summary>
+    ''' Modifie l'état de controle du caractère
+    ''' </summary>
+    ''' <param name="state">True pour laisser le character controlable et False pour en interdire le controle</param>
+    ''' <remarks></remarks>
+    Public Sub SetCharacterControls(ByRef state As Boolean)
+        Me.canControl = state
+    End Sub
 
+    ''' <summary>
+    ''' Modifie la vitesse de course du caractère
+    ''' </summary>
+    ''' <param name="velocity">La vitesse du caractère</param>
+    ''' <remarks></remarks>
+    Public Sub SetVelocity(ByRef velocity As GameVelocity)
+        Me.velocity = velocity
+    End Sub
+
+    ''' <summary>
+    ''' Modifie le rendu du caractère
+    ''' </summary>
+    ''' <param name="texture">La nouvelle texture de rendu du caractère</param>
+    ''' <remarks></remarks>
+    Public Sub SetTexture(texture As Texture)
+        Me.Texture = texture
+        Me.characterHitboxSize = New Vector2f(texture.Size.X / 4, texture.Size.Y / 4)
+        Me.TextureRect = New IntRect(0, 0, Me.characterHitboxSize.X, Me.characterHitboxSize.Y)
+    End Sub
+
+    Public Function isMoveable() As Boolean
+        Return Me.canMove
+    End Function
+
+    Public Function isControlable() As Boolean
+        Return Me.canControl
+    End Function
+
+    Public Function getVelocity() As GameVelocity
+        Return Me.velocity
+    End Function
+
+#End Region
 End Class

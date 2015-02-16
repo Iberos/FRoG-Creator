@@ -36,7 +36,7 @@ Module Main
     Private icon As Texture
 
     ' TEMP
-    Dim client As New GameClient
+    Public client As New GameClient
 
     Private Sub Loader(args As String())
         ' Chargement des arguments d'instance

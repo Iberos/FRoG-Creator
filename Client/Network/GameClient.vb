@@ -49,4 +49,8 @@ Public Class GameClient
             Console.WriteLine("Ok")
         End If
     End Sub
+
+    Public Function isConnected() As Boolean
+        Return Me.socket.Connected
+    End Function
 End Class

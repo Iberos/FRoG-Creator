@@ -12,6 +12,7 @@ Class AccountConnecterDesigner
     Private windowRect As IntRect
     Private w As Single
 
+    Private pnlInfo As Panel
     Private lblInfo As Label
     Private pnlConnect As Panel
     Private lblAccount As Label
@@ -33,15 +34,19 @@ Class AccountConnecterDesigner
     Public Sub Load(gui As Gui, configPath As String) Implements Designer.Load
         gui.RemoveAllWidgets()
         '
+        ' pnlInfo
+        '
+        pnlInfo = gui.Add(New Panel(), "pnlInfo")
+        pnlInfo.Size = New Vector2f(0, 25)
+        pnlInfo.BackgroundColor = New Color(0, 0, 0, 80)
+        pnlInfo.Position = New Vector2f(10, 10)
+        '
         ' lblInfo
         '
-        lblInfo = gui.Add(New Label(configPath), "lblInfo")
-        lblInfo.Size = New Vector2f(300, 50)
-        lblInfo.Text = "HELLO"
-        lblInfo.Position = New Vector2f(10, 10)
-        lblInfo.TextSize = 12
+        lblInfo = pnlInfo.Add(New Label(configPath), "lblInfo")
+        lblInfo.Position = New Vector2f(5, 5)
         '
-        '
+        ' pnlConnect
         '
         pnlConnect = gui.Add(New Panel(), "pnlConnect")
         pnlConnect.Size = New Vector2f(window.Size.X * 0.5, window.Size.Y * 0.5)
@@ -91,7 +96,6 @@ Class AccountConnecterDesigner
     End Sub
 
     Public Sub DispatchEventsAndUpdate() Implements Designer.DispatchEventsAndUpdate
-        lblInfo.Text = bground.Position.ToString()
 
         Dim v = New Vector2f(oldPosition.X - bground.Position.X, oldPosition.Y - bground.Position.Y)
         If (Not windowRect.Contains(-bground.Position.X, -bground.Position.Y)) Then
@@ -110,9 +114,14 @@ Class AccountConnecterDesigner
     End Sub
 
     Private Sub btnConnect_OnClick(sender As Object, e As CallbackArgs)
-        MsgBox(String.Format("Connection with login : {0}", accountBox.Text), MsgBoxStyle.Information, "Loading")
+        If (Not Main.client.isConnected) Then
+            lblInfo.TextColor = Color.Red
+            lblInfo.TextSize = 15
+            lblInfo.Text = "Impossible de se connecter au serveur"
+            pnlInfo.Size = New Vector2f(lblInfo.Size.X + 10, pnlInfo.Size.Y)
+        End If
 
-        Dim validAccount = True
+        Dim validAccount = False
 
         If (validAccount) Then
             Main.gui.SetGameState(GameStates.GamePlayState)
