@@ -21,6 +21,8 @@ Class AccountConnecterDesigner
     Private passwordBox As EditBox
     Private btnConnect As Button
 
+    Private connectionTimeout As GameTimer
+
     '*****************************
 
     Public Sub New()
@@ -29,6 +31,7 @@ Class AccountConnecterDesigner
         bground.Texture.Smooth = True
         radiusMovement = New Vector2f(-1, -1)
         windowRect = New IntRect(0, 0, bground.Texture.Size.X - window.Size.X, bground.Texture.Size.Y - window.Size.Y)
+        connectionTimeout = New GameTimer()
     End Sub
 
     Public Sub Load(gui As Gui, configPath As String) Implements Designer.Load
@@ -107,6 +110,21 @@ Class AccountConnecterDesigner
 
         bground.Position += radiusMovement
 
+        ' Exemple de poll pour IHM
+        If (connectionTimeout.AsyncWait(200)) Then
+            If (Not Main.client.isConnected()) Then
+                lblInfo.TextColor = Color.Red
+                lblInfo.TextSize = 15
+                lblInfo.Text = "Impossible de se connecter au serveur"
+                pnlInfo.Size = New Vector2f(lblInfo.Size.X + 10, pnlInfo.Size.Y)
+
+                'Tentative de reconnection
+                Main.client.Connect("localhost", 4608)
+            Else
+                lblInfo.Text = String.Empty
+                pnlInfo.Size = New Vector2f(0, 0)
+            End If
+        End If
     End Sub
 
     Public Sub Draw(batch As RenderWindow) Implements Designer.Draw
@@ -114,13 +132,6 @@ Class AccountConnecterDesigner
     End Sub
 
     Private Sub btnConnect_OnClick(sender As Object, e As CallbackArgs)
-        If (Not Main.client.isConnected) Then
-            lblInfo.TextColor = Color.Red
-            lblInfo.TextSize = 15
-            lblInfo.Text = "Impossible de se connecter au serveur"
-            pnlInfo.Size = New Vector2f(lblInfo.Size.X + 10, pnlInfo.Size.Y)
-        End If
-
         Dim validAccount = False
 
         If (validAccount) Then
