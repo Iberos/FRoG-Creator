@@ -133,6 +133,6 @@ Public MustInherit Class GameCharacter
     Public Function getVelocity() As GameVelocity
         Return Me.velocity
     End Function
-
 #End Region
+
 End Class
