@@ -15,6 +15,7 @@ Module Main
     Public Const ICONS_PATH = "Config/Icons/"
     Public Const RESOURCES_PATH = "Config/Resources/"
     Public Const SPRITES_PATH = RESOURCES_PATH + "Sprites/"
+    Public Const SPELLS_PATH = RESOURCES_PATH + "Spells/"
 
     Public Const GUI_CONFIG_FILE = "Black.conf"
     Public Const FONT_FILE = "GoBoom.ttf"
@@ -78,7 +79,7 @@ Module Main
                 window.DispatchEvents()
                 designer.DispatchEventsAndUpdate()
 
-                window.Clear(Color.Black)
+                window.Clear(Color.White)
                 designer.Draw(window)
                 gui.Draw()
 

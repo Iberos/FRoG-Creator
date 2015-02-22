@@ -111,7 +111,7 @@ Class AccountConnecterDesigner
         bground.Position += radiusMovement
 
         ' Exemple de poll pour IHM
-        If (connectionTimeout.AsyncWait(200)) Then
+        If (connectionTimeout.AsyncWait(1, 60)) Then
             If (Not Main.client.isConnected()) Then
                 lblInfo.TextColor = Color.Red
                 lblInfo.TextSize = 15
@@ -132,10 +132,12 @@ Class AccountConnecterDesigner
     End Sub
 
     Private Sub btnConnect_OnClick(sender As Object, e As CallbackArgs)
-        Dim validAccount = False
+        If (Main.client.isConnected()) Then
+            Dim validAccount = True
 
-        If (validAccount) Then
-            Main.gui.SetGameState(GameStates.GamePlayState)
+            If (validAccount) Then
+                Main.gui.SetGameState(GameStates.GamePlayState)
+            End If
         End If
     End Sub
 End Class

@@ -59,27 +59,39 @@ Class GameDesigner
         ' hpProgress
         '
         Dim hpProgress = gui.Add(New LoadingBar(configPath), "hpProgress")
-        hpProgress.Size = New Vector2f(Main.window.Size.X * 0.1, 15)
+        hpProgress.Size = New Vector2f(Main.window.Size.X * 0.2, 15)
         hpProgress.Position = New Vector2f(Main.window.Size.X - hpProgress.Size.X - 20, 20)
-        hpProgress.Text = "HP"
         hpProgress.TextColor = Color.Black
         hpProgress.Value = 30
+        hpProgress.Text = String.Format("HP   {0} / {1}", hpProgress.Value, hpProgress.Maximum)
         '
         ' mpProgress
         '
         Dim mpProgress = gui.Add(New LoadingBar(configPath), "mpProgress")
-        mpProgress.Size = New Vector2f(Main.window.Size.X * 0.1, 15)
+        mpProgress.Size = New Vector2f(Main.window.Size.X * 0.2, 15)
         mpProgress.Position = New Vector2f(Main.window.Size.X - mpProgress.Size.X - 20, 40)
-        mpProgress.Text = "MP"
         mpProgress.TextColor = Color.Black
         mpProgress.Value = 75
+        mpProgress.Text = String.Format("MP   {0} / {1}", mpProgress.Value, mpProgress.Maximum)
         '
+        ' aniDaD
         '
-        '
+        Dim aniDaD = gui.Add(New GameActionCase(), "aniDaD")
+        aniDaD.Size = New Vector2f(32, 32)
+        aniDaD.Position = New Vector2f(84, 10)
+        aniDaD.AddFrame(Main.SPELLS_PATH + "spell1.png", 1000)
+        aniDaD.AddFrame(Main.SPELLS_PATH + "spell2.png", 1000)
+        aniDaD.AddFrame(Main.SPELLS_PATH + "spell3.png", 1000)
+        aniDaD.AddFrame(Main.SPELLS_PATH + "spell4.png", 1000)
+        aniDaD.isEmpty = False
+        aniDaD.Looping = True
+        aniDaD.Play()
+
     End Sub
 
     Public Sub New()
         Me.testPlayer = New GamePlayer(New Texture(Main.SPRITES_PATH + "Sprite1.png"))
+        Me.testPlayer.SetVelocity(GameVelocity.Fast)
         Me.testPlayer.WarpTo(15, 5)
     End Sub
 

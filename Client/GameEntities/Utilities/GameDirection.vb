@@ -1,20 +1,20 @@
 ﻿Imports SFML.Window
 
 Public Class GameDirection
-    Private Vector As Vector2f
-    Private Index As Byte
+    Private vector As Vector2f
+    Private index As Byte
 
     Public Sub New(vector As Vector2f, index As Byte)
-        Me.Vector = vector
-        Me.Index = index
+        Me.vector = vector
+        Me.index = index
     End Sub
 
     Public Function GetVector()
-        Return Me.Vector
+        Return Me.vector
     End Function
 
     Public Function GetIndex()
-        Return Me.Index
+        Return Me.index
     End Function
 
     Public Shared DOWN As New GameDirection(New Vector2f(0, 1), 0)

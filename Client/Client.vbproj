@@ -94,6 +94,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameEntities\Objects\GameActionCase.vb" />
     <Compile Include="GameEntities\Utilities\GameVelocity.vb" />
     <Compile Include="GameEntities\Utilities\GameTimer.vb" />
     <Compile Include="GameEntities\Utilities\Attribute.vb" />
@@ -139,7 +140,7 @@
     <Compile Include="Network\ModPacketsActions.vb" />
     <Compile Include="Network\ModServerPackets.vb" />
     <Compile Include="Network\NetworkBuffer.vb" />
-    <Compile Include="RenderInterface.vb" />
+    <Compile Include="Designer\Designers\RenderInterface.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

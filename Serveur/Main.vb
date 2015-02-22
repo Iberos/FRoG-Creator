@@ -1,6 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Module Main
+    Public Const CONSOLE_TITLE = "FRoG Creator 1.0 Server"
 
     Dim server As String
     Dim user As String
@@ -13,6 +14,7 @@ Module Main
     Public tmpClient As New List(Of GameClient)
 
     Sub Main()
+        Console.Title = CONSOLE_TITLE
         Console.WriteLine("Frog Creator Version VB.NET")
         tmpServer.Start()
         Console.Read()
