@@ -119,6 +119,7 @@
     <Compile Include="Designer\Designers\ServerConnecterDesigner.vb" />
     <Compile Include="Designer\Designers\CharacterSelectionDesigner.vb" />
     <Compile Include="Designer\Designers\GameDesigner.vb" />
+    <Compile Include="GameEntities\Utilities\GameTileset.vb" />
     <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

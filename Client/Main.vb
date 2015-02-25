@@ -16,14 +16,16 @@ Module Main
     Public Const RESOURCES_PATH = "Config/Resources/"
     Public Const SPRITES_PATH = RESOURCES_PATH + "Sprites/"
     Public Const SPELLS_PATH = RESOURCES_PATH + "Spells/"
+    Public Const TILESETS_PATH = RESOURCES_PATH + "Tiles/"
+    Public Const MAPS_PATH = RESOURCES_PATH + "Maps/"
 
     Public Const GUI_CONFIG_FILE = "Black.conf"
     Public Const FONT_FILE = "GoBoom.ttf"
     Public Const ICON_FILE = "FC.png"
 
 
-    Private SCREEN_WIDTH As UShort = 800
-    Private SCREEN_HEIGHT As UShort = 600
+    Private SCREEN_WIDTH As UShort = 640
+    Private SCREEN_HEIGHT As UShort = 448
     Private FPS As Byte = 60
 
     Public window As RenderWindow
@@ -44,8 +46,11 @@ Module Main
         If (args.Length > 1) Then
             ' Ajouter ici un nouveau test pour spécifier une obligation de lancement du client auprès d'un launcher
             If (Not args(0).Equals(Nothing) And Not args(1).Equals(Nothing)) Then
-                SCREEN_WIDTH = UInteger.Parse(args(0))
-                SCREEN_HEIGHT = UInteger.Parse(args(1))
+                Dim tmpWidth As UInteger = UInteger.Parse(args(0))
+                Dim tmpHeight As UInteger = UInteger.Parse(args(1))
+
+                SCREEN_WIDTH = If(tmpWidth < SCREEN_WIDTH, SCREEN_WIDTH, tmpWidth)
+                SCREEN_HEIGHT = If(tmpHeight < SCREEN_HEIGHT, SCREEN_HEIGHT, tmpHeight)
             End If
         End If
 
@@ -63,6 +68,9 @@ Module Main
 
         AddHandler window.Closed, AddressOf OnClose
         AddHandler window.Resized, AddressOf OnResized
+
+        ' Chargement des cartes de jeu
+        LoadMaps()
 
     End Sub
     '*****************************************************
@@ -105,5 +113,27 @@ Module Main
         Dim viewRect = New FloatRect(0, 0, window.Size.X, window.Size.Y)
         window.SetView(New View(viewRect))
         designer.Load(gui, WIDGET_PATH + GUI_CONFIG_FILE)
+    End Sub
+
+    Private Sub LoadTilesets()
+        Dim tilesets As List(Of GameTileset) = New List(Of GameTileset)
+        'TODO : foreach tileset do
+        Dim tileset = GameTileset.Load(0)
+        If (Not IsNothing(tileset)) Then 'Si le tilset existe, on l'ajoute en mémoire
+            tilesets.Add(tileset)
+        End If
+        'TODO : end foreach
+        GameDesigner.LoadTilesets(tilesets)
+    End Sub
+
+    Private Sub LoadMaps()
+        Dim maps As List(Of GameMap) = New List(Of GameMap)
+        'TODO : foreach map do
+        Dim map = GameMap.Load(0)
+        If (Not IsNothing(map)) Then 'Si la map existe, on l'ajoute en mémoire
+            maps.Add(map)
+        End If
+        'TODO : end foreach
+        GameDesigner.LoadMaps(maps)
     End Sub
 End Module

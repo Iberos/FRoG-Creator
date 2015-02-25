@@ -6,6 +6,8 @@ Class AccountConnecterDesigner
     Implements Designer
 
     '******** Attributs *********
+    Private Const ITEM_PADDING As UInteger = 50
+
     Private bground As Sprite
     Private radiusMovement As Vector2f
     Private oldPosition As Vector2f
@@ -34,7 +36,7 @@ Class AccountConnecterDesigner
         connectionTimeout = New GameTimer()
     End Sub
 
-    Public Sub Load(gui As Gui, configPath As String) Implements Designer.Load
+    Public Sub Load(gui As RenderInterface, configPath As String) Implements Designer.Load
         gui.RemoveAllWidgets()
         '
         ' pnlInfo
@@ -59,39 +61,39 @@ Class AccountConnecterDesigner
         ' accountBox
         '
         accountBox = pnlConnect.Add(New EditBox(configPath), "accountBox")
-        accountBox.Size = New Vector2f(window.Size.X * 0.3, 40)
-        accountBox.Position = New Vector2f(pnlConnect.Size.X / 2 - accountBox.Size.X / 2, pnlConnect.Size.Y / 2 - 100)
+        accountBox.Size = New Vector2f(window.Size.X / 3, pnlConnect.Size.Y * 0.1)
+        accountBox.Position = New Vector2f(pnlConnect.Size.X / 2 - accountBox.Size.X / 2, pnlConnect.Size.Y / 2 - accountBox.Size.Y - ITEM_PADDING)
         accountBox.Transparency = 120
         '
         ' lblAccount
         '
         lblAccount = pnlConnect.Add(New Label(configPath), "lblAccount")
-        lblAccount.Size = New Vector2f(accountBox.Size.X / 3, 30)
+        lblAccount.Size = New Vector2f(accountBox.Size.X, pnlConnect.Size.Y * 0.07)
         lblAccount.Text = "Nom de compte :"
         lblAccount.Position = New Vector2f(accountBox.Position.X, accountBox.Position.Y - lblAccount.Size.Y)
-        lblAccount.TextSize = lblAccount.Size.X * 0.2
+        lblAccount.TextSize = accountBox.TextSize
         '
         ' passwordBox
         '
         passwordBox = pnlConnect.Add(New EditBox(configPath), "passwordBox")
-        passwordBox.Size = New Vector2f(window.Size.X * 0.3, 40)
-        passwordBox.Position = New Vector2f(pnlConnect.Size.X / 2 - accountBox.Size.X / 2, pnlConnect.Size.Y / 2)
+        passwordBox.Size = New Vector2f(accountBox.Size.X, accountBox.Size.Y)
+        passwordBox.Position = New Vector2f(pnlConnect.Size.X / 2 - accountBox.Size.X / 2, accountBox.Position.Y + passwordBox.Size.Y + ITEM_PADDING)
         passwordBox.Transparency = 120
         passwordBox.PasswordCharacter = "•"
         '
         ' lblPassword
         '
         lblPassword = pnlConnect.Add(New Label(configPath), "lblPassword")
-        lblPassword.Size = New Vector2f(passwordBox.Size.X / 3, 30)
+        lblPassword.Size = New Vector2f(passwordBox.Size.X, pnlConnect.Size.Y * 0.07)
         lblPassword.Text = "Mot de passe :"
         lblPassword.Position = New Vector2f(passwordBox.Position.X, passwordBox.Position.Y - lblPassword.Size.Y)
-        lblPassword.TextSize = lblPassword.Size.X * 0.2
+        lblPassword.TextSize = passwordBox.TextSize
         '
         ' btnConnect
         '
         btnConnect = pnlConnect.Add(New Button(configPath), "btnConnect")
         btnConnect.Size = New Vector2f(passwordBox.Size.X / 2, passwordBox.Size.Y)
-        btnConnect.Position = New Vector2f((pnlConnect.Size.X / 2) - (btnConnect.Size.X / 2), passwordBox.Position.Y + btnConnect.Size.Y * 2)
+        btnConnect.Position = New Vector2f(pnlConnect.Size.X / 2 - btnConnect.Size.X / 2, passwordBox.Position.Y + btnConnect.Size.Y * 2 + ITEM_PADDING / 5)
         btnConnect.Transparency = 120
         btnConnect.Text = "Se connecter !"
         btnConnect.CallbackId = 1

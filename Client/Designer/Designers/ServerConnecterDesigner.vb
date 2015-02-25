@@ -9,7 +9,7 @@ Class ServerConnecterDesigner
 
     End Sub
 
-    Public Sub Load(gui As Gui, configPath As String) Implements Designer.Load
+    Public Sub Load(gui As RenderInterface, configPath As String) Implements Designer.Load
         gui.RemoveAllWidgets()
     End Sub
 

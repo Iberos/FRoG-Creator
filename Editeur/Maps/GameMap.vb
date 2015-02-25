@@ -6,6 +6,7 @@ Imports SFML.Graphics
 <Serializable>
 Public Class GameMap
 
+    'TODO : Rendre Private & Créer les Getter / Setter selon les droits
     Public name As String
     Public type As Byte
     Public layer(6) As Layer ' couche entière
@@ -41,6 +42,7 @@ Public Class GameMap
         Return Math.Floor(code / 20)
     End Function
 
+    'TODO : A utiliser !
     ' - Retourne une texture correspondant à la couche demandée
     Public Function LayerTexture(ByVal layerNum As Byte) As Texture
         Dim layerSurface As New RenderTexture(672, 480)

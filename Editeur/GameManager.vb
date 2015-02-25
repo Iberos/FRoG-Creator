@@ -72,7 +72,7 @@ Class GameManager
     End Sub
 
     Private Sub LoadTiles()
-        ' TODO Dynamiser les noms de fichiers texture ? (Laisser la liberté de nommage)
+        ' TODO : Dynamiser les noms de fichiers texture ? (Laisser la liberté de nommage)
         ' Chargement des tiles
         Dim files() As String = IO.Directory.GetFiles("Tiles")
         If files.Count() > 0 Then
