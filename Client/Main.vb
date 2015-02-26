@@ -71,7 +71,7 @@ Module Main
 
         ' Chargement des cartes de jeu
         LoadMaps()
-
+        LoadTilesets()
     End Sub
     '*****************************************************
 
@@ -94,8 +94,6 @@ Module Main
                 window.Display()
             End While
 
-        Catch e As IO.FileNotFoundException
-            MsgBox(e.Message, MsgBoxStyle.Critical)
         Catch e As NullReferenceException
             MsgBox(e.Message, MsgBoxStyle.Critical)
         Finally
@@ -118,10 +116,12 @@ Module Main
     Private Sub LoadTilesets()
         Dim tilesets As List(Of GameTileset) = New List(Of GameTileset)
         'TODO : foreach tileset do
-        Dim tileset = GameTileset.Load(0)
-        If (Not IsNothing(tileset)) Then 'Si le tilset existe, on l'ajoute en mémoire
-            tilesets.Add(tileset)
-        End If
+        For i As Integer = 0 To 5
+            Dim tileset = GameTileset.Load(i)
+            If (Not IsNothing(tileset)) Then 'Si le tilset existe, on l'ajoute en mémoire
+                tilesets.Add(tileset)
+            End If
+        Next
         'TODO : end foreach
         GameDesigner.LoadTilesets(tilesets)
     End Sub
@@ -129,7 +129,8 @@ Module Main
     Private Sub LoadMaps()
         Dim maps As List(Of GameMap) = New List(Of GameMap)
         'TODO : foreach map do
-        Dim map = GameMap.Load(0)
+        Dim map As GameMap = New GameMap
+        map = GameMap.Load(0)
         If (Not IsNothing(map)) Then 'Si la map existe, on l'ajoute en mémoire
             maps.Add(map)
         End If

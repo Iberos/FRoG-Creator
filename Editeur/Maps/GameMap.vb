@@ -16,6 +16,7 @@ Public Class GameMap
     Private attribute(20, 14) As GameAttribute ' attribut sur une case
     Private borderMap(8) As Integer ' maps au voisinage
 
+    <NonSerialized>
     Public mapNPCs As New List(Of MapNPC) ' Liste des pnjs sur la map
 
     ' - Constructeur
@@ -132,6 +133,7 @@ Public Class GameMap
     ' - Sauvegarde la map en cours
     Public Sub Save()
         Dim serializer As New BinaryFormatter
+        serializer.AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
         Dim writer As Stream
         writer = File.Create("Maps/Map" & curMap & ".frog")
         serializer.Serialize(writer, map)

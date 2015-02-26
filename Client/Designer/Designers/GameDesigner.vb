@@ -111,7 +111,6 @@ Class GameDesigner
 
     Public Sub New()
         Me.testPlayer = New GamePlayer(New Texture(Main.SPRITES_PATH + "Sprite1.png"))
-        Me.testPlayer.SetVelocity(GameVelocity.Fast)
         Me.testPlayer.WarpTo(15, 5)
     End Sub
 
@@ -156,6 +155,9 @@ Class GameDesigner
             batch.Draw(MAPS_MEMORY_DATA.ElementAt(0))
         End If
         batch.Draw(Me.testPlayer)
+        If (MAPS_MEMORY_DATA.Count > 0) Then
+            MAPS_MEMORY_DATA.ElementAt(0).Draw2(batch, RenderStates.Default)
+        End If
     End Sub
 
     Public Sub Dispose() Implements IDisposable.Dispose
