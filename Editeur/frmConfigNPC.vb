@@ -43,7 +43,7 @@ Public Class frmConfigNPC
         Me.Close()
     End Sub
 
-    Public Sub Open(attr As Attribute, X As Integer, Y As Integer)
+    Public Sub Open(attr As GameAttribute, X As Integer, Y As Integer)
         ResetForm()
         Me.X = X
         Me.Y = Y
@@ -96,7 +96,7 @@ Public Class frmConfigNPC
         Else
             map.mapNPCs.Add(npc)
             Me.curAttrNum = map.mapNPCs.Count - 1
-            With map.attribute(X, Y)
+            With map.Attribut(X, Y)
                 .Type = 4
                 ReDim .sender(0)
                 .sender(0) = Me.curAttrNum

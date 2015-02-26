@@ -20,7 +20,7 @@
     Public curY As Byte = 0
     Public curLayer As Byte = 0
     Public curMap As Integer
-    Public curAttribute As New Attribute
+    Public curAttribute As New GameAttribute
 
     ' - BDD Binaire
     Public DB As New BinaryDataBase

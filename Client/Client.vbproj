@@ -95,9 +95,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameEntities\Objects\GameActionCase.vb" />
+    <Compile Include="GameEntities\Utilities\GameMapDeserializationBinder.vb" />
     <Compile Include="GameEntities\Utilities\GameVelocity.vb" />
     <Compile Include="GameEntities\Utilities\GameTimer.vb" />
-    <Compile Include="GameEntities\Utilities\Attribute.vb" />
+    <Compile Include="GameEntities\Utilities\GameAttribute.vb" />
     <Compile Include="GameEntities\Objects\GameArmor.vb" />
     <Compile Include="GameEntities\Objects\GameCharacter.vb" />
     <Compile Include="GameEntities\Utilities\GameDirection.vb" />

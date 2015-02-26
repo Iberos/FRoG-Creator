@@ -3,4 +3,5 @@
   <tilesPreview>true</tilesPreview>
   <grid>false</grid>
   <nightMode>false</nightMode>
+  <layerShiftMode>false</layerShiftMode>
 </GameOptions>

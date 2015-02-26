@@ -2,6 +2,7 @@
 Imports System.Net.Sockets
 
 Public Class GameClient
+    Implements IDisposable
 
     Public socket As TcpClient
     Public stream As NetworkStream
@@ -53,4 +54,8 @@ Public Class GameClient
     Public Function isConnected() As Boolean
         Return Me.socket.Connected
     End Function
+
+    Public Sub Dispose() Implements IDisposable.Dispose
+        Me.socket.Close()
+    End Sub
 End Class

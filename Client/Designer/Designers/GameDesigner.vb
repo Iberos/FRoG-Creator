@@ -4,6 +4,7 @@ Imports TGUI
 
 Class GameDesigner
     Implements Designer
+    Implements IDisposable
 
     ' GuiObjects
     Private chatBox As EditBox
@@ -155,5 +156,9 @@ Class GameDesigner
             batch.Draw(MAPS_MEMORY_DATA.ElementAt(0))
         End If
         batch.Draw(Me.testPlayer)
+    End Sub
+
+    Public Sub Dispose() Implements IDisposable.Dispose
+        Me.testPlayer.Dispose()
     End Sub
 End Class

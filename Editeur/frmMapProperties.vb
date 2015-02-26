@@ -5,16 +5,16 @@ Public Class frmMapProperties
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
         With map
-            .name = txtName.Text
-            .type = lstTypes.SelectedIndex
+            .MapName = txtName.Text
+            .MapType = lstTypes.SelectedIndex
         End With
         Me.Close()
     End Sub
 
     Private Sub frmMapProperties_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         With map
-            txtName.Text = .name
-            lstTypes.SelectedIndex = .type
+            txtName.Text = .MapName
+            lstTypes.SelectedIndex = .MapType
         End With
 
         lstMaps.Items.Add("Aucune")
@@ -22,14 +22,14 @@ Public Class frmMapProperties
             lstMaps.Items.Add(Directory.GetFiles("Maps")(i))
         Next
 
-        btBorder1.Text = map.borderMap(0)
-        btBorder2.Text = map.borderMap(1)
-        btBorder3.Text = map.borderMap(2)
-        btBorder4.Text = map.borderMap(3)
-        btBorder5.Text = map.borderMap(4)
-        btBorder6.Text = map.borderMap(5)
-        btBorder7.Text = map.borderMap(6)
-        btBorder8.Text = map.borderMap(7)
+        btBorder1.Text = map.MapsBorder(0).ToString()
+        btBorder2.Text = map.MapsBorder(1).ToString()
+        btBorder3.Text = map.MapsBorder(2).ToString()
+        btBorder4.Text = map.MapsBorder(3).ToString()
+        btBorder5.Text = map.MapsBorder(4).ToString()
+        btBorder6.Text = map.MapsBorder(5).ToString()
+        btBorder7.Text = map.MapsBorder(6).ToString()
+        btBorder8.Text = map.MapsBorder(7).ToString()
     End Sub
 
     Private Sub btBorder1_Click(sender As Object, e As EventArgs) Handles btBorder1.Click
@@ -77,23 +77,23 @@ Public Class frmMapProperties
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        map.borderMap(curBorder) = lstMaps.SelectedIndex
+        map.MapsBorder(curBorder) = lstMaps.SelectedIndex
 
-        btBorder1.Text = map.borderMap(0)
-        btBorder2.Text = map.borderMap(1)
-        btBorder3.Text = map.borderMap(2)
-        btBorder4.Text = map.borderMap(3)
-        btBorder5.Text = map.borderMap(4)
-        btBorder6.Text = map.borderMap(5)
-        btBorder7.Text = map.borderMap(6)
-        btBorder8.Text = map.borderMap(7)
+        btBorder1.Text = map.MapsBorder(0).ToString()
+        btBorder2.Text = map.MapsBorder(1).ToString()
+        btBorder3.Text = map.MapsBorder(2).ToString()
+        btBorder4.Text = map.MapsBorder(3).ToString()
+        btBorder5.Text = map.MapsBorder(4).ToString()
+        btBorder6.Text = map.MapsBorder(5).ToString()
+        btBorder7.Text = map.MapsBorder(6).ToString()
+        btBorder8.Text = map.MapsBorder(7).ToString()
 
         pnlSelect.Visible = False
     End Sub
 
     Private Sub pnlSelect_VisibleChanged(sender As Object, e As EventArgs) Handles pnlSelect.VisibleChanged
         If pnlSelect.Visible Then
-            lstMaps.SelectedIndex = map.borderMap(curBorder)
+            lstMaps.SelectedIndex = map.MapsBorder(curBorder)
         End If
     End Sub
 End Class

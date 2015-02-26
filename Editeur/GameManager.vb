@@ -116,57 +116,60 @@ Class GameManager
     ' - Gestion des touches
     Private Sub KeyBoardListener()
         With player
-            If Keyboard.IsKeyPressed(Keyboard.Key.Down) And .Y < 14 And .Mov = 0 Then
-                .Dir = 0
-                If Not map.attribute(.X, .Y + 1).Type = 1 Then
-                    If Not map.attribute(.X, .Y + 1).Type = 2 Then
-                        .Y += 1
-                        .Mov = modVar.CASE_LENGTH
-                    ElseIf Not map.attribute(.X, .Y + 1).sender(0) = 0 Then
-                        .Y += 1
-                        .Mov = modVar.CASE_LENGTH
+            If (Not IsNothing(map.Attribut(.X, .Y))) Then ' Catch de l'attribut inexistant
+                If Keyboard.IsKeyPressed(Keyboard.Key.Down) And .Y < 14 And .Mov = 0 Then
+                    .Dir = 0
+                    If Not map.Attribut(.X, .Y + 1).Type = 1 Then
+                        If Not map.Attribut(.X, .Y + 1).Type = 2 Then
+                            .Y += 1
+                            .Mov = modVar.CASE_LENGTH
+                        ElseIf Not map.Attribut(.X, .Y + 1).sender(0) = 0 Then
+                            .Y += 1
+                            .Mov = modVar.CASE_LENGTH
+                        End If
+                    End If
+                End If
+
+                If Keyboard.IsKeyPressed(Keyboard.Key.Up) And .Y > 0 And .Mov = 0 Then
+                    .Dir = 3
+                    If Not map.Attribut(.X, .Y - 1).Type = 1 Then
+                        If Not map.Attribut(.X, .Y - 1).Type = 2 Then
+                            .Y -= 1
+                            .Mov = modVar.CASE_LENGTH
+                        ElseIf Not map.Attribut(.X, .Y - 1).sender(0) = 3 Then
+                            .Y -= 1
+                            .Mov = modVar.CASE_LENGTH
+                        End If
+                    End If
+                End If
+
+                If Keyboard.IsKeyPressed(Keyboard.Key.Left) And .X > 0 And .Mov = 0 Then
+                    .Dir = 1
+                    If Not map.Attribut(.X - 1, .Y).Type = 1 Then
+                        If Not map.Attribut(.X - 1, .Y).Type = 2 Then
+                            .X -= 1
+                            .Mov = modVar.CASE_LENGTH
+                        ElseIf Not map.Attribut(.X - 1, .Y).sender(0) = 1 Then
+                            .X -= 1
+                            .Mov = modVar.CASE_LENGTH
+                        End If
+                    End If
+                End If
+
+                If Keyboard.IsKeyPressed(Keyboard.Key.Right) And .X < 20 And .Mov = 0 Then
+                    .Dir = 2
+                    If Not map.Attribut(.X + 1, .Y).Type = 1 Then
+                        If Not map.Attribut(.X + 1, .Y).Type = 2 Then
+                            .X += 1
+                            .Mov = modVar.CASE_LENGTH
+                        ElseIf Not map.Attribut(.X + 1, .Y).sender(0) = 2 Then
+                            .X += 1
+                            .Mov = modVar.CASE_LENGTH
+                        End If
                     End If
                 End If
             End If
 
-            If Keyboard.IsKeyPressed(Keyboard.Key.Up) And .Y > 0 And .Mov = 0 Then
-                .Dir = 3
-                If Not map.attribute(.X, .Y - 1).Type = 1 Then
-                    If Not map.attribute(.X, .Y - 1).Type = 2 Then
-                        .Y -= 1
-                        .Mov = modVar.CASE_LENGTH
-                    ElseIf Not map.attribute(.X, .Y - 1).sender(0) = 3 Then
-                        .Y -= 1
-                        .Mov = modVar.CASE_LENGTH
-                    End If
-                End If
-            End If
-
-            If Keyboard.IsKeyPressed(Keyboard.Key.Left) And .X > 0 And .Mov = 0 Then
-                .Dir = 1
-                If Not map.attribute(.X - 1, .Y).Type = 1 Then
-                    If Not map.attribute(.X - 1, .Y).Type = 2 Then
-                        .X -= 1
-                        .Mov = modVar.CASE_LENGTH
-                    ElseIf Not map.attribute(.X - 1, .Y).sender(0) = 1 Then
-                        .X -= 1
-                        .Mov = modVar.CASE_LENGTH
-                    End If
-                End If
-            End If
-
-            If Keyboard.IsKeyPressed(Keyboard.Key.Right) And .X < 20 And .Mov = 0 Then
-                .Dir = 2
-                If Not map.attribute(.X + 1, .Y).Type = 1 Then
-                    If Not map.attribute(.X + 1, .Y).Type = 2 Then
-                        .X += 1
-                        .Mov = modVar.CASE_LENGTH
-                    ElseIf Not map.attribute(.X + 1, .Y).sender(0) = 2 Then
-                        .X += 1
-                        .Mov = modVar.CASE_LENGTH
-                    End If
-                End If
-            End If
 
             If Keyboard.IsKeyPressed(Keyboard.Key.LShift) Then
                 .Run = True
@@ -231,12 +234,12 @@ Class GameManager
             mapSurface(layer).Clear(New Color(0, 0, 0, 0))
         End If
 
-        With map.layer(layer)
+        With map.MapLayer(layer)
             For x = 0 To modVar.MAP_WIDTH
                 For y = 0 To modVar.MAP_HEIGHT
                     If Not .tileCode(x, y) = 0 Then
                         sprt = New Sprite(game.tileset(.tileset(x, y)))
-                        sprt.TextureRect = New IntRect(map.DecodeX(.tileCode(x, y)) * modVar.CASE_LENGTH, map.DecodeY(.tileCode(x, y)) * modVar.CASE_LENGTH, modVar.CASE_LENGTH, modVar.CASE_LENGTH)
+                        sprt.TextureRect = New IntRect(GameTileset.DecodeX(.tileCode(x, y)) * modVar.CASE_LENGTH, GameTileset.DecodeY(.tileCode(x, y)) * modVar.CASE_LENGTH, modVar.CASE_LENGTH, modVar.CASE_LENGTH)
                         sprt.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                         mapSurface(layer).Draw(sprt)
                         sprt.Dispose()
@@ -273,43 +276,45 @@ Class GameManager
 
         For x = 0 To modVar.MAP_WIDTH
             For y = 0 To modVar.MAP_HEIGHT
-                Select Case map.attribute(x, y).Type
-                    Case CaseTypes.Block
-                        bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
-                        bckAttribute.FillColor = New Color(200, 0, 0, 100)
-                        bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
-                        gameSurface.Draw(bckAttribute)
-                    Case CaseTypes.DirectionBlock
-                        If map.attribute(x, y).sender(0) = 0 Then 'Bas
-                            bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, 10)
+                If (Not IsNothing(map.Attribut(x, y))) Then ' Catch de l'attribut null
+                    Select Case map.Attribut(x, y).Type
+                        Case CaseTypes.Block
+                            bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
                             bckAttribute.FillColor = New Color(200, 0, 0, 100)
                             bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
-                        ElseIf map.attribute(x, y).sender(0) = 1 Then 'Gauche
-                            bckAttribute.Size = New Vector2f(10, modVar.CASE_LENGTH)
-                            bckAttribute.FillColor = New Color(200, 0, 0, 100)
-                            bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH + modVar.CASE_LENGTH - 10, y * modVar.CASE_LENGTH)
-                        ElseIf map.attribute(x, y).sender(0) = 2 Then 'Droite
-                            bckAttribute.Size = New Vector2f(10, modVar.CASE_LENGTH)
-                            bckAttribute.FillColor = New Color(200, 0, 0, 100)
+                            gameSurface.Draw(bckAttribute)
+                        Case CaseTypes.DirectionBlock
+                            If map.Attribut(x, y).sender(0) = 0 Then 'Bas
+                                bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, 10)
+                                bckAttribute.FillColor = New Color(200, 0, 0, 100)
+                                bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
+                            ElseIf map.Attribut(x, y).sender(0) = 1 Then 'Gauche
+                                bckAttribute.Size = New Vector2f(10, modVar.CASE_LENGTH)
+                                bckAttribute.FillColor = New Color(200, 0, 0, 100)
+                                bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH + modVar.CASE_LENGTH - 10, y * modVar.CASE_LENGTH)
+                            ElseIf map.Attribut(x, y).sender(0) = 2 Then 'Droite
+                                bckAttribute.Size = New Vector2f(10, modVar.CASE_LENGTH)
+                                bckAttribute.FillColor = New Color(200, 0, 0, 100)
+                                bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
+                            ElseIf map.Attribut(x, y).sender(0) = 3 Then 'Haut
+                                bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, 10)
+                                bckAttribute.FillColor = New Color(200, 0, 0, 100)
+                                bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH + modVar.CASE_LENGTH - 10)
+                            End If
+                            gameSurface.Draw(bckAttribute)
+                        Case CaseTypes.Teleportation
+                            bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
+                            bckAttribute.FillColor = New Color(0, 0, 200, 100)
                             bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
-                        ElseIf map.attribute(x, y).sender(0) = 3 Then 'Haut
-                            bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, 10)
-                            bckAttribute.FillColor = New Color(200, 0, 0, 100)
-                            bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH + modVar.CASE_LENGTH - 10)
-                        End If
-                        gameSurface.Draw(bckAttribute)
-                    Case CaseTypes.Teleportation
-                        bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
-                        bckAttribute.FillColor = New Color(0, 0, 200, 100)
-                        bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
-                        gameSurface.Draw(bckAttribute)
-                    Case CaseTypes.Character
-                        'TODO Draw Attribut PNJ (Recherche du bon pnj en liste [Data: x, y] et affichage de son portrait)
-                        bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
-                        bckAttribute.FillColor = New Color(0, 200, 200, 100)
-                        bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
-                        gameSurface.Draw(bckAttribute)
-                End Select
+                            gameSurface.Draw(bckAttribute)
+                        Case CaseTypes.Character
+                            'TODO Draw Attribut PNJ (Recherche du bon pnj en liste [Data: x, y] et affichage de son portrait)
+                            bckAttribute.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
+                            bckAttribute.FillColor = New Color(0, 200, 200, 100)
+                            bckAttribute.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
+                            gameSurface.Draw(bckAttribute)
+                    End Select
+                End If
             Next
         Next
     End Sub

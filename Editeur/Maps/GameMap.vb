@@ -5,13 +5,17 @@ Imports SFML.Graphics
 
 <Serializable>
 Public Class GameMap
+    Implements SFML.Graphics.Drawable
 
-    'TODO : Rendre Private & Créer les Getter / Setter selon les droits
-    Public name As String
-    Public type As Byte
-    Public layer(6) As Layer ' couche entière
-    Public attribute(20, 14) As Attribute ' attribut sur une case
-    Public borderMap(7) As Integer ' maps au voisinage
+    Private Const MAP_WIDTH As UInteger = 672
+    Private Const MAP_HEIGHT As UInteger = 480
+
+    Private name As String
+    Private type As Byte
+    Private layer(6) As Layer ' couche entière
+    Private attribute(20, 14) As GameAttribute ' attribut sur une case
+    Private borderMap(8) As Integer ' maps au voisinage
+
     Public mapNPCs As New List(Of MapNPC) ' Liste des pnjs sur la map
 
     ' - Constructeur
@@ -22,25 +26,65 @@ Public Class GameMap
 
         For x = 0 To 20
             For y = 0 To 14
-                attribute(x, y) = New Attribute
+                attribute(x, y) = New GameAttribute
             Next
         Next
     End Sub
 
-    ' - Comptacte les valeurs X et Y du tiles
-    Public Function EncodeXY(ByVal X As UShort, ByVal Y As UShort) As UShort
-        Return Y * 20 + X
-    End Function
+    Public Property Attribut(X As Byte, Y As Byte) As GameAttribute
+        Get
+            Return If(Me.attribute.GetLength(0) > X And Me.attribute.GetLength(1) > Y, Me.attribute(X, Y), Nothing)
+        End Get
+        Set(value As GameAttribute)
+            If (Me.attribute.GetLength(0) > X And Me.attribute.GetLength(1) > Y) Then
+                Me.attribute(X, Y) = value
+            End If
+        End Set
+    End Property
 
-    ' - Recupère la valeur X du tiles
-    Public Function DecodeX(ByVal code As UShort) As UShort
-        Return Math.Floor(code - Math.Floor(code / 20) * 20)
-    End Function
+    Public Property MapsBorder(mapNum As Byte) As Integer
+        Get
+            Return If(Me.borderMap.Count > mapNum, Me.borderMap(mapNum), Nothing)
+        End Get
+        Set(value As Integer)
+            If (Me.borderMap.Count > mapNum) Then
+                Me.borderMap(mapNum) = value
+            End If
+        End Set
+    End Property
 
-    ' - Recupère la valeur Y du tiles
-    Public Function DecodeY(ByVal code As UShort) As UShort
-        Return Math.Floor(code / 20)
-    End Function
+    Public Property MapLayer(layerNum As Byte) As Layer
+        Get
+            Return If(Me.layer.Count > layerNum, Me.layer(layerNum), Nothing)
+        End Get
+        Set(value As Layer)
+            If (Me.layer.Count > layerNum) Then
+                Me.layer(layerNum) = value
+            End If
+        End Set
+    End Property
+
+    Public Property MapName As String
+        Get
+            Return If(Not IsNothing(Me.name), Me.name, String.Empty)
+        End Get
+        Set(value As String)
+            If (Not IsNothing(Me.name)) Then
+                Me.name = value
+            End If
+        End Set
+    End Property
+
+    Public Property MapType As Byte
+        Get
+            Return If(Not IsNothing(Me.type), Me.type, String.Empty)
+        End Get
+        Set(value As Byte)
+            If (Not IsNothing(Me.type)) Then
+                Me.type = value
+            End If
+        End Set
+    End Property
 
     'TODO : A utiliser !
     ' - Retourne une texture correspondant à la couche demandée
@@ -54,7 +98,7 @@ Public Class GameMap
                 For y = 0 To 14
                     If Not layer(layerNum).tileCode(x, y) = 0 Then
                         sprt = New Sprite(game.tileset(.tileset(x, y)))
-                        sprt.TextureRect = New IntRect(DecodeX(.tileCode(x, y)) * 32, DecodeY(.tileCode(x, y)) * 32, 32, 32)
+                        sprt.TextureRect = New IntRect(GameTileset.DecodeX(.tileCode(x, y)) * 32, GameTileset.DecodeY(.tileCode(x, y)) * 32, 32, 32)
                         sprt.Position = New Vector2f(x * 32, y * 32)
                         layerSurface.Draw(sprt)
                         sprt.Dispose()
@@ -105,5 +149,9 @@ Public Class GameMap
         curBck += 1
         ' Déverouillage du bouton "annuler"
         frmMapEditor.ButtonBefore.Enabled = True
+    End Sub
+
+    Public Sub Draw(target As RenderTarget, states As RenderStates) Implements Drawable.Draw
+        
     End Sub
 End Class

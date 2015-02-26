@@ -4,6 +4,7 @@ Imports SFML.Graphics
 
 Class AccountConnecterDesigner
     Implements Designer
+    Implements IDisposable
 
     '******** Attributs *********
     Private Const ITEM_PADDING As UInteger = 50
@@ -141,5 +142,9 @@ Class AccountConnecterDesigner
                 Main.gui.SetGameState(GameStates.GamePlayState)
             End If
         End If
+    End Sub
+
+    Public Sub Dispose() Implements IDisposable.Dispose
+        Me.bground.Dispose()
     End Sub
 End Class

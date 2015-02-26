@@ -143,7 +143,7 @@ Public Class frmMapEditor
                     Call PlaceTile(curX, curY)
                 ElseIf curAttribute.Type = 4 Then
                     ' Attributs PNJ
-                    npcConfigurator.Open(map.attribute(curX, curY), curX, curY)
+                    npcConfigurator.Open(map.Attribut(curX, curY), curX, curY)
                 Else
                     ' Attributs
                     Call PlaceAttribute(curX, curY)
@@ -159,9 +159,9 @@ Public Class frmMapEditor
         Else
             ' Pipette
             game.recSelect.Size = New Vector2f(32, 32)
-            lstTiles.SelectedIndex = map.layer(curLayer).tileset(curX, curY)
-            game.recSelect.Position = New Vector2f(map.DecodeX(map.layer(curLayer).tileCode(curX, curY)) * 32,
-                                                   map.DecodeY(map.layer(curLayer).tileCode(curX, curY)) * 32)
+            lstTiles.SelectedIndex = map.MapLayer(curLayer).tileset(curX, curY)
+            game.recSelect.Position = New Vector2f(GameTileset.DecodeX(map.MapLayer(curLayer).tileCode(curX, curY)) * 32,
+                                                   GameTileset.DecodeY(map.MapLayer(curLayer).tileCode(curX, curY)) * 32)
             ButtonCopy.Checked = False
             picGame.Cursor = Cursors.Cross
         End If
@@ -198,7 +198,7 @@ Public Class frmMapEditor
     ' - Placer l'attribut
     Private Sub PlaceAttribute(ByVal X As Byte, ByVal Y As Byte)
         If Not testMode Then
-            With map.attribute(X, Y)
+            With map.Attribut(X, Y)
                 .Type = curAttribute.Type
                 .sender = curAttribute.sender
             End With
@@ -208,7 +208,7 @@ Public Class frmMapEditor
     ' - Supprime l'attribut
     Private Sub DeleteAttribute(ByVal X As Byte, ByVal Y As Byte)
         If Not testMode Then
-            With map.attribute(X, Y)
+            With map.Attribut(X, Y)
                 .Type = 0
                 .sender = Nothing
             End With
@@ -221,8 +221,8 @@ Public Class frmMapEditor
             For x2 = 0 To CByte(game.recSelect.Size.X / 32) - 1
                 For y2 = 0 To CByte(game.recSelect.Size.Y / 32) - 1
                     If Not X + x2 < 0 And Not X + x2 > 20 And Not Y + y2 < 0 And Not Y + y2 > 14 Then
-                        map.layer(curLayer).tileset(X + x2, Y + y2) = lstTiles.SelectedIndex
-                        map.layer(curLayer).tileCode(X + x2, Y + y2) = map.EncodeXY(Int(game.recSelect.Position.X / 32) + x2, Int(game.recSelect.Position.Y / 32) + y2)
+                        map.MapLayer(curLayer).tileset(X + x2, Y + y2) = lstTiles.SelectedIndex
+                        map.MapLayer(curLayer).tileCode(X + x2, Y + y2) = GameTileset.EncodeXY(Int(game.recSelect.Position.X / 32) + x2, Int(game.recSelect.Position.Y / 32) + y2)
                     End If
                 Next
             Next
@@ -233,8 +233,8 @@ Public Class frmMapEditor
     ' - Supprime la selection de tiles de la map puis re dessine la couche
     Private Sub DeleteTile(ByVal X As Byte, ByVal Y As Byte)
         If Not testMode And Not X < 0 And Not X > 20 And Not Y < 0 And Not Y > 14 Then
-            map.layer(curLayer).tileset(X, Y) = 0
-            map.layer(curLayer).tileCode(X, Y) = 0
+            map.MapLayer(curLayer).tileset(X, Y) = 0
+            map.MapLayer(curLayer).tileCode(X, Y) = 0
             game.DrawLayer(curLayer)
         End If
     End Sub
@@ -520,7 +520,7 @@ Public Class frmMapEditor
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ButtonBlock.Click
-        curAttribute = New Attribute
+        curAttribute = New GameAttribute
         curAttribute.Type = 1
         DrawFocusItem()
     End Sub
@@ -531,7 +531,7 @@ Public Class frmMapEditor
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles ButtonTeleport.Click
-        curAttribute = New Attribute
+        curAttribute = New GameAttribute
         curAttribute.Type = 3
         DrawFocusItem()
     End Sub
@@ -541,7 +541,7 @@ Public Class frmMapEditor
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles ButtonOk.Click
-        curAttribute = New Attribute
+        curAttribute = New GameAttribute
         curAttribute.Type = 2
         ReDim curAttribute.sender(0)
         curAttribute.sender(0) = ListDirection.SelectedIndex
@@ -550,7 +550,7 @@ Public Class frmMapEditor
     End Sub
 
     Private Sub buttonNPC_Click(sender As Object, e As EventArgs) Handles ButtonNPC.Click
-        curAttribute = New Attribute
+        curAttribute = New GameAttribute
         curAttribute.Type = 4
         ReDim curAttribute.sender(0)
         DrawFocusItem()
