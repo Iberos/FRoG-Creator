@@ -45,7 +45,9 @@ Public Class frmMapEditor
     Public Sub FormResize()
         picTiles.Refresh()
 
-        'TODO: Utiliser la proprièté 'Anchor' des objets
+        vPicScroll.Location = New Point(pnlTiles.Location.X + pnlTiles.Size.Width, vPicScroll.Location.Y)
+        hPicScroll.Size = New Size(pnlTiles.Width, hPicScroll.Size.Height)
+
         picGame.Top = (Me.Height - picGame.Height) / 2 - 5
         picGame.Left = (Me.Width - picGame.Width + pnlTiles.Width) / 2
         pnlStart.Top = (Me.Height - pnlStart.Height) / 2 - 5
@@ -64,17 +66,17 @@ Public Class frmMapEditor
             '***** Initialize ScrollBar *****
             vPicScroll.Minimum = 0
             vPicScroll.SmallChange = picTiles.Image.Height / 20
-            vPicScroll.LargeChange = picTiles.Image.Height / 10
+            vPicScroll.LargeChange = picTiles.Image.Height / 5
             vPicScroll.Maximum = picTiles.Image.Height + PIC_TILES_PADDING.Y - picTiles.Height
             vPicScroll.Maximum += vPicScroll.LargeChange
-            vPicScroll.Value = 1
+            vPicScroll.Value = vPicScroll.Minimum + 1
 
             hPicScroll.Minimum = 0
             hPicScroll.SmallChange = picTiles.Image.Width / 20
-            hPicScroll.LargeChange = picTiles.Image.Width / 10
+            hPicScroll.LargeChange = picTiles.Image.Width / 5
             hPicScroll.Maximum = picTiles.Image.Width + PIC_TILES_PADDING.X - picTiles.Width
             hPicScroll.Maximum += vPicScroll.LargeChange
-            hPicScroll.Value = 1
+            hPicScroll.Value = hPicScroll.Minimum + 1
             '********************************
 
             picTilesOrigin = New Point()
