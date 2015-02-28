@@ -7,10 +7,14 @@ Public Class GameServer
 
     ' - Initialisation de l'écoute
     Public Sub Start()
-        listenSock = New TcpListener(IPAddress.Any, 4608)
+        Dim port As Integer = 4608
+        Dim IP As String = "127.0.0.1"
+        listenSock = New TcpListener(IPAddress.Any, port)
         listenSock.Start()
-        Console.WriteLine("Serveur en écoute...")
-        AcceptConnection()
+        Console.WriteLine("Serveur lancé")
+        Console.WriteLine("========== Informations de connexion ==========")
+        Console.WriteLine("Adresse IP: " & IP)
+        Console.WriteLine("Port: " & port)
     End Sub
 
     ' - Accepte la connexion entrante de manière asynchrone
