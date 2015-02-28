@@ -99,18 +99,17 @@ Public Class GameMap
     ' - Retourne une texture correspondant à la couche demandée
     Public Function LayerTexture(ByVal layerNum As Byte) As Texture
         Dim layerSurface As New RenderTexture(672, 480)
-        Dim sprt As Sprite
         layerSurface.Clear(New Color(0, 0, 0, 0))
 
         With map.layer(layerNum)
             For x = 0 To 20
                 For y = 0 To 14
                     If Not layer(layerNum).tileCode(x, y) = 0 Then
-                        sprt = New Sprite(game.tileset(.tileset(x, y)))
-                        sprt.TextureRect = New IntRect(GameTileset.DecodeX(.tileCode(x, y)) * 32, GameTileset.DecodeY(.tileCode(x, y)) * 32, 32, 32)
-                        sprt.Position = New Vector2f(x * 32, y * 32)
-                        layerSurface.Draw(sprt)
-                        sprt.Dispose()
+                        Using sprt As New Sprite(game.tileset(.tileset(x, y)))
+                            sprt.TextureRect = New IntRect(GameTileset.DecodeX(.tileCode(x, y)) * 32, GameTileset.DecodeY(.tileCode(x, y)) * 32, 32, 32)
+                            sprt.Position = New Vector2f(x * 32, y * 32)
+                            layerSurface.Draw(sprt)
+                        End Using
                     End If
                 Next
             Next
@@ -122,11 +121,10 @@ Public Class GameMap
     ' - Charge la map indiquée
     Public Sub Load(ByVal mapNum As Integer)
         Dim deserializer As New BinaryFormatter
-        Dim reader As Stream
         If File.Exists("Maps/Map" & mapNum & ".frog") Then
-            reader = File.OpenRead("Maps/Map" & mapNum & ".frog")
-            map = DirectCast(deserializer.Deserialize(reader), GameMap)
-            reader.Close() : reader.Dispose()
+            Using reader = File.OpenRead("Maps/Map" & mapNum & ".frog")
+                map = DirectCast(deserializer.Deserialize(reader), GameMap)
+            End Using
         End If
         lstBackup = New List(Of Byte())
         curBck = 0
@@ -142,20 +140,18 @@ Public Class GameMap
     Public Sub Save()
         Dim serializer As New BinaryFormatter
         serializer.AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
-        Dim writer As Stream
-        writer = File.Create("Maps/Map" & curMap & ".frog")
-        serializer.Serialize(writer, map)
-        writer.Close()
+        Using writer = File.Create("Maps/Map" & curMap & ".frog")
+            serializer.Serialize(writer, map)
+        End Using
     End Sub
 
     ' - Sauvegarde en mémoire la map avant modification
     Public Sub BackUp()
         Dim formater As New BinaryFormatter
-        Dim stream As New IO.MemoryStream
-        formater.Serialize(stream, map)
-        lstBackup.Insert(curBck, stream.ToArray)
-        stream.Close()
-        stream.Dispose()
+        Using stream As New IO.MemoryStream
+            formater.Serialize(stream, map)
+            lstBackup.Insert(curBck, stream.ToArray)
+        End Using
         curBck += 1
         ' Déverouillage du bouton "annuler"
         frmMapEditor.ButtonBefore.Enabled = True

@@ -29,68 +29,64 @@ Public Class BinaryDataBase
     ' - Chargement des classes
     Private Sub LoadClasses()
         Dim deserializer As New BinaryFormatter
-        Dim reader As Stream
         Dim num As Integer
         Dim tmp As New GameClass
 
         lstClasses.Clear()
         While File.Exists("Classes/Classe" & num & ".frog")
-            reader = File.OpenRead("Classes/Classe" & num & ".frog")
-            tmp = DirectCast(deserializer.Deserialize(reader), GameClass)
-            reader.Close() : reader.Dispose()
-            lstClasses.Add(tmp)
-            num += 1
+            Using reader = File.OpenRead("Classes/Classe" & num & ".frog")
+                tmp = DirectCast(deserializer.Deserialize(reader), GameClass)
+                lstClasses.Add(tmp)
+                num += 1
+            End Using
         End While
     End Sub
 
     ' - Chargement des objets
     Private Sub LoadItems()
         Dim deserializer As New BinaryFormatter
-        Dim reader As Stream
         Dim num As Integer
         Dim tmp As New GameItem
 
         lstItems.Clear()
         While File.Exists("Objets/Objet" & num & ".frog")
-            reader = File.OpenRead("Objets/Objet" & num & ".frog")
-            tmp = DirectCast(deserializer.Deserialize(reader), GameItem)
-            reader.Close() : reader.Dispose()
-            lstItems.Add(tmp)
-            num += 1
+            Using reader = File.OpenRead("Objets/Objet" & num & ".frog")
+                tmp = DirectCast(deserializer.Deserialize(reader), GameItem)
+                lstItems.Add(tmp)
+                num += 1
+            End Using
         End While
     End Sub
 
     ' - Chargement des sorts
     Private Sub LoadSpells()
         Dim deserializer As New BinaryFormatter
-        Dim reader As Stream
         Dim num As Integer
         Dim tmp As New GameSpell
 
         lstSpells.Clear()
         While File.Exists("Sorts/Sort" & num & ".frog")
-            reader = File.OpenRead("Sorts/Sort" & num & ".frog")
-            tmp = DirectCast(deserializer.Deserialize(reader), GameSpell)
-            reader.Close() : reader.Dispose()
-            lstSpells.Add(tmp)
-            num += 1
+            Using reader = File.OpenRead("Sorts/Sort" & num & ".frog")
+                tmp = DirectCast(deserializer.Deserialize(reader), GameSpell)
+                lstSpells.Add(tmp)
+                num += 1
+            End Using
         End While
     End Sub
 
     ' - Chargement des PNJs
     Private Sub LoadNPCs()
         Dim deserializer As New BinaryFormatter
-        Dim reader As Stream
         Dim num As Integer
         Dim tmp As New GameNPC
 
         lstNPCs.Clear()
         While File.Exists("PNJs/PNJ" & num & ".frog")
-            reader = File.OpenRead("PNJs/PNJ" & num & ".frog")
-            tmp = DirectCast(deserializer.Deserialize(reader), GameNPC)
-            reader.Close() : reader.Dispose()
-            lstNPCs.Add(tmp)
-            num += 1
+            Using reader = File.OpenRead("PNJs/PNJ" & num & ".frog")
+                tmp = DirectCast(deserializer.Deserialize(reader), GameNPC)
+                lstNPCs.Add(tmp)
+                num += 1
+            End Using
         End While
     End Sub
 

@@ -440,11 +440,10 @@ Public Class frmMapEditor
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ButtonBefore.Click
         If Not curBck = 1 Then
             curBck -= 1
-            Dim stream As New IO.MemoryStream(lstBackup(curBck - 1))
-            Dim formater As New BinaryFormatter
-            map = DirectCast(formater.Deserialize(stream), GameMap)
-            stream.Close()
-            stream.Dispose()
+            Using stream As New IO.MemoryStream(lstBackup(curBck - 1))
+                Dim formater As New BinaryFormatter
+                map = DirectCast(formater.Deserialize(stream), GameMap)
+            End Using
             game.DrawMap()
             ' Déverouillage du bouton "rétablir" et possible verouillage du bouton "Annuler"
             ButtonAfter.Enabled = True
@@ -467,11 +466,10 @@ Public Class frmMapEditor
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ButtonAfter.Click
         If Not curBck = lstBackup.Count Then
             curBck += 1
-            Dim stream As New IO.MemoryStream(lstBackup(curBck - 1))
-            Dim formater As New BinaryFormatter
-            map = DirectCast(formater.Deserialize(stream), GameMap)
-            stream.Close()
-            stream.Dispose()
+            Using stream As New IO.MemoryStream(lstBackup(curBck - 1))
+                Dim formater As New BinaryFormatter
+                map = DirectCast(formater.Deserialize(stream), GameMap)
+            End Using
             game.DrawMap()
             ' Déverouillage du boutton "annuler" et possible verouillage du bouton "rétablir"
             ButtonBefore.Enabled = True
