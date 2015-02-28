@@ -37,18 +37,17 @@ Public Class GameMap
 
     ' TODO : Générer 2 RenderTexture à la création de la map
     Public Sub Draw(target As RenderTarget, states As RenderStates) Implements Drawable.Draw
-        Dim sprt As Sprite
         For x = 0 To 20
             For y = 0 To 14
                 For z = 0 To 3
                     If Not layer(z).tileCode(x, y) = 0 Then
                         ' TODO : Try Catch Le cas où le tileset voulu n'a pas été chargé
                         ' Console.WriteLine(.tileset(x, y).ToString())
-                        sprt = New Sprite(GameDesigner.TILESETS_MEMORY_DATA.ElementAt(layer(z).tileset(x, y)))
-                        sprt.TextureRect = New IntRect(GameTileset.DecodeX(layer(z).tileCode(x, y)) * 32, GameTileset.DecodeY(layer(z).tileCode(x, y)) * 32, 32, 32)
-                        sprt.Position = New Vector2f(x * 32, y * 32)
-                        target.Draw(sprt)
-                        sprt.Dispose()
+                        Using sprt As New Sprite(GameDesigner.TILESETS_MEMORY_DATA.ElementAt(layer(z).tileset(x, y)))
+                            sprt.TextureRect = New IntRect(GameTileset.DecodeX(layer(z).tileCode(x, y)) * 32, GameTileset.DecodeY(layer(z).tileCode(x, y)) * 32, 32, 32)
+                            sprt.Position = New Vector2f(x * 32, y * 32)
+                            target.Draw(sprt)
+                        End Using
                     End If
                 Next
             Next
@@ -64,11 +63,11 @@ Public Class GameMap
                     If Not layer(z).tileCode(x, y) = 0 Then
                         ' TODO : Try Catch Le cas où le tileset voulu n'a pas été chargé
                         ' Console.WriteLine(.tileset(x, y).ToString())
-                        sprt = New Sprite(GameDesigner.TILESETS_MEMORY_DATA.ElementAt(layer(z).tileset(x, y)))
-                        sprt.TextureRect = New IntRect(GameTileset.DecodeX(layer(z).tileCode(x, y)) * 32, GameTileset.DecodeY(layer(z).tileCode(x, y)) * 32, 32, 32)
-                        sprt.Position = New Vector2f(x * 32, y * 32)
-                        target.Draw(sprt)
-                        sprt.Dispose()
+                        Using sprt As New Sprite(GameDesigner.TILESETS_MEMORY_DATA.ElementAt(layer(z).tileset(x, y)))
+                            sprt.TextureRect = New IntRect(GameTileset.DecodeX(layer(z).tileCode(x, y)) * 32, GameTileset.DecodeY(layer(z).tileCode(x, y)) * 32, 32, 32)
+                            sprt.Position = New Vector2f(x * 32, y * 32)
+                            target.Draw(sprt)
+                        End Using
                     End If
                 Next
             Next
@@ -78,14 +77,14 @@ Public Class GameMap
     Public Shared Function Load(ByVal mapNum As UInteger)
         Try
             Dim deserializer As New BinaryFormatter
-            Dim reader As Stream
             Dim mapResult As GameMap
             If File.Exists(Main.MAPS_PATH + "Map" & mapNum & ".frog") Then
                 deserializer.AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
                 deserializer.Binder = New GameMapDeserializationBinder
-                reader = File.OpenRead(Main.MAPS_PATH + "Map" & mapNum & ".frog")
-                mapResult = DirectCast(deserializer.Deserialize(reader), GameMap)
-                reader.Close() : reader.Dispose()
+
+                Using reader = File.OpenRead(Main.MAPS_PATH + "Map" & mapNum & ".frog")
+                    mapResult = DirectCast(deserializer.Deserialize(reader), GameMap)
+                End Using
 
                 Return mapResult
             End If

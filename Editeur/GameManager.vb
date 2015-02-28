@@ -226,8 +226,6 @@ Class GameManager
 
     ' - Dessin de la couche
     Public Sub DrawLayer(ByVal layer As Byte)
-        Dim sprt As Sprite
-
         If (editorOptions.layerShiftMode And curLayer.Equals(layer)) Then
             mapSurface(layer).Clear(New Color(0, 0, 0, 100))
         Else
@@ -238,11 +236,11 @@ Class GameManager
             For x = 0 To modVar.MAP_WIDTH
                 For y = 0 To modVar.MAP_HEIGHT
                     If Not .tileCode(x, y) = 0 Then
-                        sprt = New Sprite(game.tileset(.tileset(x, y)))
-                        sprt.TextureRect = New IntRect(GameTileset.DecodeX(.tileCode(x, y)) * modVar.CASE_LENGTH, GameTileset.DecodeY(.tileCode(x, y)) * modVar.CASE_LENGTH, modVar.CASE_LENGTH, modVar.CASE_LENGTH)
-                        sprt.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
-                        mapSurface(layer).Draw(sprt)
-                        sprt.Dispose()
+                        Using sprt As New Sprite(game.tileset(.tileset(x, y)))
+                            sprt.TextureRect = New IntRect(GameTileset.DecodeX(.tileCode(x, y)) * modVar.CASE_LENGTH, GameTileset.DecodeY(.tileCode(x, y)) * modVar.CASE_LENGTH, modVar.CASE_LENGTH, modVar.CASE_LENGTH)
+                            sprt.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
+                            mapSurface(layer).Draw(sprt)
+                        End Using
                     End If
                 Next
             Next
