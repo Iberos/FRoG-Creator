@@ -184,15 +184,17 @@ Public Class frmMapEditor
                     Call PlaceTile(curX, curY)
                 Else
                     ' Attributs
-                    Call PlaceAttribute(curX, curY)
+                    If Not curAttribute.Type = CaseTypes.Character Then ' Eviter le placement sucessif
+                        Call PlaceAttribute(curX, curY)
+                    End If
                 End If
             Else
-                If Not lstTiles.Text = "Attributs" Then
-                    ' Gomme
-                    Call DeleteTile(curX, curY)
-                Else
-                    Call DeleteAttribute(curX, curY)
-                End If
+                    If Not lstTiles.Text = "Attributs" Then
+                        ' Gomme
+                        Call DeleteTile(curX, curY)
+                    Else
+                        Call DeleteAttribute(curX, curY)
+                    End If
             End If
         End If
     End Sub

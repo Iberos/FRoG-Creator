@@ -17,7 +17,7 @@ Public Class GameMap
     Private borderMap(8) As Integer ' maps au voisinage
 
     <NonSerialized>
-    Public mapNPCs As New List(Of MapNPC) ' Liste des pnjs sur la map
+    Private mapNPCs As New List(Of MapNPC) ' Liste des pnjs sur la map
 
     ' - Constructeur
     Sub New()
@@ -31,6 +31,14 @@ Public Class GameMap
             Next
         Next
     End Sub
+
+    Public Function GetMapNPCList() As List(Of MapNPC)
+        If IsNothing(mapNPCs) Then
+            mapNPCs = New List(Of MapNPC)
+        End If
+
+        Return mapNPCs
+    End Function
 
     Public Property Attribut(X As Byte, Y As Byte) As GameAttribute
         Get
@@ -154,6 +162,6 @@ Public Class GameMap
     End Sub
 
     Public Sub Draw(target As RenderTarget, states As RenderStates) Implements Drawable.Draw
-        
+
     End Sub
 End Class
