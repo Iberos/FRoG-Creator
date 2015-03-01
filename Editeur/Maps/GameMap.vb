@@ -101,13 +101,11 @@ Public Class GameMap
         Dim layerSurface As New RenderTexture(672, 480)
         layerSurface.Clear(New Color(0, 0, 0, 0))
 
-        Dim sprt As Sprite
-
         With map.layer(layerNum)
             For x = 0 To 20
                 For y = 0 To 14
                     If Not layer(layerNum).tileCode(x, y) = 0 Then
-                        Using sprt = New Sprite(game.tileset(.tileset(x, y)))
+                        Using sprt As New Sprite(game.tileset(.tileset(x, y)))
                             sprt.TextureRect = New IntRect(GameTileset.DecodeX(.tileCode(x, y)) * 32, GameTileset.DecodeY(.tileCode(x, y)) * 32, 32, 32)
                             sprt.Position = New Vector2f(x * 32, y * 32)
                             layerSurface.Draw(sprt)

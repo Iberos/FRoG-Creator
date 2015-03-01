@@ -37,15 +37,13 @@ Public Class GameMap
 
     ' TODO : Générer 2 RenderTexture à la création de la map
     Public Sub Draw(target As RenderTarget, states As RenderStates) Implements Drawable.Draw
-        Dim sprt As Sprite
-
         For x = 0 To 20
             For y = 0 To 14
                 For z = 0 To 3
                     If Not layer(z).tileCode(x, y) = 0 Then
                         ' TODO : Try Catch Le cas où le tileset voulu n'a pas été chargé
                         ' Console.WriteLine(.tileset(x, y).ToString())
-                        Using sprt = New Sprite(GameDesigner.TILESETS_MEMORY_DATA.ElementAt(layer(z).tileset(x, y)))
+                        Using sprt As New Sprite(GameDesigner.TILESETS_MEMORY_DATA.ElementAt(layer(z).tileset(x, y)))
                             sprt.TextureRect = New IntRect(GameTileset.DecodeX(layer(z).tileCode(x, y)) * 32, GameTileset.DecodeY(layer(z).tileCode(x, y)) * 32, 32, 32)
                             sprt.Position = New Vector2f(x * 32, y * 32)
                             target.Draw(sprt)
@@ -59,14 +57,13 @@ Public Class GameMap
     ' TODO : Remplacer par le deuxième RenderTexture
     Public Sub Draw2(target As RenderTarget, states As RenderStates)
         Dim sprt As Sprite
-
         For x = 0 To 20
             For y = 0 To 14
                 For z = 3 To 6
                     If Not layer(z).tileCode(x, y) = 0 Then
                         ' TODO : Try Catch Le cas où le tileset voulu n'a pas été chargé
                         ' Console.WriteLine(.tileset(x, y).ToString())
-                        Using sprt = New Sprite(GameDesigner.TILESETS_MEMORY_DATA.ElementAt(layer(z).tileset(x, y)))
+                        Using sprt As New Sprite(GameDesigner.TILESETS_MEMORY_DATA.ElementAt(layer(z).tileset(x, y)))
                             sprt.TextureRect = New IntRect(GameTileset.DecodeX(layer(z).tileCode(x, y)) * 32, GameTileset.DecodeY(layer(z).tileCode(x, y)) * 32, 32, 32)
                             sprt.Position = New Vector2f(x * 32, y * 32)
                             target.Draw(sprt)
