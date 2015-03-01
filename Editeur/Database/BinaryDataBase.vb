@@ -28,6 +28,7 @@ Public Class BinaryDataBase
 
     ' - Chargement des classes
     Private Sub LoadClasses()
+        Dim reader As Stream
         Dim deserializer As New BinaryFormatter
         Dim num As Integer
         Dim tmp As New GameClass
@@ -44,6 +45,7 @@ Public Class BinaryDataBase
 
     ' - Chargement des objets
     Private Sub LoadItems()
+        Dim reader As Stream
         Dim deserializer As New BinaryFormatter
         Dim num As Integer
         Dim tmp As New GameItem
@@ -60,6 +62,7 @@ Public Class BinaryDataBase
 
     ' - Chargement des sorts
     Private Sub LoadSpells()
+        Dim reader As Stream
         Dim deserializer As New BinaryFormatter
         Dim num As Integer
         Dim tmp As New GameSpell
@@ -76,6 +79,7 @@ Public Class BinaryDataBase
 
     ' - Chargement des PNJs
     Private Sub LoadNPCs()
+        Dim reader As Stream
         Dim deserializer As New BinaryFormatter
         Dim num As Integer
         Dim tmp As New GameNPC
