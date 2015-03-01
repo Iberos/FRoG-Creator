@@ -232,13 +232,11 @@ Class GameManager
             mapSurface(layer).Clear(New Color(0, 0, 0, 0))
         End If
 
-        Dim sprt As Sprite
-
         With map.MapLayer(layer)
             For x = 0 To modVar.MAP_WIDTH
                 For y = 0 To modVar.MAP_HEIGHT
                     If Not .tileCode(x, y) = 0 Then
-                        Using sprt = New Sprite(game.tileset(.tileset(x, y)))
+                        Using sprt As New Sprite(game.tileset(.tileset(x, y)))
                             sprt.TextureRect = New IntRect(GameTileset.DecodeX(.tileCode(x, y)) * modVar.CASE_LENGTH, GameTileset.DecodeY(.tileCode(x, y)) * modVar.CASE_LENGTH, modVar.CASE_LENGTH, modVar.CASE_LENGTH)
                             sprt.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                             mapSurface(layer).Draw(sprt)
