@@ -15,6 +15,7 @@ Public Class GameServer
         Console.WriteLine("========== Informations de connexion ==========")
         Console.WriteLine("Adresse IP: " & IP)
         Console.WriteLine("Port: " & port)
+        AcceptConnection()
     End Sub
 
     ' - Accepte la connexion entrante de manière asynchrone

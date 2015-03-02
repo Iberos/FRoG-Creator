@@ -6,6 +6,7 @@ Public Class GameClient
 
     Public socket As TcpClient
     Public stream As NetworkStream
+    Public buffer As NetworkBuffer
     Public handler As Dictionary(Of Byte, Action)
 
     ' - Constructeur
@@ -34,6 +35,7 @@ Public Class GameClient
     Private Sub ConnectCallback(ByVal asyncResult As IAsyncResult)
         If socket.Connected Then
             stream = socket.GetStream
+            buffer = New NetworkBuffer
             Console.WriteLine("Connecté au serveur")
         Else
             Console.WriteLine("Serveur hors ligne")
@@ -42,10 +44,10 @@ Public Class GameClient
 
     ' - Réception des packets venant du serveur
     Public Sub HandleData()
-        If socket.Client.Poll(10, SelectMode.SelectRead) AndAlso socket.Client.Available = 0 Then
+        If socket.Client.Poll(10, SelectMode.SelectRead) AndAlso socket.Client.Available = 0 Then 'Si connexion perdue
             socket.Close()
-            'stream.Close()
-            Console.WriteLine("connexion perdue avec le serveur")
+            stream.Close()
+            Console.WriteLine("connexion perdue avec le serveur") 'Si données entrantes
         ElseIf socket.Client.Available > 0 Then
             Console.WriteLine("Ok")
         End If

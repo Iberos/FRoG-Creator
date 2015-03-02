@@ -83,6 +83,12 @@ Module Main
             ' Connexion au réseau
             client.Connect("localhost", 4608)
 
+            '----- TEST DU RESEAU NE PAS EFFACER, MERCI -----
+            Threading.Thread.Sleep(100)
+            Console.WriteLine("- VEUILLEZ ENTRER UN MESSAGE A ENVOYER AU SERVEUR (TEST) -")
+            Dim test As String = Console.ReadLine.ToString()
+            client.buffer.Write(0, test)
+            ' ----- FIN DE TEST -----
             While (window.IsOpen())
                 window.DispatchEvents()
                 designer.DispatchEventsAndUpdate()

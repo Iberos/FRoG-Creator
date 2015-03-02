@@ -56,7 +56,7 @@ Public Class GameMap
 
     ' TODO : Remplacer par le deuxième RenderTexture
     Public Sub Draw2(target As RenderTarget, states As RenderStates)
-        Dim sprt As Sprite
+        'Dim sprt As Sprite
         For x = 0 To 20
             For y = 0 To 14
                 For z = 3 To 6

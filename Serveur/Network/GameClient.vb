@@ -41,7 +41,7 @@ Public Class GameClient
                 socket.Close()
                 stream.Close()
             ElseIf socket.Client.Available > 0 Then
-                Console.WriteLine("Ok")
+                Console.WriteLine(buffer.Read(myIndex, TypeCode.String))
             End If
         End While
         Console.WriteLine("Connexion perdue sur le slot #" & myIndex.ToString)
