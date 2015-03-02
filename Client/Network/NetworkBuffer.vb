@@ -1,15 +1,27 @@
-﻿Public Class NetworkBuffer
+﻿Imports System.Text
+
+Public Class NetworkBuffer
 
     Private Sub WriteByte(ByVal value As Byte)
-
+        client.stream.WriteByte(value)
     End Sub
 
     Private Sub WriteInteger(ByVal value As Integer)
-
+        Dim tmp() As Byte = ASCIIEncoding.UTF8.GetBytes(value.ToString())
+        client.stream.WriteByte(CByte(value.ToString().Length))
+        For i = 0 To value.ToString().Length - 1
+            client.stream.WriteByte(tmp(i))
+        Next
     End Sub
 
     Private Sub WriteString(ByVal value As String)
-
+        If (value.Length < 256) Then
+            Dim tmp() As Byte = ASCIIEncoding.UTF8.GetBytes(value)
+            client.stream.WriteByte(CByte(value.Length))
+            For i = 0 To value.ToString().Length - 1
+                client.stream.WriteByte(tmp(i))
+            Next
+        End If
     End Sub
 
     Public Sub Write(ByVal index As Byte, ByVal value As Object)
@@ -24,18 +36,21 @@
     End Sub
 
     Public Function ReadByte() As Byte
-
-        Return 0
+        Return client.stream.ReadByte()
     End Function
 
     Public Function ReadInteger() As Integer
-
-        Return 0
+        Dim length As Byte = client.stream.ReadByte()
+        Dim tmp(length) As Byte
+        client.stream.Read(tmp, 0, length)
+        Return Convert.ToInt32(ASCIIEncoding.UTF8.GetString(tmp))
     End Function
 
     Public Function ReadString() As String
-
-        Return 0
+        Dim length As Byte = client.stream.ReadByte()
+        Dim tmp(length) As Byte
+        client.stream.Read(tmp, 0, length)
+        Return ASCIIEncoding.UTF8.GetString(tmp)
     End Function
 
     Public Function Read(ByVal index As Byte, ByVal type As TypeCode) As Object
