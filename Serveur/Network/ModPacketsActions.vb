@@ -1,15 +1,15 @@
 ﻿Module ModPacketsActions
 
-    Public Sub HandleLogin()
-
+    Public Sub HandleLogin(ByVal index As Byte)
+        Console.WriteLine("Login")
     End Sub
 
-    Public Sub HandleRegister()
-
+    Public Sub HandleRegister(ByVal index As Byte)
+        Console.WriteLine("Inscription")
     End Sub
 
-    Public Sub HandleNewChar()
-
+    Public Sub HandleNewChar(ByVal index As Byte)
+        Console.WriteLine("Nouveau perso")
     End Sub
 
 End Module

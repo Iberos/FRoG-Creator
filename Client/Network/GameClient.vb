@@ -49,7 +49,7 @@ Public Class GameClient
             stream.Close()
             Console.WriteLine("connexion perdue avec le serveur") 'Si données entrantes
         ElseIf socket.Client.Available > 0 Then
-            Console.WriteLine("Ok")
+            handler(buffer.Read(TypeCode.Byte))()
         End If
     End Sub
 

@@ -8,7 +8,7 @@ Public Class GameClient
     Public socket As TcpClient
     Public stream As NetworkStream
     Public buffer As NetworkBuffer
-    Public handler As Dictionary(Of Byte, Action)
+    Public handler As Dictionary(Of Byte, Action(Of Byte))
     Private handleTask As New Task(AddressOf HandleData)
 
     Public Sub New(ByVal acceptedSock As TcpClient)
@@ -27,7 +27,7 @@ Public Class GameClient
     End Sub
 
     Private Sub InitHandler()
-        handler = New Dictionary(Of Byte, Action)
+        handler = New Dictionary(Of Byte, Action(Of Byte))
         handler.Add(ClientPacket.Login, AddressOf HandleLogin)
         handler.Add(ClientPacket.Register, AddressOf HandleRegister)
         handler.Add(ClientPacket.NewChar, AddressOf HandleNewChar)
@@ -41,7 +41,7 @@ Public Class GameClient
                 socket.Close()
                 stream.Close()
             ElseIf socket.Client.Available > 0 Then
-                Console.WriteLine(buffer.Read(myIndex, TypeCode.String))
+                handler(buffer.Read(myIndex, TypeCode.Byte))(myIndex)
             End If
         End While
         Console.WriteLine("Connexion perdue sur le slot #" & myIndex.ToString)

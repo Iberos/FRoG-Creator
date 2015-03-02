@@ -85,10 +85,11 @@ Module Main
 
             '----- TEST DU RESEAU NE PAS EFFACER, MERCI -----
             Threading.Thread.Sleep(100)
-            Console.WriteLine("- VEUILLEZ ENTRER UN MESSAGE A ENVOYER AU SERVEUR (TEST) -")
-            Dim test As String = Console.ReadLine.ToString()
-            client.buffer.Write(0, test)
+            Console.WriteLine("- ENVOI D'UN PACKET DE TEST AU SERVEUR EN COURS -")
+            Dim test As Byte = ClientPacket.NewChar
+            client.buffer.Write(test)
             ' ----- FIN DE TEST -----
+
             While (window.IsOpen())
                 window.DispatchEvents()
                 designer.DispatchEventsAndUpdate()

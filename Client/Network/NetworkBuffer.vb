@@ -24,7 +24,7 @@ Public Class NetworkBuffer
         End If
     End Sub
 
-    Public Sub Write(ByVal index As Byte, ByVal value As Object)
+    Public Sub Write(ByVal value As Object)
         Select Case value.GetTypeCode
             Case TypeCode.Byte
                 WriteByte(value)
@@ -35,25 +35,25 @@ Public Class NetworkBuffer
         End Select
     End Sub
 
-    Public Function ReadByte() As Byte
+    Private Function ReadByte() As Byte
         Return client.stream.ReadByte()
     End Function
 
-    Public Function ReadInteger() As Integer
+    Private Function ReadInteger() As Integer
         Dim length As Byte = client.stream.ReadByte()
         Dim tmp(length) As Byte
         client.stream.Read(tmp, 0, length)
         Return Convert.ToInt32(ASCIIEncoding.UTF8.GetString(tmp))
     End Function
 
-    Public Function ReadString() As String
+    Private Function ReadString() As String
         Dim length As Byte = client.stream.ReadByte()
         Dim tmp(length) As Byte
         client.stream.Read(tmp, 0, length)
         Return ASCIIEncoding.UTF8.GetString(tmp)
     End Function
 
-    Public Function Read(ByVal index As Byte, ByVal type As TypeCode) As Object
+    Public Function Read(ByVal type As TypeCode) As Object
         Select Case type
             Case TypeCode.Byte
                 Return ReadByte()
