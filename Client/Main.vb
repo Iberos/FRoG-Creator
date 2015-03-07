@@ -2,6 +2,7 @@
 Imports SFML.Graphics
 Imports SFML.Window
 Imports TGUI
+Imports System.IO
 
 Module Main
     Private Declare Function GetConsoleWindow Lib "kernel32.dll" () As IntPtr
@@ -70,8 +71,9 @@ Module Main
         AddHandler window.Resized, AddressOf OnResized
 
         ' Chargement des cartes de jeu
-        LoadMaps()
         LoadTilesets()
+        LoadMaps()
+
     End Sub
     '*****************************************************
 
@@ -87,7 +89,8 @@ Module Main
             Threading.Thread.Sleep(100)
             Console.WriteLine("- ENVOI D'UN PACKET DE TEST AU SERVEUR EN COURS -")
             Dim test As Byte = ClientPacket.NewChar
-            client.buffer.Write(test)
+            If (Not IsNothing(client.buffer)) Then client.buffer.Write(test)
+
             ' ----- FIN DE TEST -----
 
             While (window.IsOpen())
@@ -122,26 +125,26 @@ Module Main
 
     Private Sub LoadTilesets()
         Dim tilesets As List(Of GameTileset) = New List(Of GameTileset)
-        'TODO : foreach tileset do
-        For i As Integer = 0 To 5
-            Dim tileset = GameTileset.Load(i)
+        For Each fileName As String In Directory.GetFiles(TILESETS_PATH, "Tiles*") ' Ouverture des fichiers commençants par "Tiles" dans leur nom
+            fileName = Path.GetFileName(fileName)
+            Dim tileset = GameTileset.Load(fileName)
             If (Not IsNothing(tileset)) Then 'Si le tilset existe, on l'ajoute en mémoire
                 tilesets.Add(tileset)
             End If
         Next
-        'TODO : end foreach
         GameDesigner.LoadTilesets(tilesets)
     End Sub
 
     Private Sub LoadMaps()
         Dim maps As List(Of GameMap) = New List(Of GameMap)
-        'TODO : foreach map do
-        Dim map As GameMap = New GameMap
-        map = GameMap.Load(0)
-        If (Not IsNothing(map)) Then 'Si la map existe, on l'ajoute en mémoire
-            maps.Add(map)
-        End If
-        'TODO : end foreach
+        For Each mapName As String In Directory.GetFiles(MAPS_PATH, "Map*")
+            Dim map As GameMap = New GameMap
+            mapName = Path.GetFileName(mapName)
+            map = GameMap.Load(mapName)
+            If (Not IsNothing(map)) Then 'Si la map existe, on l'ajoute en mémoire
+                maps.Add(map)
+            End If
+        Next
         GameDesigner.LoadMaps(maps)
     End Sub
 End Module

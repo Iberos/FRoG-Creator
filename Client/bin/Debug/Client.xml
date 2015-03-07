@@ -6,25 +6,7 @@ Client
 </name>
 </assembly>
 <members>
-<member name="M:Client.GameCharacter.SetCharacterControls(System.Boolean@)">
-	<summary>
- Modifie l'état de controle du caractère
- </summary>
-	<param name="state">True pour laisser le character controlable et False pour en interdire le controle</param>
-	<remarks></remarks>
-</member><member name="M:Client.GameCharacter.SetVelocity(Client.GameVelocity@)">
-	<summary>
- Modifie la vitesse de course du caractère
- </summary>
-	<param name="velocity">La vitesse du caractère</param>
-	<remarks></remarks>
-</member><member name="M:Client.GameCharacter.SetTexture(SFML.Graphics.Texture)">
-	<summary>
- Modifie le rendu du caractère
- </summary>
-	<param name="texture">La nouvelle texture de rendu du caractère</param>
-	<remarks></remarks>
-</member><member name="M:Client.GameActionCase.Move(System.Int32,System.Int32)">
+<member name="M:Client.GameActionCase.Move(System.Int32,System.Int32)">
 	<summary>
  Déplace le composant vers la position spécifiée en prenant en compte la position relative de selection
  </summary>
@@ -51,6 +33,24 @@ Client
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
+</member><member name="M:Client.GameCharacter.SetCharacterControls(System.Boolean@)">
+	<summary>
+ Modifie l'état de controle du caractère
+ </summary>
+	<param name="state">True pour laisser le character controlable et False pour en interdire le controle</param>
+	<remarks></remarks>
+</member><member name="M:Client.GameCharacter.SetVelocity(Client.GameVelocity@)">
+	<summary>
+ Modifie la vitesse de course du caractère
+ </summary>
+	<param name="velocity">La vitesse du caractère</param>
+	<remarks></remarks>
+</member><member name="M:Client.GameCharacter.SetTexture(SFML.Graphics.Texture)">
+	<summary>
+ Modifie le rendu du caractère
+ </summary>
+	<param name="texture">La nouvelle texture de rendu du caractère</param>
+	<remarks></remarks>
 </member>
 </members>
 </doc>

@@ -96,6 +96,28 @@ Public Class GameMap
         Return Nothing
     End Function
 
+    Public Shared Function Load(ByVal mapName As String)
+        Try
+            Dim deserializer As New BinaryFormatter
+            Dim mapResult As GameMap
+            If File.Exists(Main.MAPS_PATH + mapName) Then
+                deserializer.AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
+                deserializer.Binder = New GameMapDeserializationBinder
+
+                Using reader = File.OpenRead(Main.MAPS_PATH + mapName)
+                    mapResult = DirectCast(deserializer.Deserialize(reader), GameMap)
+                End Using
+
+                Return mapResult
+            End If
+        Catch ex As Exception
+            MsgBox("Une erreur est survenue lors du chargement d'une carte de jeu." _
+                   + Environment.NewLine + ex.Message, MsgBoxStyle.Critical, "Erreur critique")
+            Environment.Exit(1)
+        End Try
+        Return Nothing
+    End Function
+
     Public Property Attribut(X As Byte, Y As Byte) As GameAttribute
         Get
             Return If(Me.attribute.GetLength(0) > X And Me.attribute.GetLength(1) > Y, Me.attribute(X, Y), Nothing)
