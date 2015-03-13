@@ -10,8 +10,8 @@ Public Class GameTileset
 
     Public Shared Function Load(ByVal tilesetNum As UInteger)
         Dim tilesetResult As GameTileset
-        If (File.Exists(Main.TILESETS_PATH + "Tiles" & tilesetNum.ToString() & ".png")) Then
-            tilesetResult = New GameTileset(New Texture(Main.TILESETS_PATH + "Tiles" & tilesetNum.ToString() & ".png"))
+        If (File.Exists(Configs.TILESETS_PATH + "Tiles" & tilesetNum.ToString() & ".png")) Then
+            tilesetResult = New GameTileset(New Texture(Configs.TILESETS_PATH + "Tiles" & tilesetNum.ToString() & ".png"))
             Return tilesetResult
         End If
         Return Nothing
@@ -19,8 +19,8 @@ Public Class GameTileset
 
     Public Shared Function Load(ByVal tilesetName As String)
         Dim tilesetResult As GameTileset
-        If (File.Exists(Main.TILESETS_PATH + tilesetName)) Then
-            tilesetResult = New GameTileset(New Texture(Main.TILESETS_PATH + tilesetName))
+        If (File.Exists(Configs.TILESETS_PATH + tilesetName)) Then
+            tilesetResult = New GameTileset(New Texture(Configs.TILESETS_PATH + tilesetName))
             Return tilesetResult
         End If
         Return Nothing

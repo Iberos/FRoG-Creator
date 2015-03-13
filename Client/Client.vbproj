@@ -94,6 +94,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configs.vb" />
     <Compile Include="GameEntities\Objects\GameActionCase.vb" />
     <Compile Include="GameEntities\Utilities\GameMapDeserializationBinder.vb" />
     <Compile Include="GameEntities\Utilities\GameVelocity.vb" />
