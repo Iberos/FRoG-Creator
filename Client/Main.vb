@@ -31,25 +31,31 @@ Module Main
                 Dim tmpWidth As UInteger = UInteger.Parse(args(0))
                 Dim tmpHeight As UInteger = UInteger.Parse(args(1))
 
-                Configs.SCREEN_WIDTH = If(tmpWidth < Configs.SCREEN_WIDTH, Configs.SCREEN_WIDTH, tmpWidth)
-                Configs.SCREEN_HEIGHT = If(tmpHeight < Configs.SCREEN_HEIGHT, Configs.SCREEN_HEIGHT, tmpHeight)
+                Batch.SCREEN_WIDTH = If(tmpWidth < Batch.SCREEN_WIDTH, Batch.SCREEN_WIDTH, tmpWidth)
+                Batch.SCREEN_HEIGHT = If(tmpHeight < Batch.SCREEN_HEIGHT, Batch.SCREEN_HEIGHT, tmpHeight)
             End If
         End If
 
+        ' Contents
+        ContentManager.AddContent("GameTitle", "Frog Creator 1.0")
+        ContentManager.AddContent("GuiConfigFile", New ContentContext("Black", Extension.CONF))
+        ContentManager.AddContent("FontFile", New ContentContext("GoBoom", Extension.FONT))
+        ContentManager.AddContent("IconFile", New ContentContext("FC", Extension.PNG))
+
         'ShowWindow(GetConsoleWindow(), SW_HIDE)
-        Console.WriteLine("--- Console de debug ---")
+        Console.WriteLine("--- DEBUG ---")
 
         ' Premier Step : Panel de connexion
         gameState = GameStates.AccountConnectionState
 
         ' Création de la fenêtre cliente
-        window = New RenderWindow(New VideoMode(Configs.SCREEN_WIDTH, Configs.SCREEN_HEIGHT), Configs.SCREEN_TITLE, Styles.Close)
-        window.SetFramerateLimit(Configs.FPS)
-        icon = New Texture(Configs.ICONS_PATH + Configs.ICON_FILE)
+        window = New RenderWindow(New VideoMode(Batch.SCREEN_WIDTH, Batch.SCREEN_HEIGHT), ContentManager.GetContent("GameTitle"), Styles.Close)
+        window.SetFramerateLimit(Batch.FPS)
+        icon = New Texture(ContentType.ICONS + ContentManager.GetContent("IconFile").ToString())
         window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
 
         ' Création de l'interface
-        gui = New RenderInterface(window, Configs.WIDGET_PATH + Configs.GUI_CONFIG_FILE, Configs.WIDGET_PATH + Configs.FONT_FILE)
+        gui = New RenderInterface(window, ContentPath.WIDGETS + ContentManager.GetContent("GuiConfigFile"), ContentPath.WIDGETS + ContentManager.GetContent("FontFile"))
 
         AddHandler window.Closed, AddressOf OnClose
         AddHandler window.Resized, AddressOf OnResized
@@ -104,12 +110,12 @@ Module Main
         Dim window As RenderWindow = DirectCast(sender, RenderWindow)
         Dim viewRect = New FloatRect(0, 0, window.Size.X, window.Size.Y)
         window.SetView(New View(viewRect))
-        designer.Load(gui, Configs.WIDGET_PATH + Configs.GUI_CONFIG_FILE)
+        designer.Load(gui, ContentPath.WIDGETS + ContentManager.GetContent("GuiConfigFile"))
     End Sub
 
     Private Sub LoadTilesets()
         Dim tilesets As List(Of GameTileset) = New List(Of GameTileset)
-        For Each fileName As String In Directory.GetFiles(Configs.TILESETS_PATH, "Tiles*") ' Ouverture des fichiers commençants par "Tiles" dans leur nom
+        For Each fileName As String In Directory.GetFiles(ContentType.TILESETS, "Tiles*") ' Ouverture des fichiers commençants par "Tiles" dans leur nom
             fileName = Path.GetFileName(fileName)
             Dim tileset = GameTileset.Load(fileName)
             If (Not IsNothing(tileset)) Then 'Si le tilset existe, on l'ajoute en mémoire
@@ -121,7 +127,7 @@ Module Main
 
     Private Sub LoadMaps()
         Dim maps As List(Of GameMap) = New List(Of GameMap)
-        For Each mapName As String In Directory.GetFiles(Configs.MAPS_PATH, "Map*")
+        For Each mapName As String In Directory.GetFiles(ContentType.MAPS, "Map*")
             Dim map As GameMap = New GameMap
             mapName = Path.GetFileName(mapName)
             map = GameMap.Load(mapName)

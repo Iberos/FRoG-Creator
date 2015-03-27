@@ -89,10 +89,10 @@ Class GameDesigner
         Dim dragNDropItem = gui.Add(New GameActionCase(), "dragNDropItem")
         dragNDropItem.Size = New Vector2f(32, 32)
         dragNDropItem.Position = New Vector2f(84, 10)
-        dragNDropItem.AddFrame(Configs.SPELLS_PATH + "spell1.png", 1000)
-        dragNDropItem.AddFrame(Configs.SPELLS_PATH + "spell2.png", 1000)
-        dragNDropItem.AddFrame(Configs.SPELLS_PATH + "spell3.png", 1000)
-        dragNDropItem.AddFrame(Configs.SPELLS_PATH + "spell4.png", 1000)
+        dragNDropItem.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
+        dragNDropItem.AddFrame(ContentType.SPELLS + "spell2.png", 1000)
+        dragNDropItem.AddFrame(ContentType.SPELLS + "spell3.png", 1000)
+        dragNDropItem.AddFrame(ContentType.SPELLS + "spell4.png", 1000)
         dragNDropItem.isEmpty = False
         dragNDropItem.Looping = True
         dragNDropItem.Play()
@@ -102,7 +102,7 @@ Class GameDesigner
         Dim dragNDropClipser = gui.Add(New GameActionCase(), "dragNDropClipser")
         dragNDropClipser.Size = New Vector2f(32, 32)
         dragNDropClipser.Position = New Vector2f(200, 10)
-        dragNDropClipser.AddFrame(Configs.SPELLS_PATH + "spell1.png", 1000)
+        dragNDropClipser.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
         dragNDropClipser.isEmpty = True
         '
         '
@@ -110,7 +110,7 @@ Class GameDesigner
     End Sub
 
     Public Sub New()
-        Me.testPlayer = New GamePlayer(New Texture(Configs.SPRITES_PATH + "Sprite1.png"))
+        Me.testPlayer = New GamePlayer(New Texture(ContentType.SPRITES + "Sprite1.png"))
         Me.testPlayer.WarpTo(15, 5)
     End Sub
 

@@ -78,11 +78,11 @@ Public Class GameMap
         Try
             Dim deserializer As New BinaryFormatter
             Dim mapResult As GameMap
-            If File.Exists(Configs.MAPS_PATH + "Map" & mapNum & ".frog") Then
+            If File.Exists(ContentType.MAPS + "Map" & mapNum & ".frog") Then
                 deserializer.AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
                 deserializer.Binder = New GameMapDeserializationBinder
 
-                Using reader = File.OpenRead(Configs.MAPS_PATH + "Map" & mapNum & ".frog")
+                Using reader = File.OpenRead(ContentType.MAPS + "Map" & mapNum & ".frog")
                     mapResult = DirectCast(deserializer.Deserialize(reader), GameMap)
                 End Using
 
@@ -100,11 +100,11 @@ Public Class GameMap
         Try
             Dim deserializer As New BinaryFormatter
             Dim mapResult As GameMap
-            If File.Exists(Configs.MAPS_PATH + mapName) Then
+            If File.Exists(ContentType.MAPS + mapName) Then
                 deserializer.AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
                 deserializer.Binder = New GameMapDeserializationBinder
 
-                Using reader = File.OpenRead(Configs.MAPS_PATH + mapName)
+                Using reader = File.OpenRead(ContentType.MAPS + mapName)
                     mapResult = DirectCast(deserializer.Deserialize(reader), GameMap)
                 End Using
 
