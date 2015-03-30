@@ -13,7 +13,7 @@ Client
 	<param name="X">Position horizontale de la selection</param>
 	<param name="Y">Position verticale de la selection</param>
 	<remarks></remarks>
-</member><member name="P:Client.GameActionCase.isEmpty">
+</member><member name="P:Client.GameActionCase.IsEmpty">
 	<summary>
  Défini ou obtient l'état du composant : Possibilité d'aquérir ou non un composant par Glisser Et Déposer
  </summary>

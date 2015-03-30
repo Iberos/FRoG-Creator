@@ -93,7 +93,7 @@ Class GameDesigner
         dragNDropItem.AddFrame(ContentType.SPELLS + "spell2.png", 1000)
         dragNDropItem.AddFrame(ContentType.SPELLS + "spell3.png", 1000)
         dragNDropItem.AddFrame(ContentType.SPELLS + "spell4.png", 1000)
-        dragNDropItem.isEmpty = False
+        dragNDropItem.IsEmpty = False
         dragNDropItem.Looping = True
         dragNDropItem.Play()
         '
@@ -103,7 +103,7 @@ Class GameDesigner
         dragNDropClipser.Size = New Vector2f(32, 32)
         dragNDropClipser.Position = New Vector2f(200, 10)
         dragNDropClipser.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
-        dragNDropClipser.isEmpty = True
+        dragNDropClipser.IsEmpty = True
         '
         '
         '
