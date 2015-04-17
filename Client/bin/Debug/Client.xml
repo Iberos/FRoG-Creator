@@ -6,21 +6,7 @@ Client
 </name>
 </assembly>
 <members>
-<member name="M:Client.GameActionCase.Move(System.Int32,System.Int32)">
-	<summary>
- Déplace le composant vers la position spécifiée en prenant en compte la position relative de selection
- </summary>
-	<param name="X">Position horizontale de la selection</param>
-	<param name="Y">Position verticale de la selection</param>
-	<remarks></remarks>
-</member><member name="P:Client.GameActionCase.IsEmpty">
-	<summary>
- Défini ou obtient l'état du composant : Possibilité d'aquérir ou non un composant par Glisser Et Déposer
- </summary>
-	<value>True si composant parent, False si composant enfant</value>
-	<returns>True si composant parent, False si composant enfant</returns>
-	<remarks></remarks>
-</member><member name="P:Client.My.Resources.Resources.ResourceManager">
+<member name="P:Client.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
@@ -50,6 +36,20 @@ Client
  Modifie le rendu du caractère
  </summary>
 	<param name="texture">La nouvelle texture de rendu du caractère</param>
+	<remarks></remarks>
+</member><member name="M:Client.GameActionCase.Move(System.Int32,System.Int32)">
+	<summary>
+ Déplace le composant vers la position spécifiée en prenant en compte la position relative de selection
+ </summary>
+	<param name="X">Position horizontale de la selection</param>
+	<param name="Y">Position verticale de la selection</param>
+	<remarks></remarks>
+</member><member name="P:Client.GameActionCase.IsEmpty">
+	<summary>
+ Défini ou obtient l'état du composant : Possibilité d'aquérir ou non un composant par Glisser Et Déposer
+ </summary>
+	<value>True si composant parent, False si composant enfant</value>
+	<returns>True si composant parent, False si composant enfant</returns>
 	<remarks></remarks>
 </member>
 </members>

@@ -2,7 +2,7 @@
 Imports SFML.Graphics
 Imports TGUI
 
-Class GameDesigner
+Public Class GamePlayDesigner
     Implements Designer
     Implements IDisposable
 
@@ -14,6 +14,7 @@ Class GameDesigner
     ' GameObjects
     Public Shared MAPS_MEMORY_DATA As List(Of GameMap) = New List(Of GameMap)
     Public Shared TILESETS_MEMORY_DATA As List(Of GameTileset) = New List(Of GameTileset)
+
     Private testPlayer As GamePlayer
 
     ' GuiLoad
@@ -23,8 +24,8 @@ Class GameDesigner
         ' chatBox
         '
         chatBox = gui.Add(New EditBox(configPath), "chatBox")
-        chatBox.Size = New Vector2f(Main.window.Size.X * 0.4, 30)
-        chatBox.Position = New Vector2f(20, Main.window.Size.Y - 40)
+        chatBox.Size = New Vector2f(Main.Window.Size.X * 0.4, 30)
+        chatBox.Position = New Vector2f(20, Main.Window.Size.Y - 40)
         chatBox.Transparency = 120
         '
         ' chatContainer
@@ -62,14 +63,14 @@ Class GameDesigner
         ' pnlBarProgress
         '
         Dim pnlBarProgress = gui.Add(New Panel(), "pnlBarProgress")
-        pnlBarProgress.Size = New Vector2f(Main.window.Size.X * 0.2 + 30, 60)
+        pnlBarProgress.Size = New Vector2f(Main.Window.Size.X * 0.2 + 30, 60)
         pnlBarProgress.BackgroundColor = New Color(0, 0, 0, 80)
-        pnlBarProgress.Position = New Vector2f(Main.window.Size.X - pnlBarProgress.Size.X - 20, 20)
+        pnlBarProgress.Position = New Vector2f(Main.Window.Size.X - pnlBarProgress.Size.X - 20, 20)
         '
         ' hpProgress
         '
         Dim hpProgress = pnlBarProgress.Add(New LoadingBar(configPath), "hpProgress")
-        hpProgress.Size = New Vector2f(Main.window.Size.X * 0.2, 15)
+        hpProgress.Size = New Vector2f(Main.Window.Size.X * 0.2, 15)
         hpProgress.Position = New Vector2f(pnlBarProgress.Size.X / 2 - hpProgress.Size.X / 2, 10)
         hpProgress.TextColor = Color.Black
         hpProgress.Value = 30
@@ -78,7 +79,7 @@ Class GameDesigner
         ' mpProgress
         '
         Dim mpProgress = pnlBarProgress.Add(New LoadingBar(configPath), "mpProgress")
-        mpProgress.Size = New Vector2f(Main.window.Size.X * 0.2, 15)
+        mpProgress.Size = New Vector2f(Main.Window.Size.X * 0.2, 15)
         mpProgress.Position = New Vector2f(pnlBarProgress.Size.X / 2 - mpProgress.Size.X / 2, 35)
         mpProgress.TextColor = Color.Black
         mpProgress.Value = 75
@@ -130,8 +131,8 @@ Class GameDesigner
                 chatBox.Text = String.Empty
             End If
         ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.C)) Then 'Exemple d'ouverture d'une fenêtre si celle-ci est "fermée"
-            If (Not gui.GetWidgetNames.Contains("characterWindow") And Not characterWindow.Equals(Nothing)) Then
-                gui.Add(characterWindow, "characterWindow")
+            If (Not Render.GetWidgetNames.Contains("characterWindow") And Not characterWindow.Equals(Nothing)) Then
+                Render.Add(characterWindow, "characterWindow")
             End If
         End If
 

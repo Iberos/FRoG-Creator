@@ -2,7 +2,7 @@
 Imports SFML.Window
 Imports SFML.Graphics
 
-Class ServerConnecterDesigner
+Public Class ServerConnecterDesigner
     Implements Designer
 
     Public Sub New()

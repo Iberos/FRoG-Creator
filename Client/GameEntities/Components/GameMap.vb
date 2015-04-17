@@ -43,7 +43,7 @@ Public Class GameMap
                     If Not layer(z).tileCode(x, y) = 0 Then
                         ' TODO : Try Catch Le cas où le tileset voulu n'a pas été chargé
                         ' Console.WriteLine(.tileset(x, y).ToString())
-                        Using sprt As New Sprite(GameDesigner.TILESETS_MEMORY_DATA.ElementAt(layer(z).tileset(x, y)))
+                        Using sprt As New Sprite(GamePlayDesigner.TILESETS_MEMORY_DATA.ElementAt(layer(z).tileset(x, y)))
                             sprt.TextureRect = New IntRect(GameTileset.DecodeX(layer(z).tileCode(x, y)) * 32, GameTileset.DecodeY(layer(z).tileCode(x, y)) * 32, 32, 32)
                             sprt.Position = New Vector2f(x * 32, y * 32)
                             target.Draw(sprt)
@@ -63,7 +63,7 @@ Public Class GameMap
                     If Not layer(z).tileCode(x, y) = 0 Then
                         ' TODO : Try Catch Le cas où le tileset voulu n'a pas été chargé
                         ' Console.WriteLine(.tileset(x, y).ToString())
-                        Using sprt As New Sprite(GameDesigner.TILESETS_MEMORY_DATA.ElementAt(layer(z).tileset(x, y)))
+                        Using sprt As New Sprite(GamePlayDesigner.TILESETS_MEMORY_DATA.ElementAt(layer(z).tileset(x, y)))
                             sprt.TextureRect = New IntRect(GameTileset.DecodeX(layer(z).tileCode(x, y)) * 32, GameTileset.DecodeY(layer(z).tileCode(x, y)) * 32, 32, 32)
                             sprt.Position = New Vector2f(x * 32, y * 32)
                             target.Draw(sprt)

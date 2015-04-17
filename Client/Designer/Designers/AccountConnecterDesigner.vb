@@ -2,7 +2,7 @@
 Imports SFML.Window
 Imports SFML.Graphics
 
-Class AccountConnecterDesigner
+Public Class AccountConnecterDesigner
     Implements Designer
     Implements IDisposable
 
@@ -33,7 +33,7 @@ Class AccountConnecterDesigner
         bground.Scale = New Vector2f(1.5, 1.5)
         bground.Texture.Smooth = True
         radiusMovement = New Vector2f(-1, -1)
-        windowRect = New IntRect(0, 0, bground.Texture.Size.X - window.Size.X, bground.Texture.Size.Y - window.Size.Y)
+        windowRect = New IntRect(0, 0, bground.Texture.Size.X - Window.Size.X, bground.Texture.Size.Y - Window.Size.Y)
         connectionTimeout = New GameTimer()
     End Sub
 
@@ -55,14 +55,14 @@ Class AccountConnecterDesigner
         ' pnlConnect
         '
         pnlConnect = gui.Add(New Panel(), "pnlConnect")
-        pnlConnect.Size = New Vector2f(window.Size.X * 0.5, window.Size.Y * 0.5)
+        pnlConnect.Size = New Vector2f(Window.Size.X * 0.5, Window.Size.Y * 0.5)
         pnlConnect.BackgroundColor = New Color(0, 0, 0, 80)
-        pnlConnect.Position = New Vector2f(window.Size.X / 2 - pnlConnect.Size.X / 2, window.Size.Y / 2 - pnlConnect.Size.Y / 2)
+        pnlConnect.Position = New Vector2f(Window.Size.X / 2 - pnlConnect.Size.X / 2, Window.Size.Y / 2 - pnlConnect.Size.Y / 2)
         '
         ' accountBox
         '
         accountBox = pnlConnect.Add(New EditBox(configPath), "accountBox")
-        accountBox.Size = New Vector2f(window.Size.X / 3, pnlConnect.Size.Y * 0.1)
+        accountBox.Size = New Vector2f(Window.Size.X / 3, pnlConnect.Size.Y * 0.1)
         accountBox.Position = New Vector2f(pnlConnect.Size.X / 2 - accountBox.Size.X / 2, pnlConnect.Size.Y / 2 - accountBox.Size.Y - ITEM_PADDING)
         accountBox.Transparency = 120
         '
@@ -139,7 +139,7 @@ Class AccountConnecterDesigner
             Dim validAccount = True
 
             If (validAccount) Then
-                Main.gui.SetGameState(GameStates.GamePlayState)
+                NavigatorHelper.NavigateTo(GameStates.GamePlayState)
             End If
         End If
     End Sub

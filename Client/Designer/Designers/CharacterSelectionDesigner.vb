@@ -2,7 +2,7 @@
 Imports SFML.Window
 Imports SFML.Graphics
 
-Class CharacterSelectionDesigner
+Public Class CharacterSelectionDesigner
     Implements Designer
 
     Public Sub New()

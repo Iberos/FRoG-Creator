@@ -10,11 +10,10 @@ Module Main
     Private Const SW_SHOWNORMAL As Int32 = 1
     Private Const SW_HIDE As Int32 = 0
     
-    Public window As RenderWindow
-    Public gui As RenderInterface
-    Public gameState As GameStates
-    Public designer As Designer
-    Public view As View
+    Public Window As RenderWindow
+    Public Render As RenderInterface
+    Public Designer As Designer
+    Public View As View
 
     '*********** Attributs & Initialisations **************
 
@@ -45,24 +44,23 @@ Module Main
         'ShowWindow(GetConsoleWindow(), SW_HIDE)
         Console.WriteLine("--- DEBUG ---")
 
-        ' Premier Step : Panel de connexion
-        gameState = GameStates.AccountConnectionState
-
         ' Création de la fenêtre cliente
-        window = New RenderWindow(New VideoMode(Batch.SCREEN_WIDTH, Batch.SCREEN_HEIGHT), ContentManager.GetContent("GameTitle"), Styles.Close)
-        window.SetFramerateLimit(Batch.FPS)
+        Window = New RenderWindow(New VideoMode(Batch.SCREEN_WIDTH, Batch.SCREEN_HEIGHT), ContentManager.GetContent("GameTitle"), Styles.Close)
+        Window.SetFramerateLimit(Batch.FPS)
         icon = New Texture(ContentType.ICONS + ContentManager.GetContent("IconFile").ToString())
-        window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
+        Window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
 
         ' Création de l'interface
-        gui = New RenderInterface(window, ContentPath.WIDGETS + ContentManager.GetContent("GuiConfigFile"), ContentPath.WIDGETS + ContentManager.GetContent("FontFile"))
+        Render = New RenderInterface(Window, ContentPath.WIDGETS + ContentManager.GetContent("GuiConfigFile"), ContentPath.WIDGETS + ContentManager.GetContent("FontFile"))
 
-        AddHandler window.Closed, AddressOf OnClose
-        AddHandler window.Resized, AddressOf OnResized
+        AddHandler Window.Closed, AddressOf OnClose
+        AddHandler Window.Resized, AddressOf OnResized
 
         ' Chargement des cartes de jeu
         LoadTilesets()
         LoadMaps()
+
+        NavigatorHelper.NavigateTo(GameStates.AccountConnectionState)
 
     End Sub
     '*****************************************************
@@ -83,15 +81,15 @@ Module Main
 
             ' ----- FIN DE TEST -----
 
-            While (window.IsOpen())
-                window.DispatchEvents()
-                designer.DispatchEventsAndUpdate()
+            While (Window.IsOpen())
+                Window.DispatchEvents()
+                Designer.DispatchEventsAndUpdate()
 
-                window.Clear(Color.White)
-                designer.Draw(window)
-                gui.Draw()
+                Window.Clear(Color.White)
+                Designer.Draw(Window)
+                Render.Draw()
 
-                window.Display()
+                Window.Display()
             End While
 
         Catch e As NullReferenceException
@@ -110,7 +108,7 @@ Module Main
         Dim window As RenderWindow = DirectCast(sender, RenderWindow)
         Dim viewRect = New FloatRect(0, 0, window.Size.X, window.Size.Y)
         window.SetView(New View(viewRect))
-        designer.Load(gui, ContentPath.WIDGETS + ContentManager.GetContent("GuiConfigFile"))
+        Designer.Load(Render, ContentPath.WIDGETS + ContentManager.GetContent("GuiConfigFile"))
     End Sub
 
     Private Sub LoadTilesets()
@@ -122,7 +120,7 @@ Module Main
                 tilesets.Add(tileset)
             End If
         Next
-        GameDesigner.LoadTilesets(tilesets)
+        GamePlayDesigner.LoadTilesets(tilesets)
     End Sub
 
     Private Sub LoadMaps()
@@ -135,6 +133,6 @@ Module Main
                 maps.Add(map)
             End If
         Next
-        GameDesigner.LoadMaps(maps)
+        GamePlayDesigner.LoadMaps(maps)
     End Sub
 End Module

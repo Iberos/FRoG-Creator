@@ -37,7 +37,7 @@ Public Class GameActionCase
     Private Sub GameActionCase_LeftMousePressed() Handles Me.LeftMousePressedCallback
         If (Not IsEmpty()) Then
             If (CanDragAndDrop() And Not InDragAndDrop) Then
-                Me.tmpPaddingSelection = New Vector2f(Mouse.GetPosition(Main.window).X - Me.Position.X, Mouse.GetPosition(Main.window).Y - Me.Position.Y)
+                Me.tmpPaddingSelection = New Vector2f(Mouse.GetPosition(Main.Window).X - Me.Position.X, Mouse.GetPosition(Main.Window).Y - Me.Position.Y)
                 Me.tmpLocation = Me.Position
                 Me.InDragAndDrop = True
                 selectedGameActionCase = Me
@@ -78,10 +78,10 @@ Public Class GameActionCase
 
         ' Update DragAndDrop current location
         If (Me.InDragAndDrop And Not Me.cliped And Mouse.IsButtonPressed(Mouse.Button.Left) And Me.Focused) Then
-            Me.Move(Mouse.GetPosition(Main.window).X, Mouse.GetPosition(Main.window).Y)
+            Me.Move(Mouse.GetPosition(Main.Window).X, Mouse.GetPosition(Main.Window).Y)
         End If
 
-        If (Not Me.GetHitBox.Contains(Mouse.GetPosition(Main.window).X, Mouse.GetPosition(Main.window).Y)) Then
+        If (Not Me.GetHitBox.Contains(Mouse.GetPosition(Main.Window).X, Mouse.GetPosition(Main.Window).Y)) Then
             If (Not IsNothing(selectedGameActionCase)) Then
                 If (Not selectedGameActionCase.Equals(Me)) Then
                     selectedGameActionCase.cliped = False
