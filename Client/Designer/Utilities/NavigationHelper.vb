@@ -1,4 +1,4 @@
-﻿Public Class NavigatorHelper
+﻿Public Class NavigationHelper
 
     Public Shared Sub NavigateTo(state As GameStates)
         Select Case (state)

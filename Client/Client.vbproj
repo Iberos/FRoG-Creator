@@ -95,8 +95,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Batch.vb" />
-    <Compile Include="ContentHandler\ContentContext.vb" />
     <Compile Include="ContentHandler\ContentManager.vb" />
+    <Compile Include="ContentHandler\ContentPath.vb" />
+    <Compile Include="ContentHandler\ContentType.vb" />
+    <Compile Include="ContentHandler\GameResources.vb" />
     <Compile Include="GameEntities\Components\GameActionCase.vb" />
     <Compile Include="GameEntities\Utilities\GameMapDeserializationBinder.vb" />
     <Compile Include="GameEntities\Utilities\GameVelocity.vb" />
@@ -124,7 +126,7 @@
     <Compile Include="Designer\Designers\CharacterSelectionDesigner.vb" />
     <Compile Include="Designer\Designers\GamePlayDesigner.vb" />
     <Compile Include="GameEntities\Components\GameTileset.vb" />
-    <Compile Include="Designer\Utilities\NavigatorHelper.vb" />
+    <Compile Include="Designer\Utilities\NavigationHelper.vb" />
     <Compile Include="Main.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

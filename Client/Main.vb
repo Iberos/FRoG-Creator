@@ -36,22 +36,24 @@ Module Main
         End If
 
         ' Contents
-        ContentManager.AddContent("GameTitle", "Frog Creator 1.0")
-        ContentManager.AddContent("GuiConfigFile", New ContentContext("Black", Extension.CONF))
-        ContentManager.AddContent("FontFile", New ContentContext("GoBoom", Extension.FONT))
-        ContentManager.AddContent("IconFile", New ContentContext("FC", Extension.PNG))
+        ContentManager.Add(Of String)(GameResources.GAME_TITLE, "Frog Creator 1.0")
+        ContentManager.Add(Of String)(GameResources.CONFIG_FILE, "Black.conf")
+        ContentManager.Add(Of String)(GameResources.FONT_FILE, "GoBoom.ttf")
+        ContentManager.Add(Of Texture)(GameResources.ICON_FILE, New Texture(ContentType.ICONS + "FC.png"))
 
         'ShowWindow(GetConsoleWindow(), SW_HIDE)
         Console.WriteLine("--- DEBUG ---")
 
         ' Création de la fenêtre cliente
-        Window = New RenderWindow(New VideoMode(Batch.SCREEN_WIDTH, Batch.SCREEN_HEIGHT), ContentManager.GetContent("GameTitle"), Styles.Close)
+        Window = New RenderWindow(New VideoMode(Batch.SCREEN_WIDTH, Batch.SCREEN_HEIGHT), ContentManager.Load(Of String)(GameResources.GAME_TITLE), Styles.Close)
         Window.SetFramerateLimit(Batch.FPS)
-        icon = New Texture(ContentType.ICONS + ContentManager.GetContent("IconFile").ToString())
+        icon = ContentManager.Load(Of Texture)(GameResources.ICON_FILE)
         Window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
 
         ' Création de l'interface
-        Render = New RenderInterface(Window, ContentPath.WIDGETS + ContentManager.GetContent("GuiConfigFile"), ContentPath.WIDGETS + ContentManager.GetContent("FontFile"))
+        Render = New RenderInterface(Window,
+                                     ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.CONFIG_FILE),
+                                     ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.FONT_FILE))
 
         AddHandler Window.Closed, AddressOf OnClose
         AddHandler Window.Resized, AddressOf OnResized
@@ -60,7 +62,7 @@ Module Main
         LoadTilesets()
         LoadMaps()
 
-        NavigatorHelper.NavigateTo(GameStates.AccountConnectionState)
+        NavigationHelper.NavigateTo(GameStates.AccountConnectionState)
 
     End Sub
     '*****************************************************
@@ -108,7 +110,7 @@ Module Main
         Dim window As RenderWindow = DirectCast(sender, RenderWindow)
         Dim viewRect = New FloatRect(0, 0, window.Size.X, window.Size.Y)
         window.SetView(New View(viewRect))
-        Designer.Load(Render, ContentPath.WIDGETS + ContentManager.GetContent("GuiConfigFile"))
+        Designer.Load(Render, ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.CONFIG_FILE))
     End Sub
 
     Private Sub LoadTilesets()

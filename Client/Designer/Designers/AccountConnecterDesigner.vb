@@ -139,7 +139,7 @@ Public Class AccountConnecterDesigner
             Dim validAccount = True
 
             If (validAccount) Then
-                NavigatorHelper.NavigateTo(GameStates.GamePlayState)
+                NavigationHelper.NavigateTo(GameStates.GamePlayState)
             End If
         End If
     End Sub

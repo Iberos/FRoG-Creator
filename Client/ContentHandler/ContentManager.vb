@@ -1,67 +1,35 @@
 ﻿Imports SFML.Graphics
-Public Structure Extension
-    Const JPEG = "jpg"
-    Const PNG = "png"
-    Const FROG = "frog"
-    Const FONT = "ttf"
-    Const CONF = "conf"
-End Structure
-
-Public Structure ContentPath
-    Const CONFIG = "Config/"
-    Const WIDGETS = ContentPath.CONFIG + "Widgets/"
-    Const RESOURCES = ContentPath.CONFIG + "Resources/"
-End Structure
-
-Public Structure ContentType
-    Const ICONS = ContentPath.CONFIG + "Icons/"
-    Const SPRITES = ContentPath.RESOURCES + "Sprites/"
-    Const SPELLS = ContentPath.RESOURCES + "Spells/"
-    Const TILESETS = ContentPath.RESOURCES + "Tiles/"
-    Const MAPS = ContentPath.RESOURCES + "Maps/"
-End Structure
 
 Public Class ContentManager
-
     Private Shared resources As New Dictionary(Of String, Object)
 
-    Public Shared Function GetContent(key As String)
+    ''' <summary>
+    ''' Charge la ressource depuis le dictionnaire de données
+    ''' </summary>
+    ''' <typeparam name="T">Le type de la ressource à charger</typeparam>
+    ''' <param name="key">La clé référente à la ressource</param>
+    ''' <returns>La ressource si elle existe, 'Nothing' dans le cas contraire</returns>
+    ''' <remarks></remarks>
+    Public Shared Function Load(Of T)(key As String)
         If (resources.Keys.Contains(key)) Then
-            Return resources(key)
+            Return DirectCast(resources(key), T)
         End If
         Return Nothing
     End Function
 
-    Public Shared Sub AddContent(key As String, obj As Drawable)
+    ''' <summary>
+    ''' Ajoute la ressource dans le dictionnaire de données
+    ''' </summary>
+    ''' <typeparam name="T">Le type de la ressource à ajouter</typeparam>
+    ''' <param name="key">La clé permettant de référencer la ressource</param>
+    ''' <param name="obj">L'instance d'objet définissant la ressource</param>
+    ''' <returns>Vrai si la ressource a été ajouté, Faux dans le cas contraire</returns>
+    ''' <remarks></remarks>
+    Public Shared Function Add(Of T)(key As String, obj As T)
         If (Not resources.Keys.Contains(key)) Then
             resources.Add(key, obj)
+            Return True
         End If
-    End Sub
-
-    Public Shared Sub AddContent(key As String, obj As ContentContext)
-        If (Not resources.Keys.Contains(key)) Then
-            resources.Add(key, obj.ToString())
-        End If
-    End Sub
-
-    Public Shared Sub AddContent(key As String, obj As String)
-        If (Not resources.Keys.Contains(key)) Then
-            resources.Add(key, obj)
-        End If
-    End Sub
-
-    'Public Shared Function LoadContent(type As ContentType, file As String)
-    '    Select Case (type.ToString())
-    '        Case ContentType.ICONS
-
-    '        Case ContentType.MAPS
-
-    '        Case ContentType.SPELLS
-
-    '        Case ContentType.SPRITES
-
-    '        Case ContentType.TILESETS
-
-    '    End Select
-    'End Function
+        Return False
+    End Function
 End Class

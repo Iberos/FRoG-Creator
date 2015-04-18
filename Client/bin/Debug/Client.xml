@@ -19,6 +19,23 @@ Client
 	<summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
+</member><member name="M:Client.ContentManager.Load``1(System.String)">
+	<summary>
+ Charge la ressource depuis le dictionnaire de données
+ </summary>
+	<typeparam name="T">Le type de la ressource à charger</typeparam>
+	<param name="key">La clé référente à la ressource</param>
+	<returns>La ressource si elle existe, 'Nothing' dans le cas contraire</returns>
+	<remarks></remarks>
+</member><member name="M:Client.ContentManager.Add``1(System.String,``0)">
+	<summary>
+ Ajoute la ressource dans le dictionnaire de données
+ </summary>
+	<typeparam name="T">Le type de la ressource à ajouter</typeparam>
+	<param name="key">La clé permettant de référencer la ressource</param>
+	<param name="obj">L'instance d'objet définissant la ressource</param>
+	<returns>Vrai si la ressource a été ajouté, Faux dans le cas contraire</returns>
+	<remarks></remarks>
 </member><member name="M:Client.GameCharacter.SetCharacterControls(System.Boolean@)">
 	<summary>
  Modifie l'état de controle du caractère
