@@ -37,8 +37,9 @@ Public Class GamePlayDesigner
         chatContainer.BackgroundColor = New Color(100, 100, 100, 150)
         chatContainer.BorderColor = Color.Transparent
         'TODO : Prendre en compte les textes qui prennent 2 lignes (ou +) !
-        chatContainer.AddLine("Bienvenue sur le serveur de jeu Frog Creator !", Color.Green)
-        chatContainer.AddLine("Votre ancienne connexion remonte à 10 jours !", Color.Black)
+        chatContainer.AddReckonLine("Bienvenue sur le serveur de jeu Frog Creator !", Color.Green)
+        chatContainer.AddReckonLine("Votre ancienne connexion remonte à 10 jours !", Color.Black)
+        '---------- fin test ----------
         '
         ' characterWindow
         '
@@ -127,7 +128,7 @@ Public Class GamePlayDesigner
         ' GuiEvents
         If (Keyboard.IsKeyPressed(Keyboard.Key.Return)) Then 'Exemple d'écriture d'un texte dynamique dans le chatContainer
             If (chatBox.Focused And chatBox.Text.Length > 0) Then
-                chatContainer.AddLine(chatBox.Text, Color.White)
+                chatContainer.AddReckonLine(chatBox.Text, Color.White)
                 chatBox.Text = String.Empty
             End If
         ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.C)) Then 'Exemple d'ouverture d'une fenêtre si celle-ci est "fermée"

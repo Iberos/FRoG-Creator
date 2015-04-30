@@ -99,6 +99,7 @@
     <Compile Include="ContentHandler\ContentPath.vb" />
     <Compile Include="ContentHandler\ContentType.vb" />
     <Compile Include="ContentHandler\GameResources.vb" />
+    <Compile Include="Designer\Utilities\GuiExtension.vb" />
     <Compile Include="GameEntities\Components\GameActionCase.vb" />
     <Compile Include="GameEntities\Utilities\GameMapDeserializationBinder.vb" />
     <Compile Include="GameEntities\Utilities\GameVelocity.vb" />
