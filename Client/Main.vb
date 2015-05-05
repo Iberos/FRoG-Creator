@@ -83,6 +83,9 @@ Module Main
 
             ' ----- FIN DE TEST -----
 
+            ' FIX issue #8 : TGUI n'initialise pas son presse-papier. On s'en occupe pour lui...
+            TGUI.Global.Clipboard = String.Empty
+
             While (Window.IsOpen())
                 Window.DispatchEvents()
                 Designer.DispatchEventsAndUpdate()
