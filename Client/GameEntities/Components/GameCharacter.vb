@@ -94,27 +94,27 @@ Public MustInherit Class GameCharacter
 
 #Region "Getter & Setter"
     ''' <summary>
-    ''' Modifie l'état de controle du caractère
+    ''' Modifie l'état de controle du personnage
     ''' </summary>
     ''' <param name="state">True pour laisser le character controlable et False pour en interdire le controle</param>
     ''' <remarks></remarks>
-    Public Sub SetCharacterControls(ByRef state As Boolean)
+    Public Sub SetCharacterControlState(ByRef state As Boolean)
         Me.canControl = state
     End Sub
 
     ''' <summary>
-    ''' Modifie la vitesse de course du caractère
+    ''' Modifie la vitesse de course du personnage
     ''' </summary>
-    ''' <param name="velocity">La vitesse du caractère</param>
+    ''' <param name="velocity">La vitesse</param>
     ''' <remarks></remarks>
     Public Sub SetVelocity(ByRef velocity As GameVelocity)
         Me.velocity = velocity
     End Sub
 
     ''' <summary>
-    ''' Modifie le rendu du caractère
+    ''' Modifie le rendu du personnage
     ''' </summary>
-    ''' <param name="texture">La nouvelle texture de rendu du caractère</param>
+    ''' <param name="texture">La nouvelle texture de rendu</param>
     ''' <remarks></remarks>
     Public Sub SetTexture(texture As Texture)
         Me.Texture = texture
@@ -122,15 +122,39 @@ Public MustInherit Class GameCharacter
         Me.TextureRect = New IntRect(0, 0, Me.characterHitboxSize.X, Me.characterHitboxSize.Y)
     End Sub
 
-    Public Function isMoveable() As Boolean
+    ''' <summary>
+    ''' Définit la direction du personnage
+    ''' </summary>
+    ''' <param name="direction">La direction</param>
+    ''' <remarks></remarks>
+    Public Sub SetDirection(direction As GameDirection)
+        Me.direction = direction
+    End Sub
+
+    ''' <summary>
+    ''' Obtient l'état de déplacement du personnage
+    ''' </summary>
+    ''' <returns>True si il est possible de le déplacer, False dans le cas contraire</returns>
+    ''' <remarks></remarks>
+    Public Function IsMoveable() As Boolean
         Return Me.canMove
     End Function
 
-    Public Function isControlable() As Boolean
+    ''' <summary>
+    ''' Obtient l'état de controle du personnage
+    ''' </summary>
+    ''' <returns>True si il est controlable, False dans le cas contraire</returns>
+    ''' <remarks></remarks>
+    Public Function IsControlable() As Boolean
         Return Me.canControl
     End Function
 
-    Public Function getVelocity() As GameVelocity
+    ''' <summary>
+    ''' Obtient la vitesse de déplacement du personnage
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Function GetVelocity() As GameVelocity
         Return Me.velocity
     End Function
 #End Region

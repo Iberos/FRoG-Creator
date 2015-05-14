@@ -161,9 +161,9 @@ Public Class frmMapEditor
         Else
             ' Pipette
             game.recSelect.Size = New Vector2f(32, 32)
-            lstTiles.SelectedIndex = map.MapLayer(curLayer).tileset(curX, curY)
-            game.recSelect.Position = New Vector2f(GameTileset.DecodeX(map.MapLayer(curLayer).tileCode(curX, curY)) * 32,
-                                                   GameTileset.DecodeY(map.MapLayer(curLayer).tileCode(curX, curY)) * 32)
+            lstTiles.SelectedIndex = map.MapLayer(curLayer).TilesetIndex(curX, curY)
+            game.recSelect.Position = New Vector2f(GameTileset.DecodeX(map.MapLayer(curLayer).TileCode(curX, curY)) * 32,
+                                                   GameTileset.DecodeY(map.MapLayer(curLayer).TileCode(curX, curY)) * 32)
             ButtonCopy.Checked = False
             picGame.Cursor = Cursors.Cross
         End If
@@ -189,12 +189,12 @@ Public Class frmMapEditor
                     End If
                 End If
             Else
-                    If Not lstTiles.Text = "Attributs" Then
-                        ' Gomme
-                        Call DeleteTile(curX, curY)
-                    Else
-                        Call DeleteAttribute(curX, curY)
-                    End If
+                If Not lstTiles.Text = "Attributs" Then
+                    ' Gomme
+                    Call DeleteTile(curX, curY)
+                Else
+                    Call DeleteAttribute(curX, curY)
+                End If
             End If
         End If
     End Sub
@@ -225,8 +225,8 @@ Public Class frmMapEditor
             For x2 = 0 To CByte(game.recSelect.Size.X / 32) - 1
                 For y2 = 0 To CByte(game.recSelect.Size.Y / 32) - 1
                     If Not X + x2 < 0 And Not X + x2 > 20 And Not Y + y2 < 0 And Not Y + y2 > 14 Then
-                        map.MapLayer(curLayer).tileset(X + x2, Y + y2) = lstTiles.SelectedIndex
-                        map.MapLayer(curLayer).tileCode(X + x2, Y + y2) = GameTileset.EncodeXY(Int(game.recSelect.Position.X / 32) + x2, Int(game.recSelect.Position.Y / 32) + y2)
+                        map.MapLayer(curLayer).TilesetIndex(X + x2, Y + y2) = lstTiles.SelectedIndex
+                        map.MapLayer(curLayer).TileCode(X + x2, Y + y2) = GameTileset.EncodeXY(Int(game.recSelect.Position.X / 32) + x2, Int(game.recSelect.Position.Y / 32) + y2)
                     End If
                 Next
             Next
@@ -237,8 +237,8 @@ Public Class frmMapEditor
     ' - Supprime la selection de tiles de la map puis re dessine la couche
     Private Sub DeleteTile(ByVal X As Byte, ByVal Y As Byte)
         If Not testMode And Not X < 0 And Not X > 20 And Not Y < 0 And Not Y > 14 Then
-            map.MapLayer(curLayer).tileset(X, Y) = 0
-            map.MapLayer(curLayer).tileCode(X, Y) = 0
+            map.MapLayer(curLayer).TilesetIndex(X, Y) = 0
+            map.MapLayer(curLayer).TileCode(X, Y) = 0
             game.DrawLayer(curLayer)
         End If
     End Sub

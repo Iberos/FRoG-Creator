@@ -10,10 +10,7 @@ Public Class GamePlayDesigner
     Private chatBox As EditBox
     Private chatContainer As ChatBox
     Private characterWindow As ChildWindow
-
-    ' GameObjects
-    Public Shared MAPS_MEMORY_DATA As List(Of GameMap) = New List(Of GameMap)
-    Public Shared TILESETS_MEMORY_DATA As List(Of GameTileset) = New List(Of GameTileset)
+    Private environment As GameEnvironment
 
     Private testPlayer As GamePlayer
 
@@ -88,7 +85,7 @@ Public Class GamePlayDesigner
         '
         ' dragNDropItem
         '
-        Dim dragNDropItem = gui.Add(New GameActionCase(), "dragNDropItem")
+        Dim dragNDropItem = gui.Add(New GUIActionCase(), "dragNDropItem")
         dragNDropItem.Size = New Vector2f(32, 32)
         dragNDropItem.Position = New Vector2f(84, 10)
         dragNDropItem.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
@@ -101,7 +98,7 @@ Public Class GamePlayDesigner
         '
         ' dragNDropClipser
         '
-        Dim dragNDropClipser = gui.Add(New GameActionCase(), "dragNDropClipser")
+        Dim dragNDropClipser = gui.Add(New GUIActionCase(), "dragNDropClipser")
         dragNDropClipser.Size = New Vector2f(32, 32)
         dragNDropClipser.Position = New Vector2f(200, 10)
         dragNDropClipser.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
@@ -112,16 +109,9 @@ Public Class GamePlayDesigner
     End Sub
 
     Public Sub New()
+        Me.environment = New GameEnvironment()
         Me.testPlayer = New GamePlayer(New Texture(ContentType.SPRITES + "Sprite1.png"))
         Me.testPlayer.WarpTo(15, 5)
-    End Sub
-
-    Public Shared Sub LoadMaps(maps As List(Of GameMap))
-        MAPS_MEMORY_DATA = maps
-    End Sub
-
-    Public Shared Sub LoadTilesets(tilesets As List(Of GameTileset))
-        TILESETS_MEMORY_DATA = tilesets
     End Sub
 
     Public Sub DispatchEventsAndUpdate() Implements Designer.DispatchEventsAndUpdate
@@ -152,14 +142,15 @@ Public Class GamePlayDesigner
     End Sub
 
     Public Sub Draw(batch As RenderWindow) Implements Designer.Draw
+        batch.Draw(Me.environment)
         ' Draw map primaire
-        If (MAPS_MEMORY_DATA.Count > 0) Then
-            batch.Draw(MAPS_MEMORY_DATA.ElementAt(0))
-        End If
+        'If (MAPS_MEMORY_DATA.Count > 0) Then
+        'batch.Draw(MAPS_MEMORY_DATA.ElementAt(0))
+        'End If
         batch.Draw(Me.testPlayer)
-        If (MAPS_MEMORY_DATA.Count > 0) Then
-            MAPS_MEMORY_DATA.ElementAt(0).Draw2(batch, RenderStates.Default)
-        End If
+        'If (MAPS_MEMORY_DATA.Count > 0) Then
+        'MAPS_MEMORY_DATA.ElementAt(0).Draw2(batch, RenderStates.Default)
+        'End If
     End Sub
 
     Public Sub Dispose() Implements IDisposable.Dispose

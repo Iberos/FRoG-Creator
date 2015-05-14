@@ -198,7 +198,7 @@
     <Compile Include="frmMapProperties.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Maps\Layer.vb" />
+    <Compile Include="Maps\MapLayer.vb" />
     <Compile Include="Maps\GameMap.vb" />
     <Compile Include="frmMapEditor.vb">
       <SubType>Form</SubType>
@@ -208,6 +208,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GameManager.vb" />
+    <Compile Include="Maps\Vector2.vb" />
     <Compile Include="modVar.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

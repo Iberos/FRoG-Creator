@@ -22,14 +22,25 @@ Public Class frmMapProperties
             lstMaps.Items.Add(Directory.GetFiles("Maps")(i))
         Next
 
-        btBorder1.Text = map.MapsBorder(0).ToString()
-        btBorder2.Text = map.MapsBorder(1).ToString()
-        btBorder3.Text = map.MapsBorder(2).ToString()
-        btBorder4.Text = map.MapsBorder(3).ToString()
-        btBorder5.Text = map.MapsBorder(4).ToString()
-        btBorder6.Text = map.MapsBorder(5).ToString()
-        btBorder7.Text = map.MapsBorder(6).ToString()
-        btBorder8.Text = map.MapsBorder(7).ToString()
+        LoadBorderMaps()
+    End Sub
+
+    Private Sub LoadBorderMaps()
+        Dim buttons As New List(Of Button)
+        buttons.AddRange(New List(Of [Button]) From
+        {
+            btBorder1, btBorder2, btBorder3, btBorder4,
+            btBorder5, btBorder6, btBorder7, btBorder8
+        })
+
+        For i As Integer = 0 To buttons.Count
+            If (i > 7) Then
+                Exit For
+            End If
+            If (Not IsNothing(map.MapsBorder(i))) Then
+                buttons.ElementAt(i).Text = map.MapsBorder(i).Index.ToString()
+            End If
+        Next
     End Sub
 
     Private Sub btBorder1_Click(sender As Object, e As EventArgs) Handles btBorder1.Click
@@ -77,23 +88,19 @@ Public Class frmMapProperties
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        map.MapsBorder(curBorder) = lstMaps.SelectedIndex
+        ' TODO : Charger la map plutôt que l'index seulement
+        'map.MapsBorder(curBorder).Index = lstMaps.SelectedIndex
+        ' exemple : map.MapsBorder(curBorder) = LoadedMaps(lstMaps.SelectedIndex)
+        '           map.MapsBorder(curBorder).Index = UnIndexDeRefUnique
 
-        btBorder1.Text = map.MapsBorder(0).ToString()
-        btBorder2.Text = map.MapsBorder(1).ToString()
-        btBorder3.Text = map.MapsBorder(2).ToString()
-        btBorder4.Text = map.MapsBorder(3).ToString()
-        btBorder5.Text = map.MapsBorder(4).ToString()
-        btBorder6.Text = map.MapsBorder(5).ToString()
-        btBorder7.Text = map.MapsBorder(6).ToString()
-        btBorder8.Text = map.MapsBorder(7).ToString()
+        LoadBorderMaps()
 
         pnlSelect.Visible = False
     End Sub
 
     Private Sub pnlSelect_VisibleChanged(sender As Object, e As EventArgs) Handles pnlSelect.VisibleChanged
-        If pnlSelect.Visible Then
-            lstMaps.SelectedIndex = map.MapsBorder(curBorder)
+        If pnlSelect.Visible And Not IsNothing(map.MapsBorder(curBorder)) Then
+            lstMaps.SelectedIndex = map.MapsBorder(curBorder).Index
         End If
     End Sub
 End Class

@@ -135,13 +135,14 @@ Public Class AccountConnecterDesigner
     End Sub
 
     Private Sub btnConnect_OnClick(sender As Object, e As CallbackArgs)
-        If (Main.client.isConnected()) Then
-            Dim validAccount = True
+        ' TODO : Debug
+        'If (Main.client.isConnected()) Then
+        Dim validAccount = True
 
-            If (validAccount) Then
-                NavigationHelper.NavigateTo(GameStates.GamePlayState)
-            End If
+        If (validAccount) Then
+            NavigationHelper.NavigateTo(GameStates.GamePlayState)
         End If
+        'End If
     End Sub
 
     Public Sub Dispose() Implements IDisposable.Dispose

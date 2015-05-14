@@ -235,9 +235,10 @@ Class GameManager
         With map.MapLayer(layer)
             For x = 0 To modVar.MAP_WIDTH
                 For y = 0 To modVar.MAP_HEIGHT
-                    If Not .tileCode(x, y) = 0 Then
-                        Using sprt As New Sprite(game.tileset(.tileset(x, y)))
-                            sprt.TextureRect = New IntRect(GameTileset.DecodeX(.tileCode(x, y)) * modVar.CASE_LENGTH, GameTileset.DecodeY(.tileCode(x, y)) * modVar.CASE_LENGTH, modVar.CASE_LENGTH, modVar.CASE_LENGTH)
+                    ' TODO : Catch les erreurs NullReferenceException (provoqué par le chargement d'une map ancienne version pas exemple)
+                    If Not .TileCode(x, y) = 0 Then
+                        Using sprt As New Sprite(game.tileset(.TilesetIndex(x, y)))
+                            sprt.TextureRect = New IntRect(GameTileset.DecodeX(.TileCode(x, y)) * modVar.CASE_LENGTH, GameTileset.DecodeY(.TileCode(x, y)) * modVar.CASE_LENGTH, modVar.CASE_LENGTH, modVar.CASE_LENGTH)
                             sprt.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
                             mapSurface(layer).Draw(sprt)
                         End Using

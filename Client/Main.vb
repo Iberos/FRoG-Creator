@@ -58,10 +58,6 @@ Module Main
         AddHandler Window.Closed, AddressOf OnClose
         AddHandler Window.Resized, AddressOf OnResized
 
-        ' Chargement des cartes de jeu
-        LoadTilesets()
-        LoadMaps()
-
         NavigationHelper.NavigateTo(GameStates.AccountConnectionState)
 
     End Sub
@@ -98,7 +94,7 @@ Module Main
             End While
 
         Catch e As NullReferenceException
-            MsgBox(e.Message, MsgBoxStyle.Critical)
+            MsgBox(e.Source + " : " + e.Message, MsgBoxStyle.Critical)
         Finally
             Environment.Exit(1)
         End Try
@@ -114,30 +110,5 @@ Module Main
         Dim viewRect = New FloatRect(0, 0, window.Size.X, window.Size.Y)
         window.SetView(New View(viewRect))
         Designer.Load(Render, ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.CONFIG_FILE))
-    End Sub
-
-    Private Sub LoadTilesets()
-        Dim tilesets As List(Of GameTileset) = New List(Of GameTileset)
-        For Each fileName As String In Directory.GetFiles(ContentType.TILESETS, "Tiles*") ' Ouverture des fichiers commençants par "Tiles" dans leur nom
-            fileName = Path.GetFileName(fileName)
-            Dim tileset = GameTileset.Load(fileName)
-            If (Not IsNothing(tileset)) Then 'Si le tilset existe, on l'ajoute en mémoire
-                tilesets.Add(tileset)
-            End If
-        Next
-        GamePlayDesigner.LoadTilesets(tilesets)
-    End Sub
-
-    Private Sub LoadMaps()
-        Dim maps As List(Of GameMap) = New List(Of GameMap)
-        For Each mapName As String In Directory.GetFiles(ContentType.MAPS, "Map*")
-            Dim map As GameMap = New GameMap
-            mapName = Path.GetFileName(mapName)
-            map = GameMap.Load(mapName)
-            If (Not IsNothing(map)) Then 'Si la map existe, on l'ajoute en mémoire
-                maps.Add(map)
-            End If
-        Next
-        GamePlayDesigner.LoadMaps(maps)
     End Sub
 End Module

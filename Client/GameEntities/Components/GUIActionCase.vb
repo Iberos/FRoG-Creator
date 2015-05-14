@@ -2,24 +2,24 @@
 Imports SFML.Window
 Imports SFML.Graphics
 
-Public Class GameActionCase
+Public Class GUIActionCase
     Inherits AnimatedPicture
 
     Private Const PADDING = 5
 
-    Private Shared selectedGameActionCase As GameActionCase
+    Private Shared selectedGameActionCase As GUIActionCase
 
-    Private InDragAndDrop As Boolean
+    Private inDragAndDrop As Boolean
     Private isEmptyCase As Boolean
     Private canDragDrop As Boolean
     Private tmpLocation As Vector2f
     Private tmpPaddingSelection As Vector2f
     Private hitbox As IntRect
     Private cliped As Boolean
-    Private caseParent As GameActionCase
+    Private caseParent As GUIActionCase
 
     Public Sub New()
-        Me.InDragAndDrop = False
+        Me.inDragAndDrop = False
         Me.isEmptyCase = True
         Me.canDragDrop = True
         Me.tmpLocation = Me.Position
@@ -36,10 +36,10 @@ Public Class GameActionCase
 
     Private Sub GameActionCase_LeftMousePressed() Handles Me.LeftMousePressedCallback
         If (Not IsEmpty()) Then
-            If (CanDragAndDrop() And Not InDragAndDrop) Then
+            If (CanDragAndDrop() And Not inDragAndDrop) Then
                 Me.tmpPaddingSelection = New Vector2f(Mouse.GetPosition(Main.Window).X - Me.Position.X, Mouse.GetPosition(Main.Window).Y - Me.Position.Y)
                 Me.tmpLocation = Me.Position
-                Me.InDragAndDrop = True
+                Me.inDragAndDrop = True
                 selectedGameActionCase = Me
             End If
         End If
@@ -48,7 +48,7 @@ Public Class GameActionCase
     Private Sub GameActionCase_LeftMouseReleased() Handles Me.LeftMouseReleasedCallback
         If (Not Me.IsEmpty()) Then
             If (Me.CanDragAndDrop()) Then
-                Me.InDragAndDrop = False
+                Me.inDragAndDrop = False
 
                 If (Me.cliped) Then ' Si composant clipsé dans un autre
                     Me.tmpLocation = Me.Position
@@ -77,7 +77,7 @@ Public Class GameActionCase
         MyBase.OnUpdate()
 
         ' Update DragAndDrop current location
-        If (Me.InDragAndDrop And Not Me.cliped And Mouse.IsButtonPressed(Mouse.Button.Left) And Me.Focused) Then
+        If (Me.inDragAndDrop And Not Me.cliped And Mouse.IsButtonPressed(Mouse.Button.Left) And Me.Focused) Then
             Me.Move(Mouse.GetPosition(Main.Window).X, Mouse.GetPosition(Main.Window).Y)
         End If
 
@@ -91,12 +91,10 @@ Public Class GameActionCase
                 End If
             End If
         Else
-            If (Me.IsEmpty And Mouse.IsButtonPressed(Mouse.Button.Left)) Then
-                If (Not IsNothing(selectedGameActionCase)) Then
-                    If (Not selectedGameActionCase.Equals(Me) And Not selectedGameActionCase.cliped) Then
-                        selectedGameActionCase.cliped = True
-                        selectedGameActionCase.Position = Me.Position
-                    End If
+            If (Me.IsEmpty And Mouse.IsButtonPressed(Mouse.Button.Left) And Not IsNothing(selectedGameActionCase)) Then
+                If (Not selectedGameActionCase.Equals(Me) And Not selectedGameActionCase.cliped) Then
+                    selectedGameActionCase.cliped = True
+                    selectedGameActionCase.Position = Me.Position
                 End If
             End If
         End If
@@ -137,11 +135,11 @@ Public Class GameActionCase
         End Set
     End Property
 
-    Public Property ParentCase() As GameActionCase
+    Public Property ParentCase() As GUIActionCase
         Get
             Return Me.caseParent
         End Get
-        Private Set(value As GameActionCase)
+        Private Set(value As GUIActionCase)
             Me.caseParent = value
         End Set
     End Property

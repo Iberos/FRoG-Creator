@@ -7,22 +7,27 @@ Imports SFML.Graphics
 Public Class GameMap
     Implements SFML.Graphics.Drawable
 
-    Private Const MAP_WIDTH As UInteger = 672
-    Private Const MAP_HEIGHT As UInteger = 480
+    Public Const NEIGHBOORS_COUNT = 8
+    Private Const WIDTH As UInteger = 672
+    Private Const HEIGHT As UInteger = 480
 
     Private name As String
     Private type As Byte
-    Private layer(6) As Layer ' couche entière
+    Private mapIndex As Integer
+    Private location As Vector2
+    Private layer(6) As MapLayer ' couche entière
     Private attribute(20, 14) As GameAttribute ' attribut sur une case
-    Private borderMap(8) As Integer ' maps au voisinage
+    Private borderMap(NEIGHBOORS_COUNT) As GameMap ' maps au voisinage
 
     <NonSerialized>
     Private mapNPCs As New List(Of MapNPC) ' Liste des pnjs sur la map
 
     ' - Constructeur
     Sub New()
+        Me.location = Vector2.Zero
+
         For i = 0 To 6
-            layer(i) = New Layer
+            layer(i) = New MapLayer
         Next
 
         For x = 0 To 20
@@ -36,7 +41,6 @@ Public Class GameMap
         If IsNothing(mapNPCs) Then
             mapNPCs = New List(Of MapNPC)
         End If
-
         Return mapNPCs
     End Function
 
@@ -51,22 +55,33 @@ Public Class GameMap
         End Set
     End Property
 
-    Public Property MapsBorder(mapNum As Byte) As Integer
+    Public Property Origin As Vector2
+        Get
+            Return If(Not IsNothing(Me.location), Me.location, Vector2.Zero)
+        End Get
+        Set(value As Vector2)
+            If (Not IsNothing(Me.location)) Then
+                Me.location = value
+            End If
+        End Set
+    End Property
+
+    Public Property MapsBorder(mapNum As Byte) As GameMap
         Get
             Return If(Me.borderMap.Count > mapNum, Me.borderMap(mapNum), Nothing)
         End Get
-        Set(value As Integer)
+        Set(value As GameMap)
             If (Me.borderMap.Count > mapNum) Then
                 Me.borderMap(mapNum) = value
             End If
         End Set
     End Property
 
-    Public Property MapLayer(layerNum As Byte) As Layer
+    Public Property MapLayer(layerNum As Byte) As MapLayer
         Get
             Return If(Me.layer.Count > layerNum, Me.layer(layerNum), Nothing)
         End Get
-        Set(value As Layer)
+        Set(value As MapLayer)
             If (Me.layer.Count > layerNum) Then
                 Me.layer(layerNum) = value
             End If
@@ -78,15 +93,22 @@ Public Class GameMap
             Return If(Not IsNothing(Me.name), Me.name, String.Empty)
         End Get
         Set(value As String)
-            If (Not IsNothing(Me.name)) Then
-                Me.name = value
-            End If
+            Me.name = value
+        End Set
+    End Property
+
+    Public Property Index As Integer
+        Get
+            Return If(Not IsNothing(Me.mapIndex), Me.mapIndex, 0)
+        End Get
+        Set(value As Integer)
+            Me.mapIndex = value
         End Set
     End Property
 
     Public Property MapType As Byte
         Get
-            Return If(Not IsNothing(Me.type), Me.type, String.Empty)
+            Return If(Not IsNothing(Me.type), Me.type, 0)
         End Get
         Set(value As Byte)
             If (Not IsNothing(Me.type)) Then
@@ -100,6 +122,7 @@ Public Class GameMap
         Dim deserializer As New BinaryFormatter
         If File.Exists("Maps/Map" & mapNum & ".frog") Then
             Using reader = File.OpenRead("Maps/Map" & mapNum & ".frog")
+                ' TODO : Catch les erreurs de déserialisation
                 map = DirectCast(deserializer.Deserialize(reader), GameMap)
             End Using
         End If
