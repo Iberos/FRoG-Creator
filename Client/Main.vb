@@ -45,15 +45,13 @@ Module Main
         Console.WriteLine("--- DEBUG ---")
 
         ' Création de la fenêtre cliente
-        Window = New RenderWindow(New VideoMode(Batch.SCREEN_WIDTH, Batch.SCREEN_HEIGHT), ContentManager.Load(Of String)(GameResources.GAME_TITLE), Styles.Close)
+        Window = New RenderWindow(New VideoMode(Batch.SCREEN_WIDTH, Batch.SCREEN_HEIGHT), ContentManager.Load(Of String)(GameResources.GAME_TITLE), Styles.Default)
         Window.SetFramerateLimit(Batch.FPS)
         icon = ContentManager.Load(Of Texture)(GameResources.ICON_FILE)
         Window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
 
         ' Création de l'interface
-        Render = New RenderInterface(Window,
-                                     ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.CONFIG_FILE),
-                                     ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.FONT_FILE))
+        Render = New RenderInterface(Window, ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.CONFIG_FILE), ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.FONT_FILE))
 
         AddHandler Window.Closed, AddressOf OnClose
         AddHandler Window.Resized, AddressOf OnResized
@@ -107,8 +105,8 @@ Module Main
 
     Private Sub OnResized(sender As Object, e As SizeEventArgs)
         Dim window As RenderWindow = DirectCast(sender, RenderWindow)
-        Dim viewRect = New FloatRect(0, 0, window.Size.X, window.Size.Y)
-        window.SetView(New View(viewRect))
+        window.SetView(New View(New FloatRect(0, 0, e.Width, e.Height)))
+        Debug.WriteLine(String.Format("{0}, {1}", e.Width, e.Height))
         Designer.Load(Render, ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.CONFIG_FILE))
     End Sub
 End Module

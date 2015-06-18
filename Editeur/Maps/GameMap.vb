@@ -17,14 +17,15 @@ Public Class GameMap
     Private location As Vector2
     Private layer(6) As MapLayer ' couche entière
     Private attribute(20, 14) As GameAttribute ' attribut sur une case
-    Private borderMap(NEIGHBOORS_COUNT) As GameMap ' maps au voisinage
+    Private neighborsMaps(NEIGHBOORS_COUNT) As GameMap ' maps au voisinage
 
     <NonSerialized>
     Private mapNPCs As New List(Of MapNPC) ' Liste des pnjs sur la map
 
     ' - Constructeur
-    Sub New()
+    Sub New(ByVal index As Integer)
         Me.location = Vector2.Zero
+        Me.Index = index
 
         For i = 0 To 6
             layer(i) = New MapLayer
@@ -66,13 +67,17 @@ Public Class GameMap
         End Set
     End Property
 
-    Public Property MapsBorder(mapNum As Byte) As GameMap
+    Public Property Neighbors(mapNum As Byte) As GameMap
         Get
-            Return If(Me.borderMap.Count > mapNum, Me.borderMap(mapNum), Nothing)
+            If (Me.neighborsMaps.Count > mapNum) Then
+                Return Me.neighborsMaps.ElementAt(mapNum)
+            Else
+                Return Nothing
+            End If
         End Get
         Set(value As GameMap)
-            If (Me.borderMap.Count > mapNum) Then
-                Me.borderMap(mapNum) = value
+            If (Me.neighborsMaps.Count > mapNum) Then
+                Me.neighborsMaps(mapNum) = value
             End If
         End Set
     End Property
@@ -117,14 +122,22 @@ Public Class GameMap
         End Set
     End Property
 
-    ' - Charge la map indiquée
-    Public Sub Load(ByVal mapNum As Integer)
+    Public Shared Function Load(ByVal mapNum As Integer) As GameMap
         Dim deserializer As New BinaryFormatter
         If File.Exists("Maps/Map" & mapNum & ".frog") Then
             Using reader = File.OpenRead("Maps/Map" & mapNum & ".frog")
                 ' TODO : Catch les erreurs de déserialisation
-                map = DirectCast(deserializer.Deserialize(reader), GameMap)
+                Return DirectCast(deserializer.Deserialize(reader), GameMap)
             End Using
+        End If
+        Return Nothing
+    End Function
+
+    ' - Charge la map indiquée
+    Public Sub LoadIntoEditor(ByVal mapNum As Integer)
+        map = Load(mapNum)
+        If (IsNothing(map)) Then
+            Return ' Afficher erreur de chargement
         End If
         lstBackup = New List(Of Byte())
         curBck = 0

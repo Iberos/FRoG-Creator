@@ -16,24 +16,25 @@ Public Class GamePlayDesigner
 
     ' GuiLoad
     Public Sub Load(gui As RenderInterface, configPath As String) Implements Designer.Load
+
         gui.RemoveAllWidgets()
+        Dim guiView = Main.Window.GetView()
         '
         ' chatBox
         '
         chatBox = gui.Add(New EditBox(configPath), "chatBox")
-        chatBox.Size = New Vector2f(Main.Window.Size.X * 0.4, 30)
-        chatBox.Position = New Vector2f(20, Main.Window.Size.Y - 40)
+        chatBox.Size = New Vector2f(guiView.Size.X * 0.4, 30)
+        chatBox.Position = New Vector2f(20, guiView.Size.Y - 40)
         chatBox.Transparency = 120
         '
         ' chatContainer
         '
         chatContainer = gui.Add(New ChatBox(configPath), "chatContainer")
         chatContainer.Size = New Vector2f(chatBox.Size.X, 100)
-        chatContainer.Position = New Vector2f(chatBox.Position.X, chatBox.Position.Y - chatContainer.Size.Y)
+        chatContainer.Position = New Vector2f(chatBox.Position.X, chatBox.Position.Y - chatContainer.Size.Y - 20)
         chatContainer.TextSize = 12
-        chatContainer.BackgroundColor = New Color(100, 100, 100, 150)
+        chatContainer.BackgroundColor = New Color(100, 100, 100, 50)
         chatContainer.BorderColor = Color.Transparent
-        'TODO : Prendre en compte les textes qui prennent 2 lignes (ou +) !
         chatContainer.AddReckonLine("Bienvenue sur le serveur de jeu Frog Creator !", Color.Green)
         chatContainer.AddReckonLine("Votre ancienne connexion remonte à 10 jours !", Color.Black)
         '---------- fin test ----------
@@ -47,28 +48,17 @@ Public Class GamePlayDesigner
         characterWindow.BackgroundColor = New Color(100, 100, 100, 150)
         characterWindow.BorderColor = New Color(100, 100, 100)
         '
-        ' picHead
-        '
-        Dim picHead = characterWindow.Add(New Picture("ItemFake.png"), "picHead")
-        picHead.Size = New Vector2f(26, 25)
-        picHead.Position = New Vector2f((characterWindow.Size.X - 26) / 2, (characterWindow.Size.Y - 25) / 4)
-        '
-        ' picArmor
-        '
-        Dim picArmor = characterWindow.Add(New Picture("ItemArmorFake.png"), "picArmor")
-        picArmor.Position = New Vector2f((characterWindow.Size.X - 26) / 2, (characterWindow.Size.Y - 25) / 2)
-        '
         ' pnlBarProgress
         '
         Dim pnlBarProgress = gui.Add(New Panel(), "pnlBarProgress")
-        pnlBarProgress.Size = New Vector2f(Main.Window.Size.X * 0.2 + 30, 60)
+        pnlBarProgress.Size = New Vector2f(guiView.Size.X * 0.2 + 30, 60)
         pnlBarProgress.BackgroundColor = New Color(0, 0, 0, 80)
-        pnlBarProgress.Position = New Vector2f(Main.Window.Size.X - pnlBarProgress.Size.X - 20, 20)
+        pnlBarProgress.Position = New Vector2f(guiView.Size.X - pnlBarProgress.Size.X - 20, 20)
         '
         ' hpProgress
         '
         Dim hpProgress = pnlBarProgress.Add(New LoadingBar(configPath), "hpProgress")
-        hpProgress.Size = New Vector2f(Main.Window.Size.X * 0.2, 15)
+        hpProgress.Size = New Vector2f(guiView.Size.X * 0.2, 15)
         hpProgress.Position = New Vector2f(pnlBarProgress.Size.X / 2 - hpProgress.Size.X / 2, 10)
         hpProgress.TextColor = Color.Black
         hpProgress.Value = 30
@@ -77,7 +67,7 @@ Public Class GamePlayDesigner
         ' mpProgress
         '
         Dim mpProgress = pnlBarProgress.Add(New LoadingBar(configPath), "mpProgress")
-        mpProgress.Size = New Vector2f(Main.Window.Size.X * 0.2, 15)
+        mpProgress.Size = New Vector2f(guiView.Size.X * 0.2, 15)
         mpProgress.Position = New Vector2f(pnlBarProgress.Size.X / 2 - mpProgress.Size.X / 2, 35)
         mpProgress.TextColor = Color.Black
         mpProgress.Value = 75
@@ -111,7 +101,7 @@ Public Class GamePlayDesigner
     Public Sub New()
         Me.environment = New GameEnvironment()
         Me.testPlayer = New GamePlayer(New Texture(ContentType.SPRITES + "Sprite1.png"))
-        Me.testPlayer.WarpTo(15, 5)
+        'Me.testPlayer.WarpTo(15, 5)
     End Sub
 
     Public Sub DispatchEventsAndUpdate() Implements Designer.DispatchEventsAndUpdate
@@ -136,21 +126,25 @@ Public Class GamePlayDesigner
             Me.testPlayer.MoveTo(GameDirection.RIGHT)
         ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.Left)) Then
             Me.testPlayer.MoveTo(GameDirection.LEFT)
+        ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.A)) Then
+            Me.testPlayer.WarpTo(15, 5)
         End If
 
+        Me.environment.Update()
         Me.testPlayer.Update()
+
+
     End Sub
 
     Public Sub Draw(batch As RenderWindow) Implements Designer.Draw
+        Dim environmentAndPlayersView = batch.GetView()
+        environmentAndPlayersView.Center = New Vector2f(testPlayer.Position.X, testPlayer.Position.Y + 32)
+        batch.SetView(environmentAndPlayersView)
+
         batch.Draw(Me.environment)
-        ' Draw map primaire
-        'If (MAPS_MEMORY_DATA.Count > 0) Then
-        'batch.Draw(MAPS_MEMORY_DATA.ElementAt(0))
-        'End If
         batch.Draw(Me.testPlayer)
-        'If (MAPS_MEMORY_DATA.Count > 0) Then
-        'MAPS_MEMORY_DATA.ElementAt(0).Draw2(batch, RenderStates.Default)
-        'End If
+
+        batch.SetView(batch.DefaultView)
     End Sub
 
     Public Sub Dispose() Implements IDisposable.Dispose

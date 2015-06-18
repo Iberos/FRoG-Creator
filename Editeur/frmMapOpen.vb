@@ -25,7 +25,7 @@ Public Class frmMapOpen
     Private Sub lstMaps_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles lstMaps.MouseDoubleClick
         ' TODO : Erreur retrouvée => Chaine trop longue (?) À voir ! [Après double clic]
         curMap = Int(lstMaps.Text.Substring(8).Split(".")(0))
-        map.Load(curMap)
+        map.LoadIntoEditor(curMap)
         game.DrawMap()
         frmMapEditor.pnlStart.Visible = False
     End Sub

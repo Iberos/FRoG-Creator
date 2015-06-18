@@ -36,7 +36,7 @@ Public MustInherit Class GameCharacter
         Me.timeleftTimer = New GameTimer()
     End Sub
 
-    Private Sub Move(direction As GameDirection)
+    Protected Overridable Sub Move(direction As GameDirection)
         If (Me.canMove) Then
             Me.direction = direction
             Me.futurPosition = Me.Position + Me.direction.GetVector() * 32

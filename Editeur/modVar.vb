@@ -13,7 +13,7 @@
     Public npcConfigurator As frmConfigNPC
 
     ' - Maps
-    Public map As New GameMap
+    Public map As New GameMap(-1)
     Public lstBackup As List(Of Byte())
     Public curBck As Integer
     Public curX As Byte = 0

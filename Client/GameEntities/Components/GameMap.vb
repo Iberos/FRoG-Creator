@@ -18,7 +18,7 @@ Public Class GameMap
     Private location As Vector2
     Private layer(6) As MapLayer ' couche entière
     Private attribute(20, 14) As GameAttribute ' attribut sur une case
-    Private borderMap(NEIGHBOORS_COUNT) As GameMap ' maps au voisinage
+    Private neighborsMaps(NEIGHBOORS_COUNT) As GameMap ' maps au voisinage
 
     ' - Constructeur
     Public Sub New()
@@ -58,7 +58,6 @@ Public Class GameMap
                                 End Using
                             End If
                         End If
-
                     End If
                 Next
             Next
@@ -160,13 +159,13 @@ Public Class GameMap
         End Set
     End Property
 
-    Public Property MapsBorder(mapNum As Byte) As GameMap
+    Public Property Neighbors(neighborNum As Byte) As GameMap
         Get
-            Return If(Me.borderMap.Count > mapNum, Me.borderMap(mapNum), Nothing)
+            Return If(Me.neighborsMaps.Count > neighborNum, Me.neighborsMaps(neighborNum), Nothing)
         End Get
         Set(value As GameMap)
-            If (Me.borderMap.Count > mapNum) Then
-                Me.borderMap(mapNum) = value
+            If (Me.neighborsMaps.Count > neighborNum) Then
+                Me.neighborsMaps(neighborNum) = value
             End If
         End Set
     End Property

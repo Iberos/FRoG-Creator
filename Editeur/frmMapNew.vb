@@ -11,7 +11,7 @@ Public Class frmMapNew
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If IsNumeric(txtIndex.Text) Then
             curMap = Int(txtIndex.Text)
-            map = New GameMap
+            map = New GameMap(curMap)
             game.DrawMap()
             frmMapEditor.pnlStart.Visible = False
             Me.Close()

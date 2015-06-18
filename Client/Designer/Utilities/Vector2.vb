@@ -33,6 +33,10 @@ Public Class Vector2
         End Set
     End Property
 
+    Public Shared Operator +(vector1 As Vector2, vector2 As Vector2) As Vector2
+        Return New Vector2(vector1.X + vector2.X, vector1.Y + vector2.Y)
+    End Operator
+
     Public Shared ReadOnly Property Zero As Vector2
         Get
             Return nullVector

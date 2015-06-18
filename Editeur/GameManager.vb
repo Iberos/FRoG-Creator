@@ -98,7 +98,7 @@ Class GameManager
         For mapLayerIndex As Integer = 0 To 6
             mapSurface(mapLayerIndex) = New RenderTexture(672, 480)
         Next
-        map.Load(curMap)
+        map.LoadIntoEditor(curMap)
         DrawMap()
     End Sub
 
