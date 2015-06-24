@@ -18,7 +18,7 @@ Public Class GameMap
     Private location As Vector2
     Private layer(6) As MapLayer ' couche entière
     Private attribute(20, 14) As GameAttribute ' attribut sur une case
-    Private neighborsMaps(NEIGHBOORS_COUNT) As GameMap ' maps au voisinage
+    Private neighborsMapsIndexes(NEIGHBOORS_COUNT) As Integer ' maps au voisinage
 
     ' - Constructeur
     Public Sub New()
@@ -159,13 +159,13 @@ Public Class GameMap
         End Set
     End Property
 
-    Public Property Neighbors(neighborNum As Byte) As GameMap
+    Public Property NeighborIndex(neighborNum As Byte) As Integer
         Get
-            Return If(Me.neighborsMaps.Count > neighborNum, Me.neighborsMaps(neighborNum), Nothing)
+            Return If(Me.neighborsMapsIndexes.Count > neighborNum, Me.neighborsMapsIndexes(neighborNum), -1)
         End Get
-        Set(value As GameMap)
-            If (Me.neighborsMaps.Count > neighborNum) Then
-                Me.neighborsMaps(neighborNum) = value
+        Set(value As Integer)
+            If (Me.neighborsMapsIndexes.Count > neighborNum) Then
+                Me.neighborsMapsIndexes(neighborNum) = value
             End If
         End Set
     End Property

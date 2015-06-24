@@ -37,8 +37,8 @@ Public Class frmMapProperties
             If (i > 7) Then
                 Exit For
             End If
-            If (Not IsNothing(map.Neighbors(i))) Then
-                buttons.ElementAt(i).Text = map.Neighbors(i).Index.ToString()
+            If (Not map.NeighborIndex(i) < 0) Then
+                buttons.ElementAt(i).Text = map.NeighborIndex(i).ToString()
             End If
         Next
     End Sub
@@ -95,7 +95,7 @@ Public Class frmMapProperties
         If (lstMaps.SelectedIndex > 0) Then
             Dim neighborMap = GameMap.Load(lstMaps.SelectedIndex - 1)
             If (Not IsNothing(neighborMap)) Then
-                map.Neighbors(curBorder) = neighborMap
+                map.NeighborIndex(curBorder) = neighborMap.Index
             End If
 
             LoadBorderMaps()
@@ -105,8 +105,8 @@ Public Class frmMapProperties
     End Sub
 
     Private Sub pnlSelect_VisibleChanged(sender As Object, e As EventArgs) Handles pnlSelect.VisibleChanged
-        If pnlSelect.Visible And Not IsNothing(map.Neighbors(curBorder)) Then
-            lstMaps.SelectedIndex = map.Neighbors(curBorder).Index
+        If pnlSelect.Visible And Not IsNothing(map.NeighborIndex(curBorder)) Then
+            lstMaps.SelectedIndex = map.NeighborIndex(curBorder) + 1
         End If
     End Sub
 End Class

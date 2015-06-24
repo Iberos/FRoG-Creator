@@ -6,7 +6,7 @@ Public Class GameEnvironment
     Implements IUpdatable
 
     ' GameObjects
-    Public Shared MAPS As List(Of GameMap) = New List(Of GameMap)
+    Public Shared MAPS As Dictionary(Of Integer, GameMap) = New Dictionary(Of Integer, GameMap)
     Public Shared TILESETS As List(Of GameTileset) = New List(Of GameTileset)
 
     Private currentMap As GameMap
@@ -15,7 +15,7 @@ Public Class GameEnvironment
         LoadTilesets()
         LoadMaps()
 
-        Me.currentMap = MAPS.First()
+        Me.currentMap = MAPS.ElementAt(0).Value
     End Sub
 
     Public Sub SetCurrentMap(map As GameMap)
@@ -26,13 +26,18 @@ Public Class GameEnvironment
         If (Not IsNothing(currentMap)) Then
             currentMap.Draw(target, states)
 
-            For neighboorMapIndex As Integer = 0 To GameMap.NEIGHBOORS_COUNT
-                Dim neighboorMap = currentMap.Neighbors(neighboorMapIndex)
+            For index As Integer = 0 To GameMap.NEIGHBOORS_COUNT
 
-                If (Not IsNothing(neighboorMap)) Then
-                    Dim relativeMap = GameRelativeMap.MAPS.ElementAt(neighboorMapIndex)
-                    neighboorMap.Origin = relativeMap.GetVector() + currentMap.Origin
-                    neighboorMap.Draw(target, states)
+                Dim neighborMapIndex = currentMap.NeighborIndex(index)
+
+                If (Not neighborMapIndex = -1) Then
+                    Dim neighborMap = GetMap(neighborMapIndex)
+
+                    If (Not IsNothing(neighborMap)) Then
+                        Dim relativeMap = GameRelativeMap.MAPS.ElementAt(index)
+                        neighborMap.Origin = relativeMap.GetVector() + currentMap.Origin
+                        neighborMap.Draw(target, states)
+                    End If
                 End If
             Next
         End If
@@ -55,7 +60,7 @@ Public Class GameEnvironment
             mapName = Path.GetFileName(mapName)
             map = GameMap.Load(mapName)
             If (Not IsNothing(map)) Then 'Si la map existe, on l'ajoute en mémoire
-                MAPS.Add(map)
+                MAPS.Add(map.Index, map)
             End If
         Next
     End Sub
@@ -63,4 +68,12 @@ Public Class GameEnvironment
     Public Sub Update() Implements IUpdatable.Update
 
     End Sub
+
+    Public Shared Function GetMap(ByVal i As Integer) As GameMap
+        Dim map As GameMap
+        If (MAPS.TryGetValue(i, map)) Then
+            Return map
+        End If
+        Return Nothing
+    End Function
 End Class

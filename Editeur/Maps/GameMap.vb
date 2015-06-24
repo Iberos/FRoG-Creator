@@ -17,7 +17,7 @@ Public Class GameMap
     Private location As Vector2
     Private layer(6) As MapLayer ' couche entière
     Private attribute(20, 14) As GameAttribute ' attribut sur une case
-    Private neighborsMaps(NEIGHBOORS_COUNT) As GameMap ' maps au voisinage
+    Private neighborsMapsIndexes(NEIGHBOORS_COUNT) As Integer ' maps au voisinage
 
     <NonSerialized>
     Private mapNPCs As New List(Of MapNPC) ' Liste des pnjs sur la map
@@ -26,6 +26,10 @@ Public Class GameMap
     Sub New(ByVal index As Integer)
         Me.location = Vector2.Zero
         Me.Index = index
+
+        For i As Integer = 0 To NEIGHBOORS_COUNT
+            neighborsMapsIndexes(i) = -1
+        Next
 
         For i = 0 To 6
             layer(i) = New MapLayer
@@ -67,17 +71,13 @@ Public Class GameMap
         End Set
     End Property
 
-    Public Property Neighbors(mapNum As Byte) As GameMap
+    Public Property NeighborIndex(neighborNum As Byte) As Integer
         Get
-            If (Me.neighborsMaps.Count > mapNum) Then
-                Return Me.neighborsMaps.ElementAt(mapNum)
-            Else
-                Return Nothing
-            End If
+            Return If(Me.neighborsMapsIndexes.Count > neighborNum, Me.neighborsMapsIndexes(neighborNum), Nothing)
         End Get
-        Set(value As GameMap)
-            If (Me.neighborsMaps.Count > mapNum) Then
-                Me.neighborsMaps(mapNum) = value
+        Set(value As Integer)
+            If (Me.neighborsMapsIndexes.Count > neighborNum) Then
+                Me.neighborsMapsIndexes(neighborNum) = value
             End If
         End Set
     End Property
