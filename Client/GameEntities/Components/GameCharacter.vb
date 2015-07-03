@@ -17,19 +17,25 @@ Public MustInherit Class GameCharacter
 
     Private futurPosition As Vector2f
     Private direction As GameDirection
-    Private velocity As Byte
+    Private velocityValue As Byte
     Private animationMark As Integer
     Private movementPath As List(Of GameDirection)
     Private animationTimer As GameTimer
     Private timeleftTimer As GameTimer
     Private characterHitboxSize As Vector2f
 
+    Public Event Moved(ByVal sender As Object)
+
     Public Sub New()
         Me.canMove = True
         Me.canControl = True
+
+        Me.Margin = New Vector2f(0, -25)
+        Me.Position += Me.Margin
         Me.futurPosition = Me.Position
+
         Me.direction = DEFAULT_DIRECTION
-        Me.velocity = DEFAULT_VELOCITY
+        Me.velocityValue = DEFAULT_VELOCITY
         Me.animationMark = DEFAULT_ANIMATION_MARK
         Me.movementPath = New List(Of GameDirection)
         Me.animationTimer = New GameTimer()
@@ -45,8 +51,9 @@ Public MustInherit Class GameCharacter
     End Sub
 
     Public Sub WarpTo(x As Integer, y As Integer)
-        Me.Position = New Vector2f(x, y) * 32
+        Me.Position = New Vector2f(x, y) * 32 + Me.Margin
         Me.futurPosition = Position
+        RaiseEvent Moved(Me)
     End Sub
 
     Public Sub MoveTo(direction As GameDirection)
@@ -70,16 +77,17 @@ Public MustInherit Class GameCharacter
 
         If (Not Me.Position.Equals(Me.futurPosition) And Not Me.canMove) Then
             ' Déplacement de la position de l'entité
-            Me.Position += Me.direction.GetVector * Me.velocity
+            Me.Position += Me.direction.GetVector * Me.velocityValue
 
             ' Animation de déplacement
-            If (Me.animationTimer.AsyncWait(DEFAULT_ANIMATION_TIMEWAIT / Me.velocity)) Then
+            If (Me.animationTimer.AsyncWait(DEFAULT_ANIMATION_TIMEWAIT / Me.velocityValue)) Then
                 Me.animationMark = If(Me.animationMark >= 3, 0, Me.animationMark + 1)
             End If
         Else
             ' Rend de nouveau possible les futurs déplacements de l'entité
             If (Not Me.canMove) Then
                 Me.canMove = True
+                RaiseEvent Moved(Me)
             End If
 
             ' Mise à jour de l'inactivité de l'entité
@@ -108,7 +116,7 @@ Public MustInherit Class GameCharacter
     ''' <param name="velocity">La vitesse</param>
     ''' <remarks></remarks>
     Public Sub SetVelocity(ByRef velocity As GameVelocity)
-        Me.velocity = velocity
+
     End Sub
 
     ''' <summary>
@@ -152,11 +160,14 @@ Public MustInherit Class GameCharacter
     ''' <summary>
     ''' Obtient la vitesse de déplacement du personnage
     ''' </summary>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Public Function GetVelocity() As GameVelocity
-        Return Me.velocity
-    End Function
+    Public Property Velocity As GameVelocity
+        Get
+            Return Me.velocityValue
+        End Get
+        Set(value As GameVelocity)
+            Me.velocityValue = value
+        End Set
+    End Property
 #End Region
 
 End Class

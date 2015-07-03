@@ -100,7 +100,8 @@ Public Class GamePlayDesigner
 
     Public Sub New()
         Me.environment = New GameEnvironment()
-        Me.testPlayer = New GamePlayer(New Texture(ContentType.SPRITES + "Sprite1.png"))
+        Me.testPlayer = New GamePlayer(New Texture(ContentType.SPRITES + "Sprite1.jpg"))
+        AddHandler Me.testPlayer.Moved, AddressOf Me.Player_Moved
         'Me.testPlayer.WarpTo(15, 5)
     End Sub
 
@@ -126,19 +127,17 @@ Public Class GamePlayDesigner
             Me.testPlayer.MoveTo(GameDirection.RIGHT)
         ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.Left)) Then
             Me.testPlayer.MoveTo(GameDirection.LEFT)
-        ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.A)) Then
+        ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.T)) Then
             Me.testPlayer.WarpTo(15, 5)
         End If
 
-        Me.environment.Update()
         Me.testPlayer.Update()
-
-
+        Me.environment.Update()
     End Sub
 
     Public Sub Draw(batch As RenderWindow) Implements Designer.Draw
         Dim environmentAndPlayersView = batch.GetView()
-        environmentAndPlayersView.Center = New Vector2f(testPlayer.Position.X, testPlayer.Position.Y + 32)
+        environmentAndPlayersView.Center = New Vector2f(testPlayer.Location.X, testPlayer.Location.Y + 32)
         batch.SetView(environmentAndPlayersView)
 
         batch.Draw(Me.environment)
@@ -150,4 +149,11 @@ Public Class GamePlayDesigner
     Public Sub Dispose() Implements IDisposable.Dispose
         Me.testPlayer.Dispose()
     End Sub
+
+    Private Sub Player_Moved(sender As Object)
+        Dim player = DirectCast(sender, GamePlayer)
+        Console.WriteLine("Player World Position : {0}", player.WorldPosition)
+        Console.WriteLine("Player WorldMap Position : {0}", New Vector2(Math.Floor(player.WorldPosition.X / 21), Math.Floor(player.WorldPosition.Y / 15)))
+    End Sub
+
 End Class

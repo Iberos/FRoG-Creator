@@ -86,12 +86,10 @@ Client
  </summary>
 	<returns>True si il est controlable, False dans le cas contraire</returns>
 	<remarks></remarks>
-</member><member name="M:Client.GameCharacter.GetVelocity">
+</member><member name="P:Client.GameCharacter.Velocity">
 	<summary>
  Obtient la vitesse de déplacement du personnage
  </summary>
-	<returns></returns>
-	<remarks></remarks>
 </member>
 </members>
 </doc>

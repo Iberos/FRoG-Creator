@@ -33,6 +33,10 @@ Public Class Vector2
         End Set
     End Property
 
+    Public Overrides Function ToString() As String
+        Return String.Format("Vector2 [X : {0}, Y : {1}]", Me.X, Me.Y)
+    End Function
+
     Public Shared Operator +(vector1 As Vector2, vector2 As Vector2) As Vector2
         Return New Vector2(vector1.X + vector2.X, vector1.Y + vector2.Y)
     End Operator
