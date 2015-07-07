@@ -13,7 +13,7 @@ Public Class ServerConnecterDesigner
         gui.RemoveAllWidgets()
     End Sub
 
-    Public Sub DispatchEventsAndUpdate() Implements Designer.DispatchEventsAndUpdate
+    Public Sub DispatchEventsAndUpdate(batch As RenderWindow) Implements Designer.DispatchEventsAndUpdate
 
     End Sub
 

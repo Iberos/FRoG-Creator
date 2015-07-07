@@ -51,7 +51,12 @@ Module Main
         Window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
 
         ' Création de l'interface
-        Render = New RenderInterface(Window, ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.CONFIG_FILE), ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.FONT_FILE))
+        Try
+            Render = New RenderInterface(Window, ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.CONFIG_FILE), ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.FONT_FILE))
+        Catch e As TypeInitializationException
+            MsgBox(e.Source + " : " + e.Message, MsgBoxStyle.Critical)
+            Environment.Exit(1)
+        End Try
 
         AddHandler Window.Closed, AddressOf OnClose
         AddHandler Window.Resized, AddressOf OnResized
@@ -82,7 +87,7 @@ Module Main
 
             While (Window.IsOpen())
                 Window.DispatchEvents()
-                Designer.DispatchEventsAndUpdate()
+                Designer.DispatchEventsAndUpdate(Window)
 
                 Window.Clear(Color.White)
                 Designer.Draw(Window)
@@ -106,7 +111,7 @@ Module Main
     Private Sub OnResized(sender As Object, e As SizeEventArgs)
         Dim window As RenderWindow = DirectCast(sender, RenderWindow)
         window.SetView(New View(New FloatRect(0, 0, e.Width, e.Height)))
-        Debug.WriteLine(String.Format("{0}, {1}", e.Width, e.Height))
+
         Designer.Load(Render, ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.CONFIG_FILE))
     End Sub
 End Module

@@ -11,8 +11,12 @@ Public Class GamePlayDesigner
     Private chatContainer As ChatBox
     Private characterWindow As ChildWindow
     Private environment As GameEnvironment
+    Private mouseRect As RectangleShape
 
     Private testPlayer As GamePlayer
+
+    ' Position souris ref. World map
+    Public MouseWorldPosition As New Vector2
 
     ' GuiLoad
     Public Sub Load(gui As RenderInterface, configPath As String) Implements Designer.Load
@@ -93,19 +97,23 @@ Public Class GamePlayDesigner
         dragNDropClipser.Position = New Vector2f(200, 10)
         dragNDropClipser.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
         dragNDropClipser.IsEmpty = True
-        '
-        '
-        '
     End Sub
 
     Public Sub New()
+        Me.mouseRect = New RectangleShape
+        Me.mouseRect.OutlineThickness = 1
+        Me.mouseRect.OutlineColor = New Color(255, 0, 0, 80)
+        Me.mouseRect.FillColor = Color.Transparent
+        Me.mouseRect.Size = New Vector2f(32, 32)
+
         Me.environment = New GameEnvironment()
-        Me.testPlayer = New GamePlayer(New Texture(ContentType.SPRITES + "Sprite1.jpg"))
+        Me.testPlayer = New GamePlayer(New Texture(ContentType.SPRITES + "Sprite1.png"))
         AddHandler Me.testPlayer.Moved, AddressOf Me.Player_Moved
         'Me.testPlayer.WarpTo(15, 5)
     End Sub
 
-    Public Sub DispatchEventsAndUpdate() Implements Designer.DispatchEventsAndUpdate
+    Dim pressed = False
+    Public Sub DispatchEventsAndUpdate(batch As RenderWindow) Implements Designer.DispatchEventsAndUpdate
         ' GuiEvents
         If (Keyboard.IsKeyPressed(Keyboard.Key.Return)) Then 'Exemple d'écriture d'un texte dynamique dans le chatContainer
             If (chatBox.Focused And chatBox.Text.Length > 0) Then
@@ -127,9 +135,20 @@ Public Class GamePlayDesigner
             Me.testPlayer.MoveTo(GameDirection.RIGHT)
         ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.Left)) Then
             Me.testPlayer.MoveTo(GameDirection.LEFT)
-        ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.T)) Then
-            Me.testPlayer.WarpTo(15, 5)
+        ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.T) And Not pressed) Then
+            Me.testPlayer.WarpTo(MouseWorldPosition.X, MouseWorldPosition.Y)
+            pressed = True
         End If
+
+        If (Not Keyboard.IsKeyPressed(Keyboard.Key.T)) Then
+            pressed = False
+        End If
+
+        ' Mise à jour Mouse WorldMap position
+        MouseWorldPosition.X = Math.Truncate((Mouse.GetPosition(batch).X + Me.testPlayer.Location.X - (batch.GetView.Size.X / 2)) / 32)
+        MouseWorldPosition.Y = Math.Truncate((Mouse.GetPosition(batch).Y + Me.testPlayer.Location.Y + 32 - (batch.GetView.Size.Y / 2)) / 32)
+
+        Me.mouseRect.Position = New Vector2f(MouseWorldPosition.X, MouseWorldPosition.Y) * 32
 
         Me.testPlayer.Update()
         Me.environment.Update()
@@ -142,6 +161,7 @@ Public Class GamePlayDesigner
 
         batch.Draw(Me.environment)
         batch.Draw(Me.testPlayer)
+        batch.Draw(Me.mouseRect)
 
         batch.SetView(batch.DefaultView)
     End Sub
@@ -152,8 +172,7 @@ Public Class GamePlayDesigner
 
     Private Sub Player_Moved(sender As Object)
         Dim player = DirectCast(sender, GamePlayer)
-        Console.WriteLine("Player World Position : {0}", player.WorldPosition)
-        Console.WriteLine("Player WorldMap Position : {0}", New Vector2(Math.Floor(player.WorldPosition.X / 21), Math.Floor(player.WorldPosition.Y / 15)))
+        'Console.WriteLine("Player World Position : {0}", player.WorldPosition)
+        'Console.WriteLine("Player WorldMap Position : {0}", New Vector2(Math.Floor(player.WorldPosition.X / 21), Math.Floor(player.WorldPosition.Y / 15)))
     End Sub
-
 End Class

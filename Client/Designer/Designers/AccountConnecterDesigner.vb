@@ -101,7 +101,7 @@ Public Class AccountConnecterDesigner
         AddHandler btnConnect.LeftMouseClickedCallback, AddressOf btnConnect_OnClick
     End Sub
 
-    Public Sub DispatchEventsAndUpdate() Implements Designer.DispatchEventsAndUpdate
+    Public Sub DispatchEventsAndUpdate(batch As RenderWindow) Implements Designer.DispatchEventsAndUpdate
 
         Dim v = New Vector2f(oldPosition.X - bground.Position.X, oldPosition.Y - bground.Position.Y)
         If (Not windowRect.Contains(-bground.Position.X, -bground.Position.Y)) Then
