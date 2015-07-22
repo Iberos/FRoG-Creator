@@ -157,8 +157,12 @@
     <Compile Include="Database\GameItem.vb" />
     <Compile Include="Database\GameNPC.vb" />
     <Compile Include="Database\GameSpell.vb" />
+    <Compile Include="ExtendedButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GameCharacter.vb" />
     <Compile Include="GameDirection.vb" />
+    <Compile Include="GameWorldMapEntity.vb" />
     <Compile Include="Maps\GameTileset.vb" />
     <Compile Include="Maps\MapNPC.vb" />
     <Compile Include="frmConfigNPC.Designer.vb">
@@ -227,6 +231,7 @@
     </Compile>
     <Compile Include="GameOptions.vb" />
     <Compile Include="GamePlayer.vb" />
+    <Compile Include="GameWorldMap.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\ctrlGameMovement.resx">

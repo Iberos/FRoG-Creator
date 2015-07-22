@@ -1,9 +1,11 @@
 ﻿Imports System.IO
 
 Public Class frmMapProperties
-    Dim curBorder As Byte
 
-    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+    Private WorldMap As GameWorldMap
+    Private CurrentWorldMapButton As ExtendedButton
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles btnValid.Click
         With map
             .MapName = txtName.Text
             .MapType = lstTypes.SelectedIndex
@@ -22,91 +24,30 @@ Public Class frmMapProperties
             lstMaps.Items.Add(Directory.GetFiles("Maps")(i))
         Next
 
-        'LoadBorderMaps()
+        ' Création de la world map
+        WorldMap = New GameWorldMap(Me.pnlWorldMap)
+        ' Link de click bouton en panel WorldMap
+        AddHandler WorldMap.EntityClick, AddressOf WorldMapEntity_Click
     End Sub
 
-    'Private Sub LoadBorderMaps()
-    '    Dim buttons As New List(Of Button)
-    '    buttons.AddRange(New List(Of [Button]) From
-    '    {
-    '        btBorder1, btBorder2, btBorder3, btBorder4,
-    '        btBorder5, btBorder6, btBorder7, btBorder8
-    '    })
-
-    '    For i As Integer = 0 To buttons.Count
-    '        If (i > 7) Then
-    '            Exit For
-    '        End If
-    '        If (Not map.NeighborIndex(i) < 0) Then
-    '            buttons.ElementAt(i).Text = map.NeighborIndex(i).ToString()
-    '        End If
-    '    Next
-    'End Sub
-
-    Private Sub btBorder1_Click(sender As Object, e As EventArgs) Handles btBorder1.Click
-        curBorder = 0
-        pnlSelect.Visible = True
-    End Sub
-
-    Private Sub btBorder2_Click(sender As Object, e As EventArgs) Handles btBorder2.Click
-        curBorder = 1
-        pnlSelect.Visible = True
-    End Sub
-
-    Private Sub btBorder3_Click(sender As Object, e As EventArgs) Handles btBorder3.Click
-        curBorder = 2
-        pnlSelect.Visible = True
-    End Sub
-
-    Private Sub btBorder4_Click(sender As Object, e As EventArgs) Handles btBorder4.Click
-        curBorder = 3
-        pnlSelect.Visible = True
-    End Sub
-
-    Private Sub btBorder5_Click(sender As Object, e As EventArgs) Handles btBorder5.Click
-        curBorder = 4
-        pnlSelect.Visible = True
-    End Sub
-
-    Private Sub btBorder6_Click(sender As Object, e As EventArgs) Handles btBorder6.Click
-        curBorder = 5
-        pnlSelect.Visible = True
-    End Sub
-
-    Private Sub btBorder7_Click(sender As Object, e As EventArgs) Handles btBorder7.Click
-        curBorder = 6
-        pnlSelect.Visible = True
-    End Sub
-
-    Private Sub btBorder8_Click(sender As Object, e As EventArgs) Handles btBorder8.Click
-        curBorder = 7
-        pnlSelect.Visible = True
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub btnCancelPanelSelect_Click(sender As Object, e As EventArgs) Handles btnCancelPanelSelect.Click
         pnlSelect.Visible = False
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        ' TODO : Charger la map plutôt que l'index seulement
-        'map.MapsBorder(curBorder).Index = lstMaps.SelectedIndex
-        ' exemple : map.MapsBorder(curBorder) = LoadedMaps(lstMaps.SelectedIndex)
-        '           map.MapsBorder(curBorder).Index = UnIndexDeRefUnique
-        If (lstMaps.SelectedIndex > 0) Then
-            Dim neighborMap = GameMap.Load(lstMaps.SelectedIndex - 1)
-            If (Not IsNothing(neighborMap)) Then
-                map.NeighborIndex(curBorder) = neighborMap.Index
-            End If
+    Private Sub btnValidPanelSelect_Click(sender As Object, e As EventArgs) Handles btnValidPanelSelect.Click
 
-            LoadBorderMaps()
+        If (Not IsNothing(Me.CurrentWorldMapButton) And lstMaps.SelectedIndex > 0) Then
+            Me.CurrentWorldMapButton.Text = lstMaps.SelectedIndex.ToString()
         End If
 
+        Me.CurrentWorldMapButton = Nothing
         pnlSelect.Visible = False
     End Sub
 
-    Private Sub pnlSelect_VisibleChanged(sender As Object, e As EventArgs) Handles pnlSelect.VisibleChanged
-        If pnlSelect.Visible And Not IsNothing(map.NeighborIndex(curBorder)) Then
-            lstMaps.SelectedIndex = map.NeighborIndex(curBorder) + 1
-        End If
+    ' Lors d'un click sur un bouton du panel WorldMap
+    Private Sub WorldMapEntity_Click(sender As Object, e As EventArgs)
+        pnlSelect.Visible = True
+        Me.CurrentWorldMapButton = DirectCast(sender, ExtendedButton)
     End Sub
+
 End Class

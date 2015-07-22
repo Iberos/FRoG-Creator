@@ -6,7 +6,21 @@ Editeur
 </name>
 </assembly>
 <members>
-<member name="P:Editeur.My.Resources.Resources.ResourceManager">
+<member name="P:Editeur.GameWorldMap.Map(System.Int32,System.Int32)">
+	<summary>
+ Obtient ou définit la map aux coordonées spécifiées (WorldMap)
+ </summary>
+	<param name="x">Coordonnée X (horizontale)</param>
+	<param name="y">Coordonnée Y (verticale)</param>
+	<value>La map à insérer</value>
+	<returns>La map correspondante</returns>
+	<remarks></remarks>
+</member><member name="M:Editeur.GameWorldMap.GeneratePanelContents">
+	<summary>
+ Génère et initialise les boutons et les ajoutes dans le panel
+ </summary>
+	<remarks></remarks>
+</member><member name="P:Editeur.My.Resources.Resources.ResourceManager">
 	<summary>
   Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
 </summary>
