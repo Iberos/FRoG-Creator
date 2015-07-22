@@ -79,24 +79,24 @@ Public Class GamePlayDesigner
         '
         ' dragNDropItem
         '
-        Dim dragNDropItem = gui.Add(New GUIActionCase(), "dragNDropItem")
-        dragNDropItem.Size = New Vector2f(32, 32)
-        dragNDropItem.Position = New Vector2f(84, 10)
-        dragNDropItem.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
-        dragNDropItem.AddFrame(ContentType.SPELLS + "spell2.png", 1000)
-        dragNDropItem.AddFrame(ContentType.SPELLS + "spell3.png", 1000)
-        dragNDropItem.AddFrame(ContentType.SPELLS + "spell4.png", 1000)
-        dragNDropItem.IsEmpty = False
-        dragNDropItem.Looping = True
-        dragNDropItem.Play()
+        'Dim dragNDropItem = gui.Add(New GUIActionCase(), "dragNDropItem")
+        'dragNDropItem.Size = New Vector2f(32, 32)
+        'dragNDropItem.Position = New Vector2f(84, 10)
+        'dragNDropItem.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
+        'dragNDropItem.AddFrame(ContentType.SPELLS + "spell2.png", 1000)
+        'dragNDropItem.AddFrame(ContentType.SPELLS + "spell3.png", 1000)
+        'dragNDropItem.AddFrame(ContentType.SPELLS + "spell4.png", 1000)
+        'dragNDropItem.IsEmpty = False
+        'dragNDropItem.Looping = True
+        'dragNDropItem.Play()
         '
         ' dragNDropClipser
         '
-        Dim dragNDropClipser = gui.Add(New GUIActionCase(), "dragNDropClipser")
-        dragNDropClipser.Size = New Vector2f(32, 32)
-        dragNDropClipser.Position = New Vector2f(200, 10)
-        dragNDropClipser.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
-        dragNDropClipser.IsEmpty = True
+        'Dim dragNDropClipser = gui.Add(New GUIActionCase(), "dragNDropClipser")
+        'dragNDropClipser.Size = New Vector2f(32, 32)
+        'dragNDropClipser.Position = New Vector2f(200, 10)
+        'dragNDropClipser.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
+        'dragNDropClipser.IsEmpty = True
     End Sub
 
     Public Sub New()
@@ -108,6 +108,7 @@ Public Class GamePlayDesigner
 
         Me.environment = New GameEnvironment()
         Me.testPlayer = New GamePlayer(New Texture(ContentType.SPRITES + "Sprite1.png"))
+        'Me.testPlayer.SetVelocity(GameVelocity.Fast)
         AddHandler Me.testPlayer.Moved, AddressOf Me.Player_Moved
         'Me.testPlayer.WarpTo(15, 5)
     End Sub
@@ -146,7 +147,7 @@ Public Class GamePlayDesigner
 
         ' Mise à jour Mouse WorldMap position
         MouseWorldPosition.X = Math.Truncate((Mouse.GetPosition(batch).X + Me.testPlayer.Location.X - (batch.GetView.Size.X / 2)) / 32)
-        MouseWorldPosition.Y = Math.Truncate((Mouse.GetPosition(batch).Y + Me.testPlayer.Location.Y + 32 - (batch.GetView.Size.Y / 2)) / 32)
+        MouseWorldPosition.Y = Math.Truncate((Mouse.GetPosition(batch).Y + Me.testPlayer.Location.Y - (batch.GetView.Size.Y / 2)) / 32)
 
         Me.mouseRect.Position = New Vector2f(MouseWorldPosition.X, MouseWorldPosition.Y) * 32
 
@@ -156,7 +157,7 @@ Public Class GamePlayDesigner
 
     Public Sub Draw(batch As RenderWindow) Implements Designer.Draw
         Dim environmentAndPlayersView = batch.GetView()
-        environmentAndPlayersView.Center = New Vector2f(testPlayer.Location.X, testPlayer.Location.Y + 32)
+        environmentAndPlayersView.Center = New Vector2f(testPlayer.Location.X, testPlayer.Location.Y)
         batch.SetView(environmentAndPlayersView)
 
         batch.Draw(Me.environment)
@@ -168,6 +169,7 @@ Public Class GamePlayDesigner
 
     Public Sub Dispose() Implements IDisposable.Dispose
         Me.testPlayer.Dispose()
+        Me.mouseRect.Dispose()
     End Sub
 
     Private Sub Player_Moved(sender As Object)

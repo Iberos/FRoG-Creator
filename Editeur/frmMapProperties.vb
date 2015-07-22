@@ -22,26 +22,26 @@ Public Class frmMapProperties
             lstMaps.Items.Add(Directory.GetFiles("Maps")(i))
         Next
 
-        LoadBorderMaps()
+        'LoadBorderMaps()
     End Sub
 
-    Private Sub LoadBorderMaps()
-        Dim buttons As New List(Of Button)
-        buttons.AddRange(New List(Of [Button]) From
-        {
-            btBorder1, btBorder2, btBorder3, btBorder4,
-            btBorder5, btBorder6, btBorder7, btBorder8
-        })
+    'Private Sub LoadBorderMaps()
+    '    Dim buttons As New List(Of Button)
+    '    buttons.AddRange(New List(Of [Button]) From
+    '    {
+    '        btBorder1, btBorder2, btBorder3, btBorder4,
+    '        btBorder5, btBorder6, btBorder7, btBorder8
+    '    })
 
-        For i As Integer = 0 To buttons.Count
-            If (i > 7) Then
-                Exit For
-            End If
-            If (Not map.NeighborIndex(i) < 0) Then
-                buttons.ElementAt(i).Text = map.NeighborIndex(i).ToString()
-            End If
-        Next
-    End Sub
+    '    For i As Integer = 0 To buttons.Count
+    '        If (i > 7) Then
+    '            Exit For
+    '        End If
+    '        If (Not map.NeighborIndex(i) < 0) Then
+    '            buttons.ElementAt(i).Text = map.NeighborIndex(i).ToString()
+    '        End If
+    '    Next
+    'End Sub
 
     Private Sub btBorder1_Click(sender As Object, e As EventArgs) Handles btBorder1.Click
         curBorder = 0

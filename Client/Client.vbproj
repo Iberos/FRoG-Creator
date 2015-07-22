@@ -145,6 +145,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="NativeMethods.vb" />
     <Compile Include="Network\GameClient.vb" />
     <Compile Include="Network\ModClientPackets.vb" />
     <Compile Include="Network\ModPacketsActions.vb" />

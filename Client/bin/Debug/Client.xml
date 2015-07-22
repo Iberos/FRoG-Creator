@@ -6,7 +6,47 @@ Client
 </name>
 </assembly>
 <members>
-<member name="M:Client.GUIActionCase.Move(System.Int32,System.Int32)">
+<member name="M:Client.GameCharacter.SetCharacterControlState(System.Boolean@)">
+	<summary>
+ Modifie l'état de controle du personnage
+ </summary>
+	<param name="state">True pour laisser le character controlable et False pour en interdire le controle</param>
+	<remarks></remarks>
+</member><member name="M:Client.GameCharacter.SetVelocity(Client.GameVelocity@)">
+	<summary>
+ Modifie la vitesse de course du personnage
+ </summary>
+	<param name="velocity">La vitesse</param>
+	<remarks></remarks>
+</member><member name="M:Client.GameCharacter.SetTexture(SFML.Graphics.Texture)">
+	<summary>
+ Modifie le rendu du personnage
+ </summary>
+	<param name="texture">La nouvelle texture de rendu</param>
+	<remarks></remarks>
+</member><member name="M:Client.GameCharacter.SetDirection(Client.GameDirection)">
+	<summary>
+ Définit la direction du personnage
+ </summary>
+	<param name="direction">La direction</param>
+	<remarks></remarks>
+</member><member name="M:Client.GameCharacter.IsMoveable">
+	<summary>
+ Obtient l'état de déplacement du personnage
+ </summary>
+	<returns>True si il est possible de le déplacer, False dans le cas contraire</returns>
+	<remarks></remarks>
+</member><member name="M:Client.GameCharacter.IsControlable">
+	<summary>
+ Obtient l'état de controle du personnage
+ </summary>
+	<returns>True si il est controlable, False dans le cas contraire</returns>
+	<remarks></remarks>
+</member><member name="P:Client.GameCharacter.Velocity">
+	<summary>
+ Obtient la vitesse de déplacement du personnage
+ </summary>
+</member><member name="M:Client.GUIActionCase.Move(System.Int32,System.Int32)">
 	<summary>
  Déplace le composant vers la position spécifiée en prenant en compte la position relative de selection
  </summary>
@@ -50,46 +90,6 @@ Client
 	<param name="obj">L'instance d'objet définissant la ressource</param>
 	<returns>Vrai si la ressource a été ajouté, Faux dans le cas contraire</returns>
 	<remarks></remarks>
-</member><member name="M:Client.GameCharacter.SetCharacterControlState(System.Boolean@)">
-	<summary>
- Modifie l'état de controle du personnage
- </summary>
-	<param name="state">True pour laisser le character controlable et False pour en interdire le controle</param>
-	<remarks></remarks>
-</member><member name="M:Client.GameCharacter.SetVelocity(Client.GameVelocity@)">
-	<summary>
- Modifie la vitesse de course du personnage
- </summary>
-	<param name="velocity">La vitesse</param>
-	<remarks></remarks>
-</member><member name="M:Client.GameCharacter.SetTexture(SFML.Graphics.Texture)">
-	<summary>
- Modifie le rendu du personnage
- </summary>
-	<param name="texture">La nouvelle texture de rendu</param>
-	<remarks></remarks>
-</member><member name="M:Client.GameCharacter.SetDirection(Client.GameDirection)">
-	<summary>
- Définit la direction du personnage
- </summary>
-	<param name="direction">La direction</param>
-	<remarks></remarks>
-</member><member name="M:Client.GameCharacter.IsMoveable">
-	<summary>
- Obtient l'état de déplacement du personnage
- </summary>
-	<returns>True si il est possible de le déplacer, False dans le cas contraire</returns>
-	<remarks></remarks>
-</member><member name="M:Client.GameCharacter.IsControlable">
-	<summary>
- Obtient l'état de controle du personnage
- </summary>
-	<returns>True si il est controlable, False dans le cas contraire</returns>
-	<remarks></remarks>
-</member><member name="P:Client.GameCharacter.Velocity">
-	<summary>
- Obtient la vitesse de déplacement du personnage
- </summary>
 </member>
 </members>
 </doc>

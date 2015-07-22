@@ -116,7 +116,7 @@ Public MustInherit Class GameCharacter
     ''' <param name="velocity">La vitesse</param>
     ''' <remarks></remarks>
     Public Sub SetVelocity(ByRef velocity As GameVelocity)
-
+        Me.velocityValue = velocity
     End Sub
 
     ''' <summary>

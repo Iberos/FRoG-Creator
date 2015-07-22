@@ -5,11 +5,6 @@ Imports TGUI
 Imports System.IO
 
 Module Main
-    Private Declare Function GetConsoleWindow Lib "kernel32.dll" () As IntPtr
-    Private Declare Function ShowWindow Lib "user32.dll" (ByVal hwnd As IntPtr, ByVal nCmdShow As Int32) As Int32
-    Private Const SW_SHOWNORMAL As Int32 = 1
-    Private Const SW_HIDE As Int32 = 0
-    
     Public Window As RenderWindow
     Public Render As RenderInterface
     Public Designer As Designer
@@ -23,6 +18,8 @@ Module Main
     Public client As New GameClient
 
     Private Sub Loader(args As String())
+
+
         ' Chargement des arguments d'instance
         If (args.Length > 1) Then
             ' Ajouter ici un nouveau test pour spécifier une obligation de lancement du client auprès d'un launcher
@@ -41,7 +38,7 @@ Module Main
         ContentManager.Add(Of String)(GameResources.FONT_FILE, "GoBoom.ttf")
         ContentManager.Add(Of Texture)(GameResources.ICON_FILE, New Texture(ContentType.ICONS + "FC.png"))
 
-        'ShowWindow(GetConsoleWindow(), SW_HIDE)
+
         Console.WriteLine("--- DEBUG ---")
 
         ' Création de la fenêtre cliente
@@ -54,7 +51,7 @@ Module Main
         Try
             Render = New RenderInterface(Window, ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.CONFIG_FILE), ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.FONT_FILE))
         Catch e As TypeInitializationException
-            MsgBox(e.Source + " : " + e.Message, MsgBoxStyle.Critical)
+            MsgBox("[" & e.HResult & "] " & e.Message, MsgBoxStyle.Critical, e.Source)
             Environment.Exit(1)
         End Try
 
@@ -67,6 +64,8 @@ Module Main
     '*****************************************************
 
     Sub Main(args As String())
+
+        'NativeMethods.ShowWindow(NativeMethods.GetConsoleWindow(), 0)
 
         Loader(args)
 
@@ -97,7 +96,7 @@ Module Main
             End While
 
         Catch e As NullReferenceException
-            MsgBox(e.Source + " : " + e.Message, MsgBoxStyle.Critical)
+            MsgBox("[" & e.HResult & "] " & e.Message, MsgBoxStyle.Critical, e.Source)
         Finally
             Environment.Exit(1)
         End Try
