@@ -1,6 +1,7 @@
 ﻿Imports SFML.Window
 Imports SFML.Graphics
 Imports TGUI
+Imports SFML.System
 
 Public Class GamePlayDesigner
     Implements Designer

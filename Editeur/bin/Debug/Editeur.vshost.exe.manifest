@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Editeur.exe" size="233472">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Editeur.exe" size="232960">
       <assemblyIdentity name="Editeur" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>OCvWOC/CiCLyBCEGIyRYQr2raoNiQu6h8uWtzEabf9o=</dsig:DigestValue>
+        <dsig:DigestValue>UOgony2kb1gQt6ghCAq7+D0eI/j7Bj1qvS9rqU/8RqU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

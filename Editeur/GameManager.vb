@@ -1,6 +1,7 @@
 ﻿Imports SFML.Window
 Imports SFML.Graphics
 Imports System.IO
+Imports SFML.System
 
 Class GameManager
 

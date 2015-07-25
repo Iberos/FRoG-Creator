@@ -4,6 +4,7 @@ Imports System.Runtime.Serialization.Formatters.Binary
 Imports System
 Imports System.IO
 Imports System.Collections
+Imports SFML.System
 
 Public Class frmMapEditor
 

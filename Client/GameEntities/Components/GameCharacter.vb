@@ -1,6 +1,7 @@
 ﻿Imports SFML
 Imports SFML.Graphics
 Imports SFML.Window
+Imports SFML.System
 
 Public MustInherit Class GameCharacter
     Inherits GameEntity

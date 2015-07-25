@@ -1,4 +1,5 @@
 ﻿Imports SFML.Window
+Imports SFML.System
 
 Public Class GameDirection
     Private vector As Vector2f

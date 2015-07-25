@@ -1,6 +1,7 @@
 ﻿Imports TGUI
-Imports SFML.Window
 Imports SFML.Graphics
+Imports SFML.System
+Imports SFML.Window
 
 Public Class GUIActionCase
     Inherits AnimatedPicture
