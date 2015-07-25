@@ -1,8 +1,8 @@
 ﻿Imports SFML.Graphics
-Imports SFML.Window
 Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.IO
 Imports System.Reflection
+Imports SFML.System
 
 <Serializable>
 Public Class GameMap

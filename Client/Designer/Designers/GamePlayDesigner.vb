@@ -24,19 +24,19 @@ Public Class GamePlayDesigner
 
         gui.RemoveAllWidgets()
         Dim guiView = Main.Window.GetView()
-        '
-        ' chatBox
-        '
-        chatBox = gui.Add(New EditBox(configPath), "chatBox")
-        chatBox.Size = New Vector2f(guiView.Size.X * 0.4, 30)
-        chatBox.Position = New Vector2f(20, guiView.Size.Y - 40)
-        chatBox.Transparency = 120
+        ''
+        '' chatBox
+        ''
+        ChatBox = gui.Add(New EditBox(configPath), "chatBox")
+        ChatBox.Size = New Vector2f(guiView.Size.X * 0.4, 30)
+        ChatBox.Position = New Vector2f(20, guiView.Size.Y - 40)
+        ChatBox.Transparency = 120
         '
         ' chatContainer
         '
         chatContainer = gui.Add(New ChatBox(configPath), "chatContainer")
-        chatContainer.Size = New Vector2f(chatBox.Size.X, 100)
-        chatContainer.Position = New Vector2f(chatBox.Position.X, chatBox.Position.Y - chatContainer.Size.Y - 20)
+        chatContainer.Size = New Vector2f(ChatBox.Size.X, 100)
+        chatContainer.Position = New Vector2f(ChatBox.Position.X, ChatBox.Position.Y - chatContainer.Size.Y - 20)
         chatContainer.TextSize = 12
         chatContainer.BackgroundColor = New Color(100, 100, 100, 50)
         chatContainer.BorderColor = Color.Transparent
@@ -78,26 +78,26 @@ Public Class GamePlayDesigner
         mpProgress.Value = 75
         mpProgress.Text = String.Format("MP   {0} / {1}", mpProgress.Value, mpProgress.Maximum)
         '
-        ' dragNDropItem
+        ' dragNDropItem()
         '
-        'Dim dragNDropItem = gui.Add(New GUIActionCase(), "dragNDropItem")
-        'dragNDropItem.Size = New Vector2f(32, 32)
-        'dragNDropItem.Position = New Vector2f(84, 10)
-        'dragNDropItem.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
-        'dragNDropItem.AddFrame(ContentType.SPELLS + "spell2.png", 1000)
-        'dragNDropItem.AddFrame(ContentType.SPELLS + "spell3.png", 1000)
-        'dragNDropItem.AddFrame(ContentType.SPELLS + "spell4.png", 1000)
-        'dragNDropItem.IsEmpty = False
-        'dragNDropItem.Looping = True
-        'dragNDropItem.Play()
+        Dim dragNDropItem = gui.Add(New GUIActionCase(), "dragNDropItem")
+        dragNDropItem.Size = New Vector2f(32, 32)
+        dragNDropItem.Position = New Vector2f(84, 10)
+        dragNDropItem.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
+        dragNDropItem.AddFrame(ContentType.SPELLS + "spell2.png", 1000)
+        dragNDropItem.AddFrame(ContentType.SPELLS + "spell3.png", 1000)
+        dragNDropItem.AddFrame(ContentType.SPELLS + "spell4.png", 1000)
+        dragNDropItem.IsEmpty = False
+        dragNDropItem.Looping = True
+        dragNDropItem.Play()
         '
         ' dragNDropClipser
         '
-        'Dim dragNDropClipser = gui.Add(New GUIActionCase(), "dragNDropClipser")
-        'dragNDropClipser.Size = New Vector2f(32, 32)
-        'dragNDropClipser.Position = New Vector2f(200, 10)
-        'dragNDropClipser.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
-        'dragNDropClipser.IsEmpty = True
+        Dim dragNDropClipser = gui.Add(New GUIActionCase(), "dragNDropClipser")
+        dragNDropClipser.Size = New Vector2f(32, 32)
+        dragNDropClipser.Position = New Vector2f(200, 10)
+        dragNDropClipser.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
+        dragNDropClipser.IsEmpty = True
     End Sub
 
     Public Sub New()

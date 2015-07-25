@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.CompilerServices
-Imports TGUI
 Imports SFML.Graphics
+Imports TGUI
 
 
 Module GuiExtension

@@ -84,8 +84,9 @@
     <Reference Include="Tao.OpenGl.ExtensionLoader">
       <HintPath>.\Tao.OpenGl.ExtensionLoader.dll</HintPath>
     </Reference>
-    <Reference Include="tguinet">
-      <HintPath>.\tguinet.dll</HintPath>
+    <Reference Include="tguinet, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\tguinet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

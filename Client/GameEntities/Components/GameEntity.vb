@@ -1,5 +1,5 @@
 ﻿Imports SFML.Graphics
-Imports SFML.Window
+Imports SFML.System
 
 Public MustInherit Class GameEntity
     Inherits Sprite
