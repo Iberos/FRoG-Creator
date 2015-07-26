@@ -1,5 +1,4 @@
 ﻿Imports TGUI
-Imports SFML.Window
 Imports SFML.Graphics
 Imports SFML.System
 
