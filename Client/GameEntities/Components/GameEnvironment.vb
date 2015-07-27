@@ -15,7 +15,9 @@ Public Class GameEnvironment
         LoadTilesets()
         LoadMaps()
 
-        Me.currentMap = MAPS.ElementAt(0).Value
+        If (MAPS.Count > 0) Then
+            Me.currentMap = MAPS.ElementAt(0).Value
+        End If
     End Sub
 
     Public Sub SetCurrentMap(map As GameMap)

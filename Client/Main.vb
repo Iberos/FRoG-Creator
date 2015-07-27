@@ -27,31 +27,39 @@ Module Main
                 Dim tmpWidth As UInteger = UInteger.Parse(args(0))
                 Dim tmpHeight As UInteger = UInteger.Parse(args(1))
 
-                Batch.SCREEN_WIDTH = If(tmpWidth < Batch.SCREEN_WIDTH, Batch.SCREEN_WIDTH, tmpWidth)
-                Batch.SCREEN_HEIGHT = If(tmpHeight < Batch.SCREEN_HEIGHT, Batch.SCREEN_HEIGHT, tmpHeight)
+                SCREEN_WIDTH = If(tmpWidth < SCREEN_WIDTH, SCREEN_WIDTH, tmpWidth)
+                SCREEN_HEIGHT = If(tmpHeight < SCREEN_HEIGHT, SCREEN_HEIGHT, tmpHeight)
             End If
         End If
 
-        ' Contents
-        ContentManager.Add(Of String)(GameResources.GAME_TITLE, "Frog Creator 1.0")
-        ContentManager.Add(Of String)(GameResources.CONFIG_FILE, "Black.conf")
-        ContentManager.Add(Of String)(GameResources.FONT_FILE, "GoBoom.ttf")
-        ContentManager.Add(Of Texture)(GameResources.ICON_FILE, New Texture(ContentType.ICONS + "FC.png"))
-
-
-        Console.WriteLine("--- DEBUG ---")
-
-        ' Création de la fenêtre cliente
-        Window = New RenderWindow(New VideoMode(Batch.SCREEN_WIDTH, Batch.SCREEN_HEIGHT), ContentManager.Load(Of String)(GameResources.GAME_TITLE), Styles.Default)
-        Window.SetFramerateLimit(Batch.FPS)
-        icon = ContentManager.Load(Of Texture)(GameResources.ICON_FILE)
-        Window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
-
-        ' Création de l'interface
         Try
-            Render = New RenderInterface(Window, ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.CONFIG_FILE), ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.FONT_FILE))
+            ' Contents
+            ContentManager.Add(GameResources.GAME_TITLE, "Frog Creator 1.0")
+            ContentManager.Add(GameResources.CONFIG_FILE, "Black.conf")
+            ContentManager.Add(GameResources.FONT_FILE, "GoBoom.ttf")
+            ContentManager.Add(GameResources.ICON_FILE, New Texture(ContentType.ICONS + "FC.png"))
+
+
+            Console.WriteLine("--- DEBUG ---")
+
+            ' Création de la fenêtre cliente
+            Window = New RenderWindow(New VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), ContentManager.Load(Of String)(GameResources.GAME_TITLE), Styles.Default)
+            Window.SetFramerateLimit(FPS)
+            icon = ContentManager.Load(Of Texture)(GameResources.ICON_FILE)
+            Window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
+
+            ' Création de l'interface
+            Dim configFilePath As String = ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.CONFIG_FILE)
+            Dim configFontPath As String = ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.FONT_FILE)
+            Render = New RenderInterface(Window, configFilePath, configFontPath)
+
+        Catch e As LoadingFailedException
+            MsgBox("Erreur " & e.HResult & " " & e.Source & Environment.NewLine & e.Message, MsgBoxStyle.Critical, "Client")
+            ErrorLog.Write(e)
+            Environment.Exit(1)
         Catch e As TypeInitializationException
-            MsgBox("[" & e.HResult & "] " & e.Message, MsgBoxStyle.Critical, e.Source)
+            MsgBox("Erreur " & e.HResult & " " & e.Source & Environment.NewLine & e.Message, MsgBoxStyle.Critical, "Client")
+            ErrorLog.Write(e)
             Environment.Exit(1)
         End Try
 
@@ -82,7 +90,7 @@ Module Main
             ' ----- FIN DE TEST -----
 
             ' FIX issue #8 : TGUI n'initialise pas son presse-papier. On s'en occupe pour lui...
-            TGUI.Global.Clipboard = String.Empty
+            [Global].Clipboard = String.Empty
 
             While (Window.IsOpen())
                 Window.DispatchEvents()

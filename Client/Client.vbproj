@@ -106,6 +106,7 @@
     <Compile Include="ContentHandler\ContentManager.vb" />
     <Compile Include="ContentHandler\ContentPath.vb" />
     <Compile Include="ContentHandler\ContentType.vb" />
+    <Compile Include="ContentHandler\ErrorLog.vb" />
     <Compile Include="ContentHandler\GameResources.vb" />
     <Compile Include="Designer\Utilities\GuiExtension.vb" />
     <Compile Include="Designer\Utilities\Vector2.vb" />
