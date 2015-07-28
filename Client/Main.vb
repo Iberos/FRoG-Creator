@@ -3,6 +3,7 @@ Imports SFML.Graphics
 Imports SFML.Window
 Imports TGUI
 Imports System.IO
+Imports SFML.System
 
 Module Main
     Public Window As RenderWindow
@@ -13,6 +14,7 @@ Module Main
     '*********** Attributs & Initialisations **************
 
     Private icon As Texture
+    Private clock As Clock
 
     ' TEMP
     Public client As New GameClient
@@ -53,6 +55,8 @@ Module Main
             Dim configFontPath As String = ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.FONT_FILE)
             Render = New RenderInterface(Window, configFilePath, configFontPath)
 
+            clock = New Clock
+
         Catch e As LoadingFailedException
             MsgBox("Erreur " & e.HResult & " " & e.Source & Environment.NewLine & e.Message, MsgBoxStyle.Critical, "Client")
             ErrorLog.Write(e)
@@ -92,9 +96,12 @@ Module Main
             ' FIX issue #8 : TGUI n'initialise pas son presse-papier. On s'en occupe pour lui...
             [Global].Clipboard = String.Empty
 
+
+
             While (Window.IsOpen())
+                clock.Restart()
                 Window.DispatchEvents()
-                Designer.DispatchEventsAndUpdate(Window)
+                Designer.DispatchEventsAndUpdate(Window, clock)
 
                 Window.Clear(Color.White)
                 Designer.Draw(Window)

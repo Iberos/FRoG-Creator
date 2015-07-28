@@ -1,6 +1,7 @@
 ﻿Imports TGUI
 Imports SFML.Window
 Imports SFML.Graphics
+Imports SFML.System
 
 Public Class ServerConnecterDesigner
     Implements Designer
@@ -13,7 +14,7 @@ Public Class ServerConnecterDesigner
         gui.RemoveAllWidgets()
     End Sub
 
-    Public Sub DispatchEventsAndUpdate(batch As RenderWindow) Implements Designer.DispatchEventsAndUpdate
+    Public Sub DispatchEventsAndUpdate(batch As RenderWindow, clock As Clock) Implements Designer.DispatchEventsAndUpdate
 
     End Sub
 

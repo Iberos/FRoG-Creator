@@ -115,7 +115,7 @@ Public Class GamePlayDesigner
     End Sub
 
     Dim pressed = False
-    Public Sub DispatchEventsAndUpdate(batch As RenderWindow) Implements Designer.DispatchEventsAndUpdate
+    Public Sub DispatchEventsAndUpdate(batch As RenderWindow, clock As Clock) Implements Designer.DispatchEventsAndUpdate
         ' GuiEvents
         If (Keyboard.IsKeyPressed(Keyboard.Key.Return)) Then 'Exemple d'écriture d'un texte dynamique dans le chatContainer
             If (chatBox.Focused And chatBox.Text.Length > 0) Then
@@ -152,8 +152,8 @@ Public Class GamePlayDesigner
 
         Me.mouseRect.Position = New Vector2f(MouseWorldPosition.X, MouseWorldPosition.Y) * 32
 
-        Me.testPlayer.Update()
-        Me.environment.Update()
+        Me.testPlayer.Update(clock)
+        Me.environment.Update(clock)
     End Sub
 
     Public Sub Draw(batch As RenderWindow) Implements Designer.Draw

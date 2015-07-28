@@ -1,5 +1,6 @@
 ﻿Imports SFML.Graphics
 Imports System.IO
+Imports SFML.System
 
 Public Class GameEnvironment
     Implements Drawable
@@ -67,7 +68,7 @@ Public Class GameEnvironment
         Next
     End Sub
 
-    Public Sub Update() Implements IUpdatable.Update
+    Public Sub Update(clock As Clock) Implements IUpdatable.Update
 
     End Sub
 

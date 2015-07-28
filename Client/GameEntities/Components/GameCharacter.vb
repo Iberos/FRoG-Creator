@@ -68,7 +68,9 @@ Public MustInherit Class GameCharacter
         Me.movementPath.Add(direction)
     End Sub
 
-    Public Sub Update() Implements IUpdatable.Update
+    Public Sub Update(clock As Clock) Implements IUpdatable.Update
+
+        Console.WriteLine(clock.ElapsedTime.AsMicroseconds)
 
         ' Déplacement de l'entité selon son chemin prédéfini
         If (Me.movementPath.Count > 0 And Me.canMove) Then
