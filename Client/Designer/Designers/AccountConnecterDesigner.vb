@@ -101,7 +101,7 @@ Public Class AccountConnecterDesigner
         AddHandler btnConnect.LeftMouseClickedCallback, AddressOf btnConnect_OnClick
     End Sub
 
-    Public Sub DispatchEventsAndUpdate(batch As RenderWindow, clock As Clock) Implements Designer.DispatchEventsAndUpdate
+    Public Sub DispatchEventsAndUpdate(batch As RenderWindow, time As Time) Implements Designer.DispatchEventsAndUpdate
 
         Dim v = New Vector2f(oldPosition.X - bground.Position.X, oldPosition.Y - bground.Position.Y)
         If (Not windowRect.Contains(-bground.Position.X, -bground.Position.Y)) Then
@@ -114,7 +114,7 @@ Public Class AccountConnecterDesigner
         bground.Position += radiusMovement
 
         ' Exemple de poll pour IHM
-        If (connectionTimeout.AsyncWait(1, 60)) Then
+        If (connectionTimeout.AsyncWait(1000, time)) Then
             If (Not Main.client.isConnected()) Then
                 lblInfo.TextColor = Color.Red
                 lblInfo.TextSize = 15

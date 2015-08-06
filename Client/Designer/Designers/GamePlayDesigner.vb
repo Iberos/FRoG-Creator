@@ -14,6 +14,8 @@ Public Class GamePlayDesigner
     Private environment As GameEnvironment
     Private mouseRect As RectangleShape
 
+    Private testTimer As New GameTimer
+
     Private testPlayer As GamePlayer
 
     ' Position souris ref. World map
@@ -115,7 +117,7 @@ Public Class GamePlayDesigner
     End Sub
 
     Dim pressed = False
-    Public Sub DispatchEventsAndUpdate(batch As RenderWindow, clock As Clock) Implements Designer.DispatchEventsAndUpdate
+    Public Sub DispatchEventsAndUpdate(batch As RenderWindow, time As Time) Implements Designer.DispatchEventsAndUpdate
         ' GuiEvents
         If (Keyboard.IsKeyPressed(Keyboard.Key.Return)) Then 'Exemple d'écriture d'un texte dynamique dans le chatContainer
             If (chatBox.Focused And chatBox.Text.Length > 0) Then
@@ -130,13 +132,13 @@ Public Class GamePlayDesigner
 
         ' GameEvents
         If (Keyboard.IsKeyPressed(Keyboard.Key.Up)) Then
-            Me.testPlayer.MoveTo(GameDirection.UP)
+            Me.testPlayer.MoveTo(GameDirection.Up)
         ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.Down)) Then
-            Me.testPlayer.MoveTo(GameDirection.DOWN)
+            Me.testPlayer.MoveTo(GameDirection.Down)
         ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.Right)) Then
-            Me.testPlayer.MoveTo(GameDirection.RIGHT)
+            Me.testPlayer.MoveTo(GameDirection.Right)
         ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.Left)) Then
-            Me.testPlayer.MoveTo(GameDirection.LEFT)
+            Me.testPlayer.MoveTo(GameDirection.Left)
         ElseIf (Keyboard.IsKeyPressed(Keyboard.Key.T) And Not pressed) Then
             Me.testPlayer.WarpTo(MouseWorldPosition.X, MouseWorldPosition.Y)
             pressed = True
@@ -152,8 +154,8 @@ Public Class GamePlayDesigner
 
         Me.mouseRect.Position = New Vector2f(MouseWorldPosition.X, MouseWorldPosition.Y) * 32
 
-        Me.testPlayer.Update(clock)
-        Me.environment.Update(clock)
+        Me.testPlayer.Update(time)
+        Me.environment.Update(time)
     End Sub
 
     Public Sub Draw(batch As RenderWindow) Implements Designer.Draw
@@ -175,7 +177,7 @@ Public Class GamePlayDesigner
 
     Private Sub Player_Moved(sender As Object)
         Dim player = DirectCast(sender, GamePlayer)
-        'Console.WriteLine("Player World Position : {0}", player.WorldPosition)
+        Console.WriteLine("Player World Position : {0}", player.WorldPosition)
         'Console.WriteLine("Player WorldMap Position : {0}", New Vector2(Math.Floor(player.WorldPosition.X / 21), Math.Floor(player.WorldPosition.Y / 15)))
     End Sub
 End Class

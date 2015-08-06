@@ -1,5 +1,5 @@
 ﻿Imports SFML.System
 
 Public Interface IUpdatable
-    Sub Update(clock As Clock)
+    Sub Update(time As Time)
 End Interface

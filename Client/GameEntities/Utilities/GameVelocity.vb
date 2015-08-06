@@ -1,8 +1,7 @@
 ﻿
 Public Enum GameVelocity
-    Low = 1
-    Normal = 2
-    Fast = 4
-    VeryFast = 8
-    XVeryFast = 16
+    Slow = 40
+    Medium = 80
+    Fast = 120
+    VeryFast = 160
 End Enum

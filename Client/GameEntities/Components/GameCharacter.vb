@@ -7,11 +7,11 @@ Public MustInherit Class GameCharacter
     Inherits GameEntity
     Implements IUpdatable
 
-    Protected Shared DEFAULT_DIRECTION As GameDirection = GameDirection.DOWN
-    Protected Shared DEFAULT_VELOCITY As GameVelocity = GameVelocity.Normal
+    Protected Shared DEFAULT_DIRECTION As GameDirection = GameDirection.Down
+    Protected Shared DEFAULT_VELOCITY As GameVelocity = GameVelocity.Medium
     Protected Shared DEFAULT_ANIMATION_MARK As UInteger = 0
-    Protected Shared DEFAULT_ANIMATION_TIMEWAIT As UInteger = 10
-    Protected Shared DEFAULT_INACTIVE_TIMEWAIT As UInteger = 10
+    Protected Shared DEFAULT_ANIMATION_TIMEWAIT As UInteger = 200
+    Protected Shared DEFAULT_INACTIVE_TIMEWAIT As UInteger = 200
 
     Private Property canMove As Boolean
     Private Property canControl As Boolean
@@ -68,9 +68,7 @@ Public MustInherit Class GameCharacter
         Me.movementPath.Add(direction)
     End Sub
 
-    Public Sub Update(clock As Clock) Implements IUpdatable.Update
-
-        Console.WriteLine(clock.ElapsedTime.AsMicroseconds)
+    Public Sub Update(time As Time) Implements IUpdatable.Update
 
         ' Déplacement de l'entité selon son chemin prédéfini
         If (Me.movementPath.Count > 0 And Me.canMove) Then
@@ -79,14 +77,16 @@ Public MustInherit Class GameCharacter
         End If
 
         If (Not Me.Position.Equals(Me.futurPosition) And Not Me.canMove) Then
-            ' Déplacement de la position de l'entité
-            Me.Position += Me.direction.GetVector * Me.velocityValue
+            ' Déplacement synchronisé du personnage
+            SyncMovementHandler(time)
 
             ' Animation de déplacement
-            If (Me.animationTimer.AsyncWait(DEFAULT_ANIMATION_TIMEWAIT / Me.velocityValue)) Then
+            If (Me.animationTimer.AsyncWait(DEFAULT_ANIMATION_TIMEWAIT / (Me.velocityValue / 50), time)) Then
                 Me.animationMark = If(Me.animationMark >= 3, 0, Me.animationMark + 1)
             End If
-        Else
+        End If
+
+        If (Me.Position.Equals(Me.futurPosition)) Then
             ' Rend de nouveau possible les futurs déplacements de l'entité
             If (Not Me.canMove) Then
                 Me.canMove = True
@@ -94,13 +94,41 @@ Public MustInherit Class GameCharacter
             End If
 
             ' Mise à jour de l'inactivité de l'entité
-            If (Me.timeleftTimer.AsyncWait(DEFAULT_INACTIVE_TIMEWAIT)) Then
+            If (Me.timeleftTimer.AsyncWait(DEFAULT_INACTIVE_TIMEWAIT, time)) Then
                 Me.animationMark = 0
             End If
         End If
 
         ' Mise à jour de l'affichage de l'entité
         Me.TextureRect = New IntRect(Me.characterHitboxSize.X * Me.animationMark, Me.characterHitboxSize.Y * Me.direction.GetIndex(), Me.characterHitboxSize.X, Me.characterHitboxSize.Y)
+    End Sub
+
+    Private Sub SyncMovementHandler(time As Time)
+        ' Déplacement de la position de l'entité
+        ' Synchronisation des temps de déplacement
+        Me.Position += Me.direction.GetVector * Me.velocityValue * time.AsSeconds
+
+        If (Me.direction.Equals(GameDirection.Down)) Then
+            If (Me.Position.Y > Me.futurPosition.Y) Then
+                Me.Position = New Vector2f(Me.Position.X, Me.futurPosition.Y)
+                'Me.canMove = True
+            End If
+        ElseIf (Me.direction.Equals(GameDirection.Left)) Then
+            If (Me.Position.X < Me.futurPosition.X) Then
+                Me.Position = New Vector2f(Me.futurPosition.X, Me.Position.Y)
+                'Me.canMove = True
+            End If
+        ElseIf (Me.direction.Equals(GameDirection.Right)) Then
+            If (Me.Position.X > Me.futurPosition.X) Then
+                Me.Position = New Vector2f(Me.futurPosition.X, Me.Position.Y)
+                'Me.canMove = True
+            End If
+        ElseIf (Me.direction.Equals(GameDirection.Up)) Then
+            If (Me.Position.Y < Me.futurPosition.Y) Then
+                Me.Position = New Vector2f(Me.Position.X, Me.futurPosition.Y)
+                'Me.canMove = True
+            End If
+        End If
     End Sub
 
 #Region "Getter & Setter"

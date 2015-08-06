@@ -23,7 +23,6 @@ Public Class GameMap
     ' - Constructeur
     Public Sub New()
         Me.location = Vector2.Zero
-
         'For i = 0 To 6
         'layer(i) = New MapLayer
         'Next

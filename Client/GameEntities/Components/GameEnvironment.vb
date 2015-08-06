@@ -17,32 +17,42 @@ Public Class GameEnvironment
         LoadMaps()
 
         If (MAPS.Count > 0) Then
-            Me.currentMap = MAPS.ElementAt(0).Value
+            Me.SetCurrentMap(MAPS.ElementAt(0).Value)
         End If
     End Sub
 
     Public Sub SetCurrentMap(map As GameMap)
+        Console.WriteLine("New current map")
         Me.currentMap = map
     End Sub
 
+    Private r As New RenderTexture(20 * 32, 14 * 32)
+    Private render As Sprite
+
     Public Sub Draw(target As RenderTarget, states As RenderStates) Implements Drawable.Draw
         If (Not IsNothing(currentMap)) Then
-            currentMap.Draw(target, states)
 
-            For index As Integer = 0 To GameMap.NEIGHBOORS_COUNT
+            ' TODO : [Modifier] Utilisation du RenderTexture pour l'affichage de la map statique
+            r.Clear()
+            r.Draw(currentMap)
+            r.Display()
+            render = New Sprite(r.Texture)
+            render.Draw(target, states)
 
-                Dim neighborMapIndex = currentMap.NeighborIndex(index)
+            'For index As Integer = 0 To GameMap.NEIGHBOORS_COUNT
 
-                If (Not neighborMapIndex = -1) Then
-                    Dim neighborMap = GetMap(neighborMapIndex)
+            '    Dim neighborMapIndex = currentMap.NeighborIndex(index)
 
-                    If (Not IsNothing(neighborMap)) Then
-                        Dim relativeMap = GameRelativeMap.MAPS.ElementAt(index)
-                        neighborMap.Origin = relativeMap.GetVector() + currentMap.Origin
-                        neighborMap.Draw(target, states)
-                    End If
-                End If
-            Next
+            '    If (Not neighborMapIndex = -1) Then
+            '        Dim neighborMap = GetMap(neighborMapIndex)
+
+            '        If (Not IsNothing(neighborMap)) Then
+            '            Dim relativeMap = GameRelativeMap.MAPS.ElementAt(index)
+            '            neighborMap.Origin = relativeMap.GetVector() + currentMap.Origin
+            '            neighborMap.Draw(target, states)
+            '        End If
+            '    End If
+            'Next
         End If
     End Sub
 
@@ -68,7 +78,7 @@ Public Class GameEnvironment
         Next
     End Sub
 
-    Public Sub Update(clock As Clock) Implements IUpdatable.Update
+    Public Sub Update(time As Time) Implements IUpdatable.Update
 
     End Sub
 

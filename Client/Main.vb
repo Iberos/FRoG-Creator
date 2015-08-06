@@ -45,8 +45,13 @@ Module Main
             Console.WriteLine("--- DEBUG ---")
 
             ' Création de la fenêtre cliente
-            Window = New RenderWindow(New VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), ContentManager.Load(Of String)(GameResources.GAME_TITLE), Styles.Default)
+            Dim settings As ContextSettings
+            settings.DepthBits = 24
+            settings.StencilBits = 8
+            settings.AntialiasingLevel = 2
+            Window = New RenderWindow(New VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), ContentManager.Load(Of String)(GameResources.GAME_TITLE), Styles.Default, settings)
             Window.SetFramerateLimit(FPS)
+            Window.SetVerticalSyncEnabled(True)
             icon = ContentManager.Load(Of Texture)(GameResources.ICON_FILE)
             Window.SetIcon(icon.Size.X, icon.Size.Y, icon.CopyToImage().Pixels)
 
@@ -55,6 +60,7 @@ Module Main
             Dim configFontPath As String = ContentPath.WIDGETS + ContentManager.Load(Of String)(GameResources.FONT_FILE)
             Render = New RenderInterface(Window, configFilePath, configFontPath)
 
+            ' Création du chrono
             clock = New Clock
 
         Catch e As LoadingFailedException
@@ -96,18 +102,25 @@ Module Main
             ' FIX issue #8 : TGUI n'initialise pas son presse-papier. On s'en occupe pour lui...
             [Global].Clipboard = String.Empty
 
-
+            ' TODO : [Retirer] Timer de test pour l'affichage des FPS (Commit #167 : Synchronisation des temps de déplacement)
+            Dim testtimer As New GameTimer
 
             While (Window.IsOpen())
-                clock.Restart()
+                Dim time = clock.Restart
                 Window.DispatchEvents()
-                Designer.DispatchEventsAndUpdate(Window, clock)
+                Designer.DispatchEventsAndUpdate(Window, time)
 
                 Window.Clear(Color.White)
                 Designer.Draw(Window)
                 Render.Draw()
 
                 Window.Display()
+
+                ' TODO : [Retirer] (Commit #167 : Synchronisation des temps de déplacement)
+                If (testtimer.AsyncWait(1000, time)) Then
+                    Dim currentFPS = Convert.ToInt32(1.0F / time.AsSeconds)
+                    Window.SetTitle("FPS : " & currentFPS)
+                End If
             End While
 
         Catch e As NullReferenceException
