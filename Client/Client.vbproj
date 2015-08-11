@@ -110,7 +110,7 @@
     <Compile Include="ContentHandler\GameResources.vb" />
     <Compile Include="Designer\Utilities\GuiExtension.vb" />
     <Compile Include="Designer\Utilities\Vector2.vb" />
-    <Compile Include="GameEntities\Components\GUIActionCase.vb" />
+    <Compile Include="Designer\Utilities\GuiActionCaseExample.vb" />
     <Compile Include="GameEntities\Utilities\GameMapDeserializationBinder.vb" />
     <Compile Include="GameEntities\Utilities\GameVelocity.vb" />
     <Compile Include="GameEntities\Components\GameTimer.vb" />
@@ -126,7 +126,6 @@
     <Compile Include="GameEntities\Components\GameNPC.vb" />
     <Compile Include="GameEntities\Components\GamePlayer.vb" />
     <Compile Include="GameEntities\Components\GamePet.vb" />
-    <Compile Include="GameEntities\Utilities\GameRelativeMap.vb" />
     <Compile Include="Designer\Utilities\GameStates.vb" />
     <Compile Include="GameEntities\Components\GameWeapon.vb" />
     <Compile Include="GameEntities\Interfaces\IUpdatable.vb" />

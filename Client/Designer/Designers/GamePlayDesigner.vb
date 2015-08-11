@@ -82,7 +82,7 @@ Public Class GamePlayDesigner
         '
         ' dragNDropItem()
         '
-        Dim dragNDropItem = gui.Add(New GUIActionCase(), "dragNDropItem")
+        Dim dragNDropItem = gui.Add(New GuiActionCaseExample(), "dragNDropItem")
         dragNDropItem.Size = New Vector2f(32, 32)
         dragNDropItem.Position = New Vector2f(84, 10)
         dragNDropItem.AddFrame(ContentType.SPELLS + "spell1.png", 1000)
@@ -95,7 +95,7 @@ Public Class GamePlayDesigner
         '
         ' dragNDropClipser
         '
-        Dim dragNDropClipser = gui.Add(New GUIActionCase(), "dragNDropClipser")
+        Dim dragNDropClipser = gui.Add(New GuiActionCaseExample(), "dragNDropClipser")
         dragNDropClipser.Size = New Vector2f(32, 32)
         dragNDropClipser.Position = New Vector2f(200, 10)
         dragNDropClipser.AddFrame(ContentType.SPELLS + "spell1.png", 1000)

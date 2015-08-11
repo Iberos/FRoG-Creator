@@ -3,12 +3,12 @@ Imports System.Runtime.Serialization.Formatters.Binary
 Imports System.IO
 Imports System.Reflection
 Imports SFML.System
+Imports System.Runtime.Serialization.Formatters
 
 <Serializable>
 Public Class GameMap
-    Implements SFML.Graphics.Drawable
+    Implements Drawable
 
-    Public Const NEIGHBOORS_COUNT = 8
     Public Const WIDTH As UInteger = 672
     Public Const HEIGHT As UInteger = 480
 
@@ -18,71 +18,17 @@ Public Class GameMap
     Private location As Vector2
     Private layer(6) As MapLayer ' couche entière
     Private attribute(20, 14) As GameAttribute ' attribut sur une case
-    Private neighborsMapsIndexes(NEIGHBOORS_COUNT) As Integer ' maps au voisinage
+
+    Private renderTexture As RenderTexture
+    Private render As Sprite
 
     ' - Constructeur
     Public Sub New()
         Me.location = Vector2.Zero
-        'For i = 0 To 6
-        'layer(i) = New MapLayer
-        'Next
-
-        'For x = 0 To 20
-        'For y = 0 To 14
-        'attribute(x, y) = New GameAttribute
-        'Next
-        'Next
     End Sub
 
-    Public Function isWalkable(location As Vector2f)
-        ' TODO isWalkable condition  
-        Return True
-    End Function
-
-    ' TODO : Générer 2 RenderTexture à la création de la map
     Public Sub Draw(target As RenderTarget, states As RenderStates) Implements Drawable.Draw
-        For x = 0 To 20
-            For y = 0 To 14
-                For z = 0 To 3
-                    If (Not IsNothing(layer(z))) Then
-
-                        If (Not layer(z).TileCode(x, y) = 0) Then
-                            ' TODO : Try Catch Le cas où le tileset voulu n'a pas été chargé
-                            Dim tilesetIndex = layer(z).TilesetIndex(x, y)
-                            If (GameEnvironment.TILESETS.Count > tilesetIndex) Then
-                                Using sprt As New Sprite(GameEnvironment.TILESETS.ElementAt(tilesetIndex))
-                                    sprt.TextureRect = New IntRect(GameTileset.DecodeX(layer(z).TileCode(x, y)) * 32, GameTileset.DecodeY(layer(z).TileCode(x, y)) * 32, 32, 32)
-                                    sprt.Position = New Vector2f(x * 32 + Me.location.X, y * 32 + Me.location.Y)
-                                    target.Draw(sprt)
-                                End Using
-                            End If
-                        End If
-                    End If
-                Next
-            Next
-        Next
-    End Sub
-
-    ' TODO : Remplacer par le deuxième RenderTexture
-    Public Sub Draw2(target As RenderTarget, states As RenderStates)
-        'Dim sprt As Sprite
-        For x = 0 To 20
-            For y = 0 To 14
-                For z = 3 To 6
-                    If Not layer(z).TileCode(x, y) = 0 Then
-                        ' TODO : Try Catch Le cas où le tileset voulu n'a pas été chargé
-                        Dim tilesetIndex = layer(z).TilesetIndex(x, y)
-                        If (GameEnvironment.TILESETS.Count > tilesetIndex) Then
-                            Using sprt As New Sprite(GameEnvironment.TILESETS.ElementAt(tilesetIndex))
-                                sprt.TextureRect = New IntRect(GameTileset.DecodeX(layer(z).TileCode(x, y)) * 32, GameTileset.DecodeY(layer(z).TileCode(x, y)) * 32, 32, 32)
-                                sprt.Position = New Vector2f(x * 32 + Me.location.X, y * 32 + Me.location.Y)
-                                target.Draw(sprt)
-                            End Using
-                        End If
-                    End If
-                Next
-            Next
-        Next
+        target.Draw(MapRender)
     End Sub
 
     Public Shared Function Load(ByVal mapNum As Integer) As GameMap
@@ -90,7 +36,7 @@ Public Class GameMap
             Dim deserializer As New BinaryFormatter
             Dim mapResult As GameMap
             If File.Exists(ContentType.MAPS + "Map" & mapNum & ".frog") Then
-                deserializer.AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
+                deserializer.AssemblyFormat = FormatterAssemblyStyle.Simple
                 deserializer.Binder = New GameMapDeserializationBinder
 
                 Using reader = File.OpenRead(ContentType.MAPS + "Map" & mapNum & ".frog")
@@ -112,7 +58,7 @@ Public Class GameMap
             Dim deserializer As New BinaryFormatter
             Dim mapResult As GameMap
             If File.Exists(ContentType.MAPS + mapName) Then
-                deserializer.AssemblyFormat = System.Runtime.Serialization.Formatters.FormatterAssemblyStyle.Simple
+                deserializer.AssemblyFormat = FormatterAssemblyStyle.Simple
                 deserializer.Binder = New GameMapDeserializationBinder
 
                 Using reader = File.OpenRead(ContentType.MAPS + mapName)
@@ -158,17 +104,6 @@ Public Class GameMap
         End Set
     End Property
 
-    Public Property NeighborIndex(neighborNum As Byte) As Integer
-        Get
-            Return If(Me.neighborsMapsIndexes.Count > neighborNum, Me.neighborsMapsIndexes(neighborNum), -1)
-        End Get
-        Set(value As Integer)
-            If (Me.neighborsMapsIndexes.Count > neighborNum) Then
-                Me.neighborsMapsIndexes(neighborNum) = value
-            End If
-        End Set
-    End Property
-
     Public Property MapLayer(layerNum As Byte) As MapLayer
         Get
             Return If(Me.layer.Count > layerNum, Me.layer(layerNum), Nothing)
@@ -198,5 +133,44 @@ Public Class GameMap
                 Me.type = value
             End If
         End Set
+    End Property
+
+    ''' <summary>
+    ''' Retourne le rendu de la map à dessiner. Le créer s'il n'existe pas
+    ''' </summary>
+    ''' <returns>Le rendu de la map</returns>
+    Private ReadOnly Property MapRender
+        Get
+            ' Génération du Render s'il n'existe pas
+            If (IsNothing(Me.render)) Then
+                Me.renderTexture = New RenderTexture(GameMap.WIDTH, GameMap.HEIGHT)
+                Me.renderTexture.Clear()
+
+#Region "Boucle de dessin"
+                For x = 0 To 20
+                    For y = 0 To 14
+                        For z = 0 To 3
+                            If (Not IsNothing(layer(z)) And Not layer(z).TileCode(x, y) = 0) Then
+                                ' TODO : Try Catch Le cas où le tileset voulu n'a pas été chargé
+                                Dim tilesetIndex = layer(z).TilesetIndex(x, y)
+                                If (GameEnvironment.TILESETS.Count > tilesetIndex) Then
+                                    Using sprt As New Sprite(GameEnvironment.TILESETS.ElementAt(tilesetIndex))
+                                        sprt.TextureRect = New IntRect(GameTileset.DecodeX(layer(z).TileCode(x, y)) * 32, GameTileset.DecodeY(layer(z).TileCode(x, y)) * 32, 32, 32)
+                                        sprt.Position = New Vector2f(x * 32 + Me.location.X, y * 32 + Me.location.Y)
+                                        renderTexture.Draw(sprt)
+                                    End Using
+                                End If
+                            End If
+                        Next
+                    Next
+                Next
+#End Region
+
+                Me.renderTexture.Display()
+            End If
+            ' Obligation de recréation du sprite afin d'éviter sa suppression par le garbage
+            Me.render = New Sprite(renderTexture.Texture)
+            Return Me.render
+        End Get
     End Property
 End Class

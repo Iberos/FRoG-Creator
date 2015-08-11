@@ -58,7 +58,7 @@ Class GameManager
         gameSurface.SetFramerateLimit(60)
 
         ' Initialisation du selecteur de tile
-        recSelect.Size = New Vector2f(modVar.CASE_LENGTH, modVar.CASE_LENGTH)
+        recSelect.Size = New Vector2f(CASE_LENGTH, CASE_LENGTH)
         recSelect.OutlineColor = New Color(0, 100, 0)
         recSelect.OutlineThickness = 1
         recSelect.Position = New Vector2f(0, 0)
@@ -116,72 +116,74 @@ Class GameManager
 
     ' - Gestion des touches
     Private Sub KeyBoardListener()
-        With player
-            If (Not IsNothing(map.Attribut(.X, .Y))) Then ' Catch de l'attribut inexistant
-                If Keyboard.IsKeyPressed(Keyboard.Key.Down) And .Y < 14 And .Mov = 0 Then
-                    .Dir = 0
-                    If Not map.Attribut(.X, .Y + 1).Type = 1 Then
-                        If Not map.Attribut(.X, .Y + 1).Type = 2 Then
-                            .Y += 1
-                            .Mov = modVar.CASE_LENGTH
-                        ElseIf Not map.Attribut(.X, .Y + 1).sender(0) = 0 Then
-                            .Y += 1
-                            .Mov = modVar.CASE_LENGTH
+        If (Not IsNothing(map)) Then
+            With player
+                If (Not IsNothing(map.Attribut(.X, .Y))) Then ' Catch de l'attribut inexistant
+                    If Keyboard.IsKeyPressed(Keyboard.Key.Down) And .Y < 14 And .Mov = 0 Then
+                        .Dir = 0
+                        If Not map.Attribut(.X, .Y + 1).Type = 1 Then
+                            If Not map.Attribut(.X, .Y + 1).Type = 2 Then
+                                .Y += 1
+                                .Mov = modVar.CASE_LENGTH
+                            ElseIf Not map.Attribut(.X, .Y + 1).sender(0) = 0 Then
+                                .Y += 1
+                                .Mov = modVar.CASE_LENGTH
+                            End If
+                        End If
+                    End If
+
+                    If Keyboard.IsKeyPressed(Keyboard.Key.Up) And .Y > 0 And .Mov = 0 Then
+                        .Dir = 3
+                        If Not map.Attribut(.X, .Y - 1).Type = 1 Then
+                            If Not map.Attribut(.X, .Y - 1).Type = 2 Then
+                                .Y -= 1
+                                .Mov = modVar.CASE_LENGTH
+                            ElseIf Not map.Attribut(.X, .Y - 1).sender(0) = 3 Then
+                                .Y -= 1
+                                .Mov = modVar.CASE_LENGTH
+                            End If
+                        End If
+                    End If
+
+                    If Keyboard.IsKeyPressed(Keyboard.Key.Left) And .X > 0 And .Mov = 0 Then
+                        .Dir = 1
+                        If Not map.Attribut(.X - 1, .Y).Type = 1 Then
+                            If Not map.Attribut(.X - 1, .Y).Type = 2 Then
+                                .X -= 1
+                                .Mov = modVar.CASE_LENGTH
+                            ElseIf Not map.Attribut(.X - 1, .Y).sender(0) = 1 Then
+                                .X -= 1
+                                .Mov = modVar.CASE_LENGTH
+                            End If
+                        End If
+                    End If
+
+                    If Keyboard.IsKeyPressed(Keyboard.Key.Right) And .X < 20 And .Mov = 0 Then
+                        .Dir = 2
+                        If Not map.Attribut(.X + 1, .Y).Type = 1 Then
+                            If Not map.Attribut(.X + 1, .Y).Type = 2 Then
+                                .X += 1
+                                .Mov = modVar.CASE_LENGTH
+                            ElseIf Not map.Attribut(.X + 1, .Y).sender(0) = 2 Then
+                                .X += 1
+                                .Mov = modVar.CASE_LENGTH
+                            End If
                         End If
                     End If
                 End If
 
-                If Keyboard.IsKeyPressed(Keyboard.Key.Up) And .Y > 0 And .Mov = 0 Then
-                    .Dir = 3
-                    If Not map.Attribut(.X, .Y - 1).Type = 1 Then
-                        If Not map.Attribut(.X, .Y - 1).Type = 2 Then
-                            .Y -= 1
-                            .Mov = modVar.CASE_LENGTH
-                        ElseIf Not map.Attribut(.X, .Y - 1).sender(0) = 3 Then
-                            .Y -= 1
-                            .Mov = modVar.CASE_LENGTH
-                        End If
-                    End If
+
+                If Keyboard.IsKeyPressed(Keyboard.Key.LShift) Then
+                    .Run = True
+                Else
+                    .Run = False
                 End If
 
-                If Keyboard.IsKeyPressed(Keyboard.Key.Left) And .X > 0 And .Mov = 0 Then
-                    .Dir = 1
-                    If Not map.Attribut(.X - 1, .Y).Type = 1 Then
-                        If Not map.Attribut(.X - 1, .Y).Type = 2 Then
-                            .X -= 1
-                            .Mov = modVar.CASE_LENGTH
-                        ElseIf Not map.Attribut(.X - 1, .Y).sender(0) = 1 Then
-                            .X -= 1
-                            .Mov = modVar.CASE_LENGTH
-                        End If
-                    End If
+                If .Mov > 0 Then
+                    If .Run = False Then .Mov -= 2 Else .Mov -= 4
                 End If
-
-                If Keyboard.IsKeyPressed(Keyboard.Key.Right) And .X < 20 And .Mov = 0 Then
-                    .Dir = 2
-                    If Not map.Attribut(.X + 1, .Y).Type = 1 Then
-                        If Not map.Attribut(.X + 1, .Y).Type = 2 Then
-                            .X += 1
-                            .Mov = modVar.CASE_LENGTH
-                        ElseIf Not map.Attribut(.X + 1, .Y).sender(0) = 2 Then
-                            .X += 1
-                            .Mov = modVar.CASE_LENGTH
-                        End If
-                    End If
-                End If
-            End If
-
-
-            If Keyboard.IsKeyPressed(Keyboard.Key.LShift) Then
-                .Run = True
-            Else
-                .Run = False
-            End If
-
-            If .Mov > 0 Then
-                If .Run = False Then .Mov -= 2 Else .Mov -= 4
-            End If
-        End With
+            End With
+        End If
     End Sub
 
     ' - Dessin de la grille sur une renderTexture
@@ -233,20 +235,23 @@ Class GameManager
             mapSurface(layer).Clear(New Color(0, 0, 0, 0))
         End If
 
-        With map.MapLayer(layer)
-            For x = 0 To modVar.MAP_WIDTH
-                For y = 0 To modVar.MAP_HEIGHT
-                    ' TODO : Catch les erreurs NullReferenceException (provoqué par le chargement d'une map ancienne version pas exemple)
-                    If Not .TileCode(x, y) = 0 Then
-                        Using sprt As New Sprite(game.tileset(.TilesetIndex(x, y)))
-                            sprt.TextureRect = New IntRect(GameTileset.DecodeX(.TileCode(x, y)) * modVar.CASE_LENGTH, GameTileset.DecodeY(.TileCode(x, y)) * modVar.CASE_LENGTH, modVar.CASE_LENGTH, modVar.CASE_LENGTH)
-                            sprt.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
-                            mapSurface(layer).Draw(sprt)
-                        End Using
-                    End If
+        ' Test de l'existance de l'instance de map
+        If (Not IsNothing(map)) Then
+            With map.MapLayer(layer)
+                For x = 0 To modVar.MAP_WIDTH
+                    For y = 0 To modVar.MAP_HEIGHT
+                        ' TODO : Catch les erreurs NullReferenceException (provoqué par le chargement d'une map ancienne version pas exemple)
+                        If Not .TileCode(x, y) = 0 Then
+                            Using sprt As New Sprite(game.tileset(.TilesetIndex(x, y)))
+                                sprt.TextureRect = New IntRect(GameTileset.DecodeX(.TileCode(x, y)) * modVar.CASE_LENGTH, GameTileset.DecodeY(.TileCode(x, y)) * modVar.CASE_LENGTH, modVar.CASE_LENGTH, modVar.CASE_LENGTH)
+                                sprt.Position = New Vector2f(x * modVar.CASE_LENGTH, y * modVar.CASE_LENGTH)
+                                mapSurface(layer).Draw(sprt)
+                            End Using
+                        End If
+                    Next
                 Next
-            Next
-        End With
+            End With
+        End If
 
         mapSurface(layer).Display()
     End Sub
@@ -256,13 +261,13 @@ Class GameManager
         With player
             sprtPlayer = New Sprite(texPlayer)
             sprtPlayer.TextureRect = New IntRect(Int(.Mov / modVar.CASE_LENGTH * 4) * texPlayer.Size.X / 4, .Dir * texPlayer.Size.Y / 4, texPlayer.Size.X / 4, texPlayer.Size.Y / 4)
-            If .Dir = GameDirection.Bas Then
+            If .Dir = GameDirection.Down Then
                 sprtPlayer.Position = New Vector2f(.X * modVar.CASE_LENGTH, (.Y - 1) * modVar.CASE_LENGTH - .Mov)
-            ElseIf .Dir = GameDirection.Gauche Then
+            ElseIf .Dir = GameDirection.Left Then
                 sprtPlayer.Position = New Vector2f(.X * modVar.CASE_LENGTH + .Mov, (.Y - 1) * modVar.CASE_LENGTH)
-            ElseIf .Dir = GameDirection.Droite Then
+            ElseIf .Dir = GameDirection.Right Then
                 sprtPlayer.Position = New Vector2f(.X * modVar.CASE_LENGTH - .Mov, (.Y - 1) * modVar.CASE_LENGTH)
-            ElseIf .Dir = GameDirection.Haut Then
+            ElseIf .Dir = GameDirection.Up Then
                 sprtPlayer.Position = New Vector2f(.X * modVar.CASE_LENGTH, (.Y - 1) * modVar.CASE_LENGTH + .Mov)
             End If
             gameSurface.Draw(sprtPlayer)

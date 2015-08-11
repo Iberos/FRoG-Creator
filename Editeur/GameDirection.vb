@@ -1,7 +1,7 @@
 ﻿<Serializable>
 Public Enum GameDirection
-    Bas
-    Gauche
-    Droite
-    Haut
+    Down
+    Left
+    Right
+    Up
 End Enum

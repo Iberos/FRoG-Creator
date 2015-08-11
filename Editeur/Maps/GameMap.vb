@@ -5,7 +5,7 @@ Imports SFML.Graphics
 
 <Serializable>
 Public Class GameMap
-    Implements SFML.Graphics.Drawable
+    Implements Drawable
 
     Public Const NEIGHBOORS_COUNT = 8
     Private Const WIDTH As UInteger = 672
@@ -17,6 +17,8 @@ Public Class GameMap
     Private location As Vector2
     Private layer(6) As MapLayer ' couche entière
     Private attribute(20, 14) As GameAttribute ' attribut sur une case
+
+    'Non serializable : RenderTexture, Sprite, Texture, Image
 
     <NonSerialized>
     Private mapNPCs As New List(Of MapNPC) ' Liste des pnjs sur la map
@@ -121,6 +123,7 @@ Public Class GameMap
     Public Sub LoadIntoEditor(ByVal mapNum As Integer)
         map = Load(mapNum)
         If (IsNothing(map)) Then
+            MsgBox("Erreur lors du chargement de la carte de jeu.", MsgBoxStyle.Critical, "Erreur")
             Return ' Afficher erreur de chargement
         End If
         lstBackup = New List(Of Byte())

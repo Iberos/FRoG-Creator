@@ -3,12 +3,12 @@ Imports SFML.Graphics
 Imports SFML.System
 Imports SFML.Window
 
-Public Class GUIActionCase
+Public Class GuiActionCaseExample
     Inherits AnimatedPicture
 
     Private Const PADDING = 5
 
-    Private Shared selectedGameActionCase As GUIActionCase
+    Private Shared selectedGameActionCase As GuiActionCaseExample
 
     Private inDragAndDrop As Boolean
     Private isEmptyCase As Boolean
@@ -17,7 +17,7 @@ Public Class GUIActionCase
     Private tmpPaddingSelection As Vector2f
     Private hitbox As IntRect
     Private cliped As Boolean
-    Private caseParent As GUIActionCase
+    Private caseParent As GuiActionCaseExample
 
     Public Sub New()
         Me.inDragAndDrop = False
@@ -136,11 +136,11 @@ Public Class GUIActionCase
         End Set
     End Property
 
-    Public Property ParentCase() As GUIActionCase
+    Public Property ParentCase() As GuiActionCaseExample
         Get
             Return Me.caseParent
         End Get
-        Private Set(value As GUIActionCase)
+        Private Set(value As GuiActionCaseExample)
             Me.caseParent = value
         End Set
     End Property
