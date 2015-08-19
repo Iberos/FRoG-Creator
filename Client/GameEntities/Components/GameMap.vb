@@ -153,8 +153,8 @@ Public Class GameMap
                             If (Not IsNothing(layer(z)) And Not layer(z).TileCode(x, y) = 0) Then
                                 ' TODO : Try Catch Le cas où le tileset voulu n'a pas été chargé
                                 Dim tilesetIndex = layer(z).TilesetIndex(x, y)
-                                If (GameEnvironment.TILESETS.Count > tilesetIndex) Then
-                                    Using sprt As New Sprite(GameEnvironment.TILESETS.ElementAt(tilesetIndex))
+                                If (GameEnvironment.Tilesets.Count > tilesetIndex) Then
+                                    Using sprt As New Sprite(GameEnvironment.Tilesets.ElementAt(tilesetIndex))
                                         sprt.TextureRect = New IntRect(GameTileset.DecodeX(layer(z).TileCode(x, y)) * 32, GameTileset.DecodeY(layer(z).TileCode(x, y)) * 32, 32, 32)
                                         sprt.Position = New Vector2f(x * 32 + Me.location.X, y * 32 + Me.location.Y)
                                         renderTexture.Draw(sprt)

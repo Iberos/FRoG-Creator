@@ -18,8 +18,6 @@ Public Class GameMap
     Private layer(6) As MapLayer ' couche entière
     Private attribute(20, 14) As GameAttribute ' attribut sur une case
 
-    'Non serializable : RenderTexture, Sprite, Texture, Image
-
     <NonSerialized>
     Private mapNPCs As New List(Of MapNPC) ' Liste des pnjs sur la map
 

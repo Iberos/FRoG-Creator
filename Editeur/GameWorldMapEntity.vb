@@ -1,9 +1,14 @@
-﻿Public Class GameWorldMapEntity
-    Public Map As GameMap
+﻿<Serializable>
+Public Class GameWorldMapEntity
+
+    Public Index As Integer
+
+    <NonSerialized>
     Public Button As ExtendedButton
 
-    Public Sub New(map As GameMap, button As ExtendedButton)
-        Me.Map = map
+
+    Public Sub New(index As Integer, button As ExtendedButton)
+        Me.Index = index
         Me.Button = button
     End Sub
 End Class

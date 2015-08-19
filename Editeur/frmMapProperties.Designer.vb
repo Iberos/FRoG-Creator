@@ -56,7 +56,6 @@ Partial Class frmMapProperties
         'pnlWorldMap
         '
         Me.pnlWorldMap.AutoScroll = True
-        Me.pnlWorldMap.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pnlWorldMap.Controls.Add(Me.pnlSelect)
         Me.pnlWorldMap.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlWorldMap.Location = New System.Drawing.Point(3, 16)

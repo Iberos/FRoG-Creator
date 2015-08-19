@@ -52,9 +52,9 @@ Partial Class ctrlGameMovement
         'picRemove
         '
         Me.picRemove.Image = CType(resources.GetObject("picRemove.Image"), System.Drawing.Image)
-        Me.picRemove.Location = New System.Drawing.Point(3, 2)
+        Me.picRemove.Location = New System.Drawing.Point(5, 6)
         Me.picRemove.Name = "picRemove"
-        Me.picRemove.Size = New System.Drawing.Size(24, 24)
+        Me.picRemove.Size = New System.Drawing.Size(15, 15)
         Me.picRemove.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picRemove.TabIndex = 0
         Me.picRemove.TabStop = False

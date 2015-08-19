@@ -8,7 +8,7 @@ Public Class GameNPC
     Public dialog As String
     Public texture As New Bitmap("Resources/Sprite.png")
 
-    Public Function getView(Optional normalized As Boolean = False) As Bitmap
+    Public Function GetView(Optional normalized As Boolean = False) As Bitmap
         Return texture.Clone(New Rectangle(If(normalized, ((texture.Width / 4) - 32) / 2, 0),
                                             0,
                                             If(normalized, 32, texture.Width / 4),
@@ -16,8 +16,8 @@ Public Class GameNPC
                                             Imaging.PixelFormat.DontCare)
     End Function
 
-    Public Function getShortView(Optional normalized As Boolean = False) As Bitmap
-        Dim tex = getView(normalized)
+    Public Function GetShortView(Optional normalized As Boolean = False) As Bitmap
+        Dim tex = GetView(normalized)
         Return tex.Clone(New Rectangle((tex.Width - 32) / 2, If(normalized, 0, 0.1 * tex.Height), 32, 32), Imaging.PixelFormat.DontCare)
     End Function
 

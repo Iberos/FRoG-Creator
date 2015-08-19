@@ -7,8 +7,8 @@ Public Class GameEnvironment
     Implements IUpdatable
 
     ' GameObjects
-    Public Shared MAPS As Dictionary(Of Integer, GameMap) = New Dictionary(Of Integer, GameMap)
-    Public Shared TILESETS As List(Of GameTileset) = New List(Of GameTileset)
+    Public Shared Maps As Dictionary(Of Integer, GameMap) = New Dictionary(Of Integer, GameMap)
+    Public Shared Tilesets As List(Of GameTileset) = New List(Of GameTileset)
 
     Private currentMap As GameMap
 
@@ -16,8 +16,8 @@ Public Class GameEnvironment
         LoadTilesets()
         LoadMaps()
 
-        If (MAPS.Count > 0) Then
-            Me.SetCurrentMap(MAPS.ElementAt(0).Value)
+        If (Maps.Count > 0) Then
+            Me.SetCurrentMap(Maps.ElementAt(0).Value)
         End If
     End Sub
 
@@ -43,7 +43,7 @@ Public Class GameEnvironment
             fileName = Path.GetFileName(fileName)
             Dim tileset = GameTileset.Load(fileName)
             If (Not IsNothing(tileset)) Then 'Si le tilset existe, on l'ajoute en mémoire
-                TILESETS.Add(tileset)
+                Tilesets.Add(tileset)
             End If
         Next
     End Sub
@@ -58,7 +58,7 @@ Public Class GameEnvironment
             map = GameMap.Load(mapName)
 
             If (Not IsNothing(map)) Then 'Si la map existe, on l'ajoute en mémoire
-                MAPS.Add(map.Index, map)
+                Maps.Add(map.Index, map)
             End If
         Next
     End Sub
@@ -69,7 +69,7 @@ Public Class GameEnvironment
 
     Public Shared Function GetMap(ByVal i As Integer) As GameMap
         Dim map As GameMap
-        If (MAPS.TryGetValue(i, map)) Then
+        If (Maps.TryGetValue(i, map)) Then
             Return map
         End If
         Return Nothing

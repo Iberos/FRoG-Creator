@@ -4,7 +4,7 @@
 
     Public Sub New(ByVal npc As GameNPC)
         InitializeComponent()
-        npcPicture.Image = npc.getView(True)
+        npcPicture.Image = npc.GetView(True)
         npcName.Text = npc.name
     End Sub
 
